@@ -8,6 +8,13 @@ export function PopupEmbed({ html }: { html: string }) {
 <style>body{margin:0;font-family:system-ui,sans-serif}</style></head>
 <body>${html}</body></html>`;
   return (
+    // SECURITY: `allow-same-origin` + `allow-scripts` together allow a
+    // sandboxed script to remove its own sandbox attribute, effectively
+    // escaping the sandbox. This combination is only safe because the HTML
+    // here is authored by the trusted store owner (their own app/widget) —
+    // NOT arbitrary third-party content. Never render untrusted HTML through
+    // this component. `allow-same-origin` is required so the iframe can use
+    // storage and make network requests back to the same origin.
     <iframe
       title="promotion"
       srcDoc={srcDoc}
