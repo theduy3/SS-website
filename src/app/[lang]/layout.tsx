@@ -7,6 +7,7 @@ import { Footer } from "@/components/Footer";
 import { JsonLd } from "@/components/JsonLd";
 import { getDictionary } from "./dictionaries";
 import { locales, isLocale, dirFor, type LangParams } from "@/lib/i18n";
+import { PopupHost } from "@/components/PopupHost";
 import { site } from "@/lib/site";
 import { organizationGraph } from "@/lib/seo";
 
@@ -87,6 +88,7 @@ export default async function RootLayout({
         <Header dict={dict} locale={lang} />
         <main className="flex-1">{children}</main>
         <Footer dict={dict} />
+        <PopupHost locale={lang} />
       </body>
     </html>
   );
