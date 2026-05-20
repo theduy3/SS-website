@@ -1,0 +1,8 @@
+[
+  { "url": "https://blancnailslounge.com/", "route": "/", "title": "Home", "purpose": "Hero, services overview, story teaser, social, contact form" },
+  { "url": "https://blancnailslounge.com/services", "route": "/services", "title": "Services", "purpose": "Full service list / menu" },
+  { "url": "https://blancnailslounge.com/about", "route": "/about", "title": "About", "purpose": "Brand story" },
+  { "url": "https://blancnailslounge.com/appointments", "route": "/appointments", "title": "Appointments", "purpose": "Booking info, links to external scheduler (abcapp.us)" },
+  { "url": "https://blancnailslounge.com/contact", "route": "/contact", "title": "Contact", "purpose": "Contact form + location" },
+  { "url": "https://blancnailslounge.com/cart", "route": "/cart", "title": "Cart", "purpose": "Squarespace commerce — unused, not cloned" }
+]

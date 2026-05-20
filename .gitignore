@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# playwright / verification scratch
+.playwright-mcp/
+clone-home-fixed.png

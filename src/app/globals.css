@@ -1,26 +1,38 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Design tokens extracted from blancnailslounge.com (see clone-data/tokens.json).
+   Tailwind v4 is CSS-first: these @theme vars auto-generate utilities
+   (bg-beige, text-espresso, font-display, rounded-pill, ...). */
+@theme {
+  --color-espresso: #36302a;
+  --color-mocha: #574c3f;
+  --color-tan: #b9a590;
+  --color-beige: #ece4da;
+  --color-cream: #f6f3ec;
+
+  /* Wired to next/font CSS variables declared in layout.tsx */
+  --font-display: var(--font-archivo-black), system-ui, sans-serif;
+  --font-body: var(--font-space-grotesk), system-ui, sans-serif;
+
+  --radius-pill: 300px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  body {
+    background-color: var(--color-beige);
+    color: var(--color-espresso);
+    font-family: var(--font-body);
+    font-weight: 600;
   }
-}
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+  }
 }
