@@ -101,33 +101,43 @@
     "manicure": {
       "title": "Manicure in Laval",
       "heroAlt": "Gel manicure with soft neutral polish at Sans Souci Ongles & Spa, Laval",
-      "intro": "Treat your hands to a manicure at Sans Souci Ongles & Spa, inside CF Carrefour Laval. With more than 20 years of experience and over 1,000 gel colours to choose from, our technicians shape, smooth and finish your nails exactly the way you want — from a clean, natural look to bold nail art and full extensions. We use premium products and a meticulous, unhurried process so your manicure looks flawless and lasts.",
+      "intro": [
+        "Treat your hands to a manicure at Sans Souci Ongles & Spa, inside CF Carrefour Laval. With more than 20 years of experience and over 1,000 gel colours to choose from, our technicians shape, smooth and finish your nails exactly the way you want — from a clean, natural look to bold nail art and full extensions.",
+        "We never rush. Every manicure follows a careful, unhurried process with premium products, because the difference between a good manicure and a great one is in the details: even cuticles, a flawless polish line and a finish that still looks fresh weeks later. Whether you're prepping for an event or simply treating yourself between errands at the mall, you'll leave with hands that feel cared for."
+      ],
+      "whyUs": "Clients across Laval and Greater Montreal have trusted us for over two decades, and many have been coming since the very beginning. That loyalty comes from consistency: the same skilled technicians, the same high standards, and a warm welcome that makes every client feel like part of the family. Being right inside CF Carrefour Laval also means you can fit a manicure into a shopping trip, a lunch break or an evening out — no detour required.",
       "included": [
-        "Nail shaping and cuticle care",
-        "Hand soak, exfoliation and a relaxing massage",
+        "Nail shaping and meticulous cuticle care",
+        "A warm hand soak, gentle exfoliation and a relaxing massage",
         "Your choice of regular, gel or dip powder finish",
-        "Over 1,000 gel colours and finishes",
-        "Long-wearing application that resists chips"
+        "Access to more than 1,000 gel colours and finishes",
+        "A precise, long-wearing application that resists chips and lifting",
+        "Honest advice on the finish and shape that suit your lifestyle"
       ],
       "addons": [
-        "Nail extensions (gel or acrylic) for added length",
-        "Custom nail art and French finish",
-        "Paraffin hand treatment for extra hydration"
+        "Nail extensions (gel or acrylic) for added length and strength",
+        "Custom nail art, French finish or seasonal designs",
+        "Paraffin hand treatment for deep hydration and softer skin"
       ],
-      "duration": "About 45–60 minutes, depending on finish and add-ons.",
+      "duration": "About 45–60 minutes, depending on the finish and any add-ons.",
+      "aftercare": "To keep your manicure looking its best, apply cuticle oil daily and wear gloves for cleaning or dishwashing — water and harsh detergents are the main cause of early chips and lifting. Gel and dip finishes are touch-dry immediately, but regular polish needs a little patience in the first hour. When it's time for a change, book a proper removal rather than peeling: peeling takes the top layer of your natural nail with it.",
       "hygiene": "Your safety comes first. We keep three sanitation stations stocked with disinfectant, sterilize every tool after each use, and fit our manicure stations with dust collectors that protect both clients and staff. It's the standard that has made Sans Souci a trusted name in Laval for over 20 years.",
       "faq": [
         {
           "q": "How long does a gel manicure last?",
-          "a": "A gel manicure typically lasts two to three weeks without chipping. Dip powder can last even longer. We'll recommend the finish that best fits your routine."
+          "a": "A gel manicure typically lasts two to three weeks without chipping. Dip powder can last even longer. We'll recommend the finish that best fits your routine and how quickly your nails grow."
         },
         {
           "q": "Do you do nail extensions?",
-          "a": "Yes. We offer gel and acrylic extensions to add length and strength, finished in any of our 1,000+ colours or with custom nail art."
+          "a": "Yes. We offer gel and acrylic extensions to add length and strength, finished in any of our 1,000+ colours or with custom nail art tailored to you."
+        },
+        {
+          "q": "What's the difference between gel and dip powder?",
+          "a": "Gel is cured under a lamp for a glossy, flexible finish; dip powder is built up in layers for extra strength and often lasts a little longer. Both resist chips far better than regular polish."
         },
         {
           "q": "Do I need an appointment?",
-          "a": "Walk-ins are welcome, but booking online or calling (450) 505-6450 guarantees your preferred time, especially on evenings and weekends."
+          "a": "Walk-ins are welcome, but booking online or calling (450) 505-6450 guarantees your preferred time, especially on evenings and weekends when the mall is busiest."
         }
       ],
       "metaTitle": "Manicure in Laval | Sans Souci Ongles & Spa",
@@ -136,33 +146,43 @@
     "pedicure": {
       "title": "Pedicure in Laval",
       "heroAlt": "Relaxing spa pedicure in progress at Sans Souci Ongles & Spa, Laval",
-      "intro": "Our spa pedicure is the ultimate reset for tired feet. At Sans Souci Ongles & Spa in CF Carrefour Laval, each pedicure pairs careful nail and skin care with a genuinely relaxing experience — a warm soak, gentle exfoliation and a massage that leaves your feet soft, smooth and rejuvenated. Add a paraffin treatment when you want to take the relaxation a step further.",
+      "intro": [
+        "Our spa pedicure is the ultimate reset for tired feet. At Sans Souci Ongles & Spa in CF Carrefour Laval, each pedicure pairs careful nail and skin care with a genuinely relaxing experience — a warm soak, gentle exfoliation and a massage that leaves your feet soft, smooth and rejuvenated.",
+        "It's more than polish. We take the time to address the things that make feet uncomfortable — rough heels, dry skin and overgrown cuticles — so you walk out feeling lighter, not just looking better. Add a paraffin treatment when you want to take the relaxation a step further, or gel polish when you want colour that lasts through sandal season."
+      ],
+      "whyUs": "Feet carry you all day, and they deserve real expertise. With more than 20 years caring for clients across Laval, our technicians know how to deliver a pedicure that's both therapeutic and relaxing — and they do it in a spotless, welcoming setting. Because we're inside CF Carrefour Laval, a spa pedicure is easy to work into your week, whether it's a solo treat or a visit with a friend.",
       "included": [
-        "Warm soak to soften skin",
+        "A warm soak to soften skin and ease tension",
         "Nail shaping and thorough cuticle care",
         "Gentle exfoliation to remove rough, dry skin",
-        "Relaxing lower-leg and foot massage",
-        "Deep hydration and your choice of polish"
+        "A relaxing lower-leg and foot massage",
+        "Deep hydration and your choice of polish",
+        "Smoothing of calluses at the heels and pressure points"
       ],
       "addons": [
-        "Paraffin treatment for extra-soft skin",
-        "Gel polish for a longer-lasting finish",
-        "Callus smoothing for heels and pressure points"
+        "Paraffin treatment for extra-soft, deeply hydrated skin",
+        "Gel polish for a longer-lasting, chip-resistant finish",
+        "Extra massage time to make it a true spa session"
       ],
       "duration": "About 45–65 minutes, depending on add-ons.",
+      "aftercare": "Moisturise your feet daily, especially the heels, and reapply after showering when skin absorbs best. If you chose gel polish, it's ready immediately; regular polish needs a little drying time, so wear open shoes to your car. Between visits, a pumice stone used gently in the shower keeps calluses from building back up — and booking every four to six weeks keeps feet healthy year-round.",
       "hygiene": "We take hygiene seriously: three sanitation stations stocked with disinfectant, tools sterilized after every single use, and a spotless setup for every guest. It's the care that keeps Laval clients coming back for over 20 years.",
       "faq": [
         {
           "q": "What makes a spa pedicure different?",
-          "a": "Beyond shaping and polish, a spa pedicure includes exfoliation, a relaxing massage and deep hydration — and you can add a paraffin treatment for even softer skin."
+          "a": "Beyond shaping and polish, a spa pedicure includes exfoliation, a relaxing massage and deep hydration — and you can add a paraffin treatment for even softer skin and extra comfort."
         },
         {
           "q": "Can I get gel polish on a pedicure?",
-          "a": "Yes. Gel polish keeps toes looking fresh for weeks and is a popular choice before vacations and sandal season."
+          "a": "Yes. Gel polish keeps toes looking fresh for weeks and is a popular choice before vacations and sandal season, since it won't smudge on the way home."
         },
         {
           "q": "How often should I get a pedicure?",
-          "a": "Every four to six weeks keeps feet healthy and smooth, though many clients come more often in summer."
+          "a": "Every four to six weeks keeps feet healthy and smooth, though many clients come more often in summer or before special occasions."
+        },
+        {
+          "q": "Can you help with rough heels and calluses?",
+          "a": "Absolutely. Callus smoothing is part of our spa pedicure, and we can focus extra attention on problem areas so your feet feel comfortable, not just polished."
         }
       ],
       "metaTitle": "Spa Pedicure in Laval | Sans Souci Ongles & Spa",
@@ -171,24 +191,30 @@
     "lash-extensions": {
       "title": "Lash Extensions in Laval",
       "heroAlt": "Close-up of natural-looking lash extensions applied at Sans Souci Ongles & Spa, Laval",
-      "intro": "Wake up ready with lash extensions from Sans Souci Ongles & Spa at CF Carrefour Laval. We offer 2D, 3D and Hybrid sets, each tailored to your eye shape and the look you want — from a soft, natural enhancement to full, dramatic volume. Our careful application protects your natural lashes while giving you length and fullness that lasts.",
+      "intro": [
+        "Wake up ready with lash extensions from Sans Souci Ongles & Spa at CF Carrefour Laval. We offer 2D, 3D and Hybrid sets, each tailored to your eye shape and the look you want — from a soft, natural enhancement to full, dramatic volume.",
+        "Great lashes are about more than length. Our technicians map the set to your eyes — adjusting curl, length and density across the lash line — so the result flatters your features and feels weightless. Careful, isolated application protects your natural lashes, which means your own lashes stay healthy while you enjoy fuller, darker lashes every morning with no mascara required."
+      ],
+      "whyUs": "Lash work demands patience and a steady hand, and that's exactly what 20+ years of experience brings. Clients across Laval choose us because we take the time to do it properly: a real consultation, a clean and controlled setup, and honest guidance on the style and refill schedule that will work for you. Inside CF Carrefour Laval, it's easy to keep your lashes full with a quick refill whenever you're nearby.",
       "included": [
-        "Consultation to choose the right style for your eyes",
-        "2D, 3D or Hybrid lash sets",
-        "Lightweight, comfortable application",
-        "Natural-looking length and curl",
-        "Aftercare guidance to protect your lashes"
+        "A consultation to choose the right style for your eyes",
+        "Your choice of 2D, 3D or Hybrid lash sets",
+        "Lightweight, comfortable, isolated application",
+        "Natural-looking length, curl and density",
+        "A look mapped to flatter your individual eye shape",
+        "Aftercare guidance to protect your lashes and extend wear"
       ],
       "addons": [
-        "Lash refills to maintain a full look",
-        "Extra volume for special occasions"
+        "Lash refills to maintain a full, fresh look",
+        "Extra volume for weddings and special occasions"
       ],
-      "duration": "About 60–120 minutes for a full set, depending on style.",
+      "duration": "About 60–120 minutes for a full set, depending on the style.",
+      "aftercare": "Keep lashes dry for the first 24 hours while the adhesive fully cures, then avoid oil-based cleansers and heavy rubbing, which break down the bond. Brush them gently each morning with a clean spoolie, sleep on your back or side rather than face-down, and skip waterproof mascara — it's hard to remove without pulling. A refill every two to three weeks keeps the set looking full as your natural lashes shed.",
       "hygiene": "Eyes deserve extra care. We work in a clean, controlled setup with sterilized tools and disinfected stations, following the same strict standards that have earned our Laval salon its reputation over 20+ years.",
       "faq": [
         {
           "q": "How long do lash extensions last?",
-          "a": "A full set lasts the natural growth cycle of your lashes — usually six to eight weeks. A refill every two to three weeks keeps them looking full."
+          "a": "A full set lasts the natural growth cycle of your lashes — usually six to eight weeks. A refill every two to three weeks keeps them looking full as older lashes naturally shed."
         },
         {
           "q": "What's the difference between 2D, 3D and Hybrid?",
@@ -196,7 +222,11 @@
         },
         {
           "q": "Will extensions damage my natural lashes?",
-          "a": "Applied correctly, they don't. Our technicians match the weight to your natural lashes and share aftercare so your own lashes stay healthy."
+          "a": "Applied correctly, they don't. Our technicians match the weight and length to your natural lashes and share aftercare so your own lashes stay healthy."
+        },
+        {
+          "q": "Can I wear makeup with lash extensions?",
+          "a": "Yes, but skip oil-based products and waterproof mascara around the eyes. Most clients find they don't need eye makeup at all — that's part of the appeal."
         }
       ],
       "metaTitle": "Lash Extensions in Laval | Sans Souci Ongles & Spa",
@@ -205,32 +235,42 @@
     "waxing": {
       "title": "Waxing in Laval",
       "heroAlt": "Calm, clean waxing treatment room at Sans Souci Ongles & Spa, Laval",
-      "intro": "Smooth, comfortable and quick — our waxing service covers everything from eyebrow shaping to a full bikini wax. At Sans Souci Ongles & Spa in CF Carrefour Laval, our technique is designed to keep you as comfortable as possible for a fast, low-stress experience, with results that last far longer than shaving.",
+      "intro": [
+        "Smooth, comfortable and quick — our waxing service covers everything from eyebrow shaping to a full bikini wax. At Sans Souci Ongles & Spa in CF Carrefour Laval, our technique is designed to keep you as comfortable as possible for a fast, low-stress experience.",
+        "Waxing removes hair from the root, so results last far longer than shaving and the regrowth comes back softer and finer over time. Whether you want perfectly shaped brows, smooth legs for the summer or a tidy bikini line before a trip, our experienced technicians work efficiently and discreetly, so you're in and out without fuss."
+      ],
+      "whyUs": "Waxing is as much about comfort and trust as technique, and that's where two decades of experience shows. Clients across Laval return to us because we're fast, gentle and genuinely discreet, in a clean and welcoming space. And because we're inside CF Carrefour Laval, keeping up a regular waxing routine is simple — pop in while you're already at the mall and walk out smooth.",
       "included": [
         "Eyebrow shaping and facial waxing",
-        "Underarm, arm and leg waxing",
-        "Bikini and full bikini waxing",
+        "Underarm, arm and full or half leg waxing",
+        "Bikini and full bikini (Brazilian) waxing",
         "A technique focused on comfort and speed",
-        "Smooth results that last weeks, not days"
+        "Smooth results that last weeks, not days",
+        "Discreet, professional service in a private setting"
       ],
       "addons": [
-        "Brow tint to complete your shape",
-        "Combine areas in one visit to save time"
+        "Brow tint to complete and define your shape",
+        "Combine multiple areas in one visit to save time"
       ],
       "duration": "From about 10 minutes (brows) to 45 minutes (larger areas).",
+      "aftercare": "For the first 24–48 hours, avoid hot baths, saunas, swimming and direct sun, and skip heavy workouts — freshly waxed skin is sensitive. Wear loose clothing after a bikini or leg wax, and start gentle exfoliation after a couple of days to prevent ingrown hairs. Keeping the area moisturised between visits helps, and waxing on a regular four-week schedule makes each session quicker and more comfortable.",
       "hygiene": "We never compromise on cleanliness: disinfected stations, single-use applicators where appropriate, and tools sterilized after every use — the same strict standard across everything we do at Sans Souci.",
       "faq": [
         {
           "q": "How long does waxing last?",
-          "a": "Most clients stay smooth for three to four weeks, since waxing removes hair from the root rather than the surface."
+          "a": "Most clients stay smooth for three to four weeks, since waxing removes hair from the root rather than the surface. With regular visits, regrowth becomes finer over time."
         },
         {
           "q": "How long should hair be before waxing?",
-          "a": "About a quarter-inch (roughly two to three weeks of growth) lets the wax grip properly for the cleanest result."
+          "a": "About a quarter-inch (roughly two to three weeks of growth) lets the wax grip properly for the cleanest, longest-lasting result."
         },
         {
           "q": "Is waxing painful?",
-          "a": "There's a brief sensation, but our technique is designed to minimize discomfort, and it eases with regular visits."
+          "a": "There's a brief sensation, but our technique is designed to minimize discomfort, and it eases noticeably with regular visits as the hair grows back finer."
+        },
+        {
+          "q": "Can I wax if I have sensitive skin?",
+          "a": "Yes. Let us know in advance and we'll adapt the products and technique. We recommend avoiding sun and exfoliation right before your appointment."
         }
       ],
       "metaTitle": "Waxing in Laval | Sans Souci Ongles & Spa",
@@ -244,6 +284,8 @@
     "price": "Price",
     "hygiene": "Hygiene & safety",
     "faq": "Frequently asked questions",
-    "allServices": "All services"
+    "allServices": "All services",
+    "why": "Why Sans Souci",
+    "aftercare": "Aftercare tips"
   }
 }

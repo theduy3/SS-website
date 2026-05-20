@@ -20,15 +20,30 @@ export type Service = {
 };
 
 export const services: readonly Service[] = [
-  { id: "manicure", slug: { fr: "manucure", en: "manicure" }, price: 50, photo: false },
-  { id: "pedicure", slug: { fr: "pedicure", en: "pedicure" }, price: 40, photo: false },
+  {
+    id: "manicure",
+    slug: { fr: "manucure", en: "manicure" },
+    price: 50,
+    photo: true,
+  },
+  {
+    id: "pedicure",
+    slug: { fr: "pedicure", en: "pedicure" },
+    price: 40,
+    photo: true,
+  },
   {
     id: "lash-extensions",
     slug: { fr: "extension-de-cils", en: "lash-extensions" },
     price: 70,
+    photo: true,
+  },
+  {
+    id: "waxing",
+    slug: { fr: "epilation", en: "waxing" },
+    price: 15,
     photo: false,
   },
-  { id: "waxing", slug: { fr: "epilation", en: "waxing" }, price: 15, photo: false },
 ] as const;
 
 /** All slugs for one locale — feeds generateStaticParams (current locale only). */

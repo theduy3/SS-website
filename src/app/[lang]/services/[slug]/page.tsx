@@ -95,9 +95,19 @@ export default async function ServiceDetailPage({ params }: Params) {
           </div>
         </Reveal>
         <Reveal delay={0.15}>
-          <p className="mt-10 max-w-3xl text-lg leading-relaxed text-mocha">
-            {d.intro}
-          </p>
+          <div className="mt-10 max-w-3xl space-y-5 text-lg leading-relaxed text-mocha">
+            {d.intro.map((p) => (
+              <p key={p}>{p}</p>
+            ))}
+          </div>
+        </Reveal>
+      </section>
+
+      {/* Why Sans Souci */}
+      <section className="mx-auto max-w-3xl px-6 pb-4">
+        <Reveal>
+          <h2 className="text-2xl text-espresso md:text-3xl">{labels.why}</h2>
+          <p className="mt-6 leading-relaxed text-mocha">{d.whyUs}</p>
         </Reveal>
       </section>
 
@@ -155,8 +165,18 @@ export default async function ServiceDetailPage({ params }: Params) {
         </div>
       </section>
 
+      {/* Aftercare */}
+      <section className="mx-auto max-w-3xl px-6 pt-16 md:pt-24">
+        <Reveal>
+          <h2 className="text-2xl text-espresso md:text-3xl">
+            {labels.aftercare}
+          </h2>
+          <p className="mt-6 leading-relaxed text-mocha">{d.aftercare}</p>
+        </Reveal>
+      </section>
+
       {/* Hygiene & safety */}
-      <section className="mx-auto max-w-3xl px-6 py-16 md:py-24">
+      <section className="mx-auto max-w-3xl px-6 pb-16 pt-12 md:pb-24 md:pt-16">
         <Reveal>
           <h2 className="text-2xl text-espresso md:text-3xl">
             {labels.hygiene}
