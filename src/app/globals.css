@@ -8,8 +8,9 @@
   --color-espresso: #141414; /* near-black: header, footer, buttons, primary text */
   --color-mocha: #3d3d3d; /* dark gray: body text, title bands, button hover */
   --color-tan: #9e9e9e; /* mid gray: accents, placeholders */
-  --color-beige: #efefef; /* light gray: page background */
+  --color-beige: #ffffff; /* white: page background */
   --color-cream: #fafafa; /* off-white: light text on dark, light sections */
+  --color-fog: #f4f4f4; /* soft gray: alternating section bands on the white canvas */
 
   /* Wired to next/font CSS variables declared in layout.tsx */
   --font-display: var(--font-archivo-black), system-ui, sans-serif;

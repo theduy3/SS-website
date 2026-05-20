@@ -9,7 +9,7 @@ export function Footer({ dict }: { dict: Dictionary }) {
         <h2 className="text-3xl md:text-5xl">{site.name}</h2>
         <div className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2">
           <div>
-            <h4 className="text-base text-tan">{dict.labels.location}</h4>
+            <h3 className="text-base text-tan">{dict.labels.location}</h3>
             <p className="mt-2 leading-relaxed">
               {site.contact.landmark}
               <br />
@@ -19,9 +19,12 @@ export function Footer({ dict }: { dict: Dictionary }) {
             </p>
           </div>
           <div>
-            <h4 className="text-base text-tan">{dict.labels.contact}</h4>
+            <h3 className="text-base text-tan">{dict.labels.contact}</h3>
             <p className="mt-2 leading-relaxed">
-              <a href={`mailto:${site.contact.email}`} className="hover:text-tan">
+              <a
+                href={`mailto:${site.contact.email}`}
+                className="hover:text-tan"
+              >
                 {site.contact.email}
               </a>
               <br />

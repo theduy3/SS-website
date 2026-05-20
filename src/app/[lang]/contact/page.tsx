@@ -4,8 +4,10 @@ import { PageHeader } from "@/components/PageHeader";
 import { Reveal } from "@/components/Reveal";
 import { ContactForm } from "@/components/ContactForm";
 import { site } from "@/lib/site";
+import { JsonLd } from "@/components/JsonLd";
 import { getDictionary } from "../dictionaries";
 import { isLocale, type LangParams } from "@/lib/i18n";
+import { pageMetadata, breadcrumbGraph } from "@/lib/seo";
 
 export async function generateMetadata({
   params,
@@ -13,11 +15,10 @@ export async function generateMetadata({
   const { lang } = await params;
   if (!isLocale(lang)) return {};
   const dict = await getDictionary(lang);
-  return {
+  return pageMetadata(lang, "/contact", {
     title: dict.meta.contactTitle,
-    description: dict.contact.intro,
-    alternates: { languages: { en: "/en/contact", fr: "/fr/contact" } },
-  };
+    description: dict.meta.contactDescription,
+  });
 }
 
 export default async function ContactPage({ params }: LangParams) {
@@ -27,6 +28,12 @@ export default async function ContactPage({ params }: LangParams) {
 
   return (
     <>
+      <JsonLd
+        data={breadcrumbGraph(lang, [
+          { name: dict.nav.home, route: "" },
+          { name: dict.nav.contact, route: "/contact" },
+        ])}
+      />
       <PageHeader title={dict.contact.heading} intro={dict.contact.intro} />
 
       <section className="mx-auto max-w-5xl px-6 py-20 md:py-28">
@@ -37,7 +44,7 @@ export default async function ContactPage({ params }: LangParams) {
           <Reveal delay={0.1}>
             <div className="space-y-8">
               <div>
-                <h4 className="text-base text-tan">{dict.labels.location}</h4>
+                <h2 className="text-base text-tan">{dict.labels.location}</h2>
                 <p className="mt-2 leading-relaxed text-mocha">
                   {site.contact.landmark}
                   <br />
@@ -47,7 +54,7 @@ export default async function ContactPage({ params }: LangParams) {
                 </p>
               </div>
               <div>
-                <h4 className="text-base text-tan">{dict.labels.contact}</h4>
+                <h2 className="text-base text-tan">{dict.labels.contact}</h2>
                 <p className="mt-2 leading-relaxed text-mocha">
                   <a
                     href={`mailto:${site.contact.email}`}

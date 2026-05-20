@@ -1,7 +1,5 @@
 import { test, expect } from "@playwright/test";
 
-const BOOKING = "https://moo.wyf.mybluehost.me/website_94b04bc8/reservation/";
-
 const localeCases = [
   {
     code: "fr",
@@ -15,7 +13,9 @@ const localeCases = [
       },
       {
         link: "Rendez-vous",
-        heading: /prenez rendez-vous/i,
+        // Appointments page has no SSR <h1> (the widget injects its own heading
+        // client-side); assert the always-rendered help paragraph instead.
+        text: /vous avez des problèmes/i,
         path: "/fr/appointments",
       },
       { link: "Contact", heading: /nous contacter/i, path: "/fr/contact" },
@@ -29,7 +29,8 @@ const localeCases = [
       { link: "About", heading: /why choose us/i, path: "/en/about" },
       {
         link: "Appointments",
-        heading: /book today/i,
+        // No SSR <h1> on the appointments page; assert the help paragraph.
+        text: /trouble booking online/i,
         path: "/en/appointments",
       },
       { link: "Contact", heading: /contact us/i, path: "/en/contact" },
@@ -51,7 +52,7 @@ for (const loc of localeCases) {
       ).toBeVisible();
     });
 
-    for (const { link, heading, path } of loc.pages) {
+    for (const { link, heading, text, path } of loc.pages) {
       test(`header nav → ${link}`, async ({ page }) => {
         await page.goto(`/${loc.code}`);
         await page
@@ -59,19 +60,23 @@ for (const loc of localeCases) {
           .getByRole("link", { name: link, exact: true })
           .click();
         await expect(page).toHaveURL(new RegExp(`${path}$`));
-        await expect(
-          page.getByRole("heading", { name: heading }).first(),
-        ).toBeVisible();
+        if (heading) {
+          await expect(
+            page.getByRole("heading", { name: heading }).first(),
+          ).toBeVisible();
+        }
+        if (text) {
+          await expect(page.getByText(text).first()).toBeVisible();
+        }
       });
     }
 
-    test("Book now points to the external booking system in a new tab", async ({
+    test("Book now points to the appointments page (with the embedded widget)", async ({
       page,
     }) => {
       await page.goto(`/${loc.code}`);
       const book = page.locator("header").getByRole("link", { name: loc.book });
-      await expect(book).toHaveAttribute("href", BOOKING);
-      await expect(book).toHaveAttribute("target", "_blank");
+      await expect(book).toHaveAttribute("href", `/${loc.code}/appointments`);
     });
   });
 }

@@ -1,11 +1,15 @@
 {
   "meta": {
     "homeTitle": "Sans Souci Ongles & Spa — Manucure & Pédicure à Laval",
-    "homeDescription": "Manucure, pédicure, extensions de cils et épilation au CF Carrefour Laval. Plus de 20 ans d'expertise.",
+    "homeDescription": "Manucure, pédicure, extensions de cils et épilation au CF Carrefour Laval. Plus de 20 ans d'expertise, 1000+ couleurs de gel. Réservez en ligne — service 4,9★.",
     "servicesTitle": "Services — Sans Souci Ongles & Spa",
     "aboutTitle": "Pourquoi nous choisir — Sans Souci Ongles & Spa",
     "appointmentsTitle": "Prenez rendez-vous — Sans Souci Ongles & Spa",
-    "contactTitle": "Nous contacter — Sans Souci Ongles & Spa"
+    "contactTitle": "Nous contacter — Sans Souci Ongles & Spa",
+    "servicesDescription": "Manucure, pédicure spa, extensions de cils et épilation chez Sans Souci Ongles & Spa, CF Carrefour Laval. Produits de qualité et 1000+ couleurs de gel.",
+    "aboutDescription": "Plus de 20 ans de soins des ongles au CF Carrefour Laval. Hygiène stricte, outils stérilisés et équipe accueillante : découvrez Sans Souci Ongles & Spa.",
+    "appointmentsDescription": "Réservez votre manucure, pédicure ou pose de cils chez Sans Souci Ongles & Spa, CF Carrefour Laval. Rendez-vous en ligne en quelques secondes ou par téléphone.",
+    "contactDescription": "Visitez Sans Souci Ongles & Spa au CF Carrefour Laval (Entrée 6). Heures, accès et coordonnées pour manucure, pédicure, cils et épilation à Laval."
   },
   "nav": {
     "home": "Accueil",
@@ -66,7 +70,17 @@
   "appointments": {
     "heading": "Prenez rendez-vous",
     "intro": "Réservez en ligne en quelques secondes — choisissez votre service et votre heure, on s'occupe du reste.",
-    "body": "La réservation se fait dans notre système sécurisé en ligne. Choisissez votre service et l'heure qui vous convient."
+    "helpBefore": "Si vous avez des problèmes pour réserver en ligne, il est mieux de nous appelez au ",
+    "helpAfter": " directement."
+  },
+  "reviews": {
+    "eyebrow": "Nos reviews",
+    "headlineLead": "Nous détestons nous vanter mais…",
+    "headlineMain": "les gens aiment vraiment ce que nous faisons",
+    "basedOn": "sur",
+    "reviewsWord": "avis Google",
+    "ctaPrompt": "Prêt à vous essayer?",
+    "bookOnline": "Réservez en ligne"
   },
   "contact": {
     "heading": "Nous contacter",
@@ -82,5 +96,154 @@
   "labels": {
     "location": "Emplacement",
     "contact": "Coordonnées"
+  },
+  "serviceDetails": {
+    "manicure": {
+      "title": "Manucure à Laval",
+      "heroAlt": "Manucure en gel aux teintes neutres chez Sans Souci Ongles & Spa, Laval",
+      "intro": "Offrez à vos mains une manucure chez Sans Souci Ongles & Spa, au CF Carrefour Laval. Avec plus de 20 ans d'expérience et au-delà de 1 000 couleurs de gel, nos techniciennes façonnent et subliment vos ongles exactement comme vous le souhaitez — d'un fini naturel et soigné à un nail art audacieux ou des extensions complètes. Nous utilisons des produits de qualité et un travail méticuleux pour une manucure impeccable et durable.",
+      "included": [
+        "Mise en forme des ongles et soin des cuticules",
+        "Bain, exfoliation et massage relaxant des mains",
+        "Au choix : fini régulier, gel ou poudre trempée (dip)",
+        "Plus de 1 000 couleurs et finis de gel",
+        "Application longue durée qui résiste aux éclats"
+      ],
+      "addons": [
+        "Extensions d'ongles (gel ou acrylique) pour la longueur",
+        "Nail art personnalisé et fini French",
+        "Traitement à la paraffine pour une hydratation intense"
+      ],
+      "duration": "Environ 45 à 60 minutes, selon le fini et les options.",
+      "hygiene": "Votre sécurité passe avant tout. Nous gardons trois stations de désinfection approvisionnées, stérilisons chaque outil après usage et équipons nos postes de manucure de collecteurs de poussière qui protègent clientes et personnel. C'est cette rigueur qui fait de Sans Souci une référence à Laval depuis plus de 20 ans.",
+      "faq": [
+        {
+          "q": "Combien de temps dure une manucure en gel ?",
+          "a": "Une manucure en gel tient généralement de deux à trois semaines sans éclat. La poudre trempée (dip) peut durer encore plus longtemps. Nous vous conseillons le fini le mieux adapté à votre quotidien."
+        },
+        {
+          "q": "Faites-vous des extensions d'ongles ?",
+          "a": "Oui. Nous offrons des extensions en gel et en acrylique pour ajouter longueur et solidité, finies dans l'une de nos 1 000+ couleurs ou avec un nail art sur mesure."
+        },
+        {
+          "q": "Faut-il un rendez-vous ?",
+          "a": "Les sans rendez-vous sont les bienvenus, mais réserver en ligne ou appeler au (450) 505-6450 garantit votre plage horaire, surtout en soirée et la fin de semaine."
+        }
+      ],
+      "metaTitle": "Manucure à Laval | Sans Souci Ongles & Spa",
+      "metaDescription": "Manucure en gel, dip et classique avec 1000+ couleurs au CF Carrefour Laval. Plus de 20 ans d'expertise. Réservez en ligne — dès 50 $."
+    },
+    "pedicure": {
+      "title": "Pédicure à Laval",
+      "heroAlt": "Pédicure spa relaxant en cours chez Sans Souci Ongles & Spa, Laval",
+      "intro": "Notre pédicure spa est la pause ultime pour des pieds fatigués. Chez Sans Souci Ongles & Spa au CF Carrefour Laval, chaque pédicure allie soin minutieux des ongles et de la peau à une expérience vraiment relaxante — un bain chaud, une exfoliation douce et un massage qui laisse vos pieds doux, lisses et rajeunis. Ajoutez un traitement à la paraffine pour prolonger la détente.",
+      "included": [
+        "Bain chaud pour assouplir la peau",
+        "Mise en forme des ongles et soin complet des cuticules",
+        "Exfoliation douce pour éliminer les peaux rugueuses",
+        "Massage relaxant des pieds et du bas des jambes",
+        "Hydratation intense et vernis au choix"
+      ],
+      "addons": [
+        "Traitement à la paraffine pour une peau très douce",
+        "Vernis gel pour un fini longue durée",
+        "Atténuation des callosités aux talons et points de pression"
+      ],
+      "duration": "Environ 45 à 65 minutes, selon les options.",
+      "hygiene": "Nous prenons l'hygiène au sérieux : trois stations de désinfection approvisionnées, des outils stérilisés après chaque usage et un poste impeccable pour chaque cliente. C'est ce soin qui fidélise la clientèle de Laval depuis plus de 20 ans.",
+      "faq": [
+        {
+          "q": "Qu'est-ce qui distingue un pédicure spa ?",
+          "a": "Au-delà de la mise en forme et du vernis, le pédicure spa comprend une exfoliation, un massage relaxant et une hydratation intense — avec l'option paraffine pour une peau encore plus douce."
+        },
+        {
+          "q": "Puis-je avoir un vernis gel sur un pédicure ?",
+          "a": "Oui. Le vernis gel garde les orteils impeccables pendant des semaines : un choix prisé avant les vacances et la saison des sandales."
+        },
+        {
+          "q": "À quelle fréquence faire un pédicure ?",
+          "a": "Toutes les quatre à six semaines pour des pieds sains et lisses, plus souvent l'été pour bien des clientes."
+        }
+      ],
+      "metaTitle": "Pédicure spa à Laval | Sans Souci Ongles & Spa",
+      "metaDescription": "Pédicure spa relaxant avec exfoliation, massage et paraffine au CF Carrefour Laval. Plus de 20 ans d'expertise. Réservez en ligne — dès 40 $."
+    },
+    "lash-extensions": {
+      "title": "Extension de cils à Laval",
+      "heroAlt": "Gros plan d'extensions de cils au rendu naturel chez Sans Souci Ongles & Spa, Laval",
+      "intro": "Réveillez-vous prête avec les extensions de cils de Sans Souci Ongles & Spa au CF Carrefour Laval. Nous offrons des poses 2D, 3D et Hybride, chacune adaptée à la forme de vos yeux et au look désiré — d'un rehaussement naturel et discret à un volume riche et spectaculaire. Notre application minutieuse protège vos cils naturels tout en offrant longueur et densité durables.",
+      "included": [
+        "Consultation pour choisir le style adapté à vos yeux",
+        "Poses de cils 2D, 3D ou Hybride",
+        "Application légère et confortable",
+        "Longueur et courbe au rendu naturel",
+        "Conseils d'entretien pour protéger vos cils"
+      ],
+      "addons": [
+        "Remplissage (refill) pour maintenir un look fourni",
+        "Volume supplémentaire pour les grandes occasions"
+      ],
+      "duration": "Environ 60 à 120 minutes pour une pose complète, selon le style.",
+      "hygiene": "Les yeux méritent un soin particulier. Nous travaillons dans un environnement propre et contrôlé, avec outils stérilisés et stations désinfectées, selon les standards stricts qui font la réputation de notre salon de Laval depuis plus de 20 ans.",
+      "faq": [
+        {
+          "q": "Combien de temps durent les extensions de cils ?",
+          "a": "Une pose complète suit le cycle de croissance naturel de vos cils — généralement six à huit semaines. Un remplissage toutes les deux à trois semaines garde un look fourni."
+        },
+        {
+          "q": "Quelle est la différence entre 2D, 3D et Hybride ?",
+          "a": "2D et 3D indiquent le nombre d'extensions posées en éventail sur chaque cil naturel pour plus de volume ; l'Hybride combine les techniques classique et volume pour un rendu texturé, naturel mais fourni."
+        },
+        {
+          "q": "Les extensions abîment-elles mes cils naturels ?",
+          "a": "Bien appliquées, non. Nos techniciennes ajustent le poids à vos cils naturels et vous donnent des conseils d'entretien pour garder vos cils en santé."
+        }
+      ],
+      "metaTitle": "Extension de cils à Laval | Sans Souci Ongles & Spa",
+      "metaDescription": "Extensions de cils 2D, 3D et Hybride adaptées à vous au CF Carrefour Laval. Du naturel au spectaculaire. Réservez en ligne — dès 70 $."
+    },
+    "waxing": {
+      "title": "Épilation à la cire à Laval",
+      "heroAlt": "Salle d'épilation propre et apaisante chez Sans Souci Ongles & Spa, Laval",
+      "intro": "Lisse, confortable et rapide — notre service d'épilation couvre tout, des sourcils à l'épilation complète du maillot. Chez Sans Souci Ongles & Spa au CF Carrefour Laval, notre technique vise votre plus grand confort pour une expérience rapide et sans stress, avec des résultats qui durent bien plus longtemps que le rasage.",
+      "included": [
+        "Mise en forme des sourcils et épilation du visage",
+        "Aisselles, bras et jambes",
+        "Maillot et épilation complète du maillot",
+        "Une technique axée sur le confort et la rapidité",
+        "Des résultats lisses qui durent des semaines"
+      ],
+      "addons": [
+        "Teinture des sourcils pour compléter la forme",
+        "Combinez plusieurs zones en une visite pour gagner du temps"
+      ],
+      "duration": "D'environ 10 minutes (sourcils) à 45 minutes (grandes zones).",
+      "hygiene": "Nous ne faisons aucun compromis sur la propreté : stations désinfectées, applicateurs à usage unique lorsque requis et outils stérilisés après chaque usage — le même standard strict que pour tous nos services chez Sans Souci.",
+      "faq": [
+        {
+          "q": "Combien de temps dure l'épilation à la cire ?",
+          "a": "La plupart des clientes restent lisses de trois à quatre semaines, car la cire retire le poil à la racine plutôt qu'en surface."
+        },
+        {
+          "q": "Quelle longueur de poil avant l'épilation ?",
+          "a": "Environ un demi-centimètre (deux à trois semaines de pousse) permet à la cire de bien adhérer pour un résultat optimal."
+        },
+        {
+          "q": "L'épilation est-elle douloureuse ?",
+          "a": "Il y a une brève sensation, mais notre technique vise à minimiser l'inconfort, qui s'atténue avec des visites régulières."
+        }
+      ],
+      "metaTitle": "Épilation à la cire à Laval | Sans Souci Ongles & Spa",
+      "metaDescription": "Épilation des sourcils au corps entier, technique tout en confort, au CF Carrefour Laval. Résultats lisses et durables. Réservez — dès 15 $."
+    }
+  },
+  "serviceLabels": {
+    "included": "Ce qui est inclus",
+    "addons": "Suppléments populaires",
+    "duration": "Durée",
+    "price": "Prix",
+    "hygiene": "Hygiène et sécurité",
+    "faq": "Questions fréquentes",
+    "allServices": "Tous les services"
   }
 }

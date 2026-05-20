@@ -3,17 +3,56 @@ import { test, expect } from "@playwright/test";
 // "Follow us on social" stays English in both locales — social was left
 // unchanged per request.
 const sectionsByLocale: Record<string, RegExp[]> = {
-  fr: [/nos services/i, /pourquoi nous choisir/i, /follow us on social/i, /nous contacter/i],
-  en: [/our services/i, /why choose us/i, /follow us on social/i, /contact us/i],
+  fr: [
+    /nos services/i,
+    /pourquoi nous choisir/i,
+    /follow us on social/i,
+    /nous contacter/i,
+  ],
+  en: [
+    /our services/i,
+    /why choose us/i,
+    /follow us on social/i,
+    /contact us/i,
+  ],
 };
 
 for (const [code, sections] of Object.entries(sectionsByLocale)) {
   test.describe(`homepage content renders (${code})`, () => {
-    test("all sections are visible with JS (scroll reveal)", async ({ page }) => {
+    test("all sections are visible with JS (scroll reveal)", async ({
+      page,
+    }) => {
       await page.goto(`/${code}`);
       for (const name of sections) {
         await expect(page.getByRole("heading", { name }).first()).toBeVisible();
       }
+    });
+  });
+}
+
+// Reviews band: eyebrow + score render, and the "book online" CTA routes to the
+// appointments page (where the booking widget lives).
+const reviewsByLocale: Record<
+  string,
+  { eyebrow: RegExp; score: RegExp; book: string }
+> = {
+  fr: {
+    eyebrow: /nos reviews/i,
+    score: /4,9\s*\/\s*5/,
+    book: "Réservez en ligne",
+  },
+  en: { eyebrow: /our reviews/i, score: /4\.9\s*\/\s*5/, book: "Book online" },
+};
+
+for (const [code, r] of Object.entries(reviewsByLocale)) {
+  test.describe(`homepage reviews section (${code})`, () => {
+    test("shows rating and books to appointments", async ({ page }) => {
+      await page.goto(`/${code}`);
+      await expect(page.getByText(r.eyebrow).first()).toBeVisible();
+      await expect(page.getByText(r.score).first()).toBeVisible();
+      await expect(
+        page.getByRole("link", { name: r.book, exact: true }),
+      ).toHaveAttribute("href", `/${code}/appointments`);
     });
   });
 }

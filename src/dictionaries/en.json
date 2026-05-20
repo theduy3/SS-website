@@ -1,11 +1,15 @@
 {
   "meta": {
     "homeTitle": "Sans Souci Ongles & Spa — Manicure & Pedicure in Laval",
-    "homeDescription": "Manicure, pedicure, lash extensions and waxing at CF Carrefour Laval. 20+ years of expertise.",
+    "homeDescription": "Manicure, pedicure, lash extensions and waxing at CF Carrefour Laval. 20+ years of expertise and 1000+ gel colours. Book online or walk in — 4.9★ service.",
     "servicesTitle": "Services — Sans Souci Ongles & Spa",
     "aboutTitle": "Why Choose Us — Sans Souci Ongles & Spa",
     "appointmentsTitle": "Book Today — Sans Souci Ongles & Spa",
-    "contactTitle": "Contact — Sans Souci Ongles & Spa"
+    "contactTitle": "Contact — Sans Souci Ongles & Spa",
+    "servicesDescription": "Manicures, spa pedicures, lash extensions and waxing at Sans Souci Ongles & Spa, CF Carrefour Laval. Premium products, 1000+ gel colours and expert care.",
+    "aboutDescription": "20+ years of nail care at CF Carrefour Laval. Strict hygiene, sterilized tools and a friendly team — discover why Sans Souci Ongles & Spa is a Laval favourite.",
+    "appointmentsDescription": "Book your manicure, pedicure or lash appointment at Sans Souci Ongles & Spa, CF Carrefour Laval. Reserve online in seconds or call (450) 505-6450.",
+    "contactDescription": "Visit Sans Souci Ongles & Spa at CF Carrefour Laval (Entrée 6). Hours, directions and contact for manicures, pedicures, lashes and waxing in Laval."
   },
   "nav": {
     "home": "Home",
@@ -66,7 +70,17 @@
   "appointments": {
     "heading": "Book Today",
     "intro": "Book online in seconds — pick your service and time, and we'll take care of the rest.",
-    "body": "Booking opens in our secure online scheduler. Choose your service and a time that works for you."
+    "helpBefore": "If you have trouble booking online, it's best to call us directly at ",
+    "helpAfter": "."
+  },
+  "reviews": {
+    "eyebrow": "Our reviews",
+    "headlineLead": "We hate to brag, but…",
+    "headlineMain": "people really love what we do",
+    "basedOn": "from",
+    "reviewsWord": "Google reviews",
+    "ctaPrompt": "Ready to give us a try?",
+    "bookOnline": "Book online"
   },
   "contact": {
     "heading": "Contact Us",
@@ -82,5 +96,154 @@
   "labels": {
     "location": "Location",
     "contact": "Contact"
+  },
+  "serviceDetails": {
+    "manicure": {
+      "title": "Manicure in Laval",
+      "heroAlt": "Gel manicure with soft neutral polish at Sans Souci Ongles & Spa, Laval",
+      "intro": "Treat your hands to a manicure at Sans Souci Ongles & Spa, inside CF Carrefour Laval. With more than 20 years of experience and over 1,000 gel colours to choose from, our technicians shape, smooth and finish your nails exactly the way you want — from a clean, natural look to bold nail art and full extensions. We use premium products and a meticulous, unhurried process so your manicure looks flawless and lasts.",
+      "included": [
+        "Nail shaping and cuticle care",
+        "Hand soak, exfoliation and a relaxing massage",
+        "Your choice of regular, gel or dip powder finish",
+        "Over 1,000 gel colours and finishes",
+        "Long-wearing application that resists chips"
+      ],
+      "addons": [
+        "Nail extensions (gel or acrylic) for added length",
+        "Custom nail art and French finish",
+        "Paraffin hand treatment for extra hydration"
+      ],
+      "duration": "About 45–60 minutes, depending on finish and add-ons.",
+      "hygiene": "Your safety comes first. We keep three sanitation stations stocked with disinfectant, sterilize every tool after each use, and fit our manicure stations with dust collectors that protect both clients and staff. It's the standard that has made Sans Souci a trusted name in Laval for over 20 years.",
+      "faq": [
+        {
+          "q": "How long does a gel manicure last?",
+          "a": "A gel manicure typically lasts two to three weeks without chipping. Dip powder can last even longer. We'll recommend the finish that best fits your routine."
+        },
+        {
+          "q": "Do you do nail extensions?",
+          "a": "Yes. We offer gel and acrylic extensions to add length and strength, finished in any of our 1,000+ colours or with custom nail art."
+        },
+        {
+          "q": "Do I need an appointment?",
+          "a": "Walk-ins are welcome, but booking online or calling (450) 505-6450 guarantees your preferred time, especially on evenings and weekends."
+        }
+      ],
+      "metaTitle": "Manicure in Laval | Sans Souci Ongles & Spa",
+      "metaDescription": "Gel, dip and classic manicures with 1000+ colours at CF Carrefour Laval. 20+ years of expertise. Book online or call (450) 505-6450 — from $50."
+    },
+    "pedicure": {
+      "title": "Pedicure in Laval",
+      "heroAlt": "Relaxing spa pedicure in progress at Sans Souci Ongles & Spa, Laval",
+      "intro": "Our spa pedicure is the ultimate reset for tired feet. At Sans Souci Ongles & Spa in CF Carrefour Laval, each pedicure pairs careful nail and skin care with a genuinely relaxing experience — a warm soak, gentle exfoliation and a massage that leaves your feet soft, smooth and rejuvenated. Add a paraffin treatment when you want to take the relaxation a step further.",
+      "included": [
+        "Warm soak to soften skin",
+        "Nail shaping and thorough cuticle care",
+        "Gentle exfoliation to remove rough, dry skin",
+        "Relaxing lower-leg and foot massage",
+        "Deep hydration and your choice of polish"
+      ],
+      "addons": [
+        "Paraffin treatment for extra-soft skin",
+        "Gel polish for a longer-lasting finish",
+        "Callus smoothing for heels and pressure points"
+      ],
+      "duration": "About 45–65 minutes, depending on add-ons.",
+      "hygiene": "We take hygiene seriously: three sanitation stations stocked with disinfectant, tools sterilized after every single use, and a spotless setup for every guest. It's the care that keeps Laval clients coming back for over 20 years.",
+      "faq": [
+        {
+          "q": "What makes a spa pedicure different?",
+          "a": "Beyond shaping and polish, a spa pedicure includes exfoliation, a relaxing massage and deep hydration — and you can add a paraffin treatment for even softer skin."
+        },
+        {
+          "q": "Can I get gel polish on a pedicure?",
+          "a": "Yes. Gel polish keeps toes looking fresh for weeks and is a popular choice before vacations and sandal season."
+        },
+        {
+          "q": "How often should I get a pedicure?",
+          "a": "Every four to six weeks keeps feet healthy and smooth, though many clients come more often in summer."
+        }
+      ],
+      "metaTitle": "Spa Pedicure in Laval | Sans Souci Ongles & Spa",
+      "metaDescription": "Relaxing spa pedicures with exfoliation, massage and paraffin at CF Carrefour Laval. 20+ years of expertise. Book online — from $40."
+    },
+    "lash-extensions": {
+      "title": "Lash Extensions in Laval",
+      "heroAlt": "Close-up of natural-looking lash extensions applied at Sans Souci Ongles & Spa, Laval",
+      "intro": "Wake up ready with lash extensions from Sans Souci Ongles & Spa at CF Carrefour Laval. We offer 2D, 3D and Hybrid sets, each tailored to your eye shape and the look you want — from a soft, natural enhancement to full, dramatic volume. Our careful application protects your natural lashes while giving you length and fullness that lasts.",
+      "included": [
+        "Consultation to choose the right style for your eyes",
+        "2D, 3D or Hybrid lash sets",
+        "Lightweight, comfortable application",
+        "Natural-looking length and curl",
+        "Aftercare guidance to protect your lashes"
+      ],
+      "addons": [
+        "Lash refills to maintain a full look",
+        "Extra volume for special occasions"
+      ],
+      "duration": "About 60–120 minutes for a full set, depending on style.",
+      "hygiene": "Eyes deserve extra care. We work in a clean, controlled setup with sterilized tools and disinfected stations, following the same strict standards that have earned our Laval salon its reputation over 20+ years.",
+      "faq": [
+        {
+          "q": "How long do lash extensions last?",
+          "a": "A full set lasts the natural growth cycle of your lashes — usually six to eight weeks. A refill every two to three weeks keeps them looking full."
+        },
+        {
+          "q": "What's the difference between 2D, 3D and Hybrid?",
+          "a": "2D and 3D refer to how many extensions are fanned onto each natural lash for added volume; Hybrid blends classic and volume techniques for a textured, natural-yet-full look."
+        },
+        {
+          "q": "Will extensions damage my natural lashes?",
+          "a": "Applied correctly, they don't. Our technicians match the weight to your natural lashes and share aftercare so your own lashes stay healthy."
+        }
+      ],
+      "metaTitle": "Lash Extensions in Laval | Sans Souci Ongles & Spa",
+      "metaDescription": "2D, 3D and Hybrid lash extensions tailored to you at CF Carrefour Laval. Natural to dramatic. Book online — from $70."
+    },
+    "waxing": {
+      "title": "Waxing in Laval",
+      "heroAlt": "Calm, clean waxing treatment room at Sans Souci Ongles & Spa, Laval",
+      "intro": "Smooth, comfortable and quick — our waxing service covers everything from eyebrow shaping to a full bikini wax. At Sans Souci Ongles & Spa in CF Carrefour Laval, our technique is designed to keep you as comfortable as possible for a fast, low-stress experience, with results that last far longer than shaving.",
+      "included": [
+        "Eyebrow shaping and facial waxing",
+        "Underarm, arm and leg waxing",
+        "Bikini and full bikini waxing",
+        "A technique focused on comfort and speed",
+        "Smooth results that last weeks, not days"
+      ],
+      "addons": [
+        "Brow tint to complete your shape",
+        "Combine areas in one visit to save time"
+      ],
+      "duration": "From about 10 minutes (brows) to 45 minutes (larger areas).",
+      "hygiene": "We never compromise on cleanliness: disinfected stations, single-use applicators where appropriate, and tools sterilized after every use — the same strict standard across everything we do at Sans Souci.",
+      "faq": [
+        {
+          "q": "How long does waxing last?",
+          "a": "Most clients stay smooth for three to four weeks, since waxing removes hair from the root rather than the surface."
+        },
+        {
+          "q": "How long should hair be before waxing?",
+          "a": "About a quarter-inch (roughly two to three weeks of growth) lets the wax grip properly for the cleanest result."
+        },
+        {
+          "q": "Is waxing painful?",
+          "a": "There's a brief sensation, but our technique is designed to minimize discomfort, and it eases with regular visits."
+        }
+      ],
+      "metaTitle": "Waxing in Laval | Sans Souci Ongles & Spa",
+      "metaDescription": "Eyebrow to full-body waxing with a comfort-first technique at CF Carrefour Laval. Smooth results that last. Book online — from $15."
+    }
+  },
+  "serviceLabels": {
+    "included": "What's included",
+    "addons": "Popular add-ons",
+    "duration": "How long it takes",
+    "price": "Price",
+    "hygiene": "Hygiene & safety",
+    "faq": "Frequently asked questions",
+    "allServices": "All services"
   }
 }

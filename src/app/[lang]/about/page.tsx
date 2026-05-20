@@ -3,18 +3,21 @@ import { notFound } from "next/navigation";
 import { PageHeader } from "@/components/PageHeader";
 import { Button } from "@/components/Button";
 import { Reveal } from "@/components/Reveal";
+import { JsonLd } from "@/components/JsonLd";
 import { getDictionary } from "../dictionaries";
 import { isLocale, type LangParams } from "@/lib/i18n";
+import { pageMetadata, breadcrumbGraph } from "@/lib/seo";
 
-export async function generateMetadata({ params }: LangParams): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: LangParams): Promise<Metadata> {
   const { lang } = await params;
   if (!isLocale(lang)) return {};
   const dict = await getDictionary(lang);
-  return {
+  return pageMetadata(lang, "/about", {
     title: dict.meta.aboutTitle,
-    description: dict.about.body[0],
-    alternates: { languages: { en: "/en/about", fr: "/fr/about" } },
-  };
+    description: dict.meta.aboutDescription,
+  });
 }
 
 export default async function AboutPage({ params }: LangParams) {
@@ -24,6 +27,12 @@ export default async function AboutPage({ params }: LangParams) {
 
   return (
     <>
+      <JsonLd
+        data={breadcrumbGraph(lang, [
+          { name: dict.nav.home, route: "" },
+          { name: dict.nav.about, route: "/about" },
+        ])}
+      />
       <PageHeader title={dict.about.heading} />
 
       <section className="mx-auto max-w-3xl px-6 py-20 md:py-28">
