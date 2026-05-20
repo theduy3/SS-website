@@ -44,3 +44,9 @@ next-env.d.ts
 .playwright-mcp/
 clone-home-fixed.png
 clone-hero-check.png
+
+# playwright test output
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
