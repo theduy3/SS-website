@@ -50,3 +50,6 @@ clone-hero-check.png
 /playwright-report/
 /blob-report/
 /playwright/.cache/
+
+# git worktrees (created by EnterWorktree)
+/.claude/worktrees/
