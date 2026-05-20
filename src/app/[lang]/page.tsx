@@ -4,6 +4,8 @@ import Image from "next/image";
 import { Button } from "@/components/Button";
 import { Reveal } from "@/components/Reveal";
 import { ContactForm } from "@/components/ContactForm";
+import { Gallery } from "@/components/Gallery";
+import { services } from "@/lib/services";
 import { site } from "@/lib/site";
 import { getDictionary } from "./dictionaries";
 import { isLocale, type LangParams } from "@/lib/i18n";
@@ -68,6 +70,15 @@ export default async function Home({ params }: LangParams) {
     minimumFractionDigits: 1,
   });
   const reviewCountDisplay = site.reviews.reviewCount.toLocaleString(localeTag);
+
+  // Gallery slides: real service photos paired with short captions (same order
+  // as the services registry) and the rich heroAlt for accessible alt text.
+  const gallerySlides = services.map((s, i) => ({
+    id: s.id,
+    photo: s.photo,
+    alt: dict.serviceDetails[s.id].heroAlt,
+    caption: dict.services[i].title,
+  }));
 
   return (
     <>
@@ -204,26 +215,30 @@ export default async function Home({ params }: LangParams) {
         </div>
       </section>
 
-      {/* Follow us on social — intentionally unchanged per request */}
+      {/* Our Work — crossfading slideshow of real service photos */}
       <section className="mx-auto max-w-7xl px-6 py-20 text-center md:py-28">
         <Reveal>
           <h2 className="text-2xl text-espresso md:text-4xl">
-            Follow us on social
+            {dict.home.galleryHeading}
           </h2>
         </Reveal>
-        <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-3">
-          {[0, 1, 2].map((i) => (
-            <Reveal key={i} delay={i * 0.1}>
-              <Placeholder
-                className="aspect-square w-full rounded-xl"
-                label="@sans.souci.cflaval"
-              />
-            </Reveal>
-          ))}
-        </div>
-        <Reveal>
+        <Reveal delay={0.1}>
           <div className="mt-12">
-            <Button href={site.instagram}>Social</Button>
+            <Gallery
+              slides={gallerySlides}
+              labels={{
+                prev: dict.home.galleryPrev,
+                next: dict.home.galleryNext,
+              }}
+            />
+          </div>
+        </Reveal>
+        <Reveal>
+          <div className="mt-12 flex flex-wrap justify-center gap-4">
+            <Button href={site.instagram}>Instagram</Button>
+            <Button href={site.facebook} variant="outline">
+              Facebook
+            </Button>
           </div>
         </Reveal>
       </section>

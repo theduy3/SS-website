@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { locales, type Locale } from "@/lib/i18n";
+import { locales, localeLabel, type Locale } from "@/lib/i18n";
 
 // EN/FR dropdown. The trigger shows the active locale; opening it reveals the
 // full list. Selecting a locale links to the same path in that locale and stores
@@ -15,7 +15,10 @@ export function LocaleSwitch({ locale }: { locale: Locale }) {
   const ref = useRef<HTMLDivElement>(null);
 
   const pathFor = (target: Locale) => {
-    const rest = pathname.replace(/^\/(en|fr)(?=\/|$)/, "");
+    const rest = pathname.replace(
+      new RegExp(`^/(${locales.join("|")})(?=/|$)`),
+      "",
+    );
     return `/${target}${rest}`;
   };
 
@@ -23,7 +26,8 @@ export function LocaleSwitch({ locale }: { locale: Locale }) {
   useEffect(() => {
     if (!open) return;
     const onClick = (e: MouseEvent) => {
-      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+      if (ref.current && !ref.current.contains(e.target as Node))
+        setOpen(false);
     };
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
     document.addEventListener("mousedown", onClick);
@@ -44,20 +48,27 @@ export function LocaleSwitch({ locale }: { locale: Locale }) {
         aria-label="Change language"
         className="flex items-center gap-1.5 font-semibold text-cream transition-colors hover:text-tan"
       >
-        {locale}
+        {localeLabel[locale]}
         <svg
           viewBox="0 0 12 8"
           aria-hidden
           className={`h-2 w-3 transition-transform ${open ? "rotate-180" : ""}`}
         >
-          <path d="M1 1l5 5 5-5" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          <path
+            d="M1 1l5 5 5-5"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
         </svg>
       </button>
 
       {open && (
         <div
           role="menu"
-          className="absolute right-0 z-50 mt-2 min-w-[4rem] overflow-hidden rounded-md border border-cream/15 bg-espresso shadow-lg"
+          className="absolute end-0 z-50 mt-2 min-w-[4rem] overflow-hidden rounded-md border border-cream/15 bg-espresso shadow-lg"
         >
           {locales.map((l) => (
             <Link
@@ -73,7 +84,7 @@ export function LocaleSwitch({ locale }: { locale: Locale }) {
                 l === locale ? "font-semibold text-cream" : "text-cream/60"
               }`}
             >
-              {l}
+              {localeLabel[l]}
             </Link>
           ))}
         </div>

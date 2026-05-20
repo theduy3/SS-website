@@ -13,8 +13,13 @@ export const site = {
   booking: "/appointments",
   // Official Sans Souci Instagram (CF Carrefour Laval).
   instagram: "https://www.instagram.com/sans.souci.cflaval",
+  // Official Sans Souci Facebook page.
+  facebook: "https://www.facebook.com/sans.souci.cflaval/",
   // Profiles emitted as schema.org `sameAs` on the business node.
-  socialProfiles: ["https://www.instagram.com/sans.souci.cflaval"],
+  socialProfiles: [
+    "https://www.instagram.com/sans.souci.cflaval",
+    "https://www.facebook.com/sans.souci.cflaval/",
+  ],
   // Schema.org priceRange hint ($ = inexpensive … $$$$ = very pricey). $$ for a mid-tier salon.
   priceRange: "$$",
   // Aggregate review rating shown in the homepage reviews band AND emitted as

@@ -1,0 +1,294 @@
+{
+  "meta": {
+    "homeTitle": "Sans Souci Ongles & Spa — Manicura y Pedicura en Laval",
+    "homeDescription": "Manicura, pedicura, extensiones de pestañas y depilación en CF Carrefour Laval. Más de 20 años de experiencia y 1000+ colores de gel. Reserva en línea — servicio 4,9★.",
+    "servicesTitle": "Servicios — Sans Souci Ongles & Spa",
+    "aboutTitle": "Por qué elegirnos — Sans Souci Ongles & Spa",
+    "appointmentsTitle": "Reserva hoy — Sans Souci Ongles & Spa",
+    "contactTitle": "Contacto — Sans Souci Ongles & Spa",
+    "servicesDescription": "Manicuras, pedicuras spa, extensiones de pestañas y depilación en Sans Souci Ongles & Spa, CF Carrefour Laval. Productos premium y 1000+ colores de gel.",
+    "aboutDescription": "Más de 20 años de cuidado de uñas en CF Carrefour Laval. Higiene estricta, herramientas esterilizadas y un equipo amable: descubre Sans Souci Ongles & Spa.",
+    "appointmentsDescription": "Reserva tu cita de manicura, pedicura o pestañas en Sans Souci Ongles & Spa, CF Carrefour Laval. Reserva en línea en segundos o llama al (450) 505-6450.",
+    "contactDescription": "Visita Sans Souci Ongles & Spa en CF Carrefour Laval (Entrada 6). Horario, ubicación y contacto para manicura, pedicura, pestañas y depilación en Laval."
+  },
+  "nav": {
+    "home": "Inicio",
+    "services": "Servicios",
+    "about": "Nosotros",
+    "appointments": "Citas",
+    "contact": "Contacto"
+  },
+  "cta": {
+    "book": "Reservar",
+    "learnMore": "Saber más",
+    "services": "Nuestros servicios",
+    "viewServices": "Ver servicios",
+    "send": "Enviar",
+    "sending": "Enviando…"
+  },
+  "hero": {
+    "tagline": "La experiencia definitiva en cuidado de uñas",
+    "alt": "Interior del salón Sans Souci Ongles & Spa"
+  },
+  "home": {
+    "servicesHeading": "Nuestros servicios",
+    "storyHeading": "Por qué elegirnos",
+    "story": "Con más de 20 años de experiencia en el arte de las uñas, nuestro equipo amable y profesional ofrece el mejor cuidado en Laval. Tu satisfacción está garantizada, y cada cliente es parte de nuestra familia.",
+    "contactHeading": "Contáctanos",
+    "contactIntro": "¿Tienes preguntas o quieres reservar? Escríbenos y te responderemos en breve.",
+    "galleryHeading": "Nuestro trabajo",
+    "galleryPrev": "Foto anterior",
+    "galleryNext": "Foto siguiente"
+  },
+  "services": [
+    {
+      "title": "Manicura",
+      "body": "Usamos productos premium con más de 1 000 colores de gel para todas tus necesidades —extensiones, cuidado de uñas y tratamientos spa— combinando lujo y creatividad para el look que deseas."
+    },
+    {
+      "title": "Pedicura",
+      "body": "La experiencia definitiva de pedicura spa: forma de uñas, cuidado de cutículas, exfoliación suave, masaje relajante e hidratación profunda para pies suaves y renovados. Añade un tratamiento de parafina."
+    },
+    {
+      "title": "Extensiones de pestañas",
+      "body": "Una variedad de extensiones de pestañas —estilos 2D, 3D e Híbrido— adaptadas a ti para un look natural que realza tu belleza."
+    },
+    {
+      "title": "Depilación con cera",
+      "body": "Nuestra técnica de depilación te mantiene cómoda para una experiencia sin dolor —de las cejas a la depilación completa— lo tenemos todo cubierto."
+    }
+  ],
+  "servicesPage": {
+    "heading": "Nuestros servicios",
+    "intro": "Productos premium, más de 1 000 colores de gel y más de 20 años de experiencia."
+  },
+  "about": {
+    "heading": "Por qué elegirnos",
+    "body": [
+      "Porque tu seguridad e higiene son nuestra prioridad. En Sans Souci Ongles & Spa nos tomamos en serio tu salud: mantenemos tres estaciones de desinfección, esterilizamos las herramientas después de cada uso y nuestras estaciones de manicura cuentan con colectores de polvo que protegen a clientes y personal.",
+      "Porque ofrecemos un servicio profesional y excepcional. Con más de 20 años de experiencia en el cuidado de uñas y la belleza, nuestras técnicas acogedoras y profesionales saben ofrecer los resultados de alta calidad que buscas, con satisfacción garantizada.",
+      "Porque en Sans Souci Ongles & Spa, eres de la familia. La cálida bienvenida de nuestro equipo te hace sentir como en casa: cada cliente es parte de nuestra gran familia."
+    ]
+  },
+  "appointments": {
+    "heading": "Reserva hoy",
+    "intro": "Reserva en línea en segundos: elige tu servicio y tu hora, y nosotros nos encargamos del resto.",
+    "helpBefore": "Si tienes dificultades para reservar en línea, llámanos directamente al ",
+    "helpAfter": "."
+  },
+  "reviews": {
+    "eyebrow": "Nuestras reseñas",
+    "headlineLead": "No nos gusta presumir, pero…",
+    "headlineMain": "a la gente le encanta lo que hacemos",
+    "basedOn": "de",
+    "reviewsWord": "reseñas de Google",
+    "ctaPrompt": "¿Lista para probarnos?",
+    "bookOnline": "Reserva en línea"
+  },
+  "contact": {
+    "heading": "Contáctanos",
+    "intro": "Encuéntranos en CF Carrefour Laval. ¿Tienes preguntas? Escríbenos."
+  },
+  "form": {
+    "firstName": "Nombre",
+    "lastName": "Apellido",
+    "email": "Correo electrónico",
+    "message": "Mensaje",
+    "success": "Gracias: hemos recibido tu mensaje y te contactaremos en breve."
+  },
+  "labels": {
+    "location": "Ubicación",
+    "contact": "Contacto"
+  },
+  "serviceDetails": {
+    "manicure": {
+      "title": "Manicura en Laval",
+      "heroAlt": "Manicura en gel con esmalte neutro suave en Sans Souci Ongles & Spa, Laval",
+      "intro": [
+        "Mima tus manos con una manicura en Sans Souci Ongles & Spa, dentro de CF Carrefour Laval. Con más de 20 años de experiencia y más de 1 000 colores de gel para elegir, nuestras técnicas dan forma, alisan y rematan tus uñas justo como las quieres: desde un look limpio y natural hasta nail art audaz y extensiones completas.",
+        "Nunca tenemos prisa. Cada manicura sigue un proceso cuidadoso con productos premium, porque la diferencia entre una buena manicura y una excelente está en los detalles: cutículas parejas, una línea de esmalte impecable y un acabado que sigue luciendo fresco semanas después. Ya sea que te prepares para un evento o simplemente quieras consentirte, saldrás con unas manos bien cuidadas."
+      ],
+      "whyUs": "Clientas de todo Laval y el Gran Montreal confían en nosotras desde hace más de dos décadas, y muchas nos acompañan desde el principio. Esa fidelidad nace de la constancia: las mismas técnicas expertas, los mismos altos estándares y una bienvenida cálida que hace que cada clienta se sienta parte de la familia. Estar dentro de CF Carrefour Laval también significa que una manicura encaja fácil en una salida de compras, una pausa del almuerzo o una noche fuera.",
+      "included": [
+        "Forma de uñas y cuidado meticuloso de cutículas",
+        "Baño tibio de manos, exfoliación suave y un masaje relajante",
+        "Tu elección de acabado regular, gel o polvo dip",
+        "Acceso a más de 1 000 colores y acabados de gel",
+        "Una aplicación precisa y duradera que resiste astillas y desprendimientos",
+        "Consejos honestos sobre el acabado y la forma ideales para tu estilo de vida"
+      ],
+      "addons": [
+        "Extensiones de uñas (gel o acrílico) para más largo y resistencia",
+        "Nail art personalizado, acabado francés o diseños de temporada",
+        "Tratamiento de parafina para una hidratación profunda y piel más suave"
+      ],
+      "duration": "Unos 45 a 60 minutos, según el acabado y los complementos.",
+      "aftercare": "Para que tu manicura luzca lo mejor posible, aplica aceite de cutículas a diario y usa guantes para limpiar o lavar platos: el agua y los detergentes fuertes son la principal causa de astillas tempranas. Los acabados de gel y dip quedan secos al tacto de inmediato, pero el esmalte regular necesita algo de paciencia la primera hora. Cuando toque cambiar, reserva una remoción profesional en lugar de arrancarlo: arrancarlo se lleva la capa superficial de tu uña natural.",
+      "hygiene": "Tu seguridad es lo primero. Mantenemos tres estaciones de desinfección, esterilizamos cada herramienta después de cada uso y equipamos nuestras estaciones de manicura con colectores de polvo que protegen a clientas y personal. Es el estándar que ha hecho de Sans Souci un nombre de confianza en Laval por más de 20 años.",
+      "faq": [
+        {
+          "q": "¿Cuánto dura una manicura en gel?",
+          "a": "Una manicura en gel suele durar de dos a tres semanas sin astillarse. El polvo dip puede durar aún más. Te recomendaremos el acabado que mejor se adapte a tu rutina y a la rapidez con que crecen tus uñas."
+        },
+        {
+          "q": "¿Hacen extensiones de uñas?",
+          "a": "Sí. Ofrecemos extensiones de gel y acrílico para añadir largo y resistencia, con cualquiera de nuestros 1 000+ colores o con nail art personalizado."
+        },
+        {
+          "q": "¿Cuál es la diferencia entre gel y polvo dip?",
+          "a": "El gel se cura bajo lámpara para un acabado brillante y flexible; el polvo dip se construye en capas para mayor resistencia y suele durar un poco más. Ambos resisten las astillas mucho mejor que el esmalte regular."
+        },
+        {
+          "q": "¿Necesito cita?",
+          "a": "Aceptamos clientas sin cita, pero reservar en línea o llamar al (450) 505-6450 te garantiza tu horario preferido, sobre todo por la tarde y los fines de semana."
+        }
+      ],
+      "metaTitle": "Manicura en Laval | Sans Souci Ongles & Spa",
+      "metaDescription": "Manicuras en gel, dip y clásicas con 1000+ colores en CF Carrefour Laval. Más de 20 años de experiencia. Reserva en línea — desde 50 $."
+    },
+    "pedicure": {
+      "title": "Pedicura en Laval",
+      "heroAlt": "Pedicura spa relajante en curso en Sans Souci Ongles & Spa, Laval",
+      "intro": [
+        "Nuestra pedicura spa es el reinicio definitivo para pies cansados. En Sans Souci Ongles & Spa, en CF Carrefour Laval, cada pedicura combina un cuidado minucioso de uñas y piel con una experiencia verdaderamente relajante: un baño tibio, exfoliación suave y un masaje que deja tus pies suaves, lisos y renovados.",
+        "Es mucho más que esmalte. Nos tomamos el tiempo de tratar lo que incomoda los pies —talones ásperos, piel seca y cutículas crecidas— para que salgas sintiéndote más ligera, no solo luciendo mejor. Añade un tratamiento de parafina cuando quieras llevar la relajación más lejos, o esmalte en gel cuando quieras color que dure toda la temporada de sandalias."
+      ],
+      "whyUs": "Los pies te llevan todo el día y merecen verdadera experiencia. Con más de 20 años cuidando a la clientela de Laval, nuestras técnicas saben ofrecer una pedicura a la vez terapéutica y relajante, en un entorno impecable y acogedor. Como estamos dentro de CF Carrefour Laval, una pedicura spa es fácil de incluir en tu semana, sola o con una amiga.",
+      "included": [
+        "Un baño tibio para suavizar la piel y aliviar la tensión",
+        "Forma de uñas y cuidado completo de cutículas",
+        "Exfoliación suave para eliminar la piel áspera y seca",
+        "Un masaje relajante de pies y parte baja de las piernas",
+        "Hidratación profunda y esmalte a tu elección",
+        "Suavizado de durezas en talones y puntos de presión"
+      ],
+      "addons": [
+        "Tratamiento de parafina para una piel muy suave e hidratada",
+        "Esmalte en gel para un acabado más duradero y resistente",
+        "Tiempo extra de masaje para una verdadera sesión spa"
+      ],
+      "duration": "Unos 45 a 65 minutos, según los complementos.",
+      "aftercare": "Hidrata tus pies a diario, sobre todo los talones, y aplica la crema después de la ducha, cuando la piel absorbe mejor. Si elegiste esmalte en gel, está listo de inmediato; el esmalte regular necesita algo de secado, así que usa calzado abierto al salir. Entre visitas, una piedra pómez usada con suavidad en la ducha evita que las durezas vuelvan a formarse, y reservar cada cuatro a seis semanas mantiene los pies sanos todo el año.",
+      "hygiene": "Nos tomamos la higiene en serio: tres estaciones de desinfección, herramientas esterilizadas tras cada uso y un puesto impecable para cada clienta. Es el cuidado que hace volver a la clientela de Laval desde hace más de 20 años.",
+      "faq": [
+        {
+          "q": "¿Qué diferencia a una pedicura spa?",
+          "a": "Más allá de la forma y el esmalte, la pedicura spa incluye exfoliación, un masaje relajante e hidratación profunda, y puedes añadir un tratamiento de parafina para una piel aún más suave."
+        },
+        {
+          "q": "¿Puedo ponerme esmalte en gel en la pedicura?",
+          "a": "Sí. El esmalte en gel mantiene los dedos impecables durante semanas y es una opción popular antes de las vacaciones y la temporada de sandalias, porque no se corre de camino a casa."
+        },
+        {
+          "q": "¿Cada cuánto debo hacerme la pedicura?",
+          "a": "Cada cuatro a seis semanas mantiene los pies sanos y suaves, aunque muchas clientas vienen más seguido en verano o antes de ocasiones especiales."
+        },
+        {
+          "q": "¿Pueden ayudar con talones ásperos y durezas?",
+          "a": "Por supuesto. El suavizado de durezas forma parte de nuestra pedicura spa y podemos prestar atención extra a las zonas problemáticas."
+        }
+      ],
+      "metaTitle": "Pedicura spa en Laval | Sans Souci Ongles & Spa",
+      "metaDescription": "Pedicuras spa relajantes con exfoliación, masaje y parafina en CF Carrefour Laval. Más de 20 años de experiencia. Reserva en línea — desde 40 $."
+    },
+    "lash-extensions": {
+      "title": "Extensiones de pestañas en Laval",
+      "heroAlt": "Primer plano de extensiones de pestañas de aspecto natural en Sans Souci Ongles & Spa, Laval",
+      "intro": [
+        "Despierta lista con las extensiones de pestañas de Sans Souci Ongles & Spa en CF Carrefour Laval. Ofrecemos sets 2D, 3D e Híbrido, cada uno adaptado a la forma de tus ojos y al look que deseas: desde un realce suave y natural hasta un volumen pleno y dramático.",
+        "Unas buenas pestañas son mucho más que largo. Nuestras técnicas mapean el set a tus ojos —ajustando rizo, largo y densidad a lo largo de la línea de pestañas— para que el resultado favorezca tus rasgos y se sienta ligero. Una aplicación cuidadosa y aislada protege tus pestañas naturales, así que se mantienen sanas mientras disfrutas de pestañas más llenas y oscuras cada mañana, sin necesidad de máscara."
+      ],
+      "whyUs": "El trabajo de pestañas exige paciencia y pulso firme, y eso es justo lo que aportan más de 20 años de experiencia. La clientela de Laval nos elige porque nos tomamos el tiempo de hacerlo bien: una consulta real, un entorno limpio y controlado, y consejos honestos sobre el estilo y la frecuencia de relleno que te convienen. Dentro de CF Carrefour Laval, es fácil mantener tus pestañas llenas con un relleno rápido cuando pasas por aquí.",
+      "included": [
+        "Una consulta para elegir el estilo adecuado para tus ojos",
+        "Tu elección de sets 2D, 3D o Híbrido",
+        "Aplicación ligera, cómoda y aislada",
+        "Largo, rizo y densidad de aspecto natural",
+        "Un look diseñado para favorecer la forma de tus ojos",
+        "Consejos de cuidado para proteger tus pestañas y prolongar la duración"
+      ],
+      "addons": [
+        "Rellenos para mantener un look lleno y fresco",
+        "Volumen extra para bodas y ocasiones especiales"
+      ],
+      "duration": "Unos 60 a 120 minutos para un set completo, según el estilo.",
+      "aftercare": "Mantén las pestañas secas las primeras 24 horas mientras el adhesivo cura por completo, luego evita los limpiadores con aceite y frotar con fuerza, que debilitan el adhesivo. Cepíllalas con suavidad cada mañana con un cepillo limpio, duerme boca arriba o de lado en lugar de boca abajo, y evita la máscara a prueba de agua, difícil de quitar sin tirar. Un relleno cada dos o tres semanas mantiene el set lleno a medida que tus pestañas naturales se renuevan.",
+      "hygiene": "Los ojos merecen un cuidado extra. Trabajamos en un entorno limpio y controlado, con herramientas esterilizadas y estaciones desinfectadas, siguiendo los mismos estándares estrictos que han dado a nuestro salón de Laval su reputación durante más de 20 años.",
+      "faq": [
+        {
+          "q": "¿Cuánto duran las extensiones de pestañas?",
+          "a": "Un set completo dura el ciclo de crecimiento natural de tus pestañas, normalmente de seis a ocho semanas. Un relleno cada dos o tres semanas las mantiene llenas a medida que las pestañas más viejas se caen."
+        },
+        {
+          "q": "¿Cuál es la diferencia entre 2D, 3D e Híbrido?",
+          "a": "2D y 3D indican cuántas extensiones se abanican sobre cada pestaña natural para más volumen; el Híbrido combina las técnicas clásica y de volumen para un look texturizado, natural pero lleno."
+        },
+        {
+          "q": "¿Las extensiones dañan mis pestañas naturales?",
+          "a": "Aplicadas correctamente, no. Nuestras técnicas ajustan el peso y el largo a tus pestañas naturales y comparten consejos de cuidado para que se mantengan sanas."
+        },
+        {
+          "q": "¿Puedo usar maquillaje con extensiones de pestañas?",
+          "a": "Sí, pero evita los productos con aceite y la máscara a prueba de agua alrededor de los ojos. La mayoría de las clientas descubren que ya no necesitan maquillaje de ojos."
+        }
+      ],
+      "metaTitle": "Extensiones de pestañas en Laval | Sans Souci Ongles & Spa",
+      "metaDescription": "Extensiones de pestañas 2D, 3D e Híbrido adaptadas a ti en CF Carrefour Laval. De lo natural a lo dramático. Reserva en línea — desde 70 $."
+    },
+    "waxing": {
+      "title": "Depilación con cera en Laval",
+      "heroAlt": "Sala de depilación limpia y tranquila en Sans Souci Ongles & Spa, Laval",
+      "intro": [
+        "Suave, cómoda y rápida: nuestro servicio de depilación cubre todo, desde el diseño de cejas hasta la depilación completa. En Sans Souci Ongles & Spa, en CF Carrefour Laval, nuestra técnica busca tu máxima comodidad para una experiencia rápida y sin estrés.",
+        "La cera retira el vello desde la raíz, así que los resultados duran mucho más que el rasurado y el vello vuelve más fino con el tiempo. Ya sea que quieras cejas perfectamente definidas, piernas suaves para el verano o una línea de bikini ordenada antes de un viaje, nuestras técnicas con experiencia trabajan con eficiencia y discreción, para que entres y salgas sin complicaciones."
+      ],
+      "whyUs": "La depilación tiene tanto que ver con la comodidad y la confianza como con la técnica, y ahí se nota la experiencia de dos décadas. La clientela de Laval vuelve con nosotras porque somos rápidas, suaves y verdaderamente discretas, en un espacio limpio y acogedor. Y como estamos dentro de CF Carrefour Laval, mantener una rutina de depilación regular es sencillo: pasa mientras ya estás en el centro comercial y sal suave.",
+      "included": [
+        "Diseño de cejas y depilación facial",
+        "Axilas, brazos y piernas completas o medias",
+        "Bikini y bikini completo (brasileña)",
+        "Una técnica centrada en la comodidad y la rapidez",
+        "Resultados suaves que duran semanas, no días",
+        "Servicio discreto y profesional en un espacio privado"
+      ],
+      "addons": [
+        "Tinte de cejas para definir y completar tu forma",
+        "Combina varias zonas en una visita para ahorrar tiempo"
+      ],
+      "duration": "De unos 10 minutos (cejas) a 45 minutos (zonas grandes).",
+      "aftercare": "Durante las primeras 24 a 48 horas, evita los baños calientes, el sauna, la piscina y el sol directo, y deja los entrenamientos intensos: la piel recién depilada está sensible. Usa ropa holgada tras una depilación de bikini o piernas, y empieza una exfoliación suave a los pocos días para prevenir vellos enquistados. Hidratar la zona entre visitas ayuda, y depilarte en un ciclo regular de cuatro semanas hace cada sesión más rápida y cómoda.",
+      "hygiene": "Nunca transigimos con la limpieza: estaciones desinfectadas, aplicadores de un solo uso cuando corresponde y herramientas esterilizadas tras cada uso, el mismo estándar estricto en todo lo que hacemos en Sans Souci.",
+      "faq": [
+        {
+          "q": "¿Cuánto dura la depilación con cera?",
+          "a": "La mayoría de las clientas se mantienen suaves de tres a cuatro semanas, ya que la cera retira el vello desde la raíz en lugar de la superficie. Con visitas regulares, el vello vuelve más fino con el tiempo."
+        },
+        {
+          "q": "¿Qué largo debe tener el vello antes de depilar?",
+          "a": "Unos seis milímetros (más o menos de dos a tres semanas de crecimiento) permiten que la cera agarre bien para el resultado más limpio y duradero."
+        },
+        {
+          "q": "¿La depilación con cera duele?",
+          "a": "Hay una sensación breve, pero nuestra técnica busca minimizar la molestia, que disminuye notablemente con visitas regulares al volver el vello más fino."
+        },
+        {
+          "q": "¿Puedo depilarme si tengo piel sensible?",
+          "a": "Sí. Avísanos con antelación y adaptaremos los productos y la técnica. Recomendamos evitar el sol y la exfoliación justo antes de tu cita."
+        }
+      ],
+      "metaTitle": "Depilación con cera en Laval | Sans Souci Ongles & Spa",
+      "metaDescription": "Depilación de cejas a cuerpo completo con una técnica centrada en la comodidad en CF Carrefour Laval. Resultados suaves y duraderos. Reserva — desde 15 $."
+    }
+  },
+  "serviceLabels": {
+    "included": "Qué incluye",
+    "addons": "Complementos populares",
+    "duration": "Duración",
+    "price": "Precio",
+    "hygiene": "Higiene y seguridad",
+    "faq": "Preguntas frecuentes",
+    "allServices": "Todos los servicios",
+    "why": "Por qué Sans Souci",
+    "aftercare": "Consejos de cuidado"
+  }
+}

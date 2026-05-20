@@ -1,20 +1,15 @@
 import { test, expect } from "@playwright/test";
 
-// "Follow us on social" stays English in both locales — social was left
-// unchanged per request.
+// Homepage section headings, localized. The social block was replaced by the
+// "Our Work" gallery slideshow, whose heading is bilingual.
 const sectionsByLocale: Record<string, RegExp[]> = {
   fr: [
     /nos services/i,
     /pourquoi nous choisir/i,
-    /follow us on social/i,
+    /nos réalisations/i,
     /nous contacter/i,
   ],
-  en: [
-    /our services/i,
-    /why choose us/i,
-    /follow us on social/i,
-    /contact us/i,
-  ],
+  en: [/our services/i, /why choose us/i, /our work/i, /contact us/i],
 };
 
 for (const [code, sections] of Object.entries(sectionsByLocale)) {
@@ -37,7 +32,7 @@ const reviewsByLocale: Record<
   { eyebrow: RegExp; score: RegExp; book: string }
 > = {
   fr: {
-    eyebrow: /nos reviews/i,
+    eyebrow: /nos avis/i,
     score: /4,9\s*\/\s*5/,
     book: "Réservez en ligne",
   },

@@ -1,10 +1,25 @@
-// i18n configuration. Two locales; French is the default/fallback because this
-// is a Laval (Québec) salon. Kept dependency-free — for two locales a tiny
-// Accept-Language parser is simpler than Negotiator + intl-localematcher.
+// i18n configuration. French is the default/fallback because this is a Laval
+// (Québec) salon; English, Spanish and Arabic serve the wider Montreal market.
+// Kept dependency-free — a tiny Accept-Language parser is simpler than
+// Negotiator + intl-localematcher.
 
-export const locales = ["en", "fr"] as const;
+export const locales = ["en", "fr", "es", "ar"] as const;
 export type Locale = (typeof locales)[number];
 export const defaultLocale: Locale = "fr";
+
+// Right-to-left locales. Arabic renders RTL; everything else is LTR.
+export const rtlLocales: readonly Locale[] = ["ar"];
+export function dirFor(locale: Locale): "rtl" | "ltr" {
+  return rtlLocales.includes(locale) ? "rtl" : "ltr";
+}
+
+// Short display labels for the language switcher (native where it reads better).
+export const localeLabel: Record<Locale, string> = {
+  en: "EN",
+  fr: "FR",
+  es: "ES",
+  ar: "عربي",
+};
 
 export type LangParams = { params: Promise<{ lang: string }> };
 

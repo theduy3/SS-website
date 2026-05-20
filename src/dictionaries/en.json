@@ -35,7 +35,10 @@
     "storyHeading": "Why choose us",
     "story": "With over 20 years of experience in nail artistry, our friendly, professional team delivers the best nail care in Laval. Your satisfaction is guaranteed — and every client is part of our family.",
     "contactHeading": "Contact Us",
-    "contactIntro": "Questions or ready to book? Send us a message and we'll reply shortly."
+    "contactIntro": "Questions or ready to book? Send us a message and we'll reply shortly.",
+    "galleryHeading": "Our Work",
+    "galleryPrev": "Previous photo",
+    "galleryNext": "Next photo"
   },
   "services": [
     {

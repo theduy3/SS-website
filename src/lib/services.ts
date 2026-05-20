@@ -6,7 +6,7 @@
 // reached at a different path in each language. `id` is the stable key shared
 // with dict.serviceDetails and used for image filenames.
 
-import type { Locale } from "@/lib/i18n";
+import { locales, type Locale } from "@/lib/i18n";
 
 export type ServiceId = "manicure" | "pedicure" | "lash-extensions" | "waxing";
 
@@ -22,25 +22,35 @@ export type Service = {
 export const services: readonly Service[] = [
   {
     id: "manicure",
-    slug: { fr: "manucure", en: "manicure" },
+    slug: { fr: "manucure", en: "manicure", es: "manicura", ar: "manikir" },
     price: 50,
     photo: true,
   },
   {
     id: "pedicure",
-    slug: { fr: "pedicure", en: "pedicure" },
+    slug: { fr: "pedicure", en: "pedicure", es: "pedicura", ar: "badikir" },
     price: 40,
     photo: true,
   },
   {
     id: "lash-extensions",
-    slug: { fr: "extension-de-cils", en: "lash-extensions" },
+    slug: {
+      fr: "extension-de-cils",
+      en: "lash-extensions",
+      es: "extension-de-pestanas",
+      ar: "rumoosh",
+    },
     price: 70,
     photo: true,
   },
   {
     id: "waxing",
-    slug: { fr: "epilation", en: "waxing" },
+    slug: {
+      fr: "epilation",
+      en: "waxing",
+      es: "depilacion",
+      ar: "izalat-shaar",
+    },
     price: 15,
     photo: true,
   },
@@ -63,8 +73,7 @@ export function servicePath(service: Service, lang: Locale): string {
 
 /** Per-locale path map for a service — feeds pageMetadata's hreflang/canonical. */
 export function servicePathsByLocale(service: Service): Record<Locale, string> {
-  return {
-    fr: `/services/${service.slug.fr}`,
-    en: `/services/${service.slug.en}`,
-  };
+  return Object.fromEntries(
+    locales.map((l) => [l, `/services/${service.slug[l]}`]),
+  ) as Record<Locale, string>;
 }

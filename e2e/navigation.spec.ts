@@ -15,7 +15,7 @@ const localeCases = [
         link: "Rendez-vous",
         // Appointments page has no SSR <h1> (the widget injects its own heading
         // client-side); assert the always-rendered help paragraph instead.
-        text: /vous avez des problèmes/i,
+        text: /vous avez de la difficulté/i,
         path: "/fr/appointments",
       },
       { link: "Contact", heading: /nous contacter/i, path: "/fr/contact" },

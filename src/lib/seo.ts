@@ -18,6 +18,8 @@ const OG_IMAGE = "/images/storefront.jpg";
 const OG_LOCALE: Record<Locale, string> = {
   fr: "fr_CA",
   en: "en_CA",
+  es: "es_ES",
+  ar: "ar_AR",
 };
 
 // schema.org wants full weekday names (or URLs); site.hours stores compact codes.
@@ -44,7 +46,8 @@ function localizedAlternates(
   routeByLocale: Record<Locale, string>,
 ): Record<string, string> {
   const map: Record<string, string> = {};
-  for (const locale of locales) map[locale] = `/${locale}${routeByLocale[locale]}`;
+  for (const locale of locales)
+    map[locale] = `/${locale}${routeByLocale[locale]}`;
   map["x-default"] = `/${defaultLocale}${routeByLocale[defaultLocale]}`;
   return map;
 }
@@ -68,7 +71,9 @@ export function pageMetadata(
     routeByLocale?: Record<Locale, string>;
   },
 ): Metadata {
-  const path = routeByLocale ? `/${lang}${routeByLocale[lang]}` : `/${lang}${route}`;
+  const path = routeByLocale
+    ? `/${lang}${routeByLocale[lang]}`
+    : `/${lang}${route}`;
   const languages = routeByLocale
     ? localizedAlternates(routeByLocale)
     : languageAlternates(route);

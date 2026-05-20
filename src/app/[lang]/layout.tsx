@@ -6,7 +6,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { JsonLd } from "@/components/JsonLd";
 import { getDictionary } from "./dictionaries";
-import { locales, isLocale, type LangParams } from "@/lib/i18n";
+import { locales, isLocale, dirFor, type LangParams } from "@/lib/i18n";
 import { site } from "@/lib/site";
 import { organizationGraph } from "@/lib/seo";
 
@@ -73,6 +73,7 @@ export default async function RootLayout({
   return (
     <html
       lang={lang}
+      dir={dirFor(lang)}
       className={`${archivoBlack.variable} ${spaceGrotesk.variable} antialiased`}
     >
       <body className="flex min-h-screen flex-col">

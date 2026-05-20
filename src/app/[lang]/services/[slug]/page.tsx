@@ -13,7 +13,7 @@ import {
   servicePathsByLocale,
 } from "@/lib/services";
 import { getDictionary } from "../../dictionaries";
-import { isLocale, type Locale } from "@/lib/i18n";
+import { isLocale, dirFor } from "@/lib/i18n";
 import { pageMetadata, serviceGraph, breadcrumbGraph } from "@/lib/seo";
 
 type Params = { params: Promise<{ lang: string; slug: string }> };
@@ -76,7 +76,7 @@ export default async function ServiceDetailPage({ params }: Params) {
             href={`/${lang}/services`}
             className="text-sm uppercase tracking-widest text-mocha hover:text-espresso"
           >
-            ← {labels.allServices}
+            {dirFor(lang) === "rtl" ? "→" : "←"} {labels.allServices}
           </Link>
         </Reveal>
         <Reveal delay={0.05}>

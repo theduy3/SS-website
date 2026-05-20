@@ -35,7 +35,10 @@
     "storyHeading": "Pourquoi nous choisir",
     "story": "Avec plus de 20 ans d'expérience dans l'art des ongles, notre équipe chaleureuse et professionnelle offre les meilleurs soins à Laval. Votre satisfaction est garantie — et chaque client fait partie de notre famille.",
     "contactHeading": "Nous contacter",
-    "contactIntro": "Des questions ou prêt(e) à réserver? Écrivez-nous et nous vous répondrons sous peu."
+    "contactIntro": "Des questions ou prêt(e) à réserver? Écrivez-nous et nous vous répondrons sous peu.",
+    "galleryHeading": "Nos réalisations",
+    "galleryPrev": "Photo précédente",
+    "galleryNext": "Photo suivante"
   },
   "services": [
     {
@@ -70,16 +73,16 @@
   "appointments": {
     "heading": "Prenez rendez-vous",
     "intro": "Réservez en ligne en quelques secondes — choisissez votre service et votre heure, on s'occupe du reste.",
-    "helpBefore": "Si vous avez des problèmes pour réserver en ligne, il est mieux de nous appelez au ",
-    "helpAfter": " directement."
+    "helpBefore": "Si vous avez de la difficulté à réserver en ligne, appelez-nous directement au ",
+    "helpAfter": "."
   },
   "reviews": {
-    "eyebrow": "Nos reviews",
-    "headlineLead": "Nous détestons nous vanter mais…",
+    "eyebrow": "Nos avis",
+    "headlineLead": "Nous détestons nous vanter, mais…",
     "headlineMain": "les gens aiment vraiment ce que nous faisons",
     "basedOn": "sur",
     "reviewsWord": "avis Google",
-    "ctaPrompt": "Prêt à vous essayer?",
+    "ctaPrompt": "Prêt(e) à nous essayer ?",
     "bookOnline": "Réservez en ligne"
   },
   "contact": {
