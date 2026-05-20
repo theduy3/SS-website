@@ -1,0 +1,51 @@
+[
+  {
+    "id": "promo-active",
+    "version": 1,
+    "type": "rich",
+    "priority": 10,
+    "startsAt": null,
+    "endsAt": null,
+    "frequency": "session",
+    "image": null,
+    "title": { "en": "Spring Special", "fr": "Spécial printemps" },
+    "body": { "en": "15% off your next visit.", "fr": "15 % de rabais sur votre prochaine visite." },
+    "cta": { "label": { "en": "Book now", "fr": "Réserver" }, "href": "/appointments" }
+  },
+  {
+    "id": "embed-low",
+    "version": 1,
+    "type": "embed",
+    "priority": 1,
+    "startsAt": null,
+    "endsAt": null,
+    "frequency": "session",
+    "html": "<p>widget</p>"
+  },
+  {
+    "id": "expired",
+    "version": 1,
+    "type": "rich",
+    "priority": 99,
+    "startsAt": "2000-01-01T00:00:00Z",
+    "endsAt": "2000-01-02T00:00:00Z",
+    "frequency": "always",
+    "image": null,
+    "title": { "en": "Old", "fr": "Vieux" },
+    "body": { "en": "x", "fr": "x" },
+    "cta": null
+  },
+  {
+    "id": "future",
+    "version": 1,
+    "type": "rich",
+    "priority": 99,
+    "startsAt": "2999-01-01T00:00:00Z",
+    "endsAt": null,
+    "frequency": "always",
+    "image": null,
+    "title": { "en": "Soon", "fr": "Bientôt" },
+    "body": { "en": "x", "fr": "x" },
+    "cta": null
+  }
+]
