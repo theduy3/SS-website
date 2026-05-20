@@ -27,8 +27,13 @@ function shouldShow(p: Popup): boolean {
 function markSeen(p: Popup) {
   try {
     if (p.frequency === "always") return;
-    if (p.frequency === "daily") localStorage.setItem(seenKey(p), String(Date.now()));
-    else (p.frequency === "session" ? sessionStorage : localStorage).setItem(seenKey(p), "1");
+    if (p.frequency === "daily")
+      localStorage.setItem(seenKey(p), String(Date.now()));
+    else
+      (p.frequency === "session" ? sessionStorage : localStorage).setItem(
+        seenKey(p),
+        "1",
+      );
   } catch {
     /* ignore */
   }
@@ -68,16 +73,16 @@ export function PopupHost({ locale }: { locale: Locale }) {
         <motion.div
           role="dialog"
           aria-modal="true"
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-espresso/60 p-4"
-          onClick={close}
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4 pointer-events-none"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: reduce ? 0 : 0.2 }}
         >
+          {/* Backdrop: visible but non-interactive so header/nav remain clickable */}
+          <div className="absolute inset-0 bg-espresso/60" aria-hidden="true" />
           <motion.div
-            className="w-full max-w-md"
-            onClick={(e) => e.stopPropagation()}
+            className="relative w-full max-w-md pointer-events-auto"
             initial={{ scale: reduce ? 1 : 0.96, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: reduce ? 1 : 0.96, opacity: 0 }}
@@ -88,7 +93,10 @@ export function PopupHost({ locale }: { locale: Locale }) {
             ) : (
               <div className="overflow-hidden rounded-2xl bg-cream">
                 <PopupEmbed html={popup.html} />
-                <button onClick={close} className="block w-full py-3 text-xs uppercase tracking-widest text-mocha underline">
+                <button
+                  onClick={close}
+                  className="block w-full py-3 text-xs uppercase tracking-widest text-mocha underline"
+                >
                   Close
                 </button>
               </div>
