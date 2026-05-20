@@ -1,0 +1,86 @@
+{
+  "meta": {
+    "homeTitle": "Sans Souci Ongles & Spa — Manicure & Pedicure in Laval",
+    "homeDescription": "Manicure, pedicure, lash extensions and waxing at CF Carrefour Laval. 20+ years of expertise.",
+    "servicesTitle": "Services — Sans Souci Ongles & Spa",
+    "aboutTitle": "Why Choose Us — Sans Souci Ongles & Spa",
+    "appointmentsTitle": "Book Today — Sans Souci Ongles & Spa",
+    "contactTitle": "Contact — Sans Souci Ongles & Spa"
+  },
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "about": "About",
+    "appointments": "Appointments",
+    "contact": "Contact"
+  },
+  "cta": {
+    "book": "Book now",
+    "learnMore": "Learn more",
+    "services": "Our services",
+    "viewServices": "View services",
+    "send": "Send",
+    "sending": "Sending…"
+  },
+  "hero": {
+    "tagline": "The ultimate nail care experience",
+    "alt": "Sans Souci Ongles & Spa salon interior"
+  },
+  "home": {
+    "servicesHeading": "Our Services",
+    "storyHeading": "Why choose us",
+    "story": "With over 20 years of experience in nail artistry, our friendly, professional team delivers the best nail care in Laval. Your satisfaction is guaranteed — and every client is part of our family.",
+    "contactHeading": "Contact Us",
+    "contactIntro": "Questions or ready to book? Send us a message and we'll reply shortly."
+  },
+  "services": [
+    {
+      "title": "Manicure",
+      "body": "We use premium products with over 1,000 gel colours to cover every need — nail extensions, nail care and spa treatments — blending luxury and creativity for the look you want."
+    },
+    {
+      "title": "Pedicure",
+      "body": "The ultimate spa pedicure: nail shaping, cuticle care, gentle exfoliation, a relaxing massage and deep hydration for soft, rejuvenated feet. Add a paraffin treatment for extra relaxation."
+    },
+    {
+      "title": "Lash Extensions",
+      "body": "A range of lash extensions — 2D, 3D and Hybrid styles — tailored to you for a natural look that enhances your beauty."
+    },
+    {
+      "title": "Waxing",
+      "body": "Our waxing technique keeps you comfortable for a pain-free experience — from eyebrows to a full bikini wax, we've got you covered."
+    }
+  ],
+  "servicesPage": {
+    "heading": "Our Services",
+    "intro": "Premium products, over 1,000 gel colours and 20+ years of expertise."
+  },
+  "about": {
+    "heading": "Why Choose Us",
+    "body": [
+      "Because we make your safety and hygiene our priority. At Sans Souci Ongles & Spa we take your health seriously: we keep three sanitation stations stocked with disinfectant, tools are sterilized after every use, and our manicure stations have dust collectors that protect both clients and staff.",
+      "Because we offer professional, exceptional service. With over 20 years of experience in nail care and beauty, our welcoming, professional technicians know how to deliver the high-quality results you're looking for, with satisfaction guaranteed.",
+      "Because at Sans Souci Ongles & Spa, you are family. Our team's warm welcome makes you feel right at home — every client is part of our extended family."
+    ]
+  },
+  "appointments": {
+    "heading": "Book Today",
+    "intro": "Book online in seconds — pick your service and time, and we'll take care of the rest.",
+    "body": "Booking opens in our secure online scheduler. Choose your service and a time that works for you."
+  },
+  "contact": {
+    "heading": "Contact Us",
+    "intro": "Find us at CF Carrefour Laval. Questions? Send us a message."
+  },
+  "form": {
+    "firstName": "First name",
+    "lastName": "Last name",
+    "email": "Email",
+    "message": "Message",
+    "success": "Thank you — we've received your message and will be in touch shortly."
+  },
+  "labels": {
+    "location": "Location",
+    "contact": "Contact"
+  }
+}

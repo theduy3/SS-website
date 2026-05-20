@@ -3,9 +3,10 @@ import { defineConfig, devices } from "@playwright/test";
 const PORT = 3100;
 const baseURL = `http://localhost:${PORT}`;
 
-// E2E config. The webServer boots `next dev` on a dedicated port so the suite
-// is self-contained. Dev mode is intentional: the contact form's happy path
-// returns 200 there (production returns the 503 fail-loud path by design).
+// E2E runs against a production build (next build && next start): stable and
+// fast, with no on-demand dev compilation to race assertion timeouts. The
+// contact form returns 503 in production (provider not configured by design),
+// so the contact specs intercept /api/contact to exercise the form UX itself.
 export default defineConfig({
   testDir: "./e2e",
   fullyParallel: true,
@@ -18,9 +19,9 @@ export default defineConfig({
   },
   projects: [{ name: "chromium", use: { ...devices["Desktop Chrome"] } }],
   webServer: {
-    command: `./node_modules/.bin/next dev --port ${PORT}`,
+    command: `bun run build && ./node_modules/.bin/next start --port ${PORT}`,
     url: baseURL,
     reuseExistingServer: !process.env.CI,
-    timeout: 120_000,
+    timeout: 180_000,
   },
 });

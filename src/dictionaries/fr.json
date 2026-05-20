@@ -1,0 +1,86 @@
+{
+  "meta": {
+    "homeTitle": "Sans Souci Ongles & Spa — Manucure & Pédicure à Laval",
+    "homeDescription": "Manucure, pédicure, extensions de cils et épilation au CF Carrefour Laval. Plus de 20 ans d'expertise.",
+    "servicesTitle": "Services — Sans Souci Ongles & Spa",
+    "aboutTitle": "Pourquoi nous choisir — Sans Souci Ongles & Spa",
+    "appointmentsTitle": "Prenez rendez-vous — Sans Souci Ongles & Spa",
+    "contactTitle": "Nous contacter — Sans Souci Ongles & Spa"
+  },
+  "nav": {
+    "home": "Accueil",
+    "services": "Services",
+    "about": "Pourquoi nous",
+    "appointments": "Rendez-vous",
+    "contact": "Contact"
+  },
+  "cta": {
+    "book": "Réserver",
+    "learnMore": "En savoir plus",
+    "services": "Nos services",
+    "viewServices": "Voir les services",
+    "send": "Envoyer",
+    "sending": "Envoi…"
+  },
+  "hero": {
+    "tagline": "L'expérience ultime du soin des ongles",
+    "alt": "Intérieur du salon Sans Souci Ongles & Spa"
+  },
+  "home": {
+    "servicesHeading": "Nos services",
+    "storyHeading": "Pourquoi nous choisir",
+    "story": "Avec plus de 20 ans d'expérience dans l'art des ongles, notre équipe chaleureuse et professionnelle offre les meilleurs soins à Laval. Votre satisfaction est garantie — et chaque client fait partie de notre famille.",
+    "contactHeading": "Nous contacter",
+    "contactIntro": "Des questions ou prêt(e) à réserver? Écrivez-nous et nous vous répondrons sous peu."
+  },
+  "services": [
+    {
+      "title": "Manucure",
+      "body": "Nous utilisons des produits de haute qualité et plus de 1 000 couleurs de gel pour tous vos besoins — extensions, soins des ongles et traitements spa — alliant luxe et créativité pour le look désiré."
+    },
+    {
+      "title": "Pédicure",
+      "body": "L'expérience ultime du pédicure spa : mise en forme des ongles, soin des cuticules, exfoliation douce, massage relaxant et hydratation intense pour des pieds doux et rajeunis. Option traitement à la paraffine."
+    },
+    {
+      "title": "Extension de cils",
+      "body": "Une variété d'extensions de cils — styles 2D, 3D et Hybride — adaptées à vos besoins pour un look naturel qui sublime votre beauté."
+    },
+    {
+      "title": "Épilation",
+      "body": "Notre technique d'épilation assure votre confort pour une expérience sans douleur — des sourcils à l'épilation complète du maillot, nous avons ce qu'il vous faut."
+    }
+  ],
+  "servicesPage": {
+    "heading": "Nos services",
+    "intro": "Des produits de qualité, plus de 1 000 couleurs de gel et plus de 20 ans d'expertise."
+  },
+  "about": {
+    "heading": "Pourquoi nous choisir",
+    "body": [
+      "Parce que nous prenons votre sécurité et votre hygiène comme priorité. Chez Sans Souci Ongles & Spa, nous prenons votre santé au sérieux : trois stations d'hygiène avec produits désinfectants, des outils désinfectés après chaque utilisation, et des stations de manucure équipées de collecteurs de poussière qui protègent clients et employés.",
+      "Parce que nous offrons des services professionnels et exceptionnels. Avec plus de 20 ans d'expérience en soins des ongles et beauté, nos techniciens(nes) accueillants(es) et professionnels(les) savent répondre à vos désirs avec des résultats de haute qualité, satisfaction garantie.",
+      "Parce que chez Sans Souci Ongles & Spa, vous êtes notre famille. Par l'accueil chaleureux de notre équipe, vous vous sentirez comme à la maison — chaque client fait partie de notre grande famille."
+    ]
+  },
+  "appointments": {
+    "heading": "Prenez rendez-vous",
+    "intro": "Réservez en ligne en quelques secondes — choisissez votre service et votre heure, on s'occupe du reste.",
+    "body": "La réservation se fait dans notre système sécurisé en ligne. Choisissez votre service et l'heure qui vous convient."
+  },
+  "contact": {
+    "heading": "Nous contacter",
+    "intro": "Retrouvez-nous au CF Carrefour Laval. Des questions? Écrivez-nous."
+  },
+  "form": {
+    "firstName": "Prénom",
+    "lastName": "Nom",
+    "email": "Courriel",
+    "message": "Message",
+    "success": "Merci — nous avons bien reçu votre message et vous répondrons sous peu."
+  },
+  "labels": {
+    "location": "Emplacement",
+    "contact": "Coordonnées"
+  }
+}

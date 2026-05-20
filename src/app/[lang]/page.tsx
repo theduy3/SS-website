@@ -1,11 +1,14 @@
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import Image from "next/image";
 import { Button } from "@/components/Button";
 import { Reveal } from "@/components/Reveal";
 import { ContactForm } from "@/components/ContactForm";
 import { site } from "@/lib/site";
+import { getDictionary } from "./dictionaries";
+import { isLocale, type LangParams } from "@/lib/i18n";
 
-// Placeholder for real photography. Drop images into /public and swap for
-// next/image when assets are available (see clone-assets/screens for reference).
+// Placeholder for imagery the source site shows but we don't have rights to.
 function Placeholder({
   className = "",
   label,
@@ -22,7 +25,24 @@ function Placeholder({
   );
 }
 
-export default function Home() {
+export async function generateMetadata({
+  params,
+}: LangParams): Promise<Metadata> {
+  const { lang } = await params;
+  if (!isLocale(lang)) return {};
+  const dict = await getDictionary(lang);
+  return {
+    title: dict.meta.homeTitle,
+    description: dict.meta.homeDescription,
+    alternates: { languages: { en: "/en", fr: "/fr" } },
+  };
+}
+
+export default async function Home({ params }: LangParams) {
+  const { lang } = await params;
+  if (!isLocale(lang)) notFound();
+  const dict = await getDictionary(lang);
+
   return (
     <>
       {/* Hero */}
@@ -30,14 +50,14 @@ export default function Home() {
         <div className="mx-auto max-w-7xl px-6 py-20 text-center md:py-28">
           <Reveal>
             <h1 className="mx-auto max-w-4xl text-4xl leading-tight sm:text-5xl md:text-6xl">
-              {site.tagline}
+              {dict.hero.tagline}
             </h1>
           </Reveal>
           <Reveal delay={0.1}>
             <div className="relative mx-auto mt-12 aspect-[16/9] w-full max-w-4xl overflow-hidden rounded-2xl">
               <Image
-                src="/images/storefront.webp"
-                alt="Blanc Nails Lounge storefront at night"
+                src="/images/storefront.jpg"
+                alt={dict.hero.alt}
                 fill
                 priority
                 sizes="(max-width: 768px) 100vw, 896px"
@@ -48,22 +68,22 @@ export default function Home() {
           <Reveal delay={0.2}>
             <div className="mt-10">
               <Button href={site.booking} variant="light">
-                Book now
+                {dict.cta.book}
               </Button>
             </div>
           </Reveal>
         </div>
       </section>
 
-      {/* Exclusive Services */}
+      {/* Services */}
       <section className="mx-auto max-w-7xl px-6 py-20 md:py-28">
         <Reveal>
           <h2 className="text-3xl text-espresso md:text-5xl">
-            Exclusive Services
+            {dict.home.servicesHeading}
           </h2>
         </Reveal>
-        <div className="mt-12 grid grid-cols-1 gap-10 md:grid-cols-3">
-          {site.services.map((service, i) => (
+        <div className="mt-12 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
+          {dict.services.map((service, i) => (
             <Reveal key={service.title} delay={i * 0.1}>
               <article>
                 <Placeholder className="aspect-[4/3] w-full rounded-xl" />
@@ -77,35 +97,37 @@ export default function Home() {
         </div>
         <Reveal>
           <div className="mt-12">
-            <Button href="/services">Services</Button>
+            <Button href={`/${lang}/services`}>{dict.cta.services}</Button>
           </div>
         </Reveal>
       </section>
 
-      {/* Uncover our story */}
+      {/* Why choose us */}
       <section className="mx-auto max-w-7xl px-6 py-20 md:py-28">
         <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-2">
           <Reveal>
             <Placeholder
               className="aspect-[4/5] w-full rounded-xl"
-              label="Our space"
+              label="Salon"
             />
           </Reveal>
           <Reveal delay={0.1}>
             <div>
               <h2 className="text-3xl text-mocha md:text-5xl">
-                Uncover our story
+                {dict.home.storyHeading}
               </h2>
-              <p className="mt-6 leading-relaxed text-mocha">{site.story}</p>
+              <p className="mt-6 leading-relaxed text-mocha">
+                {dict.home.story}
+              </p>
               <div className="mt-8">
-                <Button href="/about">Learn more</Button>
+                <Button href={`/${lang}/about`}>{dict.cta.learnMore}</Button>
               </div>
             </div>
           </Reveal>
         </div>
       </section>
 
-      {/* Follow us on social */}
+      {/* Follow us on social — intentionally unchanged per request */}
       <section className="mx-auto max-w-7xl px-6 py-20 text-center md:py-28">
         <Reveal>
           <h2 className="text-2xl text-espresso md:text-4xl">
@@ -133,15 +155,16 @@ export default function Home() {
       <section className="bg-cream">
         <div className="mx-auto max-w-3xl px-6 py-20 md:py-28">
           <Reveal>
-            <h2 className="text-3xl text-espresso md:text-5xl">Contact Us</h2>
+            <h2 className="text-3xl text-espresso md:text-5xl">
+              {dict.home.contactHeading}
+            </h2>
             <p className="mt-6 leading-relaxed text-mocha">
-              Interested in working together? Fill out some info and we will be
-              in touch shortly. We can&apos;t wait to hear from you!
+              {dict.home.contactIntro}
             </p>
           </Reveal>
           <Reveal delay={0.1}>
             <div className="mt-10">
-              <ContactForm />
+              <ContactForm dict={dict} />
             </div>
           </Reveal>
         </div>
