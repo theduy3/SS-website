@@ -22,6 +22,12 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
+  images: {
+    remotePatterns: [
+      // TODO(owner): set to the real cover-image host.
+      { protocol: "https", hostname: "app.onglessanssouci.com" },
+    ],
+  },
   async headers() {
     return [{ source: "/:path*", headers: securityHeaders }];
   },
