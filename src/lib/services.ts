@@ -42,7 +42,7 @@ export const services: readonly Service[] = [
     id: "waxing",
     slug: { fr: "epilation", en: "waxing" },
     price: 15,
-    photo: false,
+    photo: true,
   },
 ] as const;
 
