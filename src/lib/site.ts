@@ -3,6 +3,8 @@
 // in src/dictionaries/{en,fr}.json instead — this file holds only the data that
 // is the same in every language.
 
+import googleReviews from "@/data/google-reviews.json";
+
 export const site = {
   name: "Sans Souci Ongles & Spa",
   // Canonical production origin — feeds metadataBase, sitemap, robots and JSON-LD @id.
@@ -28,8 +30,11 @@ export const site = {
   // real figures whenever the live Google count changes. `source` is a brand
   // name (locale-invariant); the surrounding sentence lives in the dictionary.
   reviews: {
-    ratingValue: 4.9,
-    reviewCount: 120,
+    // Sourced from the build-time Google fetch (scripts/fetch-google-reviews.mjs);
+    // falls back to seeded literals until the first fetch. These are the TRUE
+    // totals across all reviews, not the 5★ display subset.
+    ratingValue: googleReviews.aggregate.ratingValue,
+    reviewCount: googleReviews.aggregate.reviewCount,
     bestRating: 5,
     source: "Google",
   },

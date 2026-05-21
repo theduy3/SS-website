@@ -10,7 +10,7 @@ import type { Metadata } from "next";
 import type { Locale } from "@/lib/i18n";
 import { locales, defaultLocale } from "@/lib/i18n";
 import { site } from "@/lib/site";
-import type { Review } from "@/lib/reviews";
+import { reviewsFetchedAt } from "@/lib/reviews";
 import type { GalleryImage } from "@/lib/gallery";
 
 // Default social-share image (absolute path; resolved against metadataBase).
@@ -144,12 +144,20 @@ export function organizationGraph(
         email: site.contact.email,
         image: `${site.url}${OG_IMAGE}`,
         priceRange: site.priceRange,
-        aggregateRating: {
-          "@type": "AggregateRating",
-          ratingValue: site.reviews.ratingValue,
-          reviewCount: site.reviews.reviewCount,
-          bestRating: site.reviews.bestRating,
-        },
+        // Only emit AggregateRating once real reviews have been fetched from
+        // Google (fetchedAt set). The placeholder scaffold has no genuine
+        // totals, so we omit the rating markup rather than assert unverified
+        // numbers — keeps the structured data honest.
+        ...(reviewsFetchedAt
+          ? {
+              aggregateRating: {
+                "@type": "AggregateRating",
+                ratingValue: site.reviews.ratingValue,
+                reviewCount: site.reviews.reviewCount,
+                bestRating: site.reviews.bestRating,
+              },
+            }
+          : {}),
         address: {
           "@type": "PostalAddress",
           streetAddress: site.contact.address.street,
@@ -234,27 +242,6 @@ export function faqPageGraph(items: readonly { q: string; a: string }[]) {
       acceptedAnswer: { "@type": "Answer", text: item.a },
     })),
   };
-}
-
-/** Individual Review nodes tied to the business. Pass only verified reviews;
- *  returns null when there are none (page then emits no Review schema). */
-export function reviewsGraph(items: readonly Review[]) {
-  if (items.length === 0) return null;
-  // Returns an array of standalone Review nodes (not a @graph envelope) — the
-  // <JsonLd> caller serialises it directly; each Review references the business.
-  return items.map((r) => ({
-    "@context": "https://schema.org",
-    "@type": "Review",
-    author: { "@type": "Person", name: r.author },
-    reviewRating: {
-      "@type": "Rating",
-      ratingValue: r.rating,
-      bestRating: 5,
-    },
-    datePublished: r.dateISO,
-    reviewBody: r.text,
-    itemReviewed: { "@id": BUSINESS_ID },
-  }));
 }
 
 /** ImageGallery + ImageObject[] — render on /gallery. */

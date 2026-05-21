@@ -1,21 +1,28 @@
 import type { Locale } from "@/lib/i18n";
+import data from "@/data/google-reviews.json";
 
 export type Review = {
   id: string;
-  author: string; // first name only (privacy)
-  rating: number; // 1–5
+  author: string; // first name + last initial (privacy)
+  rating: number; // 1–5 (only 5★ are fetched)
   dateISO: string; // e.g. "2025-11-03"
-  verified: boolean; // false = placeholder, never rendered/emitted
-  lang: Locale; // original language; text shown verbatim (no MT of user content)
+  // Original language. The Business Profile API doesn't return it reliably, so
+  // it's optional; text is shown verbatim regardless (no MT of user content).
+  lang?: Locale;
   text: string;
 };
 
-// Placeholders. Replace with real Google reviews and set verified:true before
-// launch — only verified reviews render on /reviews and emit Review schema.
-export const reviews: readonly Review[] = [
-  { id: "ph-1", author: "—", rating: 5, dateISO: "2025-01-01", verified: false, lang: "fr", text: "Placeholder review — replace before launch." },
-];
+// Real 5★ Google reviews, fetched at build time by scripts/fetch-google-reviews.mjs
+// into src/data/google-reviews.json. Empty until the first fetch (display-only —
+// these emit no per-review schema.org markup).
+export const reviews: readonly Review[] = data.reviews as readonly Review[];
 
-export const verifiedReviews: readonly Review[] = reviews.filter(
-  (r) => r.verified,
-);
+// TRUE Google totals (averageRating / totalReviewCount), independent of the 5★
+// display filter. Backs the schema.org AggregateRating so it stays honest.
+export const aggregate: { ratingValue: number; reviewCount: number } =
+  data.aggregate;
+
+// ISO timestamp of the last real Google fetch; null in the committed scaffold.
+// Gates the schema.org AggregateRating so we never emit rating markup that
+// isn't backed by a genuine fetch.
+export const reviewsFetchedAt: string | null = data.fetchedAt;
