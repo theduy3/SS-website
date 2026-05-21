@@ -34,11 +34,16 @@ export function Header({ dict, locale }: { dict: Dictionary; locale: Locale }) {
 
   return (
     <header className="sticky top-0 z-50 bg-espresso text-cream">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+      <div className="relative mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+        {/* Mobile-only locale switch — sits at the left of the centred logo. */}
+        <div className="md:hidden">
+          <LocaleSwitch locale={locale} />
+        </div>
+
         <Link
           href={`/${locale}`}
           onClick={() => setOpen(false)}
-          className="flex items-center"
+          className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center md:static md:translate-x-0 md:translate-y-0"
           aria-label={site.name}
         >
           <Image
@@ -126,9 +131,6 @@ export function Header({ dict, locale }: { dict: Dictionary; locale: Locale }) {
               >
                 <InstagramIcon className="h-5 w-5" />
               </a>
-              <div className="py-2">
-                <LocaleSwitch locale={locale} />
-              </div>
               <Button
                 href={localizedHref(site.booking)}
                 variant="light"
