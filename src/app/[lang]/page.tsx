@@ -93,7 +93,7 @@ export default async function Home({ params }: LangParams) {
           <Reveal delay={0.1}>
             <div className="relative mx-auto mt-12 aspect-[16/9] w-full max-w-4xl overflow-hidden rounded-2xl">
               <Image
-                src="/images/storefront.jpg"
+                src="/images/hero.jpg"
                 alt={dict.hero.alt}
                 fill
                 priority
@@ -103,8 +103,11 @@ export default async function Home({ params }: LangParams) {
             </div>
           </Reveal>
           <Reveal delay={0.2}>
-            <div className="mt-10">
+            <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Button href={`/${lang}${site.booking}`}>{dict.cta.book}</Button>
+              <Button href={site.contact.phoneHref} variant="outline">
+                {dict.cta.callNow}
+              </Button>
             </div>
           </Reveal>
         </div>
