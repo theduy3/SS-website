@@ -15,7 +15,11 @@
     "servicesDescription": "Manicuras, pedicuras spa, extensiones de pestañas y depilación en Sans Souci Ongles & Spa, CF Carrefour Laval. Productos premium y 1000+ colores de gel.",
     "aboutDescription": "Más de 20 años de cuidado de uñas en CF Carrefour Laval. Higiene estricta, herramientas esterilizadas y un equipo amable: descubre Sans Souci Ongles & Spa.",
     "appointmentsDescription": "Reserva tu cita de manicura, pedicura o pestañas en Sans Souci Ongles & Spa, CF Carrefour Laval. Reserva en línea en segundos o llama al (450) 505-6450.",
-    "contactDescription": "Visita Sans Souci Ongles & Spa en CF Carrefour Laval (Entrada 6). Horario, ubicación y contacto para manicura, pedicura, pestañas y depilación en Laval."
+    "contactDescription": "Visita Sans Souci Ongles & Spa en CF Carrefour Laval (Entrada 6). Horario, ubicación y contacto para manicura, pedicura, pestañas y depilación en Laval.",
+    "termsTitle": "Términos y condiciones — Sans Souci Ongles & Spa",
+    "termsDescription": "Políticas del salón Sans Souci Ongles & Spa en CF Carrefour Laval: citas, cancelaciones, depósitos, pagos, salud y seguridad, y más.",
+    "privacyTitle": "Política de privacidad — Sans Souci Ongles & Spa",
+    "privacyDescription": "Cómo Sans Souci Ongles & Spa recopila, utiliza y protege su información personal, de conformidad con la Ley 25 de Quebec."
   },
   "nav": {
     "home": "Inicio",
@@ -25,7 +29,9 @@
     "contact": "Contacto",
     "gallery": "Galería",
     "reviews": "Opiniones",
-    "faq": "Preguntas frecuentes"
+    "faq": "Preguntas frecuentes",
+    "terms": "Términos y condiciones",
+    "privacy": "Política de privacidad"
   },
   "cta": {
     "book": "Reservar",
@@ -44,6 +50,7 @@
     "servicesHeading": "Nuestros servicios",
     "storyHeading": "Por qué elegirnos",
     "story": "Con más de 20 años de experiencia en el arte de las uñas, nuestro equipo amable y profesional ofrece el mejor cuidado en Laval. Tu satisfacción está garantizada, y cada cliente es parte de nuestra familia.",
+    "storyAlt": "Nuestro amable equipo en el salón Sans Souci Ongles & Spa en Laval",
     "contactHeading": "Contáctanos",
     "contactIntro": "¿Tienes preguntas o quieres reservar? Escríbenos y te responderemos en breve.",
     "galleryHeading": "Nuestro trabajo",
@@ -331,6 +338,580 @@
       "lash-extensions": { "alt": "Extensiones de pestañas de volumen aplicadas en Sans Souci", "caption": "Extensiones de pestañas" },
       "waxing": { "alt": "Resultados suaves de depilación profesional en Sans Souci", "caption": "Depilación" },
       "storefront": { "alt": "Fachada de Sans Souci Ongles & Spa en CF Carrefour Laval", "caption": "Nuestro salón" }
+    }
+  },
+  "legal": {
+    "terms": {
+      "heading": "Términos y condiciones",
+      "intro": [
+        "En Sans Souci Ongles & Spa (CF Carrefour Laval, Quebec), nuestro objetivo es ofrecer a cada cliente una experiencia relajada, profesional y de alta calidad. Para que todo transcurra sin inconvenientes —y que cada persona sea tratada con equidad— le invitamos a leer las políticas a continuación antes de su cita. Al reservar con nosotros, usted acepta estos términos.",
+        "Estas políticas se aplican a todos los servicios ofrecidos en Sans Souci Ongles & Spa y se rigen por las leyes de Quebec."
+      ],
+      "sections": [
+        {
+          "heading": "1. Citas",
+          "blocks": [
+            {
+              "kind": "p",
+              "text": "Se recomienda reservar una cita para asegurar el horario y la técnica de su elección. Los clientes sin cita previa son bienvenidos según disponibilidad.",
+              "items": []
+            },
+            {
+              "kind": "p",
+              "text": "Por favor, llegue de 5 a 10 minutos antes de su cita para el registro de llegada.",
+              "items": []
+            },
+            {
+              "kind": "p",
+              "text": "Es posible que se requiera una tarjeta de crédito válida o un depósito por transferencia Interac para confirmar ciertas reservas (ver Depósitos a continuación).",
+              "items": []
+            }
+          ]
+        },
+        {
+          "heading": "2. Puntualidad y retrasos",
+          "blocks": [
+            {
+              "kind": "p",
+              "text": "Respetamos su tiempo y le pedimos que respete el nuestro, así como el de nuestra clientela.",
+              "items": []
+            },
+            {
+              "kind": "p",
+              "text": "Si prevé llegar tarde, por favor llámenos o envíenos un mensaje de texto lo antes posible.",
+              "items": []
+            },
+            {
+              "kind": "p",
+              "text": "Un retraso de más de 15 minutos puede ocasionar una reducción, modificación o reprogramación del servicio, a nuestra discreción. En algunos casos, podrían aplicarse cargos por cancelación parcial.",
+              "items": []
+            }
+          ]
+        },
+        {
+          "heading": "3. Cancelaciones, ausencias y depósitos",
+          "blocks": [
+            {
+              "kind": "p",
+              "text": "Por respeto al horario y a los ingresos de nuestro equipo, solicitamos un aviso de al menos 24 horas para cualquier cancelación o cambio de cita.",
+              "items": []
+            },
+            {
+              "kind": "p",
+              "text": "Una cancelación o modificación realizada con menos de 24 horas de anticipación puede generar un cargo de hasta el 50 % del importe de los servicios reservados.",
+              "items": []
+            },
+            {
+              "kind": "p",
+              "text": "Una ausencia sin previo aviso (no-show) puede facturarse hasta el 100 % del importe de los servicios reservados.",
+              "items": []
+            },
+            {
+              "kind": "p",
+              "text": "Las citas grupales, las extensiones de pestañas, los servicios largos o múltiples pueden requerir un depósito no reembolsable al momento de la reserva. El depósito se aplica al total al momento del pago. Si se pierde la cita o se cancela fuera del plazo establecido, el depósito podrá ser retenido.",
+              "items": []
+            },
+            {
+              "kind": "p",
+              "text": "Los cargos por cancelación y los depósitos se le informan al momento de la reserva y aparecen en su confirmación, de conformidad con las normas de protección al consumidor de Quebec. Una tarjeta de crédito puede conservarse en el expediente únicamente para aplicar dichos cargos, y se almacena de forma segura (ver Privacidad).",
+              "items": []
+            }
+          ]
+        },
+        {
+          "heading": "4. Precios, pagos e impuestos",
+          "blocks": [
+            {
+              "kind": "p",
+              "text": "Los precios se muestran en dólares canadienses y están sujetos a los impuestos aplicables (GST (TPS) y QST (TVQ)).",
+              "items": []
+            },
+            {
+              "kind": "p",
+              "text": "El precio final puede variar según la duración, la personalización, la complejidad del diseño, las reparaciones sobre un trabajo existente y los productos utilizados. Cualquier cargo adicional se le comunicará antes de comenzar el servicio.",
+              "items": []
+            },
+            {
+              "kind": "p",
+              "text": "Aceptamos efectivo, pago Interac y las principales tarjetas de crédito. Las propinas son bienvenidas, pero nunca obligatorias.",
+              "items": []
+            },
+            {
+              "kind": "p",
+              "text": "El pago se realiza al finalizar el servicio. Cualquier saldo pendiente podrá ser enviado a una agencia de cobranza o ser objeto de una acción civil en Quebec (incluido el Tribunal de Pequeñas Causas).",
+              "items": []
+            }
+          ]
+        },
+        {
+          "heading": "5. Tarjetas de regalo",
+          "blocks": [
+            {
+              "kind": "p",
+              "text": "De conformidad con la Ley de Protección al Consumidor (Quebec):",
+              "items": []
+            },
+            {
+              "kind": "ul",
+              "text": "",
+              "items": [
+                "Nuestras tarjetas de regalo no tienen fecha de vencimiento.",
+                "No cobramos ninguna tarifa de activación, inactividad ni de servicio sobre las tarjetas de regalo.",
+                "Las tarjetas de regalo no son reembolsables. Son transferibles y deben tratarse como efectivo — no podemos reponer una tarjeta perdida, robada o dañada.",
+                "Si el saldo restante en su tarjeta es de 5 $ o menos, puede solicitar su reembolso en efectivo en cualquier momento."
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "6. Satisfacción, retoques y reembolsos",
+          "blocks": [
+            {
+              "kind": "p",
+              "text": "Su satisfacción es muy importante para nosotros. Invitamos a cada cliente a verificar el resultado antes de salir del salón, para que cualquier inquietud pueda resolverse de inmediato.",
+              "items": []
+            },
+            {
+              "kind": "p",
+              "text": "Si nota algún problema técnico con su servicio después de salir, contáctenos dentro de los 3 días siguientes a su cita para que podamos evaluar la situación y, si corresponde, realizar un retoque sin costo.",
+              "items": []
+            },
+            {
+              "kind": "p",
+              "text": "Los retoques cubren defectos técnicos relacionados con el trabajo realizado (por ej., levantamiento del gel, zona olvidada, forma desigual). No cubren cambios de preferencia, daños por el uso diario o el cuidado inadecuado en casa, el desgaste normal, reacciones alérgicas a productos usados en casa, ni servicios realizados en otro salón.",
+              "items": []
+            },
+            {
+              "kind": "p",
+              "text": "Una vez finalizado y aceptado el servicio, se considera definitivo. Por lo general, no se ofrecen reembolsos por servicios prestados. Cuando un reembolso sea legalmente requerido, se realizará mediante el método de pago original.",
+              "items": []
+            },
+            {
+              "kind": "p",
+              "text": "Los productos de reventa pueden devolverse sin abrir y sin usar dentro de un plazo de 7 días con la presentación del recibo.",
+              "items": []
+            }
+          ]
+        },
+        {
+          "heading": "7. Salud, seguridad y necesidades especiales",
+          "blocks": [
+            {
+              "kind": "p",
+              "text": "Su seguridad y la nuestra son la prioridad.",
+              "items": []
+            },
+            {
+              "kind": "ul",
+              "text": "",
+              "items": [
+                "Todas nuestras herramientas, equipos y superficies se desinfectan según las normas de salud pública y los estándares de la industria.",
+                "Los instrumentos de un solo uso (limas, bloques pulidores, etc.) se desechan después de cada cliente."
+              ]
+            },
+            {
+              "kind": "p",
+              "text": "Por favor, reprograme su cita si está enfermo/a (fiebre, enfermedad contagiosa, etc.) — sin costo, con un aviso razonable.",
+              "items": []
+            },
+            {
+              "kind": "p",
+              "text": "Si tiene alguna condición médica, no dude en informarnos al momento de la reserva o a su llegada para que podamos adaptar el servicio de forma segura. Atendemos con gusto a:",
+              "items": []
+            },
+            {
+              "kind": "ul",
+              "text": "",
+              "items": [
+                "Clientes diabéticos/as, o con trastornos de circulación o neuropatía. Por su seguridad, utilizamos técnicas suaves y sin cortes (sin cuchillas ni herramientas agresivas en los callos), y algunos pasos pueden modificarse o reducirse. No realizamos cortes ni eliminación agresiva de callos en los pies de personas diabéticas.",
+                "Clientes embarazadas. Algunos productos o tratamientos pueden sustituirse según su condición.",
+                "Clientes con alergias, piel sensible o que hayan recibido recientemente tratamientos estéticos (peelings químicos, láser, retinoides, etc.). Ajustaremos los productos utilizados.",
+                "Clientes con movilidad reducida. Infórmenos sus necesidades y haremos lo posible por acomodarlos."
+              ]
+            },
+            {
+              "kind": "p",
+              "text": "Si presenta una infección cutánea o ungueal activa, una herida abierta o una condición contagiosa en la zona a tratar, es posible que debamos reprogramar ese servicio por seguridad y recomendarle consultar a un profesional de la salud previamente.",
+              "items": []
+            }
+          ]
+        },
+        {
+          "heading": "8. Modificación o negativa de servicio",
+          "blocks": [
+            {
+              "kind": "p",
+              "text": "Sans Souci Ongles & Spa no discrimina a su clientela por ningún motivo protegido por la Carta de Derechos y Libertades de la Persona de Quebec ni por las leyes canadienses (raza, color, sexo, identidad o expresión de género, embarazo, orientación sexual, estado civil, edad, religión, convicciones políticas, idioma, origen étnico o nacional, condición social, o discapacidad).",
+              "items": []
+            },
+            {
+              "kind": "p",
+              "text": "Sin embargo, nos reservamos el derecho de modificar, reprogramar o rechazar un servicio cuando:",
+              "items": []
+            },
+            {
+              "kind": "ul",
+              "text": "",
+              "items": [
+                "Un/a cliente presenta una condición contagiosa activa o una herida abierta en la zona a tratar;",
+                "Un servicio no puede realizarse de forma segura debido a una condición médica conocida (en cuyo caso ofreceremos una alternativa adecuada en la medida de lo posible);",
+                "Un/a cliente se encuentra bajo los efectos del alcohol u otras sustancias, es irrespetuoso/a, acosa al personal o a la clientela, o genera un ambiente inseguro;",
+                "Un/a cliente se niega a seguir las instrucciones básicas de higiene o seguridad indicadas por nuestro equipo."
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "9. Niños en el salón",
+          "blocks": [
+            {
+              "kind": "p",
+              "text": "Nos encanta recibir a los más jóvenes para un servicio de uñas. Para el confort y la seguridad de todos:",
+              "items": []
+            },
+            {
+              "kind": "ul",
+              "text": "",
+              "items": [
+                "Los niños menores de 10 años deben estar acompañados y supervisados en todo momento por un adulto.",
+                "Solo la persona que recibe el servicio debe estar en el área de atención; los niños acompañantes deben permanecer en el área de recepción con su adulto.",
+                "Por razones de seguridad, no está permitido correr, trepar en las sillas ni jugar cerca de los puestos de trabajo."
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "10. Pertenencias personales y responsabilidad",
+          "blocks": [
+            {
+              "kind": "p",
+              "text": "Por favor, cuide su bolso, teléfono, joyas y otros objetos de valor. El salón no se hace responsable por los artículos personales perdidos, robados o dañados.",
+              "items": []
+            },
+            {
+              "kind": "p",
+              "text": "Esta limitación no se aplica a las lesiones corporales ni a los daños causados por nuestra culpa intencional o falta grave, de conformidad con el Código Civil de Quebec.",
+              "items": []
+            }
+          ]
+        },
+        {
+          "heading": "11. Teléfonos celulares",
+          "blocks": [
+            {
+              "kind": "p",
+              "text": "Para preservar el ambiente tranquilo del salón:",
+              "items": []
+            },
+            {
+              "kind": "ul",
+              "text": "",
+              "items": [
+                "Por favor, ponga su teléfono en modo silencioso o vibración.",
+                "Si necesita atender una llamada, hable en voz baja o diríjase cerca de la entrada.",
+                "Se recomienda el uso manos libres durante el servicio para que podamos trabajar con seguridad (evite manipular su teléfono con el esmalte fresco — no somos responsables por manchas resultantes de ello)."
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "12. Privacidad e información personal",
+          "blocks": [
+            {
+              "kind": "p",
+              "text": "Recopilamos únicamente la información personal necesaria para prestar nuestros servicios y gestionar sus citas (nombre, datos de contacto, historial de servicios y, cuando corresponda, una tarjeta de crédito en el expediente para los cargos por cancelación y ausencia).",
+              "items": []
+            },
+            {
+              "kind": "p",
+              "text": "Su información se trata de conformidad con la Ley sobre la protección de la información personal en el sector privado (Ley 25).",
+              "items": []
+            },
+            {
+              "kind": "p",
+              "text": "Los datos de tarjeta de crédito conservados con fines de reserva se almacenan a través de un proveedor de pago seguro; no guardamos números completos de tarjeta en papel ni en sistemas no seguros.",
+              "items": []
+            },
+            {
+              "kind": "p",
+              "text": "Puede solicitar en cualquier momento el acceso a su información o su rectificación comunicándose directamente con el salón.",
+              "items": []
+            },
+            {
+              "kind": "p",
+              "text": "No compartiremos su información con terceros con fines de marketing sin su consentimiento. Para más detalles, consulte nuestra Política de privacidad.",
+              "items": []
+            }
+          ]
+        },
+        {
+          "heading": "13. Ambiente de respeto",
+          "blocks": [
+            {
+              "kind": "p",
+              "text": "Nuestro salón es también un lugar de trabajo. Nuestro equipo tiene derecho a ejercer sus funciones libre de acoso, intimidación, discriminación y violencia, de conformidad con la Ley de Normas Laborales y la Carta de Derechos y Libertades de la Persona. Cualquier cliente cuyo comportamiento comprometa este ambiente podrá ser invitado a retirarse y facturado por los servicios ya prestados.",
+              "items": []
+            }
+          ]
+        },
+        {
+          "heading": "14. Políticas específicas por servicio",
+          "blocks": [
+            {
+              "kind": "h3",
+              "text": "Servicios de uñas (manicura, pedicura, gel, acrílico, extensiones)",
+              "items": []
+            },
+            {
+              "kind": "p",
+              "text": "Las extensiones de uñas son duraderas, pero no indestructibles. El estilo de vida, las actividades diarias, la exposición a productos químicos o agua caliente y el cuidado en casa influyen considerablemente en su duración.",
+              "items": []
+            },
+            {
+              "kind": "p",
+              "text": "Las formas especiales, el nail art personalizado, los diseños elaborados, el francés, el cromo, los diseños encapsulados y técnicas similares pueden requerir más tiempo y generar cargos adicionales, los cuales se le comunicarán antes de comenzar el servicio.",
+              "items": []
+            },
+            {
+              "kind": "p",
+              "text": "Nuestro protocolo de pedicura utiliza métodos de exfoliación suaves y profesionales, en lugar de cuchillas o raspadores agresivos. Los callos importantes pueden requerir varias visitas para obtener un mejor resultado a largo plazo.",
+              "items": []
+            },
+            {
+              "kind": "p",
+              "text": "Al reservar un servicio en Sans Souci, usted reconoce y acepta estos métodos orientados a la seguridad.",
+              "items": []
+            },
+            {
+              "kind": "h3",
+              "text": "Extensiones de pestañas (si se ofrecen)",
+              "items": []
+            },
+            {
+              "kind": "p",
+              "text": "Por razones de calidad y seguridad, podemos negarnos a realizar un relleno sobre extensiones colocadas en otro salón. En ese caso, nuestra técnica recomendará un retiro seguido de una nueva colocación completa.",
+              "items": []
+            },
+            {
+              "kind": "p",
+              "text": "Por favor, llegue con las pestañas limpias y sin maquillaje en los ojos.",
+              "items": []
+            },
+            {
+              "kind": "p",
+              "text": "Infórmenos de cualquier alergia o sensibilidad (pegamento para pestañas, cinta adhesiva, limpiadores).",
+              "items": []
+            },
+            {
+              "kind": "h3",
+              "text": "Depilación y tratamientos faciales (si se ofrecen)",
+              "items": []
+            },
+            {
+              "kind": "p",
+              "text": "Por favor, infórmenos sobre cualquier sensibilidad cutánea, alergia, tratamiento estético reciente (peeling, retinoides, láser, Accutane en los últimos 6 meses, etc.) y cualquier medicamento que pueda afectar la piel.",
+              "items": []
+            },
+            {
+              "kind": "p",
+              "text": "Es posible que debamos negarnos o adaptar un servicio por razones de seguridad.",
+              "items": []
+            }
+          ]
+        },
+        {
+          "heading": "15. Idioma",
+          "blocks": [
+            {
+              "kind": "p",
+              "text": "De conformidad con la Carta de la Lengua Francesa, todas nuestras comunicaciones, señalizaciones y políticas están disponibles en francés. Las traducciones al inglés (y a otros idiomas cuando sea posible) se ofrecen para su conveniencia. En caso de discrepancia entre las versiones, prevalece la versión en francés.",
+              "items": []
+            }
+          ]
+        },
+        {
+          "heading": "Reconocimiento",
+          "blocks": [
+            {
+              "kind": "p",
+              "text": "Al reservar y recibir servicios en Sans Souci Ongles & Spa, usted reconoce haber leído y aceptado estas políticas.",
+              "items": []
+            },
+            {
+              "kind": "p",
+              "text": "Le agradecemos sinceramente habernos elegido y esperamos con gusto atenderle.",
+              "items": []
+            },
+            {
+              "kind": "p",
+              "text": "— El equipo de Sans Souci Ongles & Spa",
+              "items": []
+            }
+          ]
+        }
+      ],
+      "updated": "Última actualización: 8 de mayo de 2026 · Versión 1.0 — Sans Souci Ongles & Spa · CF Carrefour Laval, Laval (Québec) · (450) 505-6450 · info@onglessanssouci.com"
+    },
+    "privacy": {
+      "heading": "Política de privacidad",
+      "intro": [
+        "La presente política de privacidad explica cómo Sans Souci Ongles & Spa (CF Carrefour Laval, Laval, Québec) recopila, utiliza y protege su información personal cuando visita nuestro sitio web, reserva una cita o recibe nuestros servicios. Tratamos su información de conformidad con la Ley sobre la protección de la información personal en el sector privado de Quebec (Ley 25).",
+        "Al utilizar nuestro sitio web o nuestros servicios, usted acepta las prácticas descritas en la presente política."
+      ],
+      "sections": [
+        {
+          "heading": "1. Responsable de la protección de la información",
+          "blocks": [
+            {
+              "kind": "p",
+              "text": "Sans Souci Ongles & Spa es responsable de la información personal que custodia. Para cualquier pregunta sobre la presente política o para ejercer sus derechos, contáctenos en info@onglessanssouci.com o al (450) 505-6450.",
+              "items": []
+            }
+          ]
+        },
+        {
+          "heading": "2. Información que recopilamos",
+          "blocks": [
+            {
+              "kind": "p",
+              "text": "Recopilamos únicamente la información necesaria para los fines descritos a continuación:",
+              "items": []
+            },
+            {
+              "kind": "ul",
+              "text": "",
+              "items": [
+                "Datos de contacto: nombre, número de teléfono y correo electrónico que nos proporciona al reservar una cita o enviar una solicitud a través de nuestro formulario de contacto.",
+                "Detalles de la cita: servicios reservados, fecha y hora, técnica solicitada e historial de servicios.",
+                "Información de pago: para ciertas reservas, puede conservarse una tarjeta de crédito en el expediente para aplicar cargos por cancelación o ausencia. Estos datos son procesados por un proveedor de pago seguro; no guardamos números completos de tarjeta.",
+                "Datos técnicos: cuando visita nuestro sitio, pueden recopilarse datos limitados (tipo de dispositivo, páginas visitadas) para el funcionamiento y la mejora del sitio."
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "3. Por qué utilizamos su información",
+          "blocks": [
+            {
+              "kind": "p",
+              "text": "Utilizamos su información personal para:",
+              "items": []
+            },
+            {
+              "kind": "ul",
+              "text": "",
+              "items": [
+                "Programar, confirmar y gestionar sus citas;",
+                "Prestar nuestros servicios y comunicarnos con usted al respecto;",
+                "Responder a las solicitudes enviadas a través de nuestro formulario de contacto;",
+                "Aplicar nuestras políticas de cancelación y ausencia;",
+                "Cumplir nuestras obligaciones legales y contables."
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "4. Base del tratamiento",
+          "blocks": [
+            {
+              "kind": "p",
+              "text": "Tratamos su información con base en su consentimiento, la necesidad de ejecutar el servicio que solicita y nuestras obligaciones legales. Puede retirar su consentimiento en cualquier momento, con excepción de la información que debemos conservar por razones legales.",
+              "items": []
+            }
+          ]
+        },
+        {
+          "heading": "5. Comunicación a terceros",
+          "blocks": [
+            {
+              "kind": "p",
+              "text": "No vendemos su información personal ni la compartimos con fines de marketing sin su consentimiento.",
+              "items": []
+            },
+            {
+              "kind": "p",
+              "text": "Podemos compartir cierta información con proveedores de servicios que nos ayudan a operar nuestro negocio (por ejemplo, nuestra plataforma de reservas en línea y nuestro proveedor de pago), únicamente en la medida necesaria para la prestación de sus servicios y bajo compromisos de confidencialidad apropiados.",
+              "items": []
+            }
+          ]
+        },
+        {
+          "heading": "6. Conservación de la información",
+          "blocks": [
+            {
+              "kind": "p",
+              "text": "Conservamos su información personal durante el tiempo necesario para los fines para los que fue recopilada, o durante el tiempo que exijan las leyes aplicables (por ejemplo, las obligaciones fiscales y contables). Cuando ya no sea necesaria, se destruye o anonimiza de forma segura.",
+              "items": []
+            }
+          ]
+        },
+        {
+          "heading": "7. Seguridad",
+          "blocks": [
+            {
+              "kind": "p",
+              "text": "Implementamos medidas técnicas y organizativas razonables para proteger su información contra el acceso, uso o divulgación no autorizados. La información de pago es procesada por proveedores que cumplen con los estándares de la industria.",
+              "items": []
+            }
+          ]
+        },
+        {
+          "heading": "8. Sus derechos",
+          "blocks": [
+            {
+              "kind": "p",
+              "text": "De conformidad con la Ley 25, usted tiene derecho a:",
+              "items": []
+            },
+            {
+              "kind": "ul",
+              "text": "",
+              "items": [
+                "Acceder a la información personal que custodiamos sobre usted;",
+                "Solicitar la rectificación de información inexacta o incompleta;",
+                "Retirar su consentimiento para su uso, sujeto a las obligaciones legales;",
+                "Presentar una queja ante la Commission d'accès à l'information du Québec."
+              ]
+            },
+            {
+              "kind": "p",
+              "text": "Para ejercer estos derechos, contáctenos en info@onglessanssouci.com.",
+              "items": []
+            }
+          ]
+        },
+        {
+          "heading": "9. Cookies",
+          "blocks": [
+            {
+              "kind": "p",
+              "text": "Nuestro sitio puede utilizar cookies esenciales para el correcto funcionamiento del sitio y, cuando corresponda, cookies de medición de audiencia para comprender cómo se utiliza nuestro sitio. Puede gestionar las cookies en la configuración de su navegador; la desactivación de ciertas cookies puede limitar algunas funcionalidades.",
+              "items": []
+            }
+          ]
+        },
+        {
+          "heading": "10. Modificaciones de la presente política",
+          "blocks": [
+            {
+              "kind": "p",
+              "text": "Podemos actualizar la presente política periódicamente. La versión más reciente siempre se publica en esta página con su fecha de actualización.",
+              "items": []
+            }
+          ]
+        },
+        {
+          "heading": "11. Idioma",
+          "blocks": [
+            {
+              "kind": "p",
+              "text": "De conformidad con la Carta de la Lengua Francesa, la presente política está disponible en francés. Las traducciones se ofrecen para su conveniencia; en caso de discrepancia, prevalece la versión en francés.",
+              "items": []
+            }
+          ]
+        }
+      ],
+      "updated": "Última actualización: 8 de mayo de 2026 — Sans Souci Ongles & Spa · CF Carrefour Laval, Laval (Québec) · (450) 505-6450 · info@onglessanssouci.com"
     }
   }
 }

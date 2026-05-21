@@ -78,5 +78,7 @@ export const site = {
     { key: "gallery", href: "/gallery" },
     { key: "reviews", href: "/reviews" },
     { key: "faq", href: "/faq" },
+    { key: "terms", href: "/terms" },
+    { key: "privacy", href: "/privacy" },
   ],
 } as const;

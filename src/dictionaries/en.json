@@ -15,7 +15,11 @@
     "servicesDescription": "Manicures, spa pedicures, lash extensions and waxing at Sans Souci Ongles & Spa, CF Carrefour Laval. Premium products, 1000+ gel colours and expert care.",
     "aboutDescription": "20+ years of nail care at CF Carrefour Laval. Strict hygiene, sterilized tools and a friendly team — discover why Sans Souci Ongles & Spa is a Laval favourite.",
     "appointmentsDescription": "Book your manicure, pedicure or lash appointment at Sans Souci Ongles & Spa, CF Carrefour Laval. Reserve online in seconds or call (450) 505-6450.",
-    "contactDescription": "Visit Sans Souci Ongles & Spa at CF Carrefour Laval (Entrée 6). Hours, directions and contact for manicures, pedicures, lashes and waxing in Laval."
+    "contactDescription": "Visit Sans Souci Ongles & Spa at CF Carrefour Laval (Entrée 6). Hours, directions and contact for manicures, pedicures, lashes and waxing in Laval.",
+    "termsTitle": "Terms & Conditions — Sans Souci Ongles & Spa",
+    "termsDescription": "Salon policies for Sans Souci Ongles & Spa at CF Carrefour Laval: appointments, cancellations, deposits, payments, health & safety and more.",
+    "privacyTitle": "Privacy Policy — Sans Souci Ongles & Spa",
+    "privacyDescription": "How Sans Souci Ongles & Spa collects, uses and protects your personal information, in line with Quebec's Law 25."
   },
   "nav": {
     "home": "Home",
@@ -25,7 +29,9 @@
     "contact": "Contact",
     "gallery": "Gallery",
     "reviews": "Reviews",
-    "faq": "FAQ"
+    "faq": "FAQ",
+    "terms": "Terms & Conditions",
+    "privacy": "Privacy Policy"
   },
   "cta": {
     "book": "Book now",
@@ -44,6 +50,7 @@
     "servicesHeading": "Our Services",
     "storyHeading": "Why choose us",
     "story": "With over 20 years of experience in nail artistry, our friendly, professional team delivers the best nail care in Laval. Your satisfaction is guaranteed — and every client is part of our family.",
+    "storyAlt": "Our friendly nail salon team at Sans Souci Ongles & Spa in Laval",
     "contactHeading": "Contact Us",
     "contactIntro": "Questions or ready to book? Send us a message and we'll reply shortly.",
     "galleryHeading": "Our Work",
@@ -331,6 +338,580 @@
       "lash-extensions": { "alt": "Volume eyelash extensions applied at Sans Souci", "caption": "Lash extensions" },
       "waxing": { "alt": "Smooth results from professional waxing at Sans Souci", "caption": "Waxing" },
       "storefront": { "alt": "Sans Souci Ongles & Spa storefront at CF Carrefour Laval", "caption": "Our salon" }
+    }
+  },
+  "legal": {
+    "terms": {
+      "heading": "Terms & Conditions",
+      "intro": [
+        "At Sans Souci Ongles & Spa (CF Carrefour Laval, Quebec), our goal is to give every client a relaxed, professional and high-quality experience. So that everything goes smoothly — and everyone is treated fairly — we invite you to read the policies below before your appointment. By booking with us, you accept these terms.",
+        "These policies apply to all services offered at Sans Souci Ongles & Spa and are governed by the laws of Quebec."
+      ],
+      "sections": [
+        {
+          "heading": "1. Appointments",
+          "blocks": [
+            {
+              "kind": "p",
+              "text": "Booking an appointment is recommended to reserve the time and technician of your choice. Walk-in clients are welcome, subject to availability.",
+              "items": []
+            },
+            {
+              "kind": "p",
+              "text": "Please arrive 5 to 10 minutes before your appointment time for check-in.",
+              "items": []
+            },
+            {
+              "kind": "p",
+              "text": "A valid credit card or an Interac e-Transfer deposit may be required to confirm certain bookings (see Deposits below).",
+              "items": []
+            }
+          ]
+        },
+        {
+          "heading": "2. Punctuality and lateness",
+          "blocks": [
+            {
+              "kind": "p",
+              "text": "We respect your time, and we ask that you respect ours as well as that of our other clients.",
+              "items": []
+            },
+            {
+              "kind": "p",
+              "text": "If you expect to be late, please call or text us as early as possible.",
+              "items": []
+            },
+            {
+              "kind": "p",
+              "text": "Any lateness of more than 15 minutes may result in a shortened, modified or rescheduled service, at our discretion. In some cases, a partial cancellation fee may apply.",
+              "items": []
+            }
+          ]
+        },
+        {
+          "heading": "3. Cancellations, no-shows and deposits",
+          "blocks": [
+            {
+              "kind": "p",
+              "text": "Out of respect for our team's schedule and income, we require at least 24 hours' notice for any cancellation or change to an appointment.",
+              "items": []
+            },
+            {
+              "kind": "p",
+              "text": "A cancellation or change made less than 24 hours before the appointment may incur a fee of up to 50% of the booked services.",
+              "items": []
+            },
+            {
+              "kind": "p",
+              "text": "A no-show without notice may be charged up to 100% of the booked services.",
+              "items": []
+            },
+            {
+              "kind": "p",
+              "text": "Group appointments, lash extensions, and long or multiple services may require a non-refundable deposit at the time of booking. The deposit is applied to the total at payment. If the appointment is missed or cancelled outside the notice period, the deposit may be retained.",
+              "items": []
+            },
+            {
+              "kind": "p",
+              "text": "Cancellation fees and deposits are communicated to you at the time of booking and appear on your confirmation, in accordance with Quebec consumer protection rules. A credit card may be kept on file solely to apply these fees, and is stored securely (see Privacy).",
+              "items": []
+            }
+          ]
+        },
+        {
+          "heading": "4. Pricing, payments and taxes",
+          "blocks": [
+            {
+              "kind": "p",
+              "text": "Prices are shown in Canadian dollars and are subject to applicable taxes (GST and QST).",
+              "items": []
+            },
+            {
+              "kind": "p",
+              "text": "The final price may vary depending on duration, customization, design complexity, repairs to existing work and the products used. Any surcharge will be communicated to you before the service begins.",
+              "items": []
+            },
+            {
+              "kind": "p",
+              "text": "We accept cash, Interac payment and major credit cards. Tips are appreciated but never required.",
+              "items": []
+            },
+            {
+              "kind": "p",
+              "text": "Payment is due at the end of the service. Any unpaid balance may be referred to a collection agency or pursued through civil action in Quebec (including Small Claims Court).",
+              "items": []
+            }
+          ]
+        },
+        {
+          "heading": "5. Gift cards",
+          "blocks": [
+            {
+              "kind": "p",
+              "text": "In accordance with the Consumer Protection Act (Quebec):",
+              "items": []
+            },
+            {
+              "kind": "ul",
+              "text": "",
+              "items": [
+                "Our gift cards have no expiry date.",
+                "We charge no activation, inactivity or service fees on gift cards.",
+                "Gift cards are non-refundable. They are transferable and should be treated like cash — we cannot replace a lost, stolen or damaged card.",
+                "If the remaining balance on your card is $5 or less, you may request a cash refund of it at any time."
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "6. Satisfaction, fixes and refunds",
+          "blocks": [
+            {
+              "kind": "p",
+              "text": "Your satisfaction matters to us. We invite every client to check the result before leaving the salon, so that any concern can be addressed right away.",
+              "items": []
+            },
+            {
+              "kind": "p",
+              "text": "If you notice a technical issue with your service after you leave, contact us within 3 days of your appointment so that we can assess the situation and, where appropriate, provide a complimentary fix.",
+              "items": []
+            },
+            {
+              "kind": "p",
+              "text": "Fixes cover technical defects related to the work performed (e.g. gel lifting, a missed spot, an uneven shape). They do not cover changes of preference, damage from daily life or poor at-home care, normal wear, allergic reactions to products used at home, or services performed by another salon.",
+              "items": []
+            },
+            {
+              "kind": "p",
+              "text": "Once a service is completed and accepted, it is considered final. Refunds are generally not offered on services rendered. Where a refund is legally required, it is issued to the original payment method.",
+              "items": []
+            },
+            {
+              "kind": "p",
+              "text": "Retail products may be returned unopened and unused within 7 days with the receipt.",
+              "items": []
+            }
+          ]
+        },
+        {
+          "heading": "7. Health, safety and special needs",
+          "blocks": [
+            {
+              "kind": "p",
+              "text": "Your safety and ours come first.",
+              "items": []
+            },
+            {
+              "kind": "ul",
+              "text": "",
+              "items": [
+                "All our tools, equipment and surfaces are disinfected according to public health and industry standards.",
+                "Single-use instruments (files, buffer blocks, etc.) are discarded after each client."
+              ]
+            },
+            {
+              "kind": "p",
+              "text": "Please reschedule your appointment if you are unwell (fever, contagious illness, etc.) — at no charge, with reasonable notice.",
+              "items": []
+            },
+            {
+              "kind": "p",
+              "text": "If you have a medical condition, please let us know when booking or upon arrival so we can adapt the service safely. We are glad to welcome:",
+              "items": []
+            },
+            {
+              "kind": "ul",
+              "text": "",
+              "items": [
+                "Clients who are diabetic, or who have circulation disorders or neuropathy. For your safety, we use gentle, non-cutting techniques (no blades or aggressive tools on calluses), and some steps may be modified or shortened. We do not perform cutting or aggressive callus removal on the feet of diabetic clients.",
+                "Pregnant clients. Some products or treatments may be substituted depending on your condition.",
+                "Clients with allergies, sensitive skin, or who have recently had cosmetic treatments (chemical peels, laser, retinoids, etc.). We will adjust the products used.",
+                "Clients with reduced mobility. Let us know your needs and we will do our best to accommodate you."
+              ]
+            },
+            {
+              "kind": "p",
+              "text": "If you have an active skin or nail infection, an open wound, or a contagious condition in the area to be treated, we may need to reschedule that service for safety, and recommend that you consult a healthcare professional first.",
+              "items": []
+            }
+          ]
+        },
+        {
+          "heading": "8. Changing or refusing service",
+          "blocks": [
+            {
+              "kind": "p",
+              "text": "Sans Souci Ongles & Spa does not discriminate against clients on any ground protected by the Quebec Charter of Human Rights and Freedoms or by Canadian law (race, colour, sex, gender identity or expression, pregnancy, sexual orientation, civil status, age, religion, political convictions, language, ethnic or national origin, social condition, or disability).",
+              "items": []
+            },
+            {
+              "kind": "p",
+              "text": "We do, however, reserve the right to change, reschedule or refuse a service when:",
+              "items": []
+            },
+            {
+              "kind": "ul",
+              "text": "",
+              "items": [
+                "A client has an active contagious condition or an open wound in the area to be treated;",
+                "A service cannot be performed safely due to a known medical condition (in which case we will offer a suitable alternative where possible);",
+                "A client is intoxicated, disrespectful, harasses staff or clients, or creates an unsafe environment;",
+                "A client refuses to follow the basic hygiene or safety instructions given by our team."
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "9. Children in the salon",
+          "blocks": [
+            {
+              "kind": "p",
+              "text": "We love welcoming younger guests for a nail service. For everyone's comfort and safety:",
+              "items": []
+            },
+            {
+              "kind": "ul",
+              "text": "",
+              "items": [
+                "Children under 10 must be accompanied and supervised at all times by an adult.",
+                "Only the person receiving a service should be in the service area; accompanying children must remain in the reception area with their adult.",
+                "For safety reasons, running, climbing on chairs, and playing near workstations are not permitted."
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "10. Personal belongings and liability",
+          "blocks": [
+            {
+              "kind": "p",
+              "text": "Please keep an eye on your handbag, phone, jewellery and other valuables. The salon is not responsible for lost, stolen or damaged personal items.",
+              "items": []
+            },
+            {
+              "kind": "p",
+              "text": "This limitation does not apply to bodily injury or to damage caused by our intentional or gross fault, in accordance with the Civil Code of Quebec.",
+              "items": []
+            }
+          ]
+        },
+        {
+          "heading": "11. Mobile phones",
+          "blocks": [
+            {
+              "kind": "p",
+              "text": "To preserve the salon's soothing atmosphere:",
+              "items": []
+            },
+            {
+              "kind": "ul",
+              "text": "",
+              "items": [
+                "Please set your phone to silent or vibrate.",
+                "If you must take a call, please speak quietly or step near the entrance.",
+                "Hands-free use during the service is encouraged, so we can work safely (avoid handling your phone with fresh polish — we are not responsible for resulting smudges)."
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "12. Privacy and personal information",
+          "blocks": [
+            {
+              "kind": "p",
+              "text": "We collect only the personal information needed to provide our services and manage your appointments (name, contact details, service history, and where applicable a credit card kept on file for cancellation and no-show fees).",
+              "items": []
+            },
+            {
+              "kind": "p",
+              "text": "Your information is handled in accordance with the Act respecting the protection of personal information in the private sector (Law 25).",
+              "items": []
+            },
+            {
+              "kind": "p",
+              "text": "Credit card details kept for booking purposes are stored via a secure payment provider; we do not keep full card numbers on paper or in insecure systems.",
+              "items": []
+            },
+            {
+              "kind": "p",
+              "text": "You may request access to or correction of your information at any time by contacting the salon directly.",
+              "items": []
+            },
+            {
+              "kind": "p",
+              "text": "We will not share your information with third parties for marketing purposes without your consent. For more details, see our Privacy Policy.",
+              "items": []
+            }
+          ]
+        },
+        {
+          "heading": "13. Respectful environment",
+          "blocks": [
+            {
+              "kind": "p",
+              "text": "Our salon is also a workplace. Our team has the right to work free from harassment, intimidation, discrimination and violence, in accordance with the Act respecting labour standards and the Charter of Human Rights and Freedoms. Any client whose behaviour compromises this environment may be asked to leave and charged for services already rendered.",
+              "items": []
+            }
+          ]
+        },
+        {
+          "heading": "14. Service-specific policies",
+          "blocks": [
+            {
+              "kind": "h3",
+              "text": "Nail services (manicure, pedicure, gel, acrylic, extensions)",
+              "items": []
+            },
+            {
+              "kind": "p",
+              "text": "Nail enhancements are durable but not indestructible. Lifestyle, daily activities, exposure to chemicals or hot water, and at-home care all greatly affect how long they last.",
+              "items": []
+            },
+            {
+              "kind": "p",
+              "text": "Special shapes, custom nail art, elaborate designs, French, chrome, encapsulated designs and similar techniques may take more time and incur additional fees, which will be communicated to you before the service begins.",
+              "items": []
+            },
+            {
+              "kind": "p",
+              "text": "Our pedicure protocol uses gentle, professional exfoliation methods rather than blades or aggressive rasps. Significant calluses may require several visits for a better long-term result.",
+              "items": []
+            },
+            {
+              "kind": "p",
+              "text": "By booking a service at Sans Souci, you acknowledge and accept these safety-focused methods.",
+              "items": []
+            },
+            {
+              "kind": "h3",
+              "text": "Lash extensions (if offered)",
+              "items": []
+            },
+            {
+              "kind": "p",
+              "text": "For quality and safety reasons, we may decline to do a fill on extensions applied at another salon. In that case, our technician will recommend a removal followed by a full new set.",
+              "items": []
+            },
+            {
+              "kind": "p",
+              "text": "Please arrive with clean lashes and no eye makeup.",
+              "items": []
+            },
+            {
+              "kind": "p",
+              "text": "Let us know of any allergy or sensitivity (lash glue, tape, cleansers).",
+              "items": []
+            },
+            {
+              "kind": "h3",
+              "text": "Waxing and facials (if offered)",
+              "items": []
+            },
+            {
+              "kind": "p",
+              "text": "Please tell us about any skin sensitivity, allergy, recent cosmetic treatment (peel, retinoids, laser, Accutane within the last 6 months, etc.) and any medication that may affect the skin.",
+              "items": []
+            },
+            {
+              "kind": "p",
+              "text": "We may need to decline or adapt a service for safety reasons.",
+              "items": []
+            }
+          ]
+        },
+        {
+          "heading": "15. Language",
+          "blocks": [
+            {
+              "kind": "p",
+              "text": "In accordance with the Charter of the French Language, all of our communications, signage and policies are available in French. Translations into English (and other languages where possible) are offered for your convenience. In the event of any discrepancy between versions, the French version prevails.",
+              "items": []
+            }
+          ]
+        },
+        {
+          "heading": "Acknowledgement",
+          "blocks": [
+            {
+              "kind": "p",
+              "text": "By booking and receiving services at Sans Souci Ongles & Spa, you acknowledge that you have read and accepted these policies.",
+              "items": []
+            },
+            {
+              "kind": "p",
+              "text": "We sincerely thank you for choosing us and look forward to taking care of you.",
+              "items": []
+            },
+            {
+              "kind": "p",
+              "text": "— The Sans Souci Ongles & Spa team",
+              "items": []
+            }
+          ]
+        }
+      ],
+      "updated": "Last updated: May 8, 2026 · Version 1.0 — Sans Souci Ongles & Spa · CF Carrefour Laval, Laval (Quebec) · (450) 505-6450 · info@onglessanssouci.com"
+    },
+    "privacy": {
+      "heading": "Privacy Policy",
+      "intro": [
+        "This Privacy Policy explains how Sans Souci Ongles & Spa (CF Carrefour Laval, Laval, Quebec) collects, uses and protects your personal information when you visit our website, book an appointment or receive our services. We handle your information in accordance with Quebec's Act respecting the protection of personal information in the private sector (Law 25).",
+        "By using our website or our services, you accept the practices described in this policy."
+      ],
+      "sections": [
+        {
+          "heading": "1. Who is responsible for your information",
+          "blocks": [
+            {
+              "kind": "p",
+              "text": "Sans Souci Ongles & Spa is responsible for the personal information it holds. For any question about this policy or to exercise your rights, contact us at info@onglessanssouci.com or (450) 505-6450.",
+              "items": []
+            }
+          ]
+        },
+        {
+          "heading": "2. Information we collect",
+          "blocks": [
+            {
+              "kind": "p",
+              "text": "We collect only the information needed for the purposes described below:",
+              "items": []
+            },
+            {
+              "kind": "ul",
+              "text": "",
+              "items": [
+                "Contact details: name, phone number and email address you provide when booking an appointment or sending a request through our contact form.",
+                "Appointment details: services booked, date and time, requested technician and service history.",
+                "Payment information: for certain bookings, a credit card may be kept on file to apply cancellation or no-show fees. This data is processed by a secure payment provider; we do not keep full card numbers.",
+                "Technical data: when you visit our site, limited data (device type, pages viewed) may be collected to operate and improve the site."
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "3. Why we use your information",
+          "blocks": [
+            {
+              "kind": "p",
+              "text": "We use your personal information to:",
+              "items": []
+            },
+            {
+              "kind": "ul",
+              "text": "",
+              "items": [
+                "Schedule, confirm and manage your appointments;",
+                "Provide our services and communicate with you about them;",
+                "Respond to requests sent through our contact form;",
+                "Apply our cancellation and no-show policies;",
+                "Meet our legal and accounting obligations."
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "4. Basis for processing",
+          "blocks": [
+            {
+              "kind": "p",
+              "text": "We process your information based on your consent, the need to perform the service you request, and our legal obligations. You may withdraw your consent at any time, subject to information we must keep for legal reasons.",
+              "items": []
+            }
+          ]
+        },
+        {
+          "heading": "5. Sharing with third parties",
+          "blocks": [
+            {
+              "kind": "p",
+              "text": "We do not sell your personal information and do not share it for marketing purposes without your consent.",
+              "items": []
+            },
+            {
+              "kind": "p",
+              "text": "We may share certain information with service providers who help us operate our business (for example, our online booking platform and our payment provider), only to the extent necessary to deliver their services and under appropriate confidentiality commitments.",
+              "items": []
+            }
+          ]
+        },
+        {
+          "heading": "6. How long we keep your information",
+          "blocks": [
+            {
+              "kind": "p",
+              "text": "We keep your personal information for as long as necessary for the purposes for which it was collected, or as long as required by applicable law (for example, tax and accounting obligations). When it is no longer needed, it is securely destroyed or anonymized.",
+              "items": []
+            }
+          ]
+        },
+        {
+          "heading": "7. Security",
+          "blocks": [
+            {
+              "kind": "p",
+              "text": "We put in place reasonable technical and organizational measures to protect your information against unauthorized access, use or disclosure. Payment information is processed by providers that comply with industry standards.",
+              "items": []
+            }
+          ]
+        },
+        {
+          "heading": "8. Your rights",
+          "blocks": [
+            {
+              "kind": "p",
+              "text": "Under Law 25, you have the right to:",
+              "items": []
+            },
+            {
+              "kind": "ul",
+              "text": "",
+              "items": [
+                "Access the personal information we hold about you;",
+                "Request the correction of inaccurate or incomplete information;",
+                "Withdraw your consent to its use, subject to legal obligations;",
+                "File a complaint with the Commission d'accès à l'information du Québec."
+              ]
+            },
+            {
+              "kind": "p",
+              "text": "To exercise these rights, contact us at info@onglessanssouci.com.",
+              "items": []
+            }
+          ]
+        },
+        {
+          "heading": "9. Cookies",
+          "blocks": [
+            {
+              "kind": "p",
+              "text": "Our site may use cookies that are essential to the proper functioning of the site and, where applicable, audience-measurement cookies to understand how our site is used. You can manage cookies in your browser settings; disabling certain cookies may limit functionality.",
+              "items": []
+            }
+          ]
+        },
+        {
+          "heading": "10. Changes to this policy",
+          "blocks": [
+            {
+              "kind": "p",
+              "text": "We may update this policy from time to time. The most recent version is always published on this page, with its update date.",
+              "items": []
+            }
+          ]
+        },
+        {
+          "heading": "11. Language",
+          "blocks": [
+            {
+              "kind": "p",
+              "text": "In accordance with the Charter of the French Language, this policy is available in French. Translations are offered for your convenience; in the event of any discrepancy, the French version prevails.",
+              "items": []
+            }
+          ]
+        }
+      ],
+      "updated": "Last updated: May 8, 2026 — Sans Souci Ongles & Spa · CF Carrefour Laval, Laval (Quebec) · (450) 505-6450 · info@onglessanssouci.com"
     }
   }
 }

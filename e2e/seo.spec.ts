@@ -38,14 +38,16 @@ test.describe("sitewide route files", () => {
     const res = await request.get("/sitemap.xml");
     expect(res.status()).toBe(200);
     const xml = await res.text();
-    // (5 nav + 3 secondary routes + 4 services) × 4 locales = 48 <url> entries.
-    expect(xml.match(/<url>/g)?.length).toBe(48);
+    // (5 nav + 5 secondary routes + 4 services) × 4 locales = 56 <url> entries.
+    expect(xml.match(/<url>/g)?.length).toBe(56);
     expect(xml).toContain(`<loc>${ORIGIN}/fr</loc>`);
     expect(xml).toContain(`<loc>${ORIGIN}/en/services</loc>`);
     expect(xml).toContain(`<loc>${ORIGIN}/fr/services/extension-de-cils</loc>`);
     expect(xml).toContain(`<loc>${ORIGIN}/en/faq</loc>`);
     expect(xml).toContain(`<loc>${ORIGIN}/fr/reviews</loc>`);
     expect(xml).toContain(`<loc>${ORIGIN}/es/gallery</loc>`);
+    expect(xml).toContain(`<loc>${ORIGIN}/fr/terms</loc>`);
+    expect(xml).toContain(`<loc>${ORIGIN}/en/privacy</loc>`);
     expect(xml).toContain('hreflang="fr"');
     expect(xml).toContain('hreflang="en"');
   });
