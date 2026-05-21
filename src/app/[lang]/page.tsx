@@ -13,23 +13,6 @@ import { getDictionary } from "./dictionaries";
 import { isLocale, type LangParams } from "@/lib/i18n";
 import { pageMetadata } from "@/lib/seo";
 
-// Placeholder for imagery the source site shows but we don't have rights to.
-function Placeholder({
-  className = "",
-  label,
-}: {
-  className?: string;
-  label?: string;
-}) {
-  return (
-    <div className={`flex items-center justify-center bg-tan/40 ${className}`}>
-      <span className="text-xs uppercase tracking-widest text-espresso/70">
-        {label ?? "Image"}
-      </span>
-    </div>
-  );
-}
-
 export async function generateMetadata({
   params,
 }: LangParams): Promise<Metadata> {
@@ -192,10 +175,15 @@ export default async function Home({ params }: LangParams) {
         <div className="mx-auto max-w-7xl px-6 py-20 md:py-28">
           <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-2">
             <Reveal>
-              <Placeholder
-                className="aspect-[4/5] w-full rounded-xl"
-                label="Salon"
-              />
+              <div className="relative aspect-[4/5] w-full overflow-hidden rounded-xl bg-tan/40">
+                <Image
+                  src="/images/team.jpg"
+                  alt={dict.home.storyAlt}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover"
+                />
+              </div>
             </Reveal>
             <Reveal delay={0.1}>
               <div>
@@ -214,7 +202,7 @@ export default async function Home({ params }: LangParams) {
         </div>
       </section>
 
-      {/* Our Work — crossfading slideshow of real service photos */}
+      {/* Our Work — continuous marquee of real service photos */}
       <section className="mx-auto max-w-7xl px-6 py-20 text-center md:py-28">
         <Reveal>
           <h2 className="text-2xl text-espresso md:text-4xl">
@@ -223,13 +211,7 @@ export default async function Home({ params }: LangParams) {
         </Reveal>
         <Reveal delay={0.1}>
           <div className="mt-12">
-            <Gallery
-              slides={gallerySlides}
-              labels={{
-                prev: dict.home.galleryPrev,
-                next: dict.home.galleryNext,
-              }}
-            />
+            <Gallery slides={gallerySlides} />
           </div>
         </Reveal>
         <Reveal>
