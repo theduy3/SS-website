@@ -1,5 +1,18 @@
 import { test, expect } from "@playwright/test";
 
+test("faq page emits FAQPage schema", async ({ page }) => {
+  await page.goto("/en/faq");
+  const blocks = await page
+    .locator('script[type="application/ld+json"]')
+    .allTextContents();
+  const faq = blocks
+    .map((b) => JSON.parse(b))
+    .find((d) => d["@type"] === "FAQPage");
+  expect(faq).toBeTruthy();
+  expect(faq.mainEntity.length).toBeGreaterThan(0);
+  expect(faq.mainEntity[0]["@type"]).toBe("Question");
+});
+
 // These specs lock in the SEO layer added to match (and beat) competitor nail
 // salons: structured data, canonical/hreflang, OpenGraph, sitemap and robots.
 // They assert the *intent* — crawlers must see a complete, machine-readable

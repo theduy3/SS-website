@@ -1,5 +1,20 @@
 import { test, expect } from "@playwright/test";
 
+const faqByLocale: Record<string, { heading: RegExp; firstQ: RegExp }> = {
+  fr: { heading: /foire aux questions/i, firstQ: /où se trouve/i },
+  en: { heading: /frequently asked questions/i, firstQ: /where is/i },
+};
+for (const [code, f] of Object.entries(faqByLocale)) {
+  test(`faq page renders (${code})`, async ({ page }) => {
+    await page.goto(`/${code}/faq`);
+    await expect(
+      page.getByRole("heading", { name: f.heading }).first(),
+    ).toBeVisible();
+    await expect(page.getByText(f.firstQ).first()).toBeVisible();
+    expect(await page.locator("details").count()).toBeGreaterThan(0);
+  });
+}
+
 // Homepage section headings, localized. The social block was replaced by the
 // "Our Work" gallery slideshow, whose heading is bilingual.
 const sectionsByLocale: Record<string, RegExp[]> = {
