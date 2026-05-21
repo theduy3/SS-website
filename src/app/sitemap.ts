@@ -38,5 +38,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
   );
 
-  return [...navEntries, ...serviceEntries];
+  const secondaryEntries: MetadataRoute.Sitemap = locales.flatMap((locale) =>
+    site.secondaryNav.map((item) => ({
+      url: `${site.url}/${locale}${toPath(item.href)}`,
+      lastModified,
+      changeFrequency: "monthly" as const,
+      priority: 0.6,
+      alternates: {
+        languages: Object.fromEntries(
+          locales.map((l) => [l, `${site.url}/${l}${toPath(item.href)}`]),
+        ),
+      },
+    })),
+  );
+
+  return [...navEntries, ...secondaryEntries, ...serviceEntries];
 }

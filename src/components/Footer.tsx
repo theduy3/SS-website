@@ -1,13 +1,14 @@
 import { site } from "@/lib/site";
 import type { Dictionary } from "@/lib/dictionary";
+import type { Locale } from "@/lib/i18n";
 
 // Server Component — no interactivity, ships zero JS.
-export function Footer({ dict }: { dict: Dictionary }) {
+export function Footer({ dict, locale }: { dict: Dictionary; locale: Locale }) {
   return (
     <footer className="bg-espresso text-cream">
       <div className="mx-auto max-w-7xl px-6 py-16">
         <h2 className="text-3xl md:text-5xl">{site.name}</h2>
-        <div className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2">
+        <div className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-3">
           <div>
             <h3 className="text-base text-tan">{dict.labels.location}</h3>
             <p className="mt-2 leading-relaxed">
@@ -32,6 +33,18 @@ export function Footer({ dict }: { dict: Dictionary }) {
                 {site.contact.phone}
               </a>
             </p>
+          </div>
+          <div>
+            <h3 className="text-base text-tan">{site.name}</h3>
+            <ul className="mt-2 space-y-1">
+              {site.secondaryNav.map((item) => (
+                <li key={item.key}>
+                  <a href={`/${locale}${item.href}`} className="hover:text-tan">
+                    {dict.nav[item.key]}
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
         <p className="mt-12 text-xs uppercase tracking-wide text-cream/50">

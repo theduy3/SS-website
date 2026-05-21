@@ -87,7 +87,7 @@ export default async function RootLayout({
         />
         <Header dict={dict} locale={lang} />
         <main className="flex-1">{children}</main>
-        <Footer dict={dict} />
+        <Footer dict={dict} locale={lang} />
         <PopupHost locale={lang} />
       </body>
     </html>

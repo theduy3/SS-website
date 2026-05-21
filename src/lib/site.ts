@@ -68,4 +68,10 @@ export const site = {
     { key: "appointments", href: "/appointments" },
     { key: "contact", href: "/contact" },
   ],
+  // Secondary pages — footer + sitemap only, kept out of the primary header nav.
+  secondaryNav: [
+    { key: "gallery", href: "/gallery" },
+    { key: "reviews", href: "/reviews" },
+    { key: "faq", href: "/faq" },
+  ],
 } as const;
