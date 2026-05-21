@@ -31,6 +31,9 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       // TODO(owner): set to the real cover-image host.
       { protocol: "https", hostname: "app.onglessanssouci.com" },
+      // Supabase Storage public bucket for admin-uploaded popup images.
+      // When a CSP is added (see note above), allowlist this origin too.
+      { protocol: "https", hostname: "*.supabase.co" },
     ],
   },
   async headers() {
