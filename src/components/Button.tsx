@@ -6,7 +6,8 @@ type Variant = "solid" | "light" | "outline";
 const variants: Record<Variant, string> = {
   solid: "bg-espresso text-cream hover:bg-mocha",
   light: "bg-cream text-espresso hover:bg-tan",
-  outline: "border border-current text-espresso hover:bg-espresso hover:text-cream",
+  outline:
+    "border border-current text-espresso hover:bg-espresso hover:text-cream",
 };
 
 type Props = {
@@ -16,14 +17,26 @@ type Props = {
   className?: string;
 };
 
-// Renders an external <a> for http(s) links (e.g. the abcapp.us booking widget)
-// and a prefetching next/link for internal routes. Pill shape per the brand system.
-export function Button({ href, children, variant = "solid", className = "" }: Props) {
+// Renders an external <a> for http(s) and tel:/mailto: links, and a prefetching
+// next/link for internal routes. Pill shape per the brand system.
+export function Button({
+  href,
+  children,
+  variant = "solid",
+  className = "",
+}: Props) {
   const classes = `inline-flex items-center justify-center rounded-pill px-8 py-3 text-sm font-semibold uppercase tracking-wide transition-colors ${variants[variant]} ${className}`;
 
-  if (/^https?:\/\//.test(href)) {
+  const isHttp = /^https?:\/\//.test(href);
+  const isExternalScheme = /^(tel:|mailto:)/.test(href);
+
+  if (isHttp || isExternalScheme) {
     return (
-      <a href={href} target="_blank" rel="noopener noreferrer" className={classes}>
+      <a
+        href={href}
+        {...(isHttp ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+        className={classes}
+      >
         {children}
       </a>
     );

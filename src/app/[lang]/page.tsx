@@ -6,6 +6,7 @@ import { Reveal } from "@/components/Reveal";
 import { ContactForm } from "@/components/ContactForm";
 import { Gallery } from "@/components/Gallery";
 import { Stars } from "@/components/Stars";
+import { Testimonials } from "@/components/Testimonials";
 import { services } from "@/lib/services";
 import { site } from "@/lib/site";
 import { getDictionary } from "./dictionaries";
@@ -75,7 +76,7 @@ export default async function Home({ params }: LangParams) {
           <Reveal delay={0.1}>
             <div className="relative mx-auto mt-12 aspect-[16/9] w-full max-w-4xl overflow-hidden rounded-2xl">
               <Image
-                src="/images/storefront.jpg"
+                src="/images/hero.jpg"
                 alt={dict.hero.alt}
                 fill
                 priority
@@ -85,8 +86,11 @@ export default async function Home({ params }: LangParams) {
             </div>
           </Reveal>
           <Reveal delay={0.2}>
-            <div className="mt-10">
+            <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Button href={`/${lang}${site.booking}`}>{dict.cta.book}</Button>
+              <Button href={site.contact.phoneHref} variant="outline">
+                {dict.cta.callNow}
+              </Button>
             </div>
           </Reveal>
         </div>
@@ -124,6 +128,9 @@ export default async function Home({ params }: LangParams) {
               </p>
             </div>
           </Reveal>
+          <Reveal delay={0.12}>
+            <Testimonials />
+          </Reveal>
           <Reveal delay={0.15}>
             <div className="mt-12">
               <p className="text-mocha">{dict.reviews.ctaPrompt}</p>
@@ -131,12 +138,9 @@ export default async function Home({ params }: LangParams) {
                 <Button href={`/${lang}${site.booking}`}>
                   {dict.reviews.bookOnline}
                 </Button>
-                <a
-                  href={site.contact.phoneHref}
-                  className="font-semibold transition-colors hover:text-mocha"
-                >
-                  {site.contact.phone}
-                </a>
+                <Button href={site.contact.phoneHref} variant="outline">
+                  {dict.cta.callNow}
+                </Button>
               </div>
             </div>
           </Reveal>
@@ -151,17 +155,30 @@ export default async function Home({ params }: LangParams) {
           </h2>
         </Reveal>
         <div className="mt-12 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
-          {dict.services.map((service, i) => (
-            <Reveal key={service.title} delay={i * 0.1}>
-              <article>
-                <Placeholder className="aspect-[4/3] w-full rounded-xl" />
-                <h3 className="mt-6 text-xl text-espresso">{service.title}</h3>
-                <p className="mt-3 leading-relaxed text-mocha">
-                  {service.body}
-                </p>
-              </article>
-            </Reveal>
-          ))}
+          {dict.services.map((service, i) => {
+            const svc = services[i];
+            return (
+              <Reveal key={service.title} delay={i * 0.1}>
+                <article>
+                  <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl">
+                    <Image
+                      src={`/images/services/${svc.id}.jpg`}
+                      alt={dict.serviceDetails[svc.id].heroAlt}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                      className="object-cover"
+                    />
+                  </div>
+                  <h3 className="mt-6 text-xl text-espresso">
+                    {service.title}
+                  </h3>
+                  <p className="mt-3 leading-relaxed text-mocha">
+                    {service.body}
+                  </p>
+                </article>
+              </Reveal>
+            );
+          })}
         </div>
         <Reveal>
           <div className="mt-12">
