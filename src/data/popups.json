@@ -5,7 +5,7 @@
     "type": "rich",
     "priority": 10,
     "startsAt": null,
-    "endsAt": null,
+    "endsAt": "2026-05-31T23:59:59Z",
     "frequency": "session",
     "image": null,
     "title": { "en": "Spring Special", "fr": "Spécial printemps" },
@@ -13,14 +13,14 @@
     "cta": { "label": { "en": "Book now", "fr": "Réserver" }, "href": "/appointments" }
   },
   {
-    "id": "embed-low",
+    "id": "subscribe-ss",
     "version": 1,
     "type": "embed",
-    "priority": 1,
-    "startsAt": null,
+    "priority": 10,
+    "startsAt": "2026-06-01T00:00:00Z",
     "endsAt": null,
     "frequency": "session",
-    "html": "<p>widget</p>"
+    "html": "<script src=\"https://app.onglessanssouci.com/widgets/subscribe-widget.js\" data-subscribe-store=\"SS\"></script>"
   },
   {
     "id": "expired",
