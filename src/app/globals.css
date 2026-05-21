@@ -38,3 +38,30 @@
     line-height: 1.05;
   }
 }
+
+/* Reviews ticker: a single row of cards sliding right→left forever. The track
+   holds the list duplicated once, so translating -50% lands copy-2 exactly
+   where copy-1 began → seamless loop. CSS-only (no JS), pauses on hover. */
+@layer utilities {
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  .animate-marquee {
+    animation: marquee var(--marquee-duration, 60s) linear infinite;
+    will-change: transform;
+  }
+  .marquee-pause:hover .animate-marquee {
+    animation-play-state: paused;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+  }
+}

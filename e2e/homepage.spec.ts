@@ -9,8 +9,12 @@ test.describe("homepage enhancements (/fr)", () => {
 
   test("renders 10 testimonial cards", async ({ page }) => {
     await page.goto("/fr");
-    await expect(page.getByText(/Marie-Ève L\./)).toBeVisible();
-    await expect(page.locator("section.bg-fog li")).toHaveCount(10);
+    await expect(page.getByText(/Marie-Ève L\./).first()).toBeVisible();
+    // The marquee duplicates the list once for a seamless loop; the copy is
+    // aria-hidden. Count only the real cards.
+    await expect(
+      page.locator("section.bg-fog li:not([aria-hidden])"),
+    ).toHaveCount(10);
   });
 
   test("service cards render real images (not placeholder)", async ({
