@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import reviewsData from "../src/data/google-reviews.json";
 
 test("faq page emits FAQPage schema", async ({ page }) => {
   await page.goto("/en/faq");
@@ -94,8 +95,14 @@ test.describe("page metadata + structured data", () => {
     expect(business.address.addressLocality).toBe("Laval");
     expect(business.telephone).toBe("+14505056450");
     expect(business.openingHoursSpecification.length).toBeGreaterThan(0);
-    expect(business.aggregateRating["@type"]).toBe("AggregateRating");
-    expect(business.aggregateRating.reviewCount).toBeGreaterThan(0);
+    // AggregateRating is gated on a real Google fetch: present (with a positive
+    // count) once reviews are fetched, omitted while the scaffold is unfetched.
+    if (reviewsData.fetchedAt) {
+      expect(business.aggregateRating["@type"]).toBe("AggregateRating");
+      expect(business.aggregateRating.reviewCount).toBeGreaterThan(0);
+    } else {
+      expect(business.aggregateRating).toBeUndefined();
+    }
     expect(business.sameAs).toContain(
       "https://www.instagram.com/sans.souci.cflaval",
     );
@@ -176,7 +183,7 @@ test.describe("individual service pages (localized slugs)", () => {
   });
 });
 
-test("reviews page emits no Review schema while unverified", async ({
+test("reviews page emits no per-review Review schema (testimonials-style)", async ({
   page,
 }) => {
   await page.goto("/en/reviews");
