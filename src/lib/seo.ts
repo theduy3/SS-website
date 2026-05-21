@@ -240,6 +240,8 @@ export function faqPageGraph(items: readonly { q: string; a: string }[]) {
  *  returns null when there are none (page then emits no Review schema). */
 export function reviewsGraph(items: readonly Review[]) {
   if (items.length === 0) return null;
+  // Returns an array of standalone Review nodes (not a @graph envelope) — the
+  // <JsonLd> caller serialises it directly; each Review references the business.
   return items.map((r) => ({
     "@context": "https://schema.org",
     "@type": "Review",
