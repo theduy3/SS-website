@@ -5,6 +5,7 @@ import { Button } from "@/components/Button";
 import { Reveal } from "@/components/Reveal";
 import { ContactForm } from "@/components/ContactForm";
 import { Gallery } from "@/components/Gallery";
+import { Stars } from "@/components/Stars";
 import { services } from "@/lib/services";
 import { site } from "@/lib/site";
 import { getDictionary } from "./dictionaries";
@@ -24,25 +25,6 @@ function Placeholder({
       <span className="text-xs uppercase tracking-widest text-espresso/70">
         {label ?? "Image"}
       </span>
-    </div>
-  );
-}
-
-// Row of 5 filled stars for the reviews band. Decorative (aria-hidden) — the
-// numeric score beside it carries the real value for assistive tech.
-function Stars({ className = "" }: { className?: string }) {
-  return (
-    <div className={`flex gap-1 ${className}`} aria-hidden>
-      {[0, 1, 2, 3, 4].map((i) => (
-        <svg
-          key={i}
-          viewBox="0 0 24 24"
-          fill="currentColor"
-          className="h-6 w-6"
-        >
-          <path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 7.1-1.01L12 2z" />
-        </svg>
-      ))}
     </div>
   );
 }
