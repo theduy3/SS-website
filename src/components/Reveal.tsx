@@ -1,7 +1,18 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { useEffect, useState, type ReactNode } from "react";
+import { useSyncExternalStore, type ReactNode } from "react";
+
+// Hydration gate: false on the server / first client paint, true once hydrated.
+// useSyncExternalStore is the React-idiomatic way to read this without a
+// setState-in-effect (its server snapshot differs from the client snapshot).
+const noopSubscribe = () => () => {};
+const useHydrated = () =>
+  useSyncExternalStore(
+    noopSubscribe,
+    () => true,
+    () => false,
+  );
 
 // Scroll-triggered fade-up. Reproduces the original site's on-scroll reveal feel.
 //
@@ -20,10 +31,8 @@ export function Reveal({
   delay?: number;
   className?: string;
 }) {
-  const [mounted, setMounted] = useState(false);
+  const mounted = useHydrated();
   const prefersReducedMotion = useReducedMotion();
-
-  useEffect(() => setMounted(true), []);
 
   if (!mounted || prefersReducedMotion) {
     return <div className={className}>{children}</div>;
