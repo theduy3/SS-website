@@ -1,5 +1,22 @@
 import { test, expect } from "@playwright/test";
 
+const reviewsPageByLocale: Record<string, { heading: RegExp; score: RegExp }> =
+  {
+    fr: { heading: /^avis$/i, score: /4,9/ },
+    en: { heading: /^reviews$/i, score: /4\.9/ },
+  };
+for (const [code, r] of Object.entries(reviewsPageByLocale)) {
+  test(`reviews page renders aggregate (${code})`, async ({ page }) => {
+    await page.goto(`/${code}/reviews`);
+    await expect(
+      page.getByRole("heading", { name: r.heading }).first(),
+    ).toBeVisible();
+    await expect(page.getByText(r.score).first()).toBeVisible();
+    // No verified reviews yet → no testimonial cards.
+    expect(await page.locator("figure blockquote").count()).toBe(0);
+  });
+}
+
 const faqByLocale: Record<string, { heading: RegExp; firstQ: RegExp }> = {
   fr: { heading: /foire aux questions/i, firstQ: /où se trouve/i },
   en: { heading: /frequently asked questions/i, firstQ: /where is/i },

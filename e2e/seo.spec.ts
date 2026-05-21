@@ -175,3 +175,17 @@ test.describe("individual service pages (localized slugs)", () => {
     );
   });
 });
+
+test("reviews page emits no Review schema while unverified", async ({
+  page,
+}) => {
+  await page.goto("/en/reviews");
+  const blocks = await page
+    .locator('script[type="application/ld+json"]')
+    .allTextContents();
+  const hasReview = blocks
+    .map((b) => JSON.parse(b))
+    .flat()
+    .some((d) => d?.["@type"] === "Review");
+  expect(hasReview).toBe(false);
+});
