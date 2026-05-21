@@ -189,3 +189,16 @@ test("reviews page emits no Review schema while unverified", async ({
     .some((d) => d?.["@type"] === "Review");
   expect(hasReview).toBe(false);
 });
+
+test("gallery page emits ImageGallery schema", async ({ page }) => {
+  await page.goto("/en/gallery");
+  const blocks = await page
+    .locator('script[type="application/ld+json"]')
+    .allTextContents();
+  const g = blocks
+    .map((b) => JSON.parse(b))
+    .find((d) => d["@type"] === "ImageGallery");
+  expect(g).toBeTruthy();
+  expect(g.image.length).toBeGreaterThan(0);
+  expect(g.image[0]["@type"]).toBe("ImageObject");
+});

@@ -96,3 +96,23 @@ test.describe("without JavaScript (/fr)", () => {
     }
   });
 });
+
+// Gallery page: heading renders + every img in main has a non-empty alt.
+const galleryByLocale: Record<string, RegExp> = {
+  fr: /galerie/i,
+  en: /gallery/i,
+};
+for (const [code, heading] of Object.entries(galleryByLocale)) {
+  test(`gallery page renders with alt text (${code})`, async ({ page }) => {
+    await page.goto(`/${code}/gallery`);
+    await expect(
+      page.getByRole("heading", { name: heading }).first(),
+    ).toBeVisible();
+    const imgs = await page.locator("main img").all();
+    expect(imgs.length).toBeGreaterThan(0);
+    for (const img of imgs) {
+      const alt = await img.getAttribute("alt");
+      expect(alt).toBeTruthy();
+    }
+  });
+}
