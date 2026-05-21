@@ -5,6 +5,7 @@ import { Button } from "@/components/Button";
 import { Reveal } from "@/components/Reveal";
 import { ContactForm } from "@/components/ContactForm";
 import { Gallery } from "@/components/Gallery";
+import { Testimonials } from "@/components/Testimonials";
 import { services } from "@/lib/services";
 import { site } from "@/lib/site";
 import { getDictionary } from "./dictionaries";
@@ -145,6 +146,9 @@ export default async function Home({ params }: LangParams) {
               </p>
             </div>
           </Reveal>
+          <Reveal delay={0.12}>
+            <Testimonials />
+          </Reveal>
           <Reveal delay={0.15}>
             <div className="mt-12">
               <p className="text-mocha">{dict.reviews.ctaPrompt}</p>
@@ -152,12 +156,9 @@ export default async function Home({ params }: LangParams) {
                 <Button href={`/${lang}${site.booking}`}>
                   {dict.reviews.bookOnline}
                 </Button>
-                <a
-                  href={site.contact.phoneHref}
-                  className="font-semibold transition-colors hover:text-mocha"
-                >
-                  {site.contact.phone}
-                </a>
+                <Button href={site.contact.phoneHref} variant="outline">
+                  {dict.cta.callNow}
+                </Button>
               </div>
             </div>
           </Reveal>
