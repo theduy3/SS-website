@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "fetch:reviews": "node --env-file-if-exists=.env.local scripts/fetch-google-reviews.mjs"
   },
   "dependencies": {
     "framer-motion": "^12.39.0",
