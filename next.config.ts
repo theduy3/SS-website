@@ -22,6 +22,11 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
+  // Pin the workspace root to this project. Without it, Turbopack infers the
+  // root from the nearest lockfile and can land on ~/ (a stray package-lock.json),
+  // then watches the whole home dir — unrelated writes there trigger phantom HMR
+  // recompiles. Anchoring here keeps the file watcher scoped to the project.
+  turbopack: { root: __dirname },
   images: {
     remotePatterns: [
       // TODO(owner): set to the real cover-image host.
