@@ -6,6 +6,12 @@
     "aboutTitle": "Por qué elegirnos — Sans Souci Ongles & Spa",
     "appointmentsTitle": "Reserva hoy — Sans Souci Ongles & Spa",
     "contactTitle": "Contacto — Sans Souci Ongles & Spa",
+    "faqTitle": "Preguntas frecuentes — Sans Souci Ongles & Spa",
+    "faqDescription": "Horarios, reservas, servicios, estacionamiento y más — respuestas a las preguntas más comunes sobre nuestro salón de uñas en Laval.",
+    "reviewsTitle": "Opiniones — Sans Souci Ongles & Spa",
+    "reviewsDescription": "Descubre por qué nuestras clientas nos dan 4,9/5 — manicuras, pedicuras, pestañas y depilación en Laval.",
+    "galleryTitle": "Galería — Sans Souci Ongles & Spa",
+    "galleryDescription": "Explora nuestro trabajo: manicuras, pedicuras, extensiones de pestañas y depilación en nuestro salón de Laval.",
     "servicesDescription": "Manicuras, pedicuras spa, extensiones de pestañas y depilación en Sans Souci Ongles & Spa, CF Carrefour Laval. Productos premium y 1000+ colores de gel.",
     "aboutDescription": "Más de 20 años de cuidado de uñas en CF Carrefour Laval. Higiene estricta, herramientas esterilizadas y un equipo amable: descubre Sans Souci Ongles & Spa.",
     "appointmentsDescription": "Reserva tu cita de manicura, pedicura o pestañas en Sans Souci Ongles & Spa, CF Carrefour Laval. Reserva en línea en segundos o llama al (450) 505-6450.",
@@ -16,7 +22,10 @@
     "services": "Servicios",
     "about": "Nosotros",
     "appointments": "Citas",
-    "contact": "Contacto"
+    "contact": "Contacto",
+    "gallery": "Galería",
+    "reviews": "Opiniones",
+    "faq": "Preguntas frecuentes"
   },
   "cta": {
     "book": "Reservar",
@@ -290,5 +299,37 @@
     "allServices": "Todos los servicios",
     "why": "Por qué Sans Souci",
     "aftercare": "Consejos de cuidado"
+  },
+  "faq": {
+    "title": "Preguntas frecuentes",
+    "intro": "Todo lo que necesitas saber antes de tu visita a Sans Souci Ongles & Spa.",
+    "items": [
+      { "q": "¿Dónde está Sans Souci Ongles & Spa?", "a": "Estamos en CF Carrefour Laval, 3035 Boulevard le Carrefour, Entrada 6, Laval, QC H7T 1C8. Estacionamiento gratuito del centro comercial en la Entrada 6." },
+      { "q": "¿Aceptan sin cita o es solo con reserva?", "a": "Ambas opciones. Aceptamos clientes sin cita cuando hay sillas disponibles, pero reservar con anticipación garantiza tu horario y técnica — especialmente por las tardes y los fines de semana." },
+      { "q": "¿Cómo puedo hacer una cita?", "a": "Reserva en línea en cualquier momento desde nuestra página de citas, o llámanos al (450) 505-6450." },
+      { "q": "¿Qué servicios ofrecen?", "a": "Manicuras, pedicuras, extensiones de pestañas y depilación. Visita nuestra página de servicios para ver los detalles y precios." },
+      { "q": "¿Cuáles son sus horarios?", "a": "Lunes–martes 9 am–7 pm, miércoles–viernes 9 am–9 pm, sábado–domingo 9 am–5 pm." },
+      { "q": "¿Qué métodos de pago aceptan?", "a": "Aceptamos débito, principales tarjetas de crédito y efectivo." },
+      { "q": "¿Qué idiomas hablan?", "a": "Nuestro equipo te atiende en francés, inglés, español y árabe." },
+      { "q": "¿Venden tarjetas de regalo?", "a": "Sí — las tarjetas de regalo son un excelente presente y se pueden comprar en el salón. Pregunta en la recepción." },
+      { "q": "¿Cuánto duran las uñas de gel y las extensiones de pestañas?", "a": "Las manicuras de gel duran típicamente 2–3 semanas; las extensiones de pestañas, 3–4 semanas con el cuidado adecuado. Te daremos consejos de mantenimiento en tu visita." }
+    ]
+  },
+  "reviewsPage": {
+    "title": "Opiniones",
+    "intro": "Lo que dicen las personas que se sientan en nuestras sillas.",
+    "empty": "Descubre por qué nuestras clientas siguen volviendo — reserva tu visita hoy.",
+    "cta": "Reservar en línea"
+  },
+  "gallery": {
+    "title": "Galería",
+    "intro": "Un vistazo a nuestro trabajo — uñas, pestañas y más.",
+    "photos": {
+      "manicure": { "alt": "Manicura recién pintada en Sans Souci Ongles & Spa en Laval", "caption": "Manicura" },
+      "pedicure": { "alt": "Tratamiento de pedicura relajante en nuestro salón de Laval", "caption": "Pedicura" },
+      "lash-extensions": { "alt": "Extensiones de pestañas de volumen aplicadas en Sans Souci", "caption": "Extensiones de pestañas" },
+      "waxing": { "alt": "Resultados suaves de depilación profesional en Sans Souci", "caption": "Depilación" },
+      "storefront": { "alt": "Fachada de Sans Souci Ongles & Spa en CF Carrefour Laval", "caption": "Nuestro salón" }
+    }
   }
 }

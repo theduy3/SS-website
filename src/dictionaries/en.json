@@ -6,6 +6,12 @@
     "aboutTitle": "Why Choose Us — Sans Souci Ongles & Spa",
     "appointmentsTitle": "Book Today — Sans Souci Ongles & Spa",
     "contactTitle": "Contact — Sans Souci Ongles & Spa",
+    "faqTitle": "FAQ — Sans Souci Ongles & Spa",
+    "faqDescription": "Hours, booking, services, parking and more — answers to common questions about our Laval nail salon.",
+    "reviewsTitle": "Reviews — Sans Souci Ongles & Spa",
+    "reviewsDescription": "See why clients rate Sans Souci Ongles & Spa 4.9/5 — manicures, pedicures, lashes and waxing in Laval.",
+    "galleryTitle": "Gallery — Sans Souci Ongles & Spa",
+    "galleryDescription": "Browse our work: manicures, pedicures, eyelash extensions and waxing at our Laval salon.",
     "servicesDescription": "Manicures, spa pedicures, lash extensions and waxing at Sans Souci Ongles & Spa, CF Carrefour Laval. Premium products, 1000+ gel colours and expert care.",
     "aboutDescription": "20+ years of nail care at CF Carrefour Laval. Strict hygiene, sterilized tools and a friendly team — discover why Sans Souci Ongles & Spa is a Laval favourite.",
     "appointmentsDescription": "Book your manicure, pedicure or lash appointment at Sans Souci Ongles & Spa, CF Carrefour Laval. Reserve online in seconds or call (450) 505-6450.",
@@ -16,7 +22,10 @@
     "services": "Services",
     "about": "About",
     "appointments": "Appointments",
-    "contact": "Contact"
+    "contact": "Contact",
+    "gallery": "Gallery",
+    "reviews": "Reviews",
+    "faq": "FAQ"
   },
   "cta": {
     "book": "Book now",
@@ -290,5 +299,37 @@
     "allServices": "All services",
     "why": "Why Sans Souci",
     "aftercare": "Aftercare tips"
+  },
+  "faq": {
+    "title": "Frequently asked questions",
+    "intro": "Everything you need to know before your visit to Sans Souci Ongles & Spa.",
+    "items": [
+      { "q": "Where is Sans Souci Ongles & Spa located?", "a": "We're inside CF Carrefour Laval at 3035 Boulevard le Carrefour, Entrée 6, Laval, QC H7T 1C8. Free mall parking is available at Entrance 6." },
+      { "q": "Do you take walk-ins or is it appointment only?", "a": "Both. We welcome walk-ins when chairs are open, but booking ahead guarantees your time and technician — especially evenings and weekends." },
+      { "q": "How do I book an appointment?", "a": "Book online any time through our appointments page, or call us at (450) 505-6450." },
+      { "q": "What services do you offer?", "a": "Manicures, pedicures, eyelash extensions, and waxing. See our services page for details and pricing." },
+      { "q": "What are your opening hours?", "a": "Monday–Tuesday 9am–7pm, Wednesday–Friday 9am–9pm, Saturday–Sunday 9am–5pm." },
+      { "q": "What payment methods do you accept?", "a": "We accept debit, major credit cards, and cash." },
+      { "q": "What languages do you speak?", "a": "Our team serves you in French, English, Spanish and Arabic." },
+      { "q": "Do you sell gift cards?", "a": "Yes — gift cards make a great present and can be purchased in-salon. Ask our front desk." },
+      { "q": "How long do gel nails and lash extensions last?", "a": "Gel manicures typically last 2–3 weeks; lash extensions last 3–4 weeks with proper care. We'll share aftercare tips at your visit." }
+    ]
+  },
+  "reviewsPage": {
+    "title": "Reviews",
+    "intro": "Hear from the people who sit in our chairs.",
+    "empty": "Come find out why our clients keep coming back — book your visit today.",
+    "cta": "Book online"
+  },
+  "gallery": {
+    "title": "Gallery",
+    "intro": "A look at our work — nails, lashes and more.",
+    "photos": {
+      "manicure": { "alt": "Freshly painted manicure at Sans Souci Ongles & Spa in Laval", "caption": "Manicure" },
+      "pedicure": { "alt": "Relaxing pedicure treatment at our Laval salon", "caption": "Pedicure" },
+      "lash-extensions": { "alt": "Volume eyelash extensions applied at Sans Souci", "caption": "Lash extensions" },
+      "waxing": { "alt": "Smooth results from professional waxing at Sans Souci", "caption": "Waxing" },
+      "storefront": { "alt": "Sans Souci Ongles & Spa storefront at CF Carrefour Laval", "caption": "Our salon" }
+    }
   }
 }

@@ -6,6 +6,12 @@
     "aboutTitle": "Pourquoi nous choisir — Sans Souci Ongles & Spa",
     "appointmentsTitle": "Prenez rendez-vous — Sans Souci Ongles & Spa",
     "contactTitle": "Nous contacter — Sans Souci Ongles & Spa",
+    "faqTitle": "FAQ — Sans Souci Ongles & Spa",
+    "faqDescription": "Heures, réservation, services, stationnement et plus — réponses aux questions fréquentes sur notre salon d'ongles à Laval.",
+    "reviewsTitle": "Avis — Sans Souci Ongles & Spa",
+    "reviewsDescription": "Découvrez pourquoi nos clientes nous donnent 4,9/5 — manucures, pédicures, cils et épilation à Laval.",
+    "galleryTitle": "Galerie — Sans Souci Ongles & Spa",
+    "galleryDescription": "Parcourez notre travail : manucures, pédicures, extensions de cils et épilation à notre salon de Laval.",
     "servicesDescription": "Manucure, pédicure spa, extensions de cils et épilation chez Sans Souci Ongles & Spa, CF Carrefour Laval. Produits de qualité et 1000+ couleurs de gel.",
     "aboutDescription": "Plus de 20 ans de soins des ongles au CF Carrefour Laval. Hygiène stricte, outils stérilisés et équipe accueillante : découvrez Sans Souci Ongles & Spa.",
     "appointmentsDescription": "Réservez votre manucure, pédicure ou pose de cils chez Sans Souci Ongles & Spa, CF Carrefour Laval. Rendez-vous en ligne en quelques secondes ou par téléphone.",
@@ -16,7 +22,10 @@
     "services": "Services",
     "about": "Pourquoi nous",
     "appointments": "Rendez-vous",
-    "contact": "Contact"
+    "contact": "Contact",
+    "gallery": "Galerie",
+    "reviews": "Avis",
+    "faq": "FAQ"
   },
   "cta": {
     "book": "Réserver",
@@ -290,5 +299,37 @@
     "allServices": "Tous les services",
     "why": "Pourquoi Sans Souci",
     "aftercare": "Conseils d'entretien"
+  },
+  "faq": {
+    "title": "Foire aux questions",
+    "intro": "Tout ce qu'il faut savoir avant votre visite chez Sans Souci Ongles & Spa.",
+    "items": [
+      { "q": "Où se trouve Sans Souci Ongles & Spa ?", "a": "Nous sommes au CF Carrefour Laval, 3035 Boulevard le Carrefour, Entrée 6, Laval, QC H7T 1C8. Stationnement gratuit du centre commercial à l'Entrée 6." },
+      { "q": "Acceptez-vous les sans-rendez-vous ou faut-il réserver ?", "a": "Les deux. Nous accueillons les sans-rendez-vous selon les disponibilités, mais réserver garantit votre plage horaire et votre technicienne — surtout les soirs et fins de semaine." },
+      { "q": "Comment prendre rendez-vous ?", "a": "Réservez en ligne en tout temps sur notre page de rendez-vous, ou appelez-nous au (450) 505-6450." },
+      { "q": "Quels services offrez-vous ?", "a": "Manucures, pédicures, extensions de cils et épilation à la cire. Voir notre page des services pour les détails et les prix." },
+      { "q": "Quelles sont vos heures d'ouverture ?", "a": "Lundi–mardi 9 h–19 h, mercredi–vendredi 9 h–21 h, samedi–dimanche 9 h–17 h." },
+      { "q": "Quels modes de paiement acceptez-vous ?", "a": "Nous acceptons la carte débit, les principales cartes de crédit et l'argent comptant." },
+      { "q": "Quelles langues parlez-vous ?", "a": "Notre équipe vous sert en français, anglais, espagnol et arabe." },
+      { "q": "Vendez-vous des cartes-cadeaux ?", "a": "Oui — les cartes-cadeaux sont un beau cadeau et s'achètent en salon. Demandez à la réception." },
+      { "q": "Combien de temps durent les ongles en gel et les extensions de cils ?", "a": "Une manucure en gel dure généralement 2 à 3 semaines; les extensions de cils, 3 à 4 semaines avec de bons soins. Nous vous donnerons des conseils d'entretien lors de votre visite." }
+    ]
+  },
+  "reviewsPage": {
+    "title": "Avis",
+    "intro": "Ce que disent les personnes qui prennent place dans nos fauteuils.",
+    "empty": "Venez découvrir pourquoi nos clientes reviennent — réservez votre visite dès aujourd'hui.",
+    "cta": "Réservez en ligne"
+  },
+  "gallery": {
+    "title": "Galerie",
+    "intro": "Un aperçu de notre travail — ongles, cils et plus.",
+    "photos": {
+      "manicure": { "alt": "Manucure fraîchement vernie chez Sans Souci Ongles & Spa à Laval", "caption": "Manucure" },
+      "pedicure": { "alt": "Soin de pédicure relaxant à notre salon de Laval", "caption": "Pédicure" },
+      "lash-extensions": { "alt": "Extensions de cils volume posées chez Sans Souci", "caption": "Extensions de cils" },
+      "waxing": { "alt": "Résultat lisse d'une épilation professionnelle chez Sans Souci", "caption": "Épilation" },
+      "storefront": { "alt": "Devanture de Sans Souci Ongles & Spa au CF Carrefour Laval", "caption": "Notre salon" }
+    }
   }
 }
