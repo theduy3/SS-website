@@ -19,7 +19,9 @@ async function hasValidSession(request: NextRequest): Promise<boolean> {
   const sealed = request.cookies.get(SESSION_COOKIE)?.value;
   if (!sealed) return false;
   try {
-    const data = await unsealData<{ authed?: boolean }>(sealed, { password: secret });
+    const data = await unsealData<{ authed?: boolean }>(sealed, {
+      password: secret,
+    });
     return data.authed === true;
   } catch {
     return false;
@@ -34,10 +36,16 @@ export async function proxy(request: NextRequest) {
     if (LOGIN_PATHS.has(pathname)) return NextResponse.next();
     if (await hasValidSession(request)) return NextResponse.next();
     if (pathname.startsWith("/api/admin")) {
-      return NextResponse.json({ success: false, error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json(
+        { success: false, error: "Unauthorized" },
+        { status: 401 },
+      );
     }
     return NextResponse.redirect(new URL("/admin/login", request.url));
   }
+
+  // 1b. Standalone, un-localized check-in page (kiosk). No locale prefix.
+  if (pathname === "/checkin") return NextResponse.next();
 
   // 2. Locale routing for public pages.
   const hasLocale = locales.some(
