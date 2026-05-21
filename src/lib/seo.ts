@@ -10,6 +10,8 @@ import type { Metadata } from "next";
 import type { Locale } from "@/lib/i18n";
 import { locales, defaultLocale } from "@/lib/i18n";
 import { site } from "@/lib/site";
+import type { Review } from "@/lib/reviews";
+import type { GalleryImage } from "@/lib/gallery";
 
 // Default social-share image (absolute path; resolved against metadataBase).
 const OG_IMAGE = "/images/storefront.jpg";
@@ -218,6 +220,60 @@ export function serviceGraph(
     provider: { "@id": BUSINESS_ID },
     areaServed: site.contact.address.city,
     offers: offer(price),
+  };
+}
+
+/** FAQPage — render on /faq. Feeds Google rich results / AI answers. */
+export function faqPageGraph(items: readonly { q: string; a: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map((item) => ({
+      "@type": "Question",
+      name: item.q,
+      acceptedAnswer: { "@type": "Answer", text: item.a },
+    })),
+  };
+}
+
+/** Individual Review nodes tied to the business. Pass only verified reviews;
+ *  returns null when there are none (page then emits no Review schema). */
+export function reviewsGraph(items: readonly Review[]) {
+  if (items.length === 0) return null;
+  return items.map((r) => ({
+    "@context": "https://schema.org",
+    "@type": "Review",
+    author: { "@type": "Person", name: r.author },
+    reviewRating: {
+      "@type": "Rating",
+      ratingValue: r.rating,
+      bestRating: 5,
+    },
+    datePublished: r.dateISO,
+    reviewBody: r.text,
+    itemReviewed: { "@id": BUSINESS_ID },
+  }));
+}
+
+/** ImageGallery + ImageObject[] — render on /gallery. */
+export function imageGalleryGraph(
+  name: string,
+  images: readonly GalleryImage[],
+  textFor: (id: string) => { alt: string; caption: string },
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ImageGallery",
+    name,
+    image: images.map((img) => {
+      const t = textFor(img.id);
+      return {
+        "@type": "ImageObject",
+        contentUrl: `${site.url}${img.file}`,
+        name: t.alt,
+        caption: t.caption,
+      };
+    }),
   };
 }
 
