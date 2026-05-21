@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { site } from "@/lib/site";
 import type { Dictionary } from "@/lib/dictionary";
@@ -37,9 +38,17 @@ export function Header({ dict, locale }: { dict: Dictionary; locale: Locale }) {
         <Link
           href={`/${locale}`}
           onClick={() => setOpen(false)}
-          className="font-display text-base uppercase tracking-tight sm:text-lg"
+          className="flex items-center"
+          aria-label={site.name}
         >
-          {site.name}
+          <Image
+            src="/images/logo.png"
+            alt={site.name}
+            width={720}
+            height={205}
+            priority
+            className="h-8 w-auto mix-blend-screen sm:h-10"
+          />
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">
