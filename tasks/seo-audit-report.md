@@ -1,4 +1,4 @@
-# Full SEO Audit — blanc-nails-clone (Sans Souci Ongles & Spa)
+# Full SEO Audit — Sans Souci Ongles & Spa
 
 > Target: **local build** http://localhost:3100 (Next.js 16 prod build) · 2026-05-20
 > Business type: **Local service — nail salon** (Laval, QC · bilingual FR/EN)

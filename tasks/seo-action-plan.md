@@ -1,4 +1,4 @@
-# SEO Action Plan — blanc-nails-clone (Sans Souci)
+# SEO Action Plan — Sans Souci Ongles & Spa
 
 > From audit 2026-05-20 · Health score 77/100 · Prioritized Critical → Low
 > Pairs with `tasks/seo-implementation-roadmap.md` (strategic phases).

@@ -5,7 +5,7 @@ status: done
 branch: fix/es-ar-copy
 commit: 3cdd78c
 result: AR 5 fixes applied + committed; ES audited, no edit; build green; e2e 51 pass (1 flake confirmed serial-pass); lint 3 pre-existing errors unrelated to JSON.
-repo: /Users/theduy/Repo/blanc-nails-clone
+repo: /Users/theduy/Repo/SS-website
 created-at: 2026-05-21
 note: Originated from "/s1-plan reviews + ES/AR". Reviews track DEFERRED by user
       decision (real Google reviews + verified:true still required before launch —

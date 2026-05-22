@@ -1,5 +1,6 @@
 {
-  "name": "blanc-nails-clone",
+  "name": "ss-website",
+  "description": "Sans Souci Ongles & Spa — booking & info site",
   "version": "0.1.0",
   "private": true,
   "scripts": {

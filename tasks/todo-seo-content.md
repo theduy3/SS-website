@@ -2,7 +2,7 @@
 task-name: seo-content
 scope: medium
 status: plan-approved
-repo: /Users/theduy/Repo/blanc-nails-clone
+repo: /Users/theduy/Repo/SS-website
 created-at: 2026-05-20
 -->
 

@@ -2,7 +2,7 @@
 task-name: header-center-logo-mobile
 scope: small
 status: committed
-repo: /Users/theduy/Repo/blanc-nails-clone
+repo: /Users/theduy/Repo/SS-website
 created-at: 2026-05-21
 -->
 
