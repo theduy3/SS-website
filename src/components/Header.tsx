@@ -49,8 +49,8 @@ export function Header({ dict, locale }: { dict: Dictionary; locale: Locale }) {
           <Image
             src="/images/logo.png"
             alt={site.name}
-            width={720}
-            height={205}
+            width={1159}
+            height={370}
             priority
             className="h-8 w-auto mix-blend-screen sm:h-10"
           />
