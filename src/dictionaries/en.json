@@ -306,7 +306,9 @@
     "faq": "Frequently asked questions",
     "allServices": "All services",
     "why": "Why Sans Souci",
-    "aftercare": "Aftercare tips"
+    "aftercare": "Aftercare tips",
+    "priceFrom": "from",
+    "guides": "Helpful guides"
   },
   "faq": {
     "title": "Frequently asked questions",

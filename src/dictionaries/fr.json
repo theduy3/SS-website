@@ -306,7 +306,9 @@
     "faq": "Questions fréquentes",
     "allServices": "Tous les services",
     "why": "Pourquoi Sans Souci",
-    "aftercare": "Conseils d'entretien"
+    "aftercare": "Conseils d'entretien",
+    "priceFrom": "à partir de",
+    "guides": "À lire"
   },
   "faq": {
     "title": "Foire aux questions",

@@ -75,3 +75,8 @@ export function comparisonPathsByLocale(c: Comparison): Record<Locale, string> {
     locales.map((l) => [l, `/comparisons/${c.slug[l]}`]),
   ) as Record<Locale, string>;
 }
+
+/** Comparisons related to a service — for cross-linking from service pages. */
+export function comparisonsForService(id: ServiceId): Comparison[] {
+  return comparisons.filter((c) => c.service === id);
+}

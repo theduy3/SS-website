@@ -15,6 +15,8 @@ import {
 import { getDictionary } from "../../dictionaries";
 import { isLocale, dirFor } from "@/lib/i18n";
 import { pageMetadata, serviceGraph, breadcrumbGraph } from "@/lib/seo";
+import { comparisonsForService, comparisonPath } from "@/lib/comparisons";
+import { formatFromPrice } from "@/lib/format";
 
 type Params = { params: Promise<{ lang: string; slug: string }> };
 
@@ -48,8 +50,8 @@ export default async function ServiceDetailPage({ params }: Params) {
   const d = dict.serviceDetails[service.id];
   const labels = dict.serviceLabels;
   const bookHref = `/${lang}${site.booking}`;
-  const priceDisplay =
-    lang === "fr" ? `${service.price} $` : `$${service.price}`;
+  const priceDisplay = formatFromPrice(lang, service.price, labels.priceFrom);
+  const relatedComparisons = comparisonsForService(service.id);
 
   return (
     <>
@@ -204,6 +206,29 @@ export default async function ServiceDetailPage({ params }: Params) {
           </dl>
         </div>
       </section>
+
+      {/* Helpful guides */}
+      {relatedComparisons.length > 0 && (
+        <section className="mx-auto max-w-3xl px-6 pb-4 pt-12 md:pt-16">
+          <Reveal>
+            <h2 className="text-2xl text-espresso md:text-3xl">
+              {labels.guides}
+            </h2>
+            <ul className="mt-6 space-y-3">
+              {relatedComparisons.map((cmp) => (
+                <li key={cmp.id}>
+                  <Link
+                    href={`/${lang}${comparisonPath(cmp, lang)}`}
+                    className="text-espresso underline-offset-4 hover:underline"
+                  >
+                    {dict.comparisons[cmp.id].title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </Reveal>
+        </section>
+      )}
 
       {/* CTA */}
       <section className="mx-auto max-w-3xl px-6 py-16 text-center md:py-24">

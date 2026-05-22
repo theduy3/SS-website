@@ -306,7 +306,9 @@
     "faq": "Preguntas frecuentes",
     "allServices": "Todos los servicios",
     "why": "Por qué Sans Souci",
-    "aftercare": "Consejos de cuidado"
+    "aftercare": "Consejos de cuidado",
+    "priceFrom": "desde",
+    "guides": "Guías útiles"
   },
   "faq": {
     "title": "Preguntas frecuentes",

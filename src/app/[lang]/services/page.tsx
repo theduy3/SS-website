@@ -11,6 +11,7 @@ import { services, servicePath } from "@/lib/services";
 import { getDictionary } from "../dictionaries";
 import { isLocale, type LangParams } from "@/lib/i18n";
 import { pageMetadata, servicesGraph, breadcrumbGraph } from "@/lib/seo";
+import { formatFromPrice } from "@/lib/format";
 
 export async function generateMetadata({
   params,
@@ -37,8 +38,6 @@ export default async function ServicesPage({ params }: LangParams) {
     priceTo: s.priceTo,
     path: servicePath(s, lang),
   }));
-
-  const fmtPrice = (p: number) => (lang === "fr" ? `${p} $` : `$${p}`);
 
   return (
     <>
@@ -75,7 +74,7 @@ export default async function ServicesPage({ params }: LangParams) {
                       {d.title}
                     </h2>
                     <span className="shrink-0 text-sm font-semibold text-mocha">
-                      {fmtPrice(s.price)}
+                      {formatFromPrice(lang, s.price, dict.serviceLabels.priceFrom)}
                     </span>
                   </div>
                   <p className="mt-2 leading-relaxed text-mocha">
