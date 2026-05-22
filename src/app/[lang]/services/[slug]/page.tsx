@@ -58,6 +58,7 @@ export default async function ServiceDetailPage({ params }: Params) {
           name: d.title,
           description: d.metaDescription,
           price: service.price,
+          priceTo: service.priceTo,
           path: servicePath(service, lang),
         })}
       />

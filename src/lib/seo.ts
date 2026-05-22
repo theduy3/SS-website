@@ -110,7 +110,19 @@ export function pageMetadata(
 const BUSINESS_ID = `${site.url}/#business`;
 const WEBSITE_ID = `${site.url}/#website`;
 
-function offer(price: number) {
+function offer(price: number, priceTo?: number) {
+  // When a real upper bound exists, emit an AggregateOffer price range
+  // (lowPrice = base "from" price; highPrice = base + top add-on). Otherwise
+  // a plain Offer with the single price.
+  if (priceTo !== undefined && priceTo > price) {
+    return {
+      "@type": "AggregateOffer",
+      lowPrice: price,
+      highPrice: priceTo,
+      priceCurrency: "CAD",
+      availability: "https://schema.org/InStock",
+    };
+  }
   return {
     "@type": "Offer",
     price,
@@ -190,6 +202,7 @@ type ServiceItem = {
   name: string;
   description: string;
   price: number;
+  priceTo?: number; // optional upper bound → AggregateOffer price range
   path?: string; // localized path, e.g. "/services/manucure"
 };
 
@@ -209,7 +222,7 @@ export function servicesGraph(lang: Locale, items: readonly ServiceItem[]) {
       ...(item.path ? { url: `${site.url}/${lang}${item.path}` } : {}),
       provider: { "@id": BUSINESS_ID },
       areaServed: site.contact.address.city,
-      offers: offer(item.price),
+      offers: offer(item.price, item.priceTo),
     })),
   };
 }
@@ -217,7 +230,7 @@ export function servicesGraph(lang: Locale, items: readonly ServiceItem[]) {
 /** Single Service node + Offer for an individual service page. */
 export function serviceGraph(
   lang: Locale,
-  { name, description, price, path }: ServiceItem,
+  { name, description, price, priceTo, path }: ServiceItem,
 ) {
   return {
     "@context": "https://schema.org",
@@ -227,7 +240,7 @@ export function serviceGraph(
     ...(path ? { url: `${site.url}/${lang}${path}` } : {}),
     provider: { "@id": BUSINESS_ID },
     areaServed: site.contact.address.city,
-    offers: offer(price),
+    offers: offer(price, priceTo),
   };
 }
 

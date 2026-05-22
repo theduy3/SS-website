@@ -14,6 +14,9 @@ export type Service = {
   id: ServiceId;
   slug: Record<Locale, string>;
   price: number; // CAD — single source of truth (feeds Offer schema + display)
+  // Upper bound for the AggregateOffer price range (base + top add-on).
+  // On-page price shows the base ("from"); schema emits low/high.
+  priceTo: number;
   // true once a real photo exists at public/images/services/<id>.jpg.
   // false → page/card renders the styled placeholder. Flip to true on drop-in.
   photo: boolean;
@@ -24,12 +27,14 @@ export const services: readonly Service[] = [
     id: "manicure",
     slug: { fr: "manucure", en: "manicure", es: "manicura", ar: "manikir" },
     price: 50,
+    priceTo: 100,
     photo: true,
   },
   {
     id: "pedicure",
     slug: { fr: "pedicure", en: "pedicure", es: "pedicura", ar: "badikir" },
     price: 40,
+    priceTo: 90,
     photo: true,
   },
   {
@@ -41,6 +46,7 @@ export const services: readonly Service[] = [
       ar: "rumoosh",
     },
     price: 70,
+    priceTo: 120,
     photo: true,
   },
   {
@@ -52,6 +58,7 @@ export const services: readonly Service[] = [
       ar: "izalat-shaar",
     },
     price: 15,
+    priceTo: 65,
     photo: true,
   },
 ] as const;

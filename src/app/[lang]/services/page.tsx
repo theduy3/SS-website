@@ -34,6 +34,7 @@ export default async function ServicesPage({ params }: LangParams) {
     name: dict.serviceDetails[s.id].title,
     description: dict.serviceDetails[s.id].metaDescription,
     price: s.price,
+    priceTo: s.priceTo,
     path: servicePath(s, lang),
   }));
 
