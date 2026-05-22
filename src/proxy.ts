@@ -32,6 +32,18 @@ async function hasValidSession(request: NextRequest): Promise<boolean> {
 export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
+  // 0. Canonical host: 301 www → bare domain. Keeps SEO signals, the admin
+  // session cookie, and analytics on a single host (cookies are host-scoped,
+  // so a www/non-www split would silently log admins out across hosts).
+  const host = request.headers.get("host") ?? "";
+  if (host.startsWith("www.")) {
+    const url = request.nextUrl.clone();
+    url.protocol = "https:";
+    url.host = host.slice(4);
+    url.port = "";
+    return NextResponse.redirect(url, 301);
+  }
+
   // 1. Admin surface — auth gate, no locale prefixing.
   if (pathname.startsWith("/admin") || pathname.startsWith("/api/admin")) {
     if (LOGIN_PATHS.has(pathname)) return NextResponse.next();
