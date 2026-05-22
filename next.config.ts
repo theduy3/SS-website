@@ -22,6 +22,8 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
+  // Emit a self-contained .next/standalone/server.js for the Docker runtime stage.
+  output: "standalone",
   // Pin the workspace root to this project. Without it, Turbopack infers the
   // root from the nearest lockfile and can land on ~/ (a stray package-lock.json),
   // then watches the whole home dir — unrelated writes there trigger phantom HMR
