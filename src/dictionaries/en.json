@@ -320,7 +320,9 @@
       { "q": "What payment methods do you accept?", "a": "We accept debit, major credit cards, and cash." },
       { "q": "What languages do you speak?", "a": "Our team serves you in French, English, Spanish and Arabic." },
       { "q": "Do you sell gift cards?", "a": "Yes — gift cards make a great present and can be purchased in-salon. Ask our front desk." },
-      { "q": "How long do gel nails and lash extensions last?", "a": "Gel manicures typically last 2–3 weeks; lash extensions last 3–4 weeks with proper care. We'll share aftercare tips at your visit." }
+      { "q": "How long do gel nails and lash extensions last?", "a": "Gel manicures typically last 2–3 weeks; lash extensions last 3–4 weeks with proper care. We'll share aftercare tips at your visit." },
+      { "q": "Do you guarantee your work?", "a": "Yes. We back our work with a 7-day guarantee. If something lifts, chips, or isn't done to standard, contact us within 7 days of your appointment and we'll fix the same shape, length, and design at no additional cost. Changes to design or color aren't included. See our Terms & Conditions for full details." },
+      { "q": "How do you keep your tools and stations clean?", "a": "We follow strict hygiene protocols. Tools are thoroughly cleaned and disinfected after every client and sterilized in a medical-grade autoclave that eliminates bacteria, viruses, and fungi. Disposable items are single-use, and every workstation is sanitized between appointments." }
     ]
   },
   "reviewsPage": {
@@ -464,7 +466,7 @@
           ]
         },
         {
-          "heading": "6. Satisfaction, fixes and refunds",
+          "heading": "6. Satisfaction, 7-day guarantee and refunds",
           "blocks": [
             {
               "kind": "p",
@@ -473,13 +475,41 @@
             },
             {
               "kind": "p",
-              "text": "If you notice a technical issue with your service after you leave, contact us within 3 days of your appointment so that we can assess the situation and, where appropriate, provide a complimentary fix.",
+              "text": "If you notice a technical issue with your service after you leave, contact us within 7 days of your appointment so that we can assess the situation and, where appropriate, provide a complimentary fix.",
               "items": []
             },
             {
               "kind": "p",
               "text": "Fixes cover technical defects related to the work performed (e.g. gel lifting, a missed spot, an uneven shape). They do not cover changes of preference, damage from daily life or poor at-home care, normal wear, allergic reactions to products used at home, or services performed by another salon.",
               "items": []
+            },
+            {
+              "kind": "h3",
+              "text": "What's covered",
+              "items": []
+            },
+            {
+              "kind": "ul",
+              "text": "",
+              "items": [
+                "Lifting, chipping, or product-related issues",
+                "Fixes for the same shape, length, and design",
+                "Adjustments requested before curing under the lamp"
+              ]
+            },
+            {
+              "kind": "h3",
+              "text": "How it works",
+              "items": []
+            },
+            {
+              "kind": "ul",
+              "text": "",
+              "items": [
+                "Contact us within 7 days of your appointment",
+                "Corrections are scheduled based on availability",
+                "Changes in design or color are not included"
+              ]
             },
             {
               "kind": "p",
@@ -506,8 +536,15 @@
               "text": "",
               "items": [
                 "All our tools, equipment and surfaces are disinfected according to public health and industry standards.",
-                "Single-use instruments (files, buffer blocks, etc.) are discarded after each client."
+                "Single-use instruments (files, buffer blocks, etc.) are discarded after each client.",
+                "Reusable metal instruments are sterilized in a medical-grade autoclave, which eliminates bacteria, viruses and fungi.",
+                "Workstations are sanitized between every appointment."
               ]
+            },
+            {
+              "kind": "p",
+              "text": "Proper sterilization and technique are essential for both your safety and the long-term health of your nails. Our goal is to provide a clean, controlled environment you can trust.",
+              "items": []
             },
             {
               "kind": "p",
@@ -750,7 +787,7 @@
           ]
         }
       ],
-      "updated": "Last updated: May 8, 2026 · Version 1.0 — Sans Souci Ongles & Spa · CF Carrefour Laval, Laval (Quebec) · (450) 505-6450 · info@onglessanssouci.com"
+      "updated": "Last updated: May 21, 2026 · Version 1.1 — Sans Souci Ongles & Spa · CF Carrefour Laval, Laval (Quebec) · (450) 505-6450 · info@onglessanssouci.com"
     },
     "privacy": {
       "heading": "Privacy Policy",

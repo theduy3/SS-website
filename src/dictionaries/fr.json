@@ -320,7 +320,9 @@
       { "q": "Quels modes de paiement acceptez-vous ?", "a": "Nous acceptons la carte débit, les principales cartes de crédit et l'argent comptant." },
       { "q": "Quelles langues parlez-vous ?", "a": "Notre équipe vous sert en français, anglais, espagnol et arabe." },
       { "q": "Vendez-vous des cartes-cadeaux ?", "a": "Oui — les cartes-cadeaux sont un beau cadeau et s'achètent en salon. Demandez à la réception." },
-      { "q": "Combien de temps durent les ongles en gel et les extensions de cils ?", "a": "Une manucure en gel dure généralement 2 à 3 semaines; les extensions de cils, 3 à 4 semaines avec de bons soins. Nous vous donnerons des conseils d'entretien lors de votre visite." }
+      { "q": "Combien de temps durent les ongles en gel et les extensions de cils ?", "a": "Une manucure en gel dure généralement 2 à 3 semaines; les extensions de cils, 3 à 4 semaines avec de bons soins. Nous vous donnerons des conseils d'entretien lors de votre visite." },
+      { "q": "Offrez-vous une garantie sur votre travail ?", "a": "Oui. Nous garantissons notre travail pendant 7 jours. Si un service se décolle, s'écaille ou n'est pas exécuté selon nos normes, communiquez avec nous dans les 7 jours suivant votre rendez-vous et nous le corrigerons pour la même forme, la même longueur et le même motif, sans frais supplémentaires. Les changements de motif ou de couleur ne sont pas inclus. Consultez nos Conditions générales pour tous les détails." },
+      { "q": "Comment gardez-vous vos outils et vos postes propres ?", "a": "Nous suivons des protocoles d'hygiène rigoureux. Les outils sont soigneusement nettoyés et désinfectés après chaque cliente, puis stérilisés dans un autoclave de qualité médicale qui élimine les bactéries, les virus et les champignons. Les articles jetables sont à usage unique et chaque poste de travail est assaini entre les rendez-vous." }
     ]
   },
   "reviewsPage": {
@@ -464,7 +466,7 @@
           ]
         },
         {
-          "heading": "6. Satisfaction, retouches et remboursements",
+          "heading": "6. Satisfaction, garantie de 7 jours et remboursements",
           "blocks": [
             {
               "kind": "p",
@@ -473,13 +475,41 @@
             },
             {
               "kind": "p",
-              "text": "Si vous constatez un problème technique avec votre service après votre départ, communiquez avec nous dans les 3 jours suivant votre rendez-vous afin que nous puissions évaluer la situation et, s'il y a lieu, effectuer une retouche sans frais.",
+              "text": "Si vous constatez un problème technique avec votre service après votre départ, communiquez avec nous dans les 7 jours suivant votre rendez-vous afin que nous puissions évaluer la situation et, s'il y a lieu, effectuer une retouche sans frais.",
               "items": []
             },
             {
               "kind": "p",
               "text": "Les retouches couvrent les défauts techniques liés au travail effectué (par ex. soulèvement du gel, oubli, forme déséquilibrée). Elles ne couvrent pas les changements de préférence, les dommages liés à la vie quotidienne ou à un mauvais entretien à la maison, l'usure normale, les réactions allergiques à des produits utilisés à la maison, ou les services effectués par un autre salon.",
               "items": []
+            },
+            {
+              "kind": "h3",
+              "text": "Ce qui est couvert",
+              "items": []
+            },
+            {
+              "kind": "ul",
+              "text": "",
+              "items": [
+                "Décollement, écaillage ou problèmes liés au produit",
+                "Corrections pour la même forme, la même longueur et le même motif",
+                "Ajustements demandés avant la polymérisation sous la lampe"
+              ]
+            },
+            {
+              "kind": "h3",
+              "text": "Comment ça fonctionne",
+              "items": []
+            },
+            {
+              "kind": "ul",
+              "text": "",
+              "items": [
+                "Communiquez avec nous dans les 7 jours suivant votre rendez-vous",
+                "Les corrections sont planifiées selon les disponibilités",
+                "Les changements de motif ou de couleur ne sont pas inclus"
+              ]
             },
             {
               "kind": "p",
@@ -506,8 +536,15 @@
               "text": "",
               "items": [
                 "Tous nos outils, équipements et surfaces sont désinfectés selon les normes de santé publique et les standards de l'industrie.",
-                "Les instruments à usage unique (limes, blocs polissoirs, etc.) sont jetés après chaque cliente."
+                "Les instruments à usage unique (limes, blocs polissoirs, etc.) sont jetés après chaque cliente.",
+                "Les instruments métalliques réutilisables sont stérilisés dans un autoclave de qualité médicale, qui élimine les bactéries, les virus et les champignons.",
+                "Les postes de travail sont assainis entre chaque rendez-vous."
               ]
+            },
+            {
+              "kind": "p",
+              "text": "Une stérilisation et une technique adéquates sont essentielles tant pour votre sécurité que pour la santé de vos ongles à long terme. Notre objectif est de vous offrir un environnement propre et contrôlé en qui vous pouvez avoir confiance.",
+              "items": []
             },
             {
               "kind": "p",
@@ -750,7 +787,7 @@
           ]
         }
       ],
-      "updated": "Dernière mise à jour : le 8 mai 2026 · Version 1.0 — Sans Souci Ongles & Spa · CF Carrefour Laval, Laval (Québec) · (450) 505-6450 · info@onglessanssouci.com"
+      "updated": "Dernière mise à jour : le 21 mai 2026 · Version 1.1 — Sans Souci Ongles & Spa · CF Carrefour Laval, Laval (Québec) · (450) 505-6450 · info@onglessanssouci.com"
     },
     "privacy": {
       "heading": "Politique de confidentialité",

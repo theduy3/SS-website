@@ -320,7 +320,9 @@
       { "q": "¿Qué métodos de pago aceptan?", "a": "Aceptamos débito, principales tarjetas de crédito y efectivo." },
       { "q": "¿Qué idiomas hablan?", "a": "Nuestro equipo te atiende en francés, inglés, español y árabe." },
       { "q": "¿Venden tarjetas de regalo?", "a": "Sí — las tarjetas de regalo son un excelente presente y se pueden comprar en el salón. Pregunta en la recepción." },
-      { "q": "¿Cuánto duran las uñas de gel y las extensiones de pestañas?", "a": "Las manicuras de gel duran típicamente 2–3 semanas; las extensiones de pestañas, 3–4 semanas con el cuidado adecuado. Te daremos consejos de mantenimiento en tu visita." }
+      { "q": "¿Cuánto duran las uñas de gel y las extensiones de pestañas?", "a": "Las manicuras de gel duran típicamente 2–3 semanas; las extensiones de pestañas, 3–4 semanas con el cuidado adecuado. Te daremos consejos de mantenimiento en tu visita." },
+      { "q": "¿Ofrecen garantía sobre su trabajo?", "a": "Sí. Respaldamos nuestro trabajo con una garantía de 7 días. Si algo se desprende, se astilla o no se realiza según nuestros estándares, contáctanos dentro de los 7 días posteriores a tu cita y lo corregiremos con la misma forma, el mismo largo y el mismo diseño, sin costo adicional. Los cambios de diseño o color no están incluidos. Consulta nuestros Términos y Condiciones para más detalles." },
+      { "q": "¿Cómo mantienen limpias sus herramientas y estaciones?", "a": "Seguimos estrictos protocolos de higiene. Las herramientas se limpian y desinfectan a fondo después de cada cliente y se esterilizan en un autoclave de grado médico que elimina bacterias, virus y hongos. Los artículos desechables son de un solo uso y cada estación de trabajo se desinfecta entre citas." }
     ]
   },
   "reviewsPage": {
@@ -464,7 +466,7 @@
           ]
         },
         {
-          "heading": "6. Satisfacción, retoques y reembolsos",
+          "heading": "6. Satisfacción, garantía de 7 días y reembolsos",
           "blocks": [
             {
               "kind": "p",
@@ -473,13 +475,41 @@
             },
             {
               "kind": "p",
-              "text": "Si nota algún problema técnico con su servicio después de salir, contáctenos dentro de los 3 días siguientes a su cita para que podamos evaluar la situación y, si corresponde, realizar un retoque sin costo.",
+              "text": "Si nota algún problema técnico con su servicio después de salir, contáctenos dentro de los 7 días siguientes a su cita para que podamos evaluar la situación y, si corresponde, realizar un retoque sin costo.",
               "items": []
             },
             {
               "kind": "p",
               "text": "Los retoques cubren defectos técnicos relacionados con el trabajo realizado (por ej., levantamiento del gel, zona olvidada, forma desigual). No cubren cambios de preferencia, daños por el uso diario o el cuidado inadecuado en casa, el desgaste normal, reacciones alérgicas a productos usados en casa, ni servicios realizados en otro salón.",
               "items": []
+            },
+            {
+              "kind": "h3",
+              "text": "Qué cubre",
+              "items": []
+            },
+            {
+              "kind": "ul",
+              "text": "",
+              "items": [
+                "Desprendimiento, astillado o problemas relacionados con el producto",
+                "Correcciones de la misma forma, el mismo largo y el mismo diseño",
+                "Ajustes solicitados antes del curado bajo la lámpara"
+              ]
+            },
+            {
+              "kind": "h3",
+              "text": "Cómo funciona",
+              "items": []
+            },
+            {
+              "kind": "ul",
+              "text": "",
+              "items": [
+                "Contáctanos dentro de los 7 días posteriores a tu cita",
+                "Las correcciones se programan según la disponibilidad",
+                "Los cambios de diseño o color no están incluidos"
+              ]
             },
             {
               "kind": "p",
@@ -506,8 +536,15 @@
               "text": "",
               "items": [
                 "Todas nuestras herramientas, equipos y superficies se desinfectan según las normas de salud pública y los estándares de la industria.",
-                "Los instrumentos de un solo uso (limas, bloques pulidores, etc.) se desechan después de cada cliente."
+                "Los instrumentos de un solo uso (limas, bloques pulidores, etc.) se desechan después de cada cliente.",
+                "Los instrumentos metálicos reutilizables se esterilizan en un autoclave de grado médico, que elimina bacterias, virus y hongos.",
+                "Las estaciones de trabajo se desinfectan entre cada cita."
               ]
+            },
+            {
+              "kind": "p",
+              "text": "Una esterilización y una técnica adecuadas son esenciales tanto para tu seguridad como para la salud de tus uñas a largo plazo. Nuestro objetivo es ofrecerte un entorno limpio y controlado en el que puedas confiar.",
+              "items": []
             },
             {
               "kind": "p",
@@ -750,7 +787,7 @@
           ]
         }
       ],
-      "updated": "Última actualización: 8 de mayo de 2026 · Versión 1.0 — Sans Souci Ongles & Spa · CF Carrefour Laval, Laval (Québec) · (450) 505-6450 · info@onglessanssouci.com"
+      "updated": "Última actualización: 21 de mayo de 2026 · Versión 1.1 — Sans Souci Ongles & Spa · CF Carrefour Laval, Laval (Québec) · (450) 505-6450 · info@onglessanssouci.com"
     },
     "privacy": {
       "heading": "Política de privacidad",
