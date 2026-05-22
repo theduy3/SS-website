@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { locales } from "@/lib/i18n";
 import { site } from "@/lib/site";
 import { services, servicePath } from "@/lib/services";
+import { comparisons, comparisonPath } from "@/lib/comparisons";
 
 // Bilingual sitemap. Nav routes share a path across locales; service pages use
 // LOCALIZED slugs, so each service's alternates point at its per-locale path.
@@ -38,6 +39,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
   );
 
+  const comparisonEntries: MetadataRoute.Sitemap = locales.flatMap((locale) =>
+    comparisons.map((cmp) => ({
+      url: `${site.url}/${locale}${comparisonPath(cmp, locale)}`,
+      lastModified,
+      changeFrequency: "monthly" as const,
+      priority: 0.6,
+      alternates: {
+        languages: Object.fromEntries(
+          locales.map((l) => [l, `${site.url}/${l}${comparisonPath(cmp, l)}`]),
+        ),
+      },
+    })),
+  );
+
   const secondaryEntries: MetadataRoute.Sitemap = locales.flatMap((locale) =>
     site.secondaryNav.map((item) => ({
       url: `${site.url}/${locale}${toPath(item.href)}`,
@@ -52,5 +67,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
   );
 
-  return [...navEntries, ...secondaryEntries, ...serviceEntries];
+  return [
+    ...navEntries,
+    ...secondaryEntries,
+    ...serviceEntries,
+    ...comparisonEntries,
+  ];
 }

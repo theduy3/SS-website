@@ -950,5 +950,227 @@
       ],
       "updated": "Dernière mise à jour : le 8 mai 2026 — Sans Souci Ongles & Spa · CF Carrefour Laval, Laval (Québec) · (450) 505-6450 · info@onglessanssouci.com"
     }
+  },
+  "comparisons": {
+    "gel-vs-regular": {
+      "title": "Gel vs vernis régulier : lequel choisir à Laval ?",
+      "metaTitle": "Gel vs vernis régulier : lequel dure ? · Laval",
+      "metaDescription": "Gel ou vernis classique ? Découvrez les différences de tenue, de brillance et de pose chez Sans Souci Ongles & Spa au Carrefour Laval.",
+      "intro": [
+        "Choisir entre le gel et le vernis régulier est souvent la première question que l'on se pose avant une manucure. Les deux options ont leurs avantages selon votre mode de vie, la fréquence de vos rendez-vous et l'effet souhaité.",
+        "Chez Sans Souci Ongles & Spa, au cœur du CF Carrefour Laval, nos techniciennes expérimentées vous guident vers le choix idéal et réalisent les deux types de pose depuis plus de 20 ans."
+      ],
+      "columns": [
+        "Critère",
+        "Gel / Shellac",
+        "Vernis régulier"
+      ],
+      "rows": [
+        {
+          "label": "Tenue / longévité",
+          "cells": [
+            "2 à 3 semaines",
+            "5 à 7 jours"
+          ]
+        },
+        {
+          "label": "Temps de séchage",
+          "cells": [
+            "Instantané (lampe UV/LED)",
+            "15 à 30 minutes"
+          ]
+        },
+        {
+          "label": "Retrait",
+          "cells": [
+            "Dissolution à l'acétone (15 min)",
+            "Dissolvant classique"
+          ]
+        },
+        {
+          "label": "Brillance / fini",
+          "cells": [
+            "Haute brillance durable",
+            "Brillance initiale, ternit rapidement"
+          ]
+        },
+        {
+          "label": "Idéal pour",
+          "cells": [
+            "Ongles actifs, occasions spéciales",
+            "Changements fréquents de couleur"
+          ]
+        }
+      ],
+      "verdict": "Si vous cherchez une manucure qui résiste aux tâches quotidiennes et qui garde son éclat pendant plusieurs semaines, le gel ou shellac est le choix privilégié. Si vous aimez changer de couleur souvent et préférez un retrait rapide à la maison, le vernis régulier reste une excellente option. Nos techniciennes chez Sans Souci Ongles & Spa sauront vous recommander la meilleure formule selon l'état de vos ongles et votre style de vie.",
+      "faq": [
+        {
+          "q": "Le gel abîme-t-il les ongles ?",
+          "a": "Une pose et un retrait réalisés correctement par une professionnelle minimisent les dommages. Nous prenons soin de vos ongles naturels à chaque étape."
+        },
+        {
+          "q": "Combien de temps dure une manucure gel chez Sans Souci ?",
+          "a": "En moyenne 2 à 3 semaines selon la repousse et vos activités quotidiennes."
+        },
+        {
+          "q": "Puis-je retirer le gel moi-même à la maison ?",
+          "a": "Il est préférable de le faire retirer en salon pour éviter d'endommager la plaque de l'ongle. Nous offrons le service de retrait."
+        },
+        {
+          "q": "Offrez-vous le vernis régulier et le gel au même prix ?",
+          "a": "Non, le gel représente une technique plus élaborée ; nos prix reflètent la durée de la pose et les produits utilisés. Contactez-nous au (450) 505-6450 pour les tarifs actuels."
+        }
+      ]
+    },
+    "lash-styles": {
+      "title": "Extensions de cils 2D, 3D ou hybrides : le guide Laval",
+      "metaTitle": "Extensions de cils 2D vs 3D vs Hybride · Laval",
+      "metaDescription": "Comparez les styles d'extensions de cils 2D, 3D et hybride chez Sans Souci Ongles & Spa au Carrefour Laval pour trouver le look parfait.",
+      "intro": [
+        "Extensions classiques, volume ou hybride : chaque style d'extensions de cils offre un rendu différent, du plus naturel au plus spectaculaire. Avant votre rendez-vous, il est utile de comprendre les nuances entre ces techniques pour choisir celle qui correspond à votre regard et à votre routine beauté.",
+        "Chez Sans Souci Ongles & Spa au CF Carrefour Laval, nos spécialistes maîtrisent les trois styles — 2D, 3D et hybride — et personnalisent chaque pose selon la forme de vos yeux et l'effet désiré."
+      ],
+      "columns": [
+        "Critère",
+        "2D (Classique)",
+        "3D (Volume)",
+        "Hybride"
+      ],
+      "rows": [
+        {
+          "label": "Volume / dramatique",
+          "cells": [
+            "Subtil, naturel",
+            "Intense, plein",
+            "Modéré, mixte"
+          ]
+        },
+        {
+          "label": "Look naturel",
+          "cells": [
+            "Très naturel",
+            "Glamour prononcé",
+            "Entre les deux"
+          ]
+        },
+        {
+          "label": "Fréquence de remplissage",
+          "cells": [
+            "2 à 3 semaines",
+            "2 à 3 semaines",
+            "2 à 3 semaines"
+          ]
+        },
+        {
+          "label": "Temps de pose",
+          "cells": [
+            "90 à 120 min",
+            "120 à 150 min",
+            "120 à 150 min"
+          ]
+        },
+        {
+          "label": "Idéal pour",
+          "cells": [
+            "Regard discret, quotidien",
+            "Soirées, occasions spéciales",
+            "Polyvalence jour/soir"
+          ]
+        }
+      ],
+      "verdict": "Le style 2D convient parfaitement à celles qui souhaitent définir leur regard sans effet dramatique, idéal pour une utilisation quotidienne. Le 3D crée un volume impressionnant pour les grandes occasions ou pour celles qui adorent un regard intense. L'hybride offre le meilleur des deux mondes. Toutes nos poses d'extensions sont réalisées par des techniciennes certifiées chez Sans Souci Ongles & Spa, avec des matériaux de haute qualité pour un résultat durable et sécuritaire.",
+      "faq": [
+        {
+          "q": "Quelle est la différence entre 2D et volume 3D ?",
+          "a": "Le 2D consiste à poser un ou deux cils synthétiques sur chaque cil naturel, tandis que le 3D utilise des bouquets de trois cils ultra-fins pour plus de volume et de densité."
+        },
+        {
+          "q": "Les extensions de cils endommagent-elles les cils naturels ?",
+          "a": "Lorsqu'elles sont posées correctement et entretenues adéquatement, les extensions ne nuisent pas aux cils naturels. Nos techniciennes suivent des protocoles stricts."
+        },
+        {
+          "q": "Combien de temps durent les extensions avant le remplissage ?",
+          "a": "La majorité de nos clientes reviennent pour un remplissage toutes les 2 à 3 semaines, selon le cycle de croissance de leurs cils naturels."
+        },
+        {
+          "q": "Puis-je me maquiller avec des extensions de cils ?",
+          "a": "Oui, mais évitez le mascara waterproof et les produits huileux autour des yeux, car ils peuvent détériorer la colle des extensions."
+        }
+      ]
+    },
+    "wax-vs-sugar": {
+      "title": "Épilation à la cire vs sugaring : différences à connaître",
+      "metaTitle": "Épilation cire vs sucre : quelle méthode ? · Laval",
+      "metaDescription": "Cire ou sugaring ? Comparez les deux méthodes d'épilation et découvrez le service professionnel à la cire chez Sans Souci au Carrefour Laval.",
+      "intro": [
+        "L'épilation à la cire et le sugaring sont deux méthodes populaires pour éliminer les poils indésirables, mais elles diffèrent par leur composition, leur technique d'application et leurs effets sur la peau. Comprendre ces différences vous aide à faire un choix éclairé.",
+        "Chez Sans Souci Ongles & Spa au CF Carrefour Laval, nous proposons l'épilation professionnelle à la cire, réalisée par des techniciennes expérimentées. Notre service allie efficacité, précision et confort pour tous types de peau."
+      ],
+      "columns": [
+        "Critère",
+        "Épilation à la cire",
+        "Sugaring (sucre)"
+      ],
+      "rows": [
+        {
+          "label": "Longévité des résultats",
+          "cells": [
+            "3 à 6 semaines",
+            "3 à 6 semaines"
+          ]
+        },
+        {
+          "label": "Repousse",
+          "cells": [
+            "Poils plus fins avec le temps",
+            "Poils plus fins avec le temps"
+          ]
+        },
+        {
+          "label": "Peaux sensibles",
+          "cells": [
+            "Cire douce disponible",
+            "Généralement doux, naturel"
+          ]
+        },
+        {
+          "label": "Zones traitées",
+          "cells": [
+            "Visage, jambes, aisselles, maillot, etc.",
+            "Visage, jambes, aisselles, maillot, etc."
+          ]
+        },
+        {
+          "label": "Ce que nous offrons",
+          "cells": [
+            "Oui — service disponible",
+            "Non offert chez nous"
+          ]
+        }
+      ],
+      "verdict": "La cire et le sugaring donnent des résultats comparables en termes de longévité et d'efficacité. Le sugaring, à base de sucre et d'eau, est apprécié pour son aspect naturel et sa douceur sur les peaux sensibles. La cire professionnelle, quant à elle, est une méthode éprouvée depuis des décennies, très efficace sur toutes les zones du corps. Chez Sans Souci Ongles & Spa, nous offrons l'épilation professionnelle à la cire, réalisée avec des produits de qualité par des techniciennes expérimentées. Si vous souhaitez en savoir plus ou prendre rendez-vous, appelez-nous au (450) 505-6450.",
+      "faq": [
+        {
+          "q": "Quelle est la principale différence entre la cire et le sugaring ?",
+          "a": "La cire est composée de résines et peut être chaude ou froide, tandis que le sugaring utilise un mélange de sucre, d'eau et de jus de citron appliqué à température ambiante. Les deux arrachent le poil à la racine."
+        },
+        {
+          "q": "L'épilation à la cire est-elle douloureuse ?",
+          "a": "Un léger inconfort est normal, mais nos techniciennes travaillent rapidement et utilisent des techniques qui minimisent la douleur. La peau s'habitue avec les séances régulières."
+        },
+        {
+          "q": "Combien de temps les poils doivent-ils pousser avant l'épilation ?",
+          "a": "En général, les poils doivent mesurer entre 3 et 5 mm (environ 2 semaines de repousse) pour une épilation à la cire efficace."
+        },
+        {
+          "q": "Proposez-vous le sugaring chez Sans Souci ?",
+          "a": "Non, nous offrons uniquement l'épilation à la cire professionnelle. C'est une méthode efficace et éprouvée que nos techniciennes maîtrisent parfaitement depuis plus de 20 ans."
+        }
+      ]
+    }
+  },
+  "comparisonLabels": {
+    "verdict": "Notre recommandation",
+    "related": "Découvrez notre service :"
   }
 }
