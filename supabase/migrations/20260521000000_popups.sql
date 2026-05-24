@@ -17,6 +17,13 @@ create policy "popups_public_read"
   to anon, authenticated
   using (true);
 
+-- Table-level privilege the RLS policy depends on. Without this GRANT, anon and
+-- authenticated hit "permission denied for table popups" — Postgres checks table
+-- privileges before RLS, so the policy alone is not enough. (Supabase's hosted
+-- default privileges add this automatically; a migration applied directly as the
+-- postgres superuser does not, so we grant it explicitly.)
+grant select on public.popups to anon, authenticated;
+
 -- Public bucket for popup images.
 insert into storage.buckets (id, name, public)
 values ('popup-images', 'popup-images', true)
