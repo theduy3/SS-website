@@ -49,10 +49,18 @@ export function PopupHost({ locale }: { locale: Locale }) {
     let alive = true;
     fetch("/api/popups")
       .then((r) => r.json())
-      .then((d: { popup: Popup | null }) => {
-        if (!alive || !d.popup || !shouldShow(d.popup)) return;
-        setPopup(d.popup);
-        markSeen(d.popup);
+      .then((d: { popups?: Popup[]; popup?: Popup | null }) => {
+        if (!alive) return;
+        // Server sends the active popups priority-sorted; show the first one
+        // this visitor is still eligible to see. The frequency/seen check lives
+        // here (not server-side) because it reads local/session storage — so a
+        // lower-priority "always" popup still shows when the top one was already
+        // dismissed. Falls back to the legacy single-popup field.
+        const candidates = d.popups ?? (d.popup ? [d.popup] : []);
+        const next = candidates.find(shouldShow);
+        if (!next) return;
+        setPopup(next);
+        markSeen(next);
       })
       .catch(() => {});
     return () => {
