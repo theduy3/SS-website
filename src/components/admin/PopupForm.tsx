@@ -69,8 +69,11 @@ export function PopupForm({
   const set = <K extends keyof Draft>(key: K, value: Draft[K]) =>
     setDraft({ ...draft, [key]: value });
 
-  const setLocalized = (key: "title" | "body" | "ctaLabel", loc: Locale, value: string) =>
-    setDraft({ ...draft, [key]: { ...draft[key], [loc]: value } });
+  const setLocalized = (
+    key: "title" | "body" | "ctaLabel",
+    loc: Locale,
+    value: string,
+  ) => setDraft({ ...draft, [key]: { ...draft[key], [loc]: value } });
 
   async function onPickImage(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
@@ -80,10 +83,17 @@ export function PopupForm({
     try {
       const form = new FormData();
       form.append("file", file);
-      const res = await fetch("/api/admin/upload", { method: "POST", body: form });
+      const res = await fetch("/api/admin/upload", {
+        method: "POST",
+        body: form,
+      });
       const data = await res.json();
-      if (res.ok && data.success) setDraft({ ...draft, imageUrl: data.data.url });
-      else setUploadError(data.error ?? "Upload failed");
+      if (res.ok && data.success)
+        setDraft({ ...draft, imageUrl: data.data.url });
+      else {
+        const base = data.error ?? "Upload failed";
+        setUploadError(data.detail ? `${base} (${data.detail})` : base);
+      }
     } catch {
       setUploadError("Upload network error");
     } finally {
@@ -131,7 +141,9 @@ export function PopupForm({
           />
         </label>
         <label className="flex flex-col gap-1 text-xs">
-          <span className="text-tan">Version (bump to re-show after edits)</span>
+          <span className="text-tan">
+            Version (bump to re-show after edits)
+          </span>
           <input
             type="number"
             className={inputClass}
@@ -162,7 +174,9 @@ export function PopupForm({
           <select
             className={inputClass}
             value={draft.frequency}
-            onChange={(e) => set("frequency", e.target.value as Draft["frequency"])}
+            onChange={(e) =>
+              set("frequency", e.target.value as Draft["frequency"])
+            }
           >
             <option value="once">Once (ever)</option>
             <option value="session">Once per session</option>
@@ -206,13 +220,24 @@ export function PopupForm({
               Image (optional)
             </legend>
             <div className="flex flex-col gap-2">
-              <input type="file" accept="image/*" onChange={onPickImage} className="text-xs" />
+              <input
+                type="file"
+                accept="image/*"
+                onChange={onPickImage}
+                className="text-xs"
+              />
               {uploading && <p className="text-xs text-tan">Uploading…</p>}
-              {uploadError && <p className="text-xs text-red-600">{uploadError}</p>}
+              {uploadError && (
+                <p className="text-xs text-red-600">{uploadError}</p>
+              )}
               {draft.imageUrl && (
                 <div className="flex items-center gap-3">
                   {/* eslint-disable-next-line @next/next/no-img-element -- preview only */}
-                  <img src={draft.imageUrl} alt="" className="h-16 w-16 rounded object-cover" />
+                  <img
+                    src={draft.imageUrl}
+                    alt=""
+                    className="h-16 w-16 rounded object-cover"
+                  />
                   <input
                     className={inputClass}
                     value={draft.imageAlt}
@@ -222,7 +247,9 @@ export function PopupForm({
                   <button
                     type="button"
                     className="text-xs text-red-600 underline"
-                    onClick={() => setDraft({ ...draft, imageUrl: "", imageAlt: "" })}
+                    onClick={() =>
+                      setDraft({ ...draft, imageUrl: "", imageAlt: "" })
+                    }
                   >
                     Remove
                   </button>
