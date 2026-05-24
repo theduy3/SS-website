@@ -39,12 +39,6 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "api-supabase-ss-website.onglessanssouci.com",
       },
-      // Old host kept temporarily during the sanssouci → ss-website API rename
-      // (expand/contract); safe to remove once the alias route is dropped.
-      {
-        protocol: "https",
-        hostname: "api-supabase-sanssouci.onglessanssouci.com",
-      },
     ],
   },
   async headers() {
