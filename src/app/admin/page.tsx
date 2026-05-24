@@ -8,12 +8,23 @@ import { PopupForm } from "@/components/admin/PopupForm";
 
 type ListResult = { ok: true; data: Popup[] } | { ok: false; error: string };
 
+// Compose the user-facing error with the store-layer `detail` the admin API now
+// returns on failure, so the owner sees the real cause (e.g. a Postgres message)
+// without needing server-log access.
+function errText(
+  data: { error?: string; detail?: string },
+  fallback: string,
+): string {
+  const base = data.error ?? fallback;
+  return data.detail ? `${base} (${data.detail})` : base;
+}
+
 async function fetchPopups(): Promise<ListResult> {
   try {
     const res = await fetch("/api/admin/popups");
     const data = await res.json();
     if (res.ok && data.success) return { ok: true, data: data.data };
-    return { ok: false, error: data.error ?? "Failed to load popups" };
+    return { ok: false, error: errText(data, "Failed to load popups") };
   } catch {
     return { ok: false, error: "Network error loading popups" };
   }
@@ -91,7 +102,7 @@ export default function AdminPage() {
         setDraft(null);
         await load();
       } else {
-        setError(data.error ?? "Save failed");
+        setError(errText(data, "Save failed"));
       }
     } catch {
       setError("Network error while saving");
@@ -109,7 +120,7 @@ export default function AdminPage() {
       });
       const data = await res.json();
       if (res.ok && data.success) await load();
-      else setError(data.error ?? "Delete failed");
+      else setError(errText(data, "Delete failed"));
     } catch {
       setError("Network error while deleting");
     }
