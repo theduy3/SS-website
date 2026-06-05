@@ -45,7 +45,7 @@ export function LocaleSwitch({ locale }: { locale: Locale }) {
         onClick={() => setOpen((v) => !v)}
         aria-haspopup="menu"
         aria-expanded={open}
-        aria-label="Change language"
+        aria-label={`${localeLabel[locale]} — change language`}
         className="flex items-center gap-1.5 font-semibold text-cream transition-colors hover:text-tan"
       >
         {localeLabel[locale]}

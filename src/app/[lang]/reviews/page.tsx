@@ -55,6 +55,7 @@ export default async function ReviewsPage({ params }: LangParams) {
       />
       <section className="mx-auto max-w-3xl px-6 py-20 text-center md:py-28">
         <div
+          role="img"
           className="flex flex-col items-center gap-2"
           aria-label={`${rating} / ${site.reviews.bestRating} — ${dict.reviews.basedOn} ${count} ${dict.reviews.reviewsWord}`}
         >
