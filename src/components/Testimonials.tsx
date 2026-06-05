@@ -28,7 +28,7 @@ export function Testimonials() {
             aria-hidden={i >= testimonials.length || undefined}
             className="mr-6 flex w-[300px] shrink-0 flex-col rounded-2xl bg-cream p-6 text-left shadow-sm"
           >
-            <div aria-label={`${t.rating} / 5`}>
+            <div role="img" aria-label={`${t.rating} / 5`}>
               <Stars count={t.rating} />
             </div>
             <p className="mt-4 flex-1 leading-relaxed text-mocha">

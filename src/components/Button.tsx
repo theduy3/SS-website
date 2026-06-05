@@ -15,6 +15,10 @@ type Props = {
   children: ReactNode;
   variant?: Variant;
   className?: string;
+  // Optional accessible name. Use when the visible label is generic ("Learn
+  // more") so the link still reads descriptively to assistive tech / search
+  // crawlers. Must CONTAIN the visible text to satisfy WCAG 2.5.3 (Label in Name).
+  ariaLabel?: string;
 };
 
 // Renders an external <a> for http(s) and tel:/mailto: links, and a prefetching
@@ -24,6 +28,7 @@ export function Button({
   children,
   variant = "solid",
   className = "",
+  ariaLabel,
 }: Props) {
   const classes = `inline-flex items-center justify-center rounded-pill px-8 py-3 text-sm font-semibold uppercase tracking-wide transition-colors ${variants[variant]} ${className}`;
 
@@ -35,6 +40,7 @@ export function Button({
       <a
         href={href}
         {...(isHttp ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+        aria-label={ariaLabel}
         className={classes}
       >
         {children}
@@ -43,7 +49,7 @@ export function Button({
   }
 
   return (
-    <Link href={href} className={classes}>
+    <Link href={href} aria-label={ariaLabel} className={classes}>
       {children}
     </Link>
   );

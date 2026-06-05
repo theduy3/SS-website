@@ -95,6 +95,7 @@ export default async function Home({ params }: LangParams) {
           </Reveal>
           <Reveal delay={0.1}>
             <div
+              role="img"
               className="mt-10 flex flex-col items-center gap-2"
               aria-label={`${ratingDisplay} / ${site.reviews.bestRating} — ${dict.reviews.basedOn} ${reviewCountDisplay} ${dict.reviews.reviewsWord}`}
             >
@@ -194,7 +195,12 @@ export default async function Home({ params }: LangParams) {
                   {dict.home.story}
                 </p>
                 <div className="mt-8">
-                  <Button href={`/${lang}/about`}>{dict.cta.learnMore}</Button>
+                  <Button
+                    href={`/${lang}/about`}
+                    ariaLabel={dict.cta.learnMoreAria}
+                  >
+                    {dict.cta.learnMore}
+                  </Button>
                 </div>
               </div>
             </Reveal>
