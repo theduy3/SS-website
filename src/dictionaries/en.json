@@ -1,7 +1,7 @@
 {
   "meta": {
     "homeTitle": "Sans Souci Ongles & Spa — Manicure & Pedicure in Laval",
-    "homeDescription": "Manicure, pedicure, lash extensions and waxing at CF Carrefour Laval. 20+ years of expertise and 1000+ gel colours. Book online or walk in — 4.9★ service.",
+    "homeDescription": "Manicure, pedicure, lash extensions and waxing at CF Carrefour Laval. 20+ years of expertise and 1000+ gel colours. Book online or walk in — 4.2★ service.",
     "servicesTitle": "Services — Sans Souci Ongles & Spa",
     "aboutTitle": "Why Choose Us — Sans Souci Ongles & Spa",
     "appointmentsTitle": "Book Today — Sans Souci Ongles & Spa",
@@ -9,7 +9,7 @@
     "faqTitle": "FAQ — Sans Souci Ongles & Spa",
     "faqDescription": "Hours, booking, services, parking and more — answers to common questions about our Laval nail salon.",
     "reviewsTitle": "Reviews — Sans Souci Ongles & Spa",
-    "reviewsDescription": "See why clients rate Sans Souci Ongles & Spa 4.9/5 — manicures, pedicures, lashes and waxing in Laval.",
+    "reviewsDescription": "See why clients rate Sans Souci Ongles & Spa 4.2/5 — manicures, pedicures, lashes and waxing in Laval.",
     "galleryTitle": "Gallery — Sans Souci Ongles & Spa",
     "galleryDescription": "Browse our work: manicures, pedicures, eyelash extensions and waxing at our Laval salon.",
     "servicesDescription": "Manicures, spa pedicures, lash extensions and waxing at Sans Souci Ongles & Spa, CF Carrefour Laval. Premium products, 1000+ gel colours and expert care.",
@@ -96,8 +96,8 @@
   },
   "reviews": {
     "eyebrow": "Our reviews",
-    "headlineLead": "We hate to brag, but…",
-    "headlineMain": "people really love what we do",
+    "headlineLead": "Thank you for all your support —",
+    "headlineMain": "your feedback helps us grow every day",
     "basedOn": "from",
     "reviewsWord": "Google reviews",
     "ctaPrompt": "Ready to give us a try?",
