@@ -1,7 +1,7 @@
 {
   "meta": {
     "homeTitle": "Sans Souci Ongles & Spa — Manicura y Pedicura en Laval",
-    "homeDescription": "Manicura, pedicura, extensiones de pestañas y depilación en CF Carrefour Laval. Más de 20 años de experiencia y 1000+ colores de gel. Reserva en línea — servicio 4,9★.",
+    "homeDescription": "Manicura, pedicura, extensiones de pestañas y depilación en CF Carrefour Laval. Más de 20 años de experiencia y 1000+ colores de gel. Reserva en línea — servicio 4,2★.",
     "servicesTitle": "Servicios — Sans Souci Ongles & Spa",
     "aboutTitle": "Por qué elegirnos — Sans Souci Ongles & Spa",
     "appointmentsTitle": "Reserva hoy — Sans Souci Ongles & Spa",
@@ -9,7 +9,7 @@
     "faqTitle": "Preguntas frecuentes — Sans Souci Ongles & Spa",
     "faqDescription": "Horarios, reservas, servicios, estacionamiento y más — respuestas a las preguntas más comunes sobre nuestro salón de uñas en Laval.",
     "reviewsTitle": "Opiniones — Sans Souci Ongles & Spa",
-    "reviewsDescription": "Descubre por qué nuestras clientas nos dan 4,9/5 — manicuras, pedicuras, pestañas y depilación en Laval.",
+    "reviewsDescription": "Descubre por qué nuestras clientas nos dan 4,2/5 — manicuras, pedicuras, pestañas y depilación en Laval.",
     "galleryTitle": "Galería — Sans Souci Ongles & Spa",
     "galleryDescription": "Explora nuestro trabajo: manicuras, pedicuras, extensiones de pestañas y depilación en nuestro salón de Laval.",
     "servicesDescription": "Manicuras, pedicuras spa, extensiones de pestañas y depilación en Sans Souci Ongles & Spa, CF Carrefour Laval. Productos premium y 1000+ colores de gel.",
@@ -96,8 +96,8 @@
   },
   "reviews": {
     "eyebrow": "Nuestras reseñas",
-    "headlineLead": "No nos gusta presumir, pero…",
-    "headlineMain": "a la gente le encanta lo que hacemos",
+    "headlineLead": "Gracias por todo su apoyo —",
+    "headlineMain": "sus comentarios nos hacen crecer cada día",
     "basedOn": "de",
     "reviewsWord": "reseñas de Google",
     "ctaPrompt": "¿Lista para probarnos?",

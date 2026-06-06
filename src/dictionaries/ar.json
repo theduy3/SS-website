@@ -1,7 +1,7 @@
 {
   "meta": {
     "homeTitle": "Sans Souci Ongles & Spa — مانيكير وباديكير في لافال",
-    "homeDescription": "مانيكير، باديكير، تركيب رموش وإزالة الشعر بالشمع في CF Carrefour Laval. أكثر من 20 عامًا من الخبرة وأكثر من 1000 لون جل. احجزي عبر الإنترنت — خدمة بتقييم 4.9★.",
+    "homeDescription": "مانيكير، باديكير، تركيب رموش وإزالة الشعر بالشمع في CF Carrefour Laval. أكثر من 20 عامًا من الخبرة وأكثر من 1000 لون جل. احجزي عبر الإنترنت — خدمة بتقييم 4.2★.",
     "servicesTitle": "خدماتنا — Sans Souci Ongles & Spa",
     "aboutTitle": "لماذا تختاريننا — Sans Souci Ongles & Spa",
     "appointmentsTitle": "احجزي اليوم — Sans Souci Ongles & Spa",
@@ -9,7 +9,7 @@
     "faqTitle": "الأسئلة الشائعة — Sans Souci Ongles & Spa",
     "faqDescription": "ساعات العمل، الحجز، الخدمات، مواقف السيارات والمزيد — إجابات عن الأسئلة الشائعة حول صالون الأظافر لدينا في لافال.",
     "reviewsTitle": "آراء العملاء — Sans Souci Ongles & Spa",
-    "reviewsDescription": "اكتشفي لماذا تمنحنا عميلاتنا 4.9/5 — مانيكير، باديكير، رموش وإزالة الشعر في لافال.",
+    "reviewsDescription": "اكتشفي لماذا تمنحنا عميلاتنا 4.2/5 — مانيكير، باديكير، رموش وإزالة الشعر في لافال.",
     "galleryTitle": "معرض الصور — Sans Souci Ongles & Spa",
     "galleryDescription": "تصفّحي أعمالنا: مانيكير، باديكير، تركيب رموش وإزالة الشعر في صالوننا بلافال.",
     "servicesDescription": "مانيكير، باديكير سبا، تركيب رموش وإزالة الشعر بالشمع في Sans Souci Ongles & Spa، CF Carrefour Laval. منتجات فاخرة وأكثر من 1000 لون جل.",
@@ -96,8 +96,8 @@
   },
   "reviews": {
     "eyebrow": "آراء عميلاتنا",
-    "headlineLead": "لا نحب التباهي، لكن…",
-    "headlineMain": "الناس يحبّون حقًا ما نقدّمه",
+    "headlineLead": "شكرًا لكم على دعمكم —",
+    "headlineMain": "آراؤكم تساعدنا على النمو يومًا بعد يوم",
     "basedOn": "من",
     "reviewsWord": "تقييمات Google",
     "ctaPrompt": "مستعدة لتجربتنا؟",

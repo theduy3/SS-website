@@ -1,7 +1,7 @@
 {
   "meta": {
     "homeTitle": "Sans Souci Ongles & Spa — Manucure & Pédicure à Laval",
-    "homeDescription": "Manucure, pédicure, extensions de cils et épilation au CF Carrefour Laval. Plus de 20 ans d'expertise, 1000+ couleurs de gel. Réservez en ligne — service 4,9★.",
+    "homeDescription": "Manucure, pédicure, extensions de cils et épilation au CF Carrefour Laval. Plus de 20 ans d'expertise, 1000+ couleurs de gel. Réservez en ligne — service 4,2★.",
     "servicesTitle": "Services — Sans Souci Ongles & Spa",
     "aboutTitle": "Pourquoi nous choisir — Sans Souci Ongles & Spa",
     "appointmentsTitle": "Prenez rendez-vous — Sans Souci Ongles & Spa",
@@ -9,7 +9,7 @@
     "faqTitle": "FAQ — Sans Souci Ongles & Spa",
     "faqDescription": "Heures, réservation, services, stationnement et plus — réponses aux questions fréquentes sur notre salon d'ongles à Laval.",
     "reviewsTitle": "Avis — Sans Souci Ongles & Spa",
-    "reviewsDescription": "Découvrez pourquoi nos clientes nous donnent 4,9/5 — manucures, pédicures, cils et épilation à Laval.",
+    "reviewsDescription": "Découvrez pourquoi nos clientes nous donnent 4,2/5 — manucures, pédicures, cils et épilation à Laval.",
     "galleryTitle": "Galerie — Sans Souci Ongles & Spa",
     "galleryDescription": "Parcourez notre travail : manucures, pédicures, extensions de cils et épilation à notre salon de Laval.",
     "servicesDescription": "Manucure, pédicure spa, extensions de cils et épilation chez Sans Souci Ongles & Spa, CF Carrefour Laval. Produits de qualité et 1000+ couleurs de gel.",
@@ -96,8 +96,8 @@
   },
   "reviews": {
     "eyebrow": "Nos avis",
-    "headlineLead": "Nous détestons nous vanter, mais…",
-    "headlineMain": "les gens aiment vraiment ce que nous faisons",
+    "headlineLead": "Merci pour votre soutien —",
+    "headlineMain": "vos commentaires nous font grandir chaque jour",
     "basedOn": "sur",
     "reviewsWord": "avis Google",
     "ctaPrompt": "Prêt(e) à nous essayer ?",
