@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { notFound } from "next/navigation";
 import { Archivo_Black, Space_Grotesk } from "next/font/google";
 import "../globals.css";
@@ -25,6 +25,12 @@ const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
   display: "swap",
 });
+
+// Browser-chrome theme colour for mobile. Matches manifest.ts theme_color and
+// the rendered header/footer (#141414) so the address bar blends with the page.
+export const viewport: Viewport = {
+  themeColor: "#141414",
+};
 
 // Pre-render both locales at build time so /en and /fr stay static.
 export function generateStaticParams() {
