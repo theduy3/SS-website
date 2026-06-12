@@ -3,7 +3,7 @@ task-name: queue-dark-theme
 worktree: queue-dark-theme
 speckit: false
 scope: small
-status: plan-approved
+status: shipped
 repo: /Users/theduy/Repo/SS-website
 created-at: 2026-06-12
 -->
