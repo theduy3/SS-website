@@ -4,20 +4,27 @@ import { useEffect, useRef, useState } from "react";
 
 type Status = "loading" | "ready" | "error";
 
-// Shared embed for the SalonX kiosk widgets (check-in, technician queue). The
-// widget script mounts its UI as the next sibling of its own <script data-store>
-// tag, so we inject that script imperatively into a ref'd container that carries
-// no JSX children — React never reconciles inside it, so it can't clobber the
-// widget's injected DOM. A sibling overlay, fully React-managed, shows a spinner
-// until the script loads and an error fallback (with retry) if it fails. Unlike
-// the booking widget, no data-lang is set — the kiosk pages are un-localized.
+// Shared embed for the SalonX kiosk widgets (check-in, technician queue) and the
+// client-account widget. The widget script mounts its UI as the next sibling of
+// its own <script> tag, so we inject that script imperatively into a ref'd
+// container that carries no JSX children — React never reconciles inside it, so
+// it can't clobber the widget's injected DOM. A sibling overlay, fully
+// React-managed, shows a spinner until the script loads and an error fallback
+// (with retry) if it fails. Unlike the booking widget, no data-lang is set — the
+// kiosk pages are un-localized. The attribute the widget reads to find its own
+// script varies: check-in/queue use "data-store" (the default); the
+// client-account widget uses "data-account-store" (pass storeAttr).
 export function WidgetEmbed({
   src,
   store,
+  storeAttr = "data-store",
   fallbackLabel,
 }: {
   src: string;
   store: string;
+  // Attribute the widget reads to locate its <script> and identify the store.
+  // Defaults to "data-store"; the client-account widget needs "data-account-store".
+  storeAttr?: string;
   // Names the widget in the error message, e.g. "check-in" or "queue".
   fallbackLabel: string;
 }) {
@@ -38,7 +45,7 @@ export function WidgetEmbed({
     const script = document.createElement("script");
     script.src = src;
     script.async = true;
-    script.setAttribute("data-store", store);
+    script.setAttribute(storeAttr, store);
     script.onload = () => {
       if (!cancelled) setStatus("ready");
     };
@@ -51,7 +58,7 @@ export function WidgetEmbed({
       cancelled = true;
       container.replaceChildren();
     };
-  }, [src, store, attempt]);
+  }, [src, store, storeAttr, attempt]);
 
   return (
     <div className="relative min-h-screen">
