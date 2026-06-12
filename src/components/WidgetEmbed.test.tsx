@@ -1,5 +1,5 @@
 import { describe, it, expect, afterEach } from "vitest";
-import { render, cleanup, screen } from "@testing-library/react";
+import { render, cleanup, screen, act } from "@testing-library/react";
 import { WidgetEmbed } from "./WidgetEmbed";
 
 afterEach(cleanup);
@@ -45,5 +45,67 @@ describe("WidgetEmbed storeAttr", () => {
       />,
     );
     expect(screen.getByRole("status")).toBeInTheDocument();
+  });
+});
+
+describe("WidgetEmbed theme", () => {
+  it("renders a dark loading overlay for theme=dark (T1)", () => {
+    render(
+      <WidgetEmbed
+        src="https://example.test/q.js"
+        store="SS"
+        fallbackLabel="queue"
+        theme="dark"
+      />,
+    );
+    const spinner = screen.getByRole("status");
+    expect(spinner.className).toContain("border-mocha");
+    expect(spinner.className).toContain("border-t-cream");
+    expect(spinner.parentElement!.className).toContain("bg-[#0b1220]");
+  });
+
+  it("renders a light loading overlay by default (T2)", () => {
+    render(
+      <WidgetEmbed
+        src="https://example.test/c.js"
+        store="SS"
+        fallbackLabel="check-in"
+      />,
+    );
+    const spinner = screen.getByRole("status");
+    expect(spinner.className).toContain("border-tan");
+    expect(spinner.parentElement!.className).toContain("bg-fog");
+  });
+
+  it("collapses height when the dark widget is ready (T4)", () => {
+    const src = "https://example.test/queue-ready.js";
+    const { container } = render(
+      <WidgetEmbed src={src} store="SS" fallbackLabel="queue" theme="dark" />,
+    );
+    const wrapper = container.firstChild as HTMLElement;
+    expect(wrapper.className).toContain("min-h-screen");
+    const script = document.querySelector<HTMLScriptElement>(
+      `script[src="${src}"]`,
+    )!;
+    act(() => {
+      script.onload!(new Event("load"));
+    });
+    expect(wrapper.className).not.toContain("min-h-screen");
+  });
+
+  it("keeps full height when a light widget is ready", () => {
+    const src = "https://example.test/checkin-ready.js";
+    const { container } = render(
+      <WidgetEmbed src={src} store="SS" fallbackLabel="check-in" />,
+    );
+    const script = document.querySelector<HTMLScriptElement>(
+      `script[src="${src}"]`,
+    )!;
+    act(() => {
+      script.onload!(new Event("load"));
+    });
+    expect((container.firstChild as HTMLElement).className).toContain(
+      "min-h-screen",
+    );
   });
 });

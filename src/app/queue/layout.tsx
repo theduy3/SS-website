@@ -16,7 +16,7 @@ export default function QueueLayout({
 }) {
   return (
     <html lang="en">
-      <body className="min-h-screen bg-fog text-espresso">{children}</body>
+      <body className="min-h-screen bg-[#0b1220] text-cream">{children}</body>
     </html>
   );
 }

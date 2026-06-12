@@ -5,12 +5,16 @@ import { useEffect, useRef, useState } from "react";
 type Status = "loading" | "ready" | "error";
 
 // Shared embed for the SalonX kiosk widgets (check-in, technician queue) and the
-// client-account widget. The widget script mounts its UI as the next sibling of
-// its own <script> tag, so we inject that script imperatively into a ref'd
-// container that carries no JSX children — React never reconciles inside it, so
-// it can't clobber the widget's injected DOM. A sibling overlay, fully
-// React-managed, shows a spinner until the script loads and an error fallback
-// (with retry) if it fails. Unlike the booking widget, no data-lang is set — the
+// client-account widget. We inject the widget <script> imperatively into a ref'd
+// container that carries no JSX children, so React never reconciles inside it.
+// Where the widget mounts its UI varies: check-in/client-account insert in place
+// next to the script; the queue widget appends its own root
+// (#salonx-queue-widget) to <body>, ignoring our container — so once it's ready
+// we collapse the container to zero height (dark theme) instead of leaving a
+// full-viewport empty block above the board. A sibling overlay, fully
+// React-managed, shows a spinner while loading and an error fallback (with retry)
+// on failure; it needs a full-height canvas, so the container stays min-h-screen
+// until the script is ready. Unlike the booking widget, no data-lang is set — the
 // kiosk pages are un-localized. The attribute the widget reads to find its own
 // script varies: check-in/queue use "data-store" (the default); the
 // client-account widget uses "data-account-store" (pass storeAttr).
@@ -19,6 +23,7 @@ export function WidgetEmbed({
   store,
   storeAttr = "data-store",
   fallbackLabel,
+  theme = "light",
 }: {
   src: string;
   store: string;
@@ -27,9 +32,25 @@ export function WidgetEmbed({
   storeAttr?: string;
   // Names the widget in the error message, e.g. "check-in" or "queue".
   fallbackLabel: string;
+  // Themes the loading/error overlay to match the embedded widget. The queue
+  // widget paints itself dark full-screen, so its overlay must be dark too; the
+  // check-in and client-account widgets are light (the default).
+  theme?: "light" | "dark";
 }) {
+  const dark = theme === "dark";
+  const overlayBg = dark ? "bg-[#0b1220]" : "bg-fog";
+  const spinnerBorder = dark
+    ? "border-mocha border-t-cream"
+    : "border-tan border-t-espresso";
+  const errorText = dark ? "text-fog" : "text-mocha";
   const ref = useRef<HTMLDivElement>(null);
   const [status, setStatus] = useState<Status>("loading");
+  // Full-height while loading/error (the overlay needs a viewport-tall canvas)
+  // and for the light widgets (unchanged). Collapse for the ready dark queue
+  // board, which mounts to <body> and would otherwise be pushed a full screen
+  // down.
+  const fullHeight = !dark || status !== "ready";
+  const heightClass = fullHeight ? "min-h-screen" : "";
   // Bumping this re-runs the injection effect — drives the retry button.
   const [attempt, setAttempt] = useState(0);
 
@@ -61,22 +82,26 @@ export function WidgetEmbed({
   }, [src, store, storeAttr, attempt]);
 
   return (
-    <div className="relative min-h-screen">
-      <div ref={ref} className="min-h-screen" />
+    <div className={`relative ${heightClass}`}>
+      <div ref={ref} className={heightClass} />
 
       {status === "loading" && (
-        <div className="absolute inset-0 flex items-center justify-center bg-fog">
+        <div
+          className={`absolute inset-0 flex items-center justify-center ${overlayBg}`}
+        >
           <span
             role="status"
             aria-label="Loading"
-            className="size-10 animate-spin rounded-full border-4 border-tan border-t-espresso"
+            className={`size-10 animate-spin rounded-full border-4 ${spinnerBorder}`}
           />
         </div>
       )}
 
       {status === "error" && (
-        <div className="absolute inset-0 flex flex-col items-center justify-center gap-5 bg-fog px-6 text-center">
-          <p className="max-w-sm text-lg leading-relaxed text-mocha">
+        <div
+          className={`absolute inset-0 flex flex-col items-center justify-center gap-5 px-6 text-center ${overlayBg}`}
+        >
+          <p className={`max-w-sm text-lg leading-relaxed ${errorText}`}>
             Unable to load the {fallbackLabel}. Please check your connection and
             try again.
           </p>
