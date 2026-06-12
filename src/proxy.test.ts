@@ -19,6 +19,11 @@ describe("proxy locale routing", () => {
     expect(res.headers.get("location")).toBeNull();
   });
 
+  it("does not locale-prefix /subscription (route reachable un-prefixed)", async () => {
+    const res = await proxy(req("/subscription"));
+    expect(res.headers.get("location")).toBeNull();
+  });
+
   it("does locale-prefix a normal public page (control)", async () => {
     const res = await proxy(req("/about"));
     expect(res.headers.get("location")).toContain("/about");
