@@ -10,6 +10,11 @@ const STORE = "SS";
 // page. Injection, loading and error/retry handling live in WidgetEmbed.
 export function QueueWidget() {
   return (
-    <WidgetEmbed src={WIDGET_SRC} store={STORE} fallbackLabel="queue" />
+    <WidgetEmbed
+      src={WIDGET_SRC}
+      store={STORE}
+      fallbackLabel="queue"
+      theme="dark"
+    />
   );
 }
