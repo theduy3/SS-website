@@ -51,5 +51,13 @@ clone-hero-check.png
 /blob-report/
 /playwright/.cache/
 
-# git worktrees (created by EnterWorktree)
-/.claude/worktrees/
+# session-local Claude config (worktrees, scheduled-task locks, hooks, settings)
+/.claude/
+
+# verification / audit scratch (screenshots, audit output dumps)
+queue-after.png
+/seo-audit-output/
+
+# stale local task scratch — committed specs/plans (tasks/spec-*, tasks/todo-*)
+# are tracked individually; this leftover is not
+tasks/todo-schema-fix.md

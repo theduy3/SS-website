@@ -1,7 +1,7 @@
 <!-- s1 metadata
 task-name: seo-content
 scope: medium
-status: plan-approved
+status: stale
 repo: /Users/theduy/Repo/SS-website
 created-at: 2026-05-20
 -->
