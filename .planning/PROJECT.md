@@ -16,7 +16,7 @@ Every important page opens with a direct, factual, schema-backed answer that hum
 
 - ✓ Multilingual public site (en/fr/es/ar) with middleware locale routing — existing (`src/proxy.ts`, `src/lib/i18n.ts`)
 - ✓ Home / services / gallery / reviews / contact pages, server-rendered — existing (`src/app/[lang]/*`)
-- ✓ Schema.org markup: LocalBusiness/NailSalon + AggregateRating, metadata builders — existing (`src/lib/seo.ts`)
+- ✓ Schema.org JSON-LD builders — NailSalon/LocalBusiness, AggregateRating, **Service, FAQPage, BreadcrumbList, ImageGallery, WebSite** — plus `sitemap.ts`, `robots.ts`, hreflang metadata — existing (`src/lib/seo.ts`, `JsonLd.tsx`). *Builders exist; per-route emission/coverage is the gap.*
 - ✓ Google reviews integration (build-time fetch) — existing (`scripts/fetch-google-reviews.mjs`)
 - ✓ Supabase-backed popup system w/ triple fallback + iron-session admin portal — existing (`src/lib/popups-store.ts`, `src/app/admin/*`)
 - ✓ Contact form via email provider — existing (`src/app/api/contact`)
@@ -27,15 +27,31 @@ Every important page opens with a direct, factual, schema-backed answer that hum
 
 <!-- Current scope (v1: GEO/technical core first). Hypotheses until shipped and validated. -->
 
-- [ ] Answer-first page template — direct-answer block, plain-language definition, key-facts bullets (inclusions/exclusions/price ranges), FAQ blocks, proof, strong CTA
-- [ ] Expanded JSON-LD coverage — add Service, FAQPage, BreadcrumbList, Review to key pages (Organization/LocalBusiness already present)
-- [ ] FAQ / knowledge hub — concise, factual, retrieval-friendly answers to common questions
+<!-- Research correction: schema BUILDERS already exist (src/lib/seo.ts). v1 is mostly wiring, config, and content — not new schema infrastructure. See .planning/research/SUMMARY.md. -->
+
+**Prerequisites (land first):**
+- [ ] `JsonLd.tsx` hardening — escape `<` → `<` before inlining (one-line defensive fix; current dictionary content is safe, but this must precede any admin-editable schema content)
+- [ ] NAP constants — single source of truth for name/address/phone/hours, consumed by schema + visible content (consistency is a citation trust signal)
+- [ ] Crawl/CDN audit — confirm `robots.txt` allows GPTBot/ClaudeBot/PerplexityBot AND verify no CDN/WAF-layer block via `curl -A "GPTBot/1.0"` server-log check (necessary before any citation work matters)
+
+**Schema wiring (builders exist — wire + audit per route):**
+- [ ] Per-route JSON-LD emission audit — confirm Service / FAQPage / BreadcrumbList blocks actually render in SSR HTML on each route; fill gaps
+- [ ] FAQPage schema must mirror visible SSR FAQ copy verbatim (mismatch = quality-signal failure + AI accuracy hazard)
+- [ ] Keep `AggregateRating` behind the existing review-fetch gate (Google policy: no self-controlled reviews) — do not bypass for launch
+
+**Answer-first content (dictionary data discipline, not new components):**
+- [ ] Answer-first restructuring — each key page opens with a direct 40–60-word answer; existing Accordion + `faqPageGraph` consume the dictionary unchanged
+- [ ] FAQ / knowledge hub — concise factual Q/As across all 4 locales (en/fr/es/ar); page copy + schema + SSR ship as one atomic unit
 - [ ] One strong Montreal local page with neighborhood FAQ signals
-- [ ] Agent-readable layer — `llms.txt`, clean link-based navigation, no orphan pages, no critical content hidden in client-only JS/tabs
-- [ ] Crawl hygiene — `robots.txt` open to legitimate crawlers, XML sitemap, canonicals
-- [ ] GA4 + AI-referrer segmentation (ChatGPT / Perplexity / Claude / Gemini) + page-level conversion events (call, form, booking)
+
+**Agent-readable + crawl:**
+- [ ] `llms.txt` — App Router route handler (`src/app/llms.txt/route.ts`, force-static) + a `proxy.test.ts` assertion locking its locale-routing exemption
+- [ ] Sitemap/robots/canonical hygiene — extend `sitemap.ts` (`x-default`, accurate `lastModified`); no orphan pages; no critical content in client-only JS
+
+**Measurement + conversion:**
+- [ ] GA4 + AI-referrer segmentation — `next/script` tag + custom channel-group regex (Perplexity/Copilot beyond GA4's native AI Assistant channel); page-level conversion events (call, form, booking). Configure before first page ships (no backfill)
 - [ ] Sticky mobile book/contact CTA + above-the-fold trust signals (rating, years, response time)
-- [ ] Performance / Core Web Vitals hygiene — fast load, compressed images, minimal layout shift (INP/CLS)
+- [ ] Performance / Core Web Vitals hygiene — `web-vitals` RUM (INP), compressed images, minimal CLS (AI crawlers time out fast — performance is a crawl-admission gate)
 
 ### Out of Scope
 
@@ -50,7 +66,8 @@ Every important page opens with a direct, factual, schema-backed answer that hum
 ## Context
 
 - **Brownfield.** Full codebase map in `.planning/codebase/` (STACK, ARCHITECTURE, STRUCTURE, CONVENTIONS, TESTING, INTEGRATIONS, CONCERNS). Reuse existing SEO builders, i18n layer, and rendering model rather than rebuilding.
-- **SEO/GEO baseline already partial.** `src/lib/seo.ts` emits LocalBusiness/NailSalon + AggregateRating; this milestone broadens schema types and adds answer-first content structure + agent-readable assets on top.
+- **SEO/GEO baseline is more advanced than first assumed** (per research). `src/lib/seo.ts` already has builders for NailSalon/LocalBusiness, AggregateRating, Service, FAQPage, BreadcrumbList, ImageGallery, WebSite + `sitemap.ts`/`robots.ts`/hreflang. So this milestone is mostly **wiring, configuration, and content discipline** — not new schema infrastructure. Highest-leverage gaps: per-route emission coverage, answer-first content placement (44% of AI citations come from the first 30% of a page), FAQ hub, `llms.txt`, GA4 AI-referrer config, CWV.
+- **One-line security hardening:** `JsonLd.tsx` does not escape `<` before `dangerouslySetInnerHTML` and there's no CSP. Safe today (dictionary-driven, no external input) but the escape should land before any admin-editable schema content. Treat as cheap prerequisite, not active exploit.
 - **Source plan:** user-supplied "AI Search Website Plan" (7 sections: strategy, architecture/sitemap, content system, technical layer, conversion, 90-day roadmap, deliverables). v1 = the GEO/technical core.
 - **Known coupling gotcha:** any new un-localized route must be added to `STANDALONE_PATHS` in `src/proxy.ts` *and* covered by a `src/proxy.test.ts` assertion — the build will not catch a missing entry (runtime-only 404). See `.planning/codebase/CONCERNS.md` and project memory `standalone-route-proxy-coupling`.
 - **No analytics today** — GA4 + AI-referrer tracking is built fresh in this milestone.
