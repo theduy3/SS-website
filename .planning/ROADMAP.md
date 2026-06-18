@@ -54,7 +54,7 @@ Plans:
 
 **Wave 2** *(blocked on Wave 1 completion)*
 
-- [ ] 02-02-PLAN.md — Laval local page (4 locales) with FAQPage schema + sitemap entry (CONTENT-03, SCHEMA-01, SCHEMA-02)
+- [x] 02-02-PLAN.md — Laval local page (4 locales) with FAQPage schema + sitemap entry (CONTENT-03, SCHEMA-01, SCHEMA-02) ✓ 2026-06-17
 
 **Wave 3** *(blocked on Wave 2 completion)*
 

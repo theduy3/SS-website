@@ -10,8 +10,8 @@ progress:
   total_phases: 3
   completed_phases: 1
   total_plans: 4
-  completed_plans: 2
-  percent: 50
+  completed_plans: 3
+  percent: 67
 ---
 
 # Project State
@@ -26,11 +26,11 @@ See: .planning/PROJECT.md (updated 2026-06-17)
 ## Current Position
 
 Phase: 02 (content-schema-crawl-surface) — EXECUTING
-Plan: 2 of 3
-Status: 02-01 complete — executing 02-02 next
-Last activity: 2026-06-18 -- Phase 02 execution started
+Plan: 3 of 3
+Status: 02-02 complete — executing 02-03 next
+Last activity: 2026-06-18 -- Phase 02-02 Laval local page shipped
 
-Progress: [███░░░░░░░] 33% (phase 1/3 complete)
+Progress: [██████░░░░] 67% (phase 2/3 plans complete within phase 2)
 
 ## Performance Metrics
 
@@ -61,6 +61,10 @@ Progress: [███░░░░░░░] 33% (phase 1/3 complete)
 - Roadmap (2026-06-17): Coarse granularity → 3 phases. Folded CRAWL-01 (llms.txt) into Phase 2 content+schema unit because llms.txt imports from the same NAP/service constants being built in that phase. CRAWL-02 (sitemap) also folded into Phase 2 — it extends the same routes.
 - Roadmap (2026-06-17): MEAS-01 (GA4 custom channel) must be configured before Phase 2 content goes live. Phase 3 is ordered last so there is content to measure, but MEAS-01 setup must be the first task in Phase 3 — not after deployment.
 - Roadmap (2026-06-17): Brownfield constraint confirmed — all work extends existing `seo.ts` builders, dictionaries, and the `[lang]` routing model. No new top-level directories.
+- 02-02 (2026-06-17): Lead <p> NOT wrapped in <Reveal>/Framer Motion — opacity:0 hides from AI crawlers (Pitfall 3). Plain element before PageHeader.
+- 02-02 (2026-06-17): /laval stays OUT of STANDALONE_PATHS — localized [lang] route, not standalone (D-05). Confirmed by proxy.ts grep.
+- 02-02 (2026-06-17): dict.laval.faq.items is single source for both faqPageGraph schema and <Accordion> visible copy (SCHEMA-02 invariant).
+- 02-02 (2026-06-17): localPaths array in sitemap.ts drives /laval locale entries — no hand-written per-locale blocks.
 
 ### Pending Todos
 
@@ -85,6 +89,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-06-18T04:46:00Z — Completed 02-01: answer-first leads + schema wiring
-Stopped at: Phase 2 UI-SPEC approved
-Resume file: .planning/phases/02-content-schema-crawl-surface/02-UI-SPEC.md
+Last session: 2026-06-18T05:09:00Z — Completed 02-02: Laval local page + dict + sitemap
+Stopped at: 02-02 complete, 02-03 (llms.txt + sitemap hygiene) is next
+Resume file: .planning/phases/02-content-schema-crawl-surface/02-03-PLAN.md
