@@ -47,7 +47,10 @@ Plans:
   3. Each key page (home, services, FAQ hub, Laval local page) opens with a 40–60-word direct answer block visible in server-rendered HTML — confirmed by `curl | grep -A2 "answer"` showing the text before any client JS runs
   4. `curl https://onglessanssouci.com/llms.txt` returns HTTP 200 with curated business content (not a locale redirect); `src/proxy.test.ts` has an assertion covering this path; `sitemap.ts` emits accurate `lastModified` and `x-default`
 
-**Plans**: TBD
+**Plans**: 3 plans
+- [ ] 02-01-PLAN.md — Answer-first lead blocks + FAQ hub expansion + per-route Service/FAQPage schema (CONTENT-01, CONTENT-02, SCHEMA-01, SCHEMA-02)
+- [ ] 02-02-PLAN.md — Laval local page (4 locales) with FAQPage schema + sitemap entry (CONTENT-03, SCHEMA-01, SCHEMA-02)
+- [ ] 02-03-PLAN.md — /llms.txt route + proxy STANDALONE registration & test + sitemap hygiene (CRAWL-01, CRAWL-02, SCHEMA-03)
 **UI hint**: yes
 
 ### Phase 3: Measurement & Conversion
@@ -71,5 +74,5 @@ Plans:
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation Prerequisites | 1/1 | Complete    | 2026-06-18 |
-| 2. Content, Schema & Crawl Surface | 0/TBD | Not started | - |
+| 2. Content, Schema & Crawl Surface | 0/3 | Planned | - |
 | 3. Measurement & Conversion | 0/TBD | Not started | - |
