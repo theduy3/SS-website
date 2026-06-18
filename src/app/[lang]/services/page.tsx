@@ -9,7 +9,7 @@ import { site } from "@/lib/site";
 import { JsonLd } from "@/components/JsonLd";
 import { services, servicePath } from "@/lib/services";
 import { getDictionary } from "../dictionaries";
-import { isLocale, type LangParams } from "@/lib/i18n";
+import { isLocale, dirFor, type LangParams } from "@/lib/i18n";
 import { pageMetadata, servicesGraph, breadcrumbGraph } from "@/lib/seo";
 import { formatFromPrice } from "@/lib/format";
 
@@ -41,6 +41,12 @@ export default async function ServicesPage({ params }: LangParams) {
 
   return (
     <>
+      <p
+        className="mx-auto max-w-3xl px-6 pt-8 text-lg leading-relaxed text-mocha md:pt-12"
+        dir={dirFor(lang)}
+      >
+        {dict.servicesPage.lead}
+      </p>
       <JsonLd data={servicesGraph(lang, items)} />
       <JsonLd
         data={breadcrumbGraph(lang, [

@@ -14,7 +14,7 @@ import {
 } from "@/lib/services";
 import { getDictionary } from "../../dictionaries";
 import { isLocale, dirFor } from "@/lib/i18n";
-import { pageMetadata, serviceGraph, breadcrumbGraph } from "@/lib/seo";
+import { pageMetadata, serviceGraph, breadcrumbGraph, faqPageGraph } from "@/lib/seo";
 import { comparisonsForService, comparisonPath } from "@/lib/comparisons";
 import { formatFromPrice } from "@/lib/format";
 
@@ -71,6 +71,13 @@ export default async function ServiceDetailPage({ params }: Params) {
           { name: d.title, route: servicePath(service, lang) },
         ])}
       />
+      <JsonLd data={faqPageGraph(d.faq)} />
+      <p
+        className="mx-auto max-w-3xl px-6 pt-8 text-lg leading-relaxed text-mocha md:pt-12"
+        dir={dirFor(lang)}
+      >
+        {d.lead}
+      </p>
 
       {/* Hero: image + title + intro */}
       <section className="mx-auto max-w-5xl px-6 py-16 md:py-24">

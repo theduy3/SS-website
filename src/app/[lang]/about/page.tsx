@@ -5,7 +5,7 @@ import { Button } from "@/components/Button";
 import { Reveal } from "@/components/Reveal";
 import { JsonLd } from "@/components/JsonLd";
 import { getDictionary } from "../dictionaries";
-import { isLocale, type LangParams } from "@/lib/i18n";
+import { isLocale, dirFor, type LangParams } from "@/lib/i18n";
 import { pageMetadata, breadcrumbGraph } from "@/lib/seo";
 
 export async function generateMetadata({
@@ -27,6 +27,12 @@ export default async function AboutPage({ params }: LangParams) {
 
   return (
     <>
+      <p
+        className="mx-auto max-w-3xl px-6 pt-8 text-lg leading-relaxed text-mocha md:pt-12"
+        dir={dirFor(lang)}
+      >
+        {dict.about.lead}
+      </p>
       <JsonLd
         data={breadcrumbGraph(lang, [
           { name: dict.nav.home, route: "" },

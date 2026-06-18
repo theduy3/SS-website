@@ -1,7 +1,7 @@
 // src/app/[lang]/faq/page.tsx
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { isLocale, type LangParams } from "@/lib/i18n";
+import { isLocale, dirFor, type LangParams } from "@/lib/i18n";
 import { getDictionary } from "../dictionaries";
 import { pageMetadata, faqPageGraph, breadcrumbGraph } from "@/lib/seo";
 import { JsonLd } from "@/components/JsonLd";
@@ -26,6 +26,12 @@ export default async function FaqPage({ params }: LangParams) {
   const dict = await getDictionary(lang);
   return (
     <>
+      <p
+        className="mx-auto max-w-3xl px-6 pt-8 text-lg leading-relaxed text-mocha md:pt-12"
+        dir={dirFor(lang)}
+      >
+        {dict.faq.lead}
+      </p>
       <JsonLd data={faqPageGraph(dict.faq.items)} />
       <JsonLd
         data={breadcrumbGraph(lang, [

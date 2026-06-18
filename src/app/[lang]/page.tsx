@@ -7,11 +7,12 @@ import { ContactForm } from "@/components/ContactForm";
 import { Gallery } from "@/components/Gallery";
 import { Stars } from "@/components/Stars";
 import { Testimonials } from "@/components/Testimonials";
-import { services } from "@/lib/services";
+import { JsonLd } from "@/components/JsonLd";
+import { services, servicePath } from "@/lib/services";
 import { site } from "@/lib/site";
 import { getDictionary } from "./dictionaries";
-import { isLocale, type LangParams } from "@/lib/i18n";
-import { pageMetadata } from "@/lib/seo";
+import { isLocale, dirFor, type LangParams } from "@/lib/i18n";
+import { pageMetadata, servicesGraph } from "@/lib/seo";
 
 export async function generateMetadata({
   params,
@@ -46,8 +47,24 @@ export default async function Home({ params }: LangParams) {
     caption: dict.services[i].title,
   }));
 
+  // ItemList schema for the home page services hub.
+  const serviceItems = services.map((s) => ({
+    name: dict.serviceDetails[s.id].title,
+    description: dict.serviceDetails[s.id].metaDescription,
+    price: s.price,
+    priceTo: s.priceTo,
+    path: servicePath(s, lang),
+  }));
+
   return (
     <>
+      <JsonLd data={servicesGraph(lang, serviceItems)} />
+      <p
+        className="mx-auto max-w-3xl px-6 pt-8 text-lg leading-relaxed text-mocha md:pt-12"
+        dir={dirFor(lang)}
+      >
+        {dict.home.lead}
+      </p>
       {/* Hero — white (top of the bright canvas, under the dark header) */}
       <section>
         <div className="mx-auto max-w-7xl px-6 py-20 text-center md:py-28">
