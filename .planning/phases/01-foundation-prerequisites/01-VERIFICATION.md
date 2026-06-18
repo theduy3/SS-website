@@ -1,13 +1,14 @@
 ---
 phase: 01-foundation-prerequisites
-verified: 2026-06-17T18:00:00Z
-status: human_needed
-score: 5/5 must-haves verified (criterion 3 PARTIAL — deployment-pending sub-check routed to human)
+verified: 2026-06-18T01:24:00Z
+status: passed
+score: 5/5 must-haves verified (criterion 3 now FULL — deployed robots.txt confirmed live)
 overrides_applied: 0
 human_verification:
-  - test: "After the next merge-to-main auto-deploy, fetch the live robots.txt and confirm it names the AI bots explicitly: curl -s https://onglessanssouci.com/robots.txt"
+  - test: "Fetch the live robots.txt and confirm it names the AI bots explicitly: curl -s https://onglessanssouci.com/robots.txt"
     expected: "Output contains explicit User-Agent: GPTBot / ClaudeBot / OAI-SearchBot / PerplexityBot blocks with Allow: / (not just the single User-Agent: * wildcard)"
-    why_human: "The corrected robots.ts is committed to main but NOT yet deployed. The deployed robots.txt still shows the old single-wildcard rule. Deployment is an out-of-band Dokploy auto-deploy on merge; the verifier cannot trigger or wait for it. Source code + unit tests + live 200-access are all confirmed — only the deployed-robots explicit-allow sub-check of criterion 3 remains."
+    result: PASS
+    resolved: "2026-06-18 — Phase 1 pushed to origin/main; Dokploy deployed in ~100s. Live robots.txt now serves all 8 AI bots + Google-Extended (each Allow: /), wildcard retains Disallow: /api/, Host + Sitemap present. Criterion 3 fully satisfied (code + tests + live HTTP 200 + deployed explicit-allow)."
 ---
 
 # Phase 01: Foundation Prerequisites Verification Report

@@ -11,9 +11,9 @@ Requirements for this milestone (v1 = GEO/technical core, extending the live sit
 
 <!-- Prerequisites — must land before schema/content work; cheap, high-leverage, risk-reducing. -->
 
-- [ ] **FOUND-01**: `JsonLd.tsx` escapes `<` to `<` before inlining JSON-LD, so no injected markup can break out of the `<script>` tag
-- [ ] **FOUND-02**: A single NAP source of truth (name, address, phone, hours) feeds both schema builders and visible page copy; values are byte-identical sitewide
-- [ ] **FOUND-03**: `robots.txt` explicitly allows GPTBot/ClaudeBot/PerplexityBot, and a `curl -A`/server-log audit confirms no CDN/WAF-layer block of AI crawler user-agents
+- [x] **FOUND-01**: `JsonLd.tsx` escapes `<` to `<` before inlining JSON-LD, so no injected markup can break out of the `<script>` tag
+- [x] **FOUND-02**: A single NAP source of truth (name, address, phone, hours) feeds both schema builders and visible page copy; values are byte-identical sitewide
+- [x] **FOUND-03**: `robots.txt` explicitly allows GPTBot/ClaudeBot/PerplexityBot, and a `curl -A`/server-log audit confirms no CDN/WAF-layer block of AI crawler user-agents
 
 ### Schema
 
@@ -74,9 +74,9 @@ Explicitly excluded for this milestone.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| FOUND-01 | Phase 1 | Pending |
-| FOUND-02 | Phase 1 | Pending |
-| FOUND-03 | Phase 1 | Pending |
+| FOUND-01 | Phase 1 | Complete |
+| FOUND-02 | Phase 1 | Complete |
+| FOUND-03 | Phase 1 | Complete |
 | SCHEMA-01 | Phase 2 | Pending |
 | SCHEMA-02 | Phase 2 | Pending |
 | SCHEMA-03 | Phase 2 | Pending |
@@ -91,6 +91,7 @@ Explicitly excluded for this milestone.
 | MEAS-04 | Phase 3 | Pending |
 
 **Coverage:**
+
 - v1 requirements: 15 total
 - Mapped to phases: 15
 - Unmapped: 0 ✓
