@@ -23,9 +23,11 @@ This milestone hardens the existing Next.js 16 + schema infrastructure for AI-en
 **Requirements**: FOUND-01, FOUND-02, FOUND-03
 **Success Criteria** (what must be TRUE):
   1. `src/components/JsonLd.tsx` applies `.replace(/</g, "\\u003c")` before `dangerouslySetInnerHTML` — code review and a unit test with a `</script>` input value both confirm the escape
-  2. A single `src/lib/nap.ts` constants file exists; a grep for the business phone number and address strings returns only that file across the entire codebase (no duplicates in schema builders, footer, or contact page)
+  2. `src/lib/site.ts` is the SOLE NAP source of truth (no `src/lib/nap.ts` — superseded per Phase 1 D-04); a grep for the business phone number, street, and postal code returns only `site.ts` among code files (dictionaries hold localized prose and are exempt)
   3. `curl https://onglessanssouci.com/robots.txt` shows explicit allow directives for GPTBot, ClaudeBot, OAI-SearchBot, and PerplexityBot; `curl -A "GPTBot/1.0" https://onglessanssouci.com/en` from an external machine returns HTTP 200 (not 403/429)
-**Plans**: TBD
+**Plans**: 1 plan
+Plans:
+- [ ] 01-PLAN.md — FOUND-01/02/03: JSON-LD escape + NAP guard test + doc identity fix + robots AI-bot rules + live crawler audit
 
 ### Phase 2: Content, Schema & Crawl Surface
 **Goal**: Every key page opens with a direct answer block, a FAQ knowledge hub exists in all 4 locales with FAQPage schema that mirrors visible SSR copy, service schema is wired per route, and AI agents have a curated `/llms.txt` entry point — all verified via `curl` of raw HTML before merge.
