@@ -9,7 +9,7 @@ import { site } from "@/lib/site";
 
 export const dynamic = "force-static";
 
-function hoursLine(block: { days: string[]; opens: string; closes: string }) {
+function hoursLine(block: { days: readonly string[]; opens: string; closes: string }) {
   const dayMap: Record<string, string> = {
     Mo: "Mon",
     Tu: "Tue",
