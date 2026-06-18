@@ -48,6 +48,7 @@
     "alt": "Intérieur du salon Sans Souci Ongles & Spa"
   },
   "home": {
+    "lead": "Sans Souci Ongles & Spa est un salon d'ongles et spa situé au CF Carrefour Laval (3035 Boulevard le Carrefour, Entrée 6). Nous offrons manucures, pédicures, extensions de cils et épilation. Avec plus de 20 ans d'expérience et 1 000+ couleurs de gel, nous servons Laval et le Grand Montréal. Sans rendez-vous bienvenu.",
     "servicesHeading": "Nos services",
     "storyHeading": "Pourquoi nous choisir",
     "story": "Avec plus de 20 ans d'expérience dans l'art des ongles, notre équipe chaleureuse et professionnelle offre les meilleurs soins à Laval. Votre satisfaction est garantie — et chaque client fait partie de notre famille.",
@@ -77,10 +78,12 @@
     }
   ],
   "servicesPage": {
+    "lead": "Sans Souci Ongles & Spa propose manucures, pédicures spa, extensions de cils et épilation au CF Carrefour Laval, Entrée 6. Notre équipe de techniciens expérimentés utilise des produits de qualité supérieure avec plus de 1 000 couleurs de gel. Réservez en ligne ou sans rendez-vous — ouvert sept jours sur sept.",
     "heading": "Nos services",
     "intro": "Des produits de qualité, plus de 1 000 couleurs de gel et plus de 20 ans d'expertise."
   },
   "about": {
+    "lead": "Sans Souci Ongles & Spa offre des soins d'ongles professionnels au CF Carrefour Laval, Entrée 6 depuis plus de 20 ans. Notre équipe stérilise chaque outil après chaque utilisation, maintient trois stations de désinfection et garantit votre satisfaction. Les clients de Laval et du Grand Montréal nous font confiance pour des résultats constants et de haute qualité.",
     "heading": "Pourquoi nous choisir",
     "body": [
       "Parce que nous prenons votre sécurité et votre hygiène comme priorité. Chez Sans Souci Ongles & Spa, nous prenons votre santé au sérieux : trois stations d'hygiène avec produits désinfectants, des outils désinfectés après chaque utilisation, et des stations de manucure équipées de collecteurs de poussière qui protègent clients et employés.",
@@ -120,6 +123,7 @@
   },
   "serviceDetails": {
     "manicure": {
+      "lead": "Sans Souci Ongles & Spa propose des manucures en gel et classiques au CF Carrefour Laval, Entrée 6. Choisissez parmi plus de 1 000 couleurs de gel avec mise en forme des ongles, soin des cuticules et massage relaxant des mains inclus. Nos techniciennes ont plus de 20 ans d'expérience. Extensions et nail art personnalisé disponibles sur demande.",
       "title": "Manucure à Laval",
       "heroAlt": "Manucure en gel aux teintes neutres chez Sans Souci Ongles & Spa, Laval",
       "intro": [
@@ -165,6 +169,7 @@
       "metaDescription": "Manucure en gel et classique avec 1000+ couleurs au CF Carrefour Laval. Plus de 20 ans d'expertise. Réservez en ligne — dès 50 $."
     },
     "pedicure": {
+      "lead": "Sans Souci Ongles & Spa propose des pédicures spa au CF Carrefour Laval, Entrée 6. Chaque soin comprend un bain chaud, mise en forme des ongles, soin des cuticules, exfoliation, massage relaxant et hydratation en profondeur. Ajoutez un vernis gel ou un traitement à la paraffine pour plus de confort. Ouvert sept jours sur sept — sans rendez-vous bienvenu.",
       "title": "Pédicure à Laval",
       "heroAlt": "Pédicure spa relaxant en cours chez Sans Souci Ongles & Spa, Laval",
       "intro": [
@@ -210,6 +215,7 @@
       "metaDescription": "Pédicure spa relaxant avec exfoliation, massage et paraffine au CF Carrefour Laval. Plus de 20 ans d'expertise. Réservez en ligne — dès 40 $."
     },
     "lash-extensions": {
+      "lead": "Sans Souci Ongles & Spa propose des extensions de cils 2D, 3D et hybrides au CF Carrefour Laval, Entrée 6. Chaque pose est adaptée à la forme de vos yeux pour un résultat naturel ou dramatique sans mascara. Nos techniciennes certifiées utilisent une application isolée pour protéger vos cils naturels. Retouches disponibles toutes les deux à trois semaines.",
       "title": "Extension de cils à Laval",
       "heroAlt": "Gros plan d'extensions de cils au rendu naturel chez Sans Souci Ongles & Spa, Laval",
       "intro": [
@@ -254,6 +260,7 @@
       "metaDescription": "Extensions de cils 2D, 3D et Hybride adaptées à vous au CF Carrefour Laval. Du naturel au spectaculaire. Réservez en ligne — dès 70 $."
     },
     "waxing": {
+      "lead": "Sans Souci Ongles & Spa offre l'épilation professionnelle au CF Carrefour Laval, Entrée 6. Services couvrant sourcils, visage, aisselles, jambes et maillot brésilien inclus. Notre technique axée sur le confort minimise l'inconfort. Les résultats durent trois à quatre semaines. Réservez en ligne ou sans rendez-vous — ouvert sept jours sur sept.",
       "title": "Épilation à la cire à Laval",
       "heroAlt": "Salle d'épilation propre et apaisante chez Sans Souci Ongles & Spa, Laval",
       "intro": [
@@ -312,6 +319,7 @@
     "guides": "À lire"
   },
   "faq": {
+    "lead": "Cette page répond aux questions les plus courantes sur Sans Souci Ongles & Spa au CF Carrefour Laval — heures, réservation, stationnement à l'Entrée 6, services offerts, tarifs et disponibilité sans rendez-vous. Si votre question n'est pas répondue ici, appelez-nous au (450) 505-6450.",
     "title": "Foire aux questions",
     "intro": "Tout ce qu'il faut savoir avant votre visite chez Sans Souci Ongles & Spa.",
     "items": [
@@ -325,7 +333,11 @@
       { "q": "Vendez-vous des cartes-cadeaux ?", "a": "Oui — les cartes-cadeaux sont un beau cadeau et s'achètent en salon. Demandez à la réception." },
       { "q": "Combien de temps durent les ongles en gel et les extensions de cils ?", "a": "Une manucure en gel dure généralement 2 à 3 semaines; les extensions de cils, 3 à 4 semaines avec de bons soins. Nous vous donnerons des conseils d'entretien lors de votre visite." },
       { "q": "Offrez-vous une garantie sur votre travail ?", "a": "Oui. Nous garantissons notre travail pendant 7 jours. Si un service se décolle, s'écaille ou n'est pas exécuté selon nos normes, communiquez avec nous dans les 7 jours suivant votre rendez-vous et nous le corrigerons pour la même forme, la même longueur et le même motif, sans frais supplémentaires. Les changements de motif ou de couleur ne sont pas inclus. Consultez nos Conditions générales pour tous les détails." },
-      { "q": "Comment gardez-vous vos outils et vos postes propres ?", "a": "Nous suivons des protocoles d'hygiène rigoureux. Les outils sont soigneusement nettoyés et désinfectés après chaque cliente, puis stérilisés dans un autoclave de qualité médicale qui élimine les bactéries, les virus et les champignons. Les articles jetables sont à usage unique et chaque poste de travail est assaini entre les rendez-vous." }
+      { "q": "Comment gardez-vous vos outils et vos postes propres ?", "a": "Nous suivons des protocoles d'hygiène rigoureux. Les outils sont soigneusement nettoyés et désinfectés après chaque cliente, puis stérilisés dans un autoclave de qualité médicale qui élimine les bactéries, les virus et les champignons. Les articles jetables sont à usage unique et chaque poste de travail est assaini entre les rendez-vous." },
+      { "q": "Y a-t-il un stationnement au CF Carrefour Laval ?", "a": "Oui. Le CF Carrefour Laval dispose d'un grand stationnement intérieur et extérieur gratuit. Utilisez l'Entrée 6 pour accéder directement à notre salon, au niveau du stationnement." },
+      { "q": "Combien coûtent vos services ?", "a": "Les prix varient selon le service : l'épilation commence à partir de 15 $, les pédicures à partir de 40 $, les manucures à partir de 50 $ et les extensions de cils à partir de 70 $. Consultez notre page des services pour la liste complète des prix." },
+      { "q": "Puis-je réserver en ligne ?", "a": "Oui. Visitez notre page de rendez-vous pour réserver en ligne en tout temps. Choisissez votre service, votre date et l'heure qui vous convient. Vous pouvez aussi appeler au (450) 505-6450 si vous préférez réserver par téléphone." },
+      { "q": "Comment me rendre à Sans Souci en transport en commun ?", "a": "Le CF Carrefour Laval est accessible depuis le métro Montmorency (ligne Orange). Des autobus STL desservent le centre commercial depuis la station. Descendez à l'arrêt CF Carrefour Laval et suivez les indications vers l'Entrée 6." }
     ]
   },
   "reviewsPage": {

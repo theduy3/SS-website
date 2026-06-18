@@ -48,6 +48,7 @@
     "alt": "Sans Souci Ongles & Spa salon interior"
   },
   "home": {
+    "lead": "Sans Souci Ongles & Spa is a nail salon and spa inside CF Carrefour Laval (3035 Boulevard le Carrefour, Entrée 6). We offer manicures, pedicures, lash extensions and waxing. With over 20 years of experience and 1,000+ gel colours, we serve Laval and Greater Montreal. Walk-ins welcome.",
     "servicesHeading": "Our Services",
     "storyHeading": "Why choose us",
     "story": "With over 20 years of experience in nail artistry, our friendly, professional team delivers the best nail care in Laval. Your satisfaction is guaranteed — and every client is part of our family.",
@@ -77,10 +78,12 @@
     }
   ],
   "servicesPage": {
+    "lead": "Sans Souci Ongles & Spa offers manicures, spa pedicures, lash extensions and waxing at CF Carrefour Laval, Entrée 6. Our team of experienced technicians uses premium products with over 1,000 gel colours. Book online or walk in — open seven days a week.",
     "heading": "Our Services",
     "intro": "Premium products, over 1,000 gel colours and 20+ years of expertise."
   },
   "about": {
+    "lead": "Sans Souci Ongles & Spa has delivered professional nail care at CF Carrefour Laval, Entrée 6 for over 20 years. Our team sterilizes every tool after each use, maintains three sanitation stations and guarantees your satisfaction. Clients across Laval and Greater Montreal trust us for consistent, high-quality results.",
     "heading": "Why Choose Us",
     "body": [
       "Because we make your safety and hygiene our priority. At Sans Souci Ongles & Spa we take your health seriously: we keep three sanitation stations stocked with disinfectant, tools are sterilized after every use, and our manicure stations have dust collectors that protect both clients and staff.",
@@ -120,6 +123,7 @@
   },
   "serviceDetails": {
     "manicure": {
+      "lead": "Sans Souci Ongles & Spa offers gel and classic manicures at CF Carrefour Laval, Entrée 6. Choose from over 1,000 gel colours with nail shaping, cuticle care and a relaxing hand massage included. Our technicians have over 20 years of experience. Nail extensions and custom nail art are available on request.",
       "title": "Manicure in Laval",
       "heroAlt": "Gel manicure with soft neutral polish at Sans Souci Ongles & Spa, Laval",
       "intro": [
@@ -165,6 +169,7 @@
       "metaDescription": "Gel and classic manicures with 1000+ colours at CF Carrefour Laval. 20+ years of expertise. Book online or call (450) 505-6450 — from $50."
     },
     "pedicure": {
+      "lead": "Sans Souci Ongles & Spa offers spa pedicures at CF Carrefour Laval, Entrée 6. Each service includes a warm soak, nail shaping, cuticle care, exfoliation, a relaxing massage and deep hydration. Add gel polish or a paraffin treatment for extra comfort. Open seven days a week — walk-ins welcome.",
       "title": "Pedicure in Laval",
       "heroAlt": "Relaxing spa pedicure in progress at Sans Souci Ongles & Spa, Laval",
       "intro": [
@@ -210,6 +215,7 @@
       "metaDescription": "Relaxing spa pedicures with exfoliation, massage and paraffin at CF Carrefour Laval. 20+ years of expertise. Book online — from $40."
     },
     "lash-extensions": {
+      "lead": "Sans Souci Ongles & Spa offers 2D, 3D and Hybrid lash extensions at CF Carrefour Laval, Entrée 6. Each set is tailored to your eye shape for a natural or dramatic result with no mascara needed. Our certified technicians use isolated application to protect your natural lashes. Refills available every two to three weeks.",
       "title": "Lash Extensions in Laval",
       "heroAlt": "Close-up of natural-looking lash extensions applied at Sans Souci Ongles & Spa, Laval",
       "intro": [
@@ -254,6 +260,7 @@
       "metaDescription": "2D, 3D and Hybrid lash extensions tailored to you at CF Carrefour Laval. Natural to dramatic. Book online — from $70."
     },
     "waxing": {
+      "lead": "Sans Souci Ongles & Spa offers professional waxing at CF Carrefour Laval, Entrée 6. Services cover eyebrow shaping, facial waxing, underarms, legs and bikini waxing including Brazilian. Our comfort-first technique minimizes discomfort. Results last three to four weeks. Book online or walk in — open seven days a week.",
       "title": "Waxing in Laval",
       "heroAlt": "Calm, clean waxing treatment room at Sans Souci Ongles & Spa, Laval",
       "intro": [
@@ -312,6 +319,7 @@
     "guides": "Helpful guides"
   },
   "faq": {
+    "lead": "This page answers the most common questions about Sans Souci Ongles & Spa at CF Carrefour Laval — covering hours, booking, parking at Entrée 6, services offered, pricing and walk-in availability. If you have a question that isn't answered here, call us at (450) 505-6450.",
     "title": "Frequently asked questions",
     "intro": "Everything you need to know before your visit to Sans Souci Ongles & Spa.",
     "items": [
@@ -325,7 +333,11 @@
       { "q": "Do you sell gift cards?", "a": "Yes — gift cards make a great present and can be purchased in-salon. Ask our front desk." },
       { "q": "How long do gel nails and lash extensions last?", "a": "Gel manicures typically last 2–3 weeks; lash extensions last 3–4 weeks with proper care. We'll share aftercare tips at your visit." },
       { "q": "Do you guarantee your work?", "a": "Yes. We back our work with a 7-day guarantee. If something lifts, chips, or isn't done to standard, contact us within 7 days of your appointment and we'll fix the same shape, length, and design at no additional cost. Changes to design or color aren't included. See our Terms & Conditions for full details." },
-      { "q": "How do you keep your tools and stations clean?", "a": "We follow strict hygiene protocols. Tools are thoroughly cleaned and disinfected after every client and sterilized in a medical-grade autoclave that eliminates bacteria, viruses, and fungi. Disposable items are single-use, and every workstation is sanitized between appointments." }
+      { "q": "How do you keep your tools and stations clean?", "a": "We follow strict hygiene protocols. Tools are thoroughly cleaned and disinfected after every client and sterilized in a medical-grade autoclave that eliminates bacteria, viruses, and fungi. Disposable items are single-use, and every workstation is sanitized between appointments." },
+      { "q": "Is there parking at CF Carrefour Laval?", "a": "Yes. Free parking is available in the mall parking lot. Our salon is at Entrée 6 (3035 Boulevard le Carrefour), which is the most convenient entrance — look for the Entrée 6 sign to park close to us." },
+      { "q": "How much do your services cost?", "a": "Waxing starts from $15, pedicures from $40, manicures from $50 and lash extensions from $70. Final pricing may vary by service length and add-ons — call us at (450) 505-6450 for current rates." },
+      { "q": "Can I book an appointment online?", "a": "Yes. Visit our appointments page to book online any time. You can also call us at (450) 505-6450 during business hours if you prefer to speak with someone." },
+      { "q": "How do I get to Sans Souci by transit?", "a": "CF Carrefour Laval is accessible by bus from the Montmorency metro station (Orange Line). Several STL routes stop directly at the mall. Once inside, follow signs to Entrée 6 to find our salon." }
     ]
   },
   "reviewsPage": {

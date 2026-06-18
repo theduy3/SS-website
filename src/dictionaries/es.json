@@ -48,6 +48,7 @@
     "alt": "Interior del salón Sans Souci Ongles & Spa"
   },
   "home": {
+    "lead": "Sans Souci Ongles & Spa es un salón de uñas y spa ubicado en CF Carrefour Laval (3035 Boulevard le Carrefour, Entrada 6). Ofrecemos manicuras, pedicuras, extensiones de pestañas y depilación. Con más de 20 años de experiencia y 1 000+ colores de gel, atendemos a Laval y el Gran Montreal. Se aceptan visitas sin cita.",
     "servicesHeading": "Nuestros servicios",
     "storyHeading": "Por qué elegirnos",
     "story": "Con más de 20 años de experiencia en el arte de las uñas, nuestro equipo amable y profesional ofrece el mejor cuidado en Laval. Tu satisfacción está garantizada, y cada cliente es parte de nuestra familia.",
@@ -77,10 +78,12 @@
     }
   ],
   "servicesPage": {
+    "lead": "Sans Souci Ongles & Spa ofrece manicuras, pedicuras spa, extensiones de pestañas y depilación en CF Carrefour Laval, Entrada 6. Nuestro equipo de técnicos experimentados usa productos de primera calidad con más de 1 000 colores de gel. Reserva en línea o sin cita previa — abierto los siete días de la semana.",
     "heading": "Nuestros servicios",
     "intro": "Productos premium, más de 1 000 colores de gel y más de 20 años de experiencia."
   },
   "about": {
+    "lead": "Sans Souci Ongles & Spa brinda cuidado profesional de uñas en CF Carrefour Laval, Entrada 6 desde hace más de 20 años. Nuestro equipo esteriliza cada herramienta después de cada uso, mantiene tres estaciones de saneamiento y garantiza tu satisfacción. Clientes de Laval y el Gran Montreal confían en nosotros por resultados consistentes y de alta calidad.",
     "heading": "Por qué elegirnos",
     "body": [
       "Porque tu seguridad e higiene son nuestra prioridad. En Sans Souci Ongles & Spa nos tomamos en serio tu salud: mantenemos tres estaciones de desinfección, esterilizamos las herramientas después de cada uso y nuestras estaciones de manicura cuentan con colectores de polvo que protegen a clientes y personal.",
@@ -120,6 +123,7 @@
   },
   "serviceDetails": {
     "manicure": {
+      "lead": "Sans Souci Ongles & Spa ofrece manicuras en gel y clásicas en CF Carrefour Laval, Entrada 6. Elige entre más de 1 000 colores de gel con moldeado de uñas, cuidado de cutículas y un relajante masaje de manos incluido. Nuestras técnicas tienen más de 20 años de experiencia. Extensiones de uñas y nail art personalizado disponibles bajo pedido.",
       "title": "Manicura en Laval",
       "heroAlt": "Manicura en gel con esmalte neutro suave en Sans Souci Ongles & Spa, Laval",
       "intro": [
@@ -165,6 +169,7 @@
       "metaDescription": "Manicuras en gel y clásicas con 1000+ colores en CF Carrefour Laval. Más de 20 años de experiencia. Reserva en línea — desde 50 $."
     },
     "pedicure": {
+      "lead": "Sans Souci Ongles & Spa ofrece pedicuras spa en CF Carrefour Laval, Entrada 6. Cada servicio incluye remojo caliente, moldeado de uñas, cuidado de cutículas, exfoliación, masaje relajante e hidratación profunda. Agrega esmalte en gel o tratamiento de parafina para mayor confort. Abierto los siete días de la semana — sin cita previa bienvenido.",
       "title": "Pedicura en Laval",
       "heroAlt": "Pedicura spa relajante en curso en Sans Souci Ongles & Spa, Laval",
       "intro": [
@@ -210,6 +215,7 @@
       "metaDescription": "Pedicuras spa relajantes con exfoliación, masaje y parafina en CF Carrefour Laval. Más de 20 años de experiencia. Reserva en línea — desde 40 $."
     },
     "lash-extensions": {
+      "lead": "Sans Souci Ongles & Spa ofrece extensiones de pestañas 2D, 3D e híbridas en CF Carrefour Laval, Entrada 6. Cada juego se adapta a la forma de tus ojos para un resultado natural o dramático sin necesidad de máscara. Nuestras técnicas certificadas usan aplicación aislada para proteger tus pestañas naturales. Retoques disponibles cada dos o tres semanas.",
       "title": "Extensiones de pestañas en Laval",
       "heroAlt": "Primer plano de extensiones de pestañas de aspecto natural en Sans Souci Ongles & Spa, Laval",
       "intro": [
@@ -254,6 +260,7 @@
       "metaDescription": "Extensiones de pestañas 2D, 3D e Híbrido adaptadas a ti en CF Carrefour Laval. De lo natural a lo dramático. Reserva en línea — desde 70 $."
     },
     "waxing": {
+      "lead": "Sans Souci Ongles & Spa ofrece depilación profesional con cera en CF Carrefour Laval, Entrada 6. Los servicios incluyen depilación de cejas, facial, axilas, piernas y zona bikini incluyendo brasileña. Nuestra técnica centrada en el confort minimiza las molestias. Los resultados duran tres a cuatro semanas. Reserva en línea o sin cita — abierto los siete días.",
       "title": "Depilación con cera en Laval",
       "heroAlt": "Sala de depilación limpia y tranquila en Sans Souci Ongles & Spa, Laval",
       "intro": [
@@ -312,6 +319,7 @@
     "guides": "Guías útiles"
   },
   "faq": {
+    "lead": "Esta página responde las preguntas más frecuentes sobre Sans Souci Ongles & Spa en CF Carrefour Laval — horarios, reservas, estacionamiento en Entrada 6, servicios, precios y disponibilidad sin cita. Si tu pregunta no está aquí, llámanos al (450) 505-6450.",
     "title": "Preguntas frecuentes",
     "intro": "Todo lo que necesitas saber antes de tu visita a Sans Souci Ongles & Spa.",
     "items": [
@@ -325,7 +333,11 @@
       { "q": "¿Venden tarjetas de regalo?", "a": "Sí — las tarjetas de regalo son un excelente presente y se pueden comprar en el salón. Pregunta en la recepción." },
       { "q": "¿Cuánto duran las uñas de gel y las extensiones de pestañas?", "a": "Las manicuras de gel duran típicamente 2–3 semanas; las extensiones de pestañas, 3–4 semanas con el cuidado adecuado. Te daremos consejos de mantenimiento en tu visita." },
       { "q": "¿Ofrecen garantía sobre su trabajo?", "a": "Sí. Respaldamos nuestro trabajo con una garantía de 7 días. Si algo se desprende, se astilla o no se realiza según nuestros estándares, contáctanos dentro de los 7 días posteriores a tu cita y lo corregiremos con la misma forma, el mismo largo y el mismo diseño, sin costo adicional. Los cambios de diseño o color no están incluidos. Consulta nuestros Términos y Condiciones para más detalles." },
-      { "q": "¿Cómo mantienen limpias sus herramientas y estaciones?", "a": "Seguimos estrictos protocolos de higiene. Las herramientas se limpian y desinfectan a fondo después de cada cliente y se esterilizan en un autoclave de grado médico que elimina bacterias, virus y hongos. Los artículos desechables son de un solo uso y cada estación de trabajo se desinfecta entre citas." }
+      { "q": "¿Cómo mantienen limpias sus herramientas y estaciones?", "a": "Seguimos estrictos protocolos de higiene. Las herramientas se limpian y desinfectan a fondo después de cada cliente y se esterilizan en un autoclave de grado médico que elimina bacterias, virus y hongos. Los artículos desechables son de un solo uso y cada estación de trabajo se desinfecta entre citas." },
+      { "q": "¿Hay estacionamiento en CF Carrefour Laval?", "a": "Sí. CF Carrefour Laval tiene un amplio estacionamiento interior y exterior gratuito. Usa la Entrada 6 para acceder directamente a nuestro salón, al nivel del estacionamiento." },
+      { "q": "¿Cuánto cuestan sus servicios?", "a": "Los precios varían según el servicio: la depilación comienza desde $15, las pedicuras desde $40, las manicuras desde $50 y las extensiones de pestañas desde $70. Consulta nuestra página de servicios para ver la lista completa de precios." },
+      { "q": "¿Puedo reservar una cita en línea?", "a": "Sí. Visita nuestra página de citas para reservar en línea en cualquier momento. Elige tu servicio, fecha y hora preferida. También puedes llamar al (450) 505-6450 si prefieres reservar por teléfono." },
+      { "q": "¿Cómo llego a Sans Souci en transporte público?", "a": "CF Carrefour Laval es accesible desde la estación de metro Montmorency (línea Naranja). Los autobuses STL conectan el centro comercial desde la estación. Bájate en la parada CF Carrefour Laval y sigue las indicaciones hacia la Entrada 6." }
     ]
   },
   "reviewsPage": {
