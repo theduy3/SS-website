@@ -48,9 +48,18 @@ Plans:
   4. `curl https://onglessanssouci.com/llms.txt` returns HTTP 200 with curated business content (not a locale redirect); `src/proxy.test.ts` has an assertion covering this path; `sitemap.ts` emits accurate `lastModified` and `x-default`
 
 **Plans**: 3 plans
+**Wave 1**
+
 - [ ] 02-01-PLAN.md — Answer-first lead blocks + FAQ hub expansion + per-route Service/FAQPage schema (CONTENT-01, CONTENT-02, SCHEMA-01, SCHEMA-02)
+
+**Wave 2** *(blocked on Wave 1 completion)*
+
 - [ ] 02-02-PLAN.md — Laval local page (4 locales) with FAQPage schema + sitemap entry (CONTENT-03, SCHEMA-01, SCHEMA-02)
+
+**Wave 3** *(blocked on Wave 2 completion)*
+
 - [ ] 02-03-PLAN.md — /llms.txt route + proxy STANDALONE registration & test + sitemap hygiene (CRAWL-01, CRAWL-02, SCHEMA-03)
+
 **UI hint**: yes
 
 ### Phase 3: Measurement & Conversion
