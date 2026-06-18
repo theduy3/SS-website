@@ -11,7 +11,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:e2e": "playwright test",
-    "fetch:reviews": "node --env-file-if-exists=.env.local scripts/fetch-google-reviews.mjs"
+    "fetch:reviews": "node --env-file-if-exists=.env.local scripts/fetch-google-reviews.mjs",
+    "audit:crawlers": "node scripts/audit-crawler-access.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.106.1",
