@@ -67,9 +67,27 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
   );
 
+  // Local-citation pages: dedicated routes with reciprocal hreflang across all 4 locales.
+  // Single shared slug across locales (per D-05), so a flat path drives the alternates map.
+  const localPaths = ["/laval"];
+  const localEntries: MetadataRoute.Sitemap = locales.flatMap((locale) =>
+    localPaths.map((path) => ({
+      url: `${site.url}/${locale}${path}`,
+      lastModified,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+      alternates: {
+        languages: Object.fromEntries(
+          locales.map((l) => [l, `${site.url}/${l}${path}`]),
+        ),
+      },
+    })),
+  );
+
   return [
     ...navEntries,
     ...secondaryEntries,
+    ...localEntries,
     ...serviceEntries,
     ...comparisonEntries,
   ];
