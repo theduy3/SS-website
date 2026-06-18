@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Phase 2 UI-SPEC approved
-last_updated: "2026-06-18T04:26:23.171Z"
-last_activity: 2026-06-18 -- Phase 02 execution started
+stopped_at: Phase 02 complete — all 3 plans done
+last_updated: "2026-06-18T05:30:00.000Z"
+last_activity: 2026-06-18 -- Phase 02-03 /llms.txt crawl surface complete
 progress:
   total_phases: 3
-  completed_phases: 1
+  completed_phases: 2
   total_plans: 4
-  completed_plans: 3
-  percent: 67
+  completed_plans: 4
+  percent: 75
 ---
 
 # Project State
@@ -25,12 +25,12 @@ See: .planning/PROJECT.md (updated 2026-06-17)
 
 ## Current Position
 
-Phase: 02 (content-schema-crawl-surface) — EXECUTING
-Plan: 3 of 3
-Status: 02-02 complete — executing 02-03 next
-Last activity: 2026-06-18 -- Phase 02-02 Laval local page shipped
+Phase: 02 (content-schema-crawl-surface) — COMPLETE
+Plan: 3 of 3 (all done)
+Status: Phase 02 complete — all requirements SCHEMA-01/02/03, CONTENT-01/02/03, CRAWL-01/02 fulfilled
+Last activity: 2026-06-18 -- Phase 02-03 /llms.txt + sitemap hygiene shipped
 
-Progress: [██████░░░░] 67% (phase 2/3 plans complete within phase 2)
+Progress: [████████░░] 75% (phase 2 complete; 4/4 plans done across phases 1-2)
 
 ## Performance Metrics
 
@@ -49,8 +49,8 @@ Progress: [██████░░░░] 67% (phase 2/3 plans complete within 
 
 **Recent Trend:**
 
-- Last 5 plans: 01-01 (~25 min, 4 tasks, 10 files, 38/38 tests)
-- Trend: on track
+- Last 5 plans: 01-01 (~25 min, 4 tasks, 10 files, 38/38 tests), 02-01, 02-02, 02-03 (~15 min, 3 tasks, 7 files, 93/93 tests)
+- Trend: on track — Phase 02 complete, all 8 requirements fulfilled
 
 *Updated after each plan completion*
 
@@ -65,6 +65,9 @@ Progress: [██████░░░░] 67% (phase 2/3 plans complete within 
 - 02-02 (2026-06-17): /laval stays OUT of STANDALONE_PATHS — localized [lang] route, not standalone (D-05). Confirmed by proxy.ts grep.
 - 02-02 (2026-06-17): dict.laval.faq.items is single source for both faqPageGraph schema and <Accordion> visible copy (SCHEMA-02 invariant).
 - 02-02 (2026-06-17): localPaths array in sitemap.ts drives /laval locale entries — no hand-written per-locale blocks.
+- 02-03 (2026-06-17): STANDALONE_PATHS merge-gate established — every non-[lang] route requires proxy.test.ts assertion before merge (mirrors /clientportal pattern).
+- 02-03 (2026-06-17): sitemap lastModified uses static PAGE_DATES map (not live new Date()) — deterministic across builds (D-09).
+- 02-03 (2026-06-17): x-default alternate points to /fr/<slug> (defaultLocale=fr) consistent with hreflang strategy.
 
 ### Pending Todos
 
@@ -89,6 +92,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-06-18T05:09:00Z — Completed 02-02: Laval local page + dict + sitemap
-Stopped at: 02-02 complete, 02-03 (llms.txt + sitemap hygiene) is next
-Resume file: .planning/phases/02-content-schema-crawl-surface/02-03-PLAN.md
+Last session: 2026-06-18T05:30:00Z — Completed 02-03: /llms.txt + sitemap hygiene + SCHEMA-03 gate
+Stopped at: Phase 02 complete — all 3 plans done; ready for Phase 03 (Measurement & Conversion)
+Resume file: None — Phase 03 plan not yet created
