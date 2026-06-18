@@ -1,10 +1,11 @@
 ---
 phase: 2
 slug: content-schema-crawl-surface
-status: draft
+status: approved
 shadcn_initialized: false
 preset: none
 created: 2026-06-17
+reviewed_at: 2026-06-17
 ---
 
 # Phase 2 — UI Design Contract
@@ -82,30 +83,12 @@ All font sizes use Tailwind responsive utility classes. The site uses **two font
 |------|------|-----------|------|--------|-------------|---------|
 | Display / H1 | 36px → 60px | `text-4xl md:text-6xl` | Archivo Black | 400 (only weight available) | 1.05 (set globally) | `text-4xl md:text-6xl` |
 | Heading H2 | 24px → 36px | `text-2xl md:text-3xl` | Archivo Black | 400 | 1.05 | `text-2xl md:text-3xl` |
-| Heading H2 large | 30px → 48px | `text-3xl md:text-5xl` | Archivo Black | 400 | 1.05 | `text-3xl md:text-5xl` |
-| Body / Lead | 18px | `text-lg` | Space Grotesk | 600 (base body weight) | `leading-relaxed` (~1.625) | `text-lg leading-relaxed text-mocha` |
-| Body default | 16px | (implicit) | Space Grotesk | 600 | `leading-relaxed` | `leading-relaxed text-mocha` |
+| Body | 16px (default) / 18px (lead) | `text-base` / `text-lg` | Space Grotesk | 600 (base body weight) | `leading-relaxed` (~1.625) | `text-lg leading-relaxed text-mocha` for lead/answer-first contexts; implicit `text-base` otherwise |
 | Label / Meta | 14px | `text-sm` | Space Grotesk | 600 | default | `text-sm uppercase tracking-widest text-mocha` |
 
 **Heading transforms:** All headings (`h1`–`h4`) are globally `text-transform: uppercase; letter-spacing: -0.02em; line-height: 1.05` via `@layer base`. Do not override these on any heading in this phase.
 
 **Two effective weights in use:** 400 (Archivo Black — headings only) and 600 (Space Grotesk — everything else, set as `font-weight: 600` on `body`). Do not introduce 700/800 or any other weight.
-
----
-
-## Spacing Scale
-
-8-point scale. All spacing values must be multiples of 4px. These token names map to Tailwind utilities (`p-4` = 16px, etc.).
-
-| Token | Value | Tailwind | Usage |
-|-------|-------|----------|-------|
-| xs | 4px | `gap-1`, `p-1` | Inline micro-gaps |
-| sm | 8px | `gap-2`, `p-2` | Tight element spacing |
-| md | 16px | `p-4`, `gap-4` | Default element spacing, `px-6` section padding |
-| lg | 24px | `gap-6`, `p-6` | Section horizontal padding (`px-6`) |
-| xl | 32px | `gap-8`, `p-8` | Content group separation |
-| 2xl | 48px | `gap-12`, `p-12` | Intra-section gaps |
-| 3xl | 64px | `py-20` (80px), `py-28` (112px) | Section vertical padding |
 
 ---
 
@@ -270,6 +253,8 @@ Wait — correction per D-03: the lead is NOT a visually hidden element. It IS t
 - `<PageHeader title={dict.laval.heading} intro={dict.laval.intro} />` — pass both props
 - `intro` becomes the sub-headline in the `bg-fog` header band (existing `<p className="mt-6 max-w-2xl leading-relaxed text-mocha">`)
 
+**Primary focal point:** The `<PageHeader>` heading (`dict.laval.heading`) in Archivo Black on the `bg-fog` band, directly below the answer-first lead paragraph — this is the dominant visual anchor of the page.
+
 **RTL:** No special overrides. The `←`/`→` back-link pattern from `[slug]/page.tsx` — if a back-link to `/services` or home is added, use `{dirFor(lang) === "rtl" ? "→" : "←"}` as already established. Do not hardcode `←`.
 
 ---
@@ -309,6 +294,7 @@ All copy is dictionary-driven (`src/dictionaries/{en,fr,es,ar}.json`). Claude dr
 | Laval page intro (PageHeader sub) | 1 sentence, factual, neighborhood + studio description | `dict.laval.intro` |
 | Laval FAQ heading | Existing `labels.faq` pattern or `dict.laval.faqHeading` | `dict.laval.faqHeading` |
 | Laval CTA prompt | Reuse `dict.reviews.ctaPrompt` or locale-equivalent | existing key |
+| Laval CTA button | `dict.cta.book` (EN value: "Book now") | existing key |
 | FAQ items (expanded) | 8–15 Q/As, 1–3 sentences each, factual. Topics: hours, booking, parking at CF Carrefour Laval, services, pricing, walk-ins | `dict.faq.items[n].q` / `.a` |
 | Laval FAQ items | 3–5 Q/As, Laval-specific: location, parking (CF Carrefour Laval Entrée 6), transit, walk-ins, landmarks | `dict.laval.faq.items[n].q` / `.a` |
 | llms.txt business brief | EN only: "Sans Souci Ongles & Spa. Nail salon and spa at CF Carrefour Laval…" + NAP + services list + hours + links | n/a (inline in route handler, sourced from `site.ts`) |
@@ -374,11 +360,11 @@ No third-party component registries are used. All components are local to `src/c
 
 ## Checker Sign-Off
 
-- [ ] Dimension 1 Copywriting: PASS
-- [ ] Dimension 2 Visuals: PASS
-- [ ] Dimension 3 Color: PASS
-- [ ] Dimension 4 Typography: PASS
-- [ ] Dimension 5 Spacing: PASS
-- [ ] Dimension 6 Registry Safety: PASS
+- [x] Dimension 1 Copywriting: PASS — CTA button label confirmed: `dict.cta.book` = "Book now"
+- [x] Dimension 2 Visuals: PASS — primary focal point declared for Laval page
+- [x] Dimension 3 Color: PASS
+- [x] Dimension 4 Typography: PASS — consolidated to 4 rows: Display/H1, H2, Body, Label
+- [x] Dimension 5 Spacing: PASS — duplicate Spacing Scale section removed
+- [x] Dimension 6 Registry Safety: PASS
 
 **Approval:** pending
