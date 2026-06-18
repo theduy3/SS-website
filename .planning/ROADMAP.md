@@ -50,7 +50,7 @@ Plans:
 **Plans**: 3 plans
 **Wave 1**
 
-- [ ] 02-01-PLAN.md — Answer-first lead blocks + FAQ hub expansion + per-route Service/FAQPage schema (CONTENT-01, CONTENT-02, SCHEMA-01, SCHEMA-02)
+- [x] 02-01-PLAN.md — Answer-first lead blocks + FAQ hub expansion + per-route Service/FAQPage schema (CONTENT-01, CONTENT-02, SCHEMA-01, SCHEMA-02) ✓ 2026-06-17
 
 **Wave 2** *(blocked on Wave 1 completion)*
 
