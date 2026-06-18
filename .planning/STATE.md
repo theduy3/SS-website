@@ -2,14 +2,14 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: planning
-stopped_at: Phase 1 context gathered
-last_updated: "2026-06-18T00:14:13.106Z"
-last_activity: 2026-06-17 — Roadmap created; 15 v1 requirements mapped to 3 phases
+status: executing
+stopped_at: Phase 01 Plan 01 Task 4 — checkpoint:human-verify (live crawler audit)
+last_updated: "2026-06-18T00:46:00.000Z"
+last_activity: 2026-06-18 -- Phase 01 Plan 01 Tasks 1-3 complete; halted at Task 4 checkpoint
 progress:
   total_phases: 3
   completed_phases: 0
-  total_plans: 0
+  total_plans: 1
   completed_plans: 0
   percent: 0
 ---
@@ -21,16 +21,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-06-17)
 
 **Core value:** Every important page opens with a direct, factual, schema-backed answer that humans trust and AI engines can cite — and a visitor can book or contact within seconds.
-**Current focus:** Phase 1 — Foundation Prerequisites
+**Current focus:** Phase 01 — foundation-prerequisites
 
 ## Current Position
 
-Phase: 1 of 3 (Foundation Prerequisites)
-Plan: 0 of TBD in current phase
-Status: Ready to plan
-Last activity: 2026-06-17 — Roadmap created; 15 v1 requirements mapped to 3 phases
+Phase: 01 (foundation-prerequisites) — EXECUTING (at checkpoint)
+Plan: 1 of 1 (tasks 1-3 of 4 complete; task 4 = human-verify checkpoint)
+Status: Awaiting human-verify checkpoint (live crawler audit)
+Last activity: 2026-06-18 -- Tasks 1-3 committed; halted at Task 4 checkpoint:human-verify
 
-Progress: [░░░░░░░░░░] 0%
+Progress: [███░░░░░░░] 15% (3/4 tasks in plan 1/1 of phase 1/3)
 
 ## Performance Metrics
 
@@ -69,7 +69,8 @@ None yet.
 
 - STANDALONE_PATHS coupling risk: every phase that adds a non-`[lang]` route (Phase 2 adds `llms.txt` route handler) requires a `src/proxy.test.ts` assertion before merge. Treat as a merge gate, not an afterthought.
 - GA4 custom channel does not backfill. MEAS-01 must be configured before Phase 2 content ships to any live traffic. Sequence: configure GA4 channel → deploy Phase 2 content.
-- hreflang reciprocity: Phase 2 FAQ hub and Montreal local page must ship all 4 locale variants (en/fr/es/ar) simultaneously or emit no hreflang tags at all until complete.
+- hreflang reciprocity: Phase 2 FAQ hub and Laval local page must ship all 4 locale variants (en/fr/es/ar) simultaneously or emit no hreflang tags at all until complete.
+- [CHECKPOINT] Task 4 (live crawler audit): human must run `bun run audit:crawlers` and paste results to resume. If non-200s appear, per D-13 they must be escalated as a separate infra task (not worked around in code).
 
 ## Deferred Items
 
@@ -83,6 +84,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-06-18T00:14:13.093Z
-Stopped at: Phase 1 context gathered
-Resume file: .planning/phases/01-foundation-prerequisites/01-CONTEXT.md
+Last session: 2026-06-18T00:46:00.000Z
+Stopped at: Phase 01 Plan 01 Task 4 checkpoint:human-verify — live crawler audit
+Resume file: .planning/phases/01-foundation-prerequisites/01-PLAN.md (Task 4)
