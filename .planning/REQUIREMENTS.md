@@ -1,4 +1,4 @@
-# Requirements: Ongles Sans Souci — AI-Search (SEO + GEO) Milestone
+# Requirements: Sans Souci Ongles & Spa — AI-Search (SEO + GEO) Milestone
 
 **Defined:** 2026-06-17
 **Core Value:** Every important page opens with a direct, factual, schema-backed answer that humans trust and AI engines can cite — and a visitor can book or contact within seconds.
@@ -19,7 +19,7 @@ Requirements for this milestone (v1 = GEO/technical core, extending the live sit
 
 <!-- Builders already exist in src/lib/seo.ts — this is wiring, coverage, and policy compliance. -->
 
-- [ ] **SCHEMA-01**: Every key route (home, each service page, FAQ hub, Montreal local page) emits its expected JSON-LD (Service / FAQPage / BreadcrumbList) in server-rendered HTML, verified per route
+- [ ] **SCHEMA-01**: Every key route (home, each service page, FAQ hub, Laval local page) emits its expected JSON-LD (Service / FAQPage / BreadcrumbList) in server-rendered HTML, verified per route
 - [ ] **SCHEMA-02**: FAQPage schema text matches the visible SSR FAQ copy verbatim on every page that emits it
 - [ ] **SCHEMA-03**: `AggregateRating` is emitted only through the existing review-fetch gate (never hand-authored), preserving Google's no-self-controlled-reviews policy
 
@@ -29,7 +29,7 @@ Requirements for this milestone (v1 = GEO/technical core, extending the live sit
 
 - [ ] **CONTENT-01**: Each key page opens with a direct 40–60-word answer block in the first screen, rendered server-side
 - [ ] **CONTENT-02**: A FAQ knowledge hub is published with concise factual Q/As in all 4 locales (en/fr/es/ar); copy, schema, and SSR ship as one atomic unit
-- [ ] **CONTENT-03**: One Montreal local page exists with neighborhood-level FAQ signals, server-rendered
+- [ ] **CONTENT-03**: One Laval local page exists with neighborhood-level FAQ signals, server-rendered
 
 ### Crawl & Agent-Readable
 
@@ -64,7 +64,7 @@ Explicitly excluded for this milestone.
 
 | Feature | Reason |
 |---------|--------|
-| Multi-location / multi-city page system | Single Montreal salon; speculative complexity |
+| Multi-location / multi-city page system | Single Laval salon; speculative complexity |
 | Greenfield rebuild | Existing Next.js 16 + schema/i18n infra works; rebuild adds risk, no GEO gain |
 | Backlink campaigns, external-mention outreach, monthly editorial refresh ops | Operational/marketing, not a build milestone |
 | Native booking/payments replacing SalonX iframe widgets | Separate product milestone |

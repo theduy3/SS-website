@@ -1,8 +1,8 @@
-# Ongles Sans Souci — AI-Search (SEO + GEO) Milestone
+# Sans Souci Ongles & Spa — AI-Search (SEO + GEO) Milestone
 
 ## What This Is
 
-The live multilingual marketing site for **Ongles Sans Souci**, a Montreal nail salon (Next.js 16 App Router / React 19 / TypeScript, deployed via Dokploy to onglessanssouci.com). This milestone extends the existing site into an **AI-search-optimized** property: pages that win classic local/topical SEO *and* get retrieved, summarized, and cited by AI answer engines (ChatGPT, Perplexity, Claude, Gemini), with clear conversion paths for AI-discovered visitors.
+The live multilingual marketing site for **Sans Souci Ongles & Spa**, a Laval nail salon (Next.js 16 App Router / React 19 / TypeScript, deployed via Dokploy to onglessanssouci.com). This milestone extends the existing site into an **AI-search-optimized** property: pages that win classic local/topical SEO *and* get retrieved, summarized, and cited by AI answer engines (ChatGPT, Perplexity, Claude, Gemini), with clear conversion paths for AI-discovered visitors.
 
 ## Core Value
 
@@ -42,7 +42,7 @@ Every important page opens with a direct, factual, schema-backed answer that hum
 **Answer-first content (dictionary data discipline, not new components):**
 - [ ] Answer-first restructuring — each key page opens with a direct 40–60-word answer; existing Accordion + `faqPageGraph` consume the dictionary unchanged
 - [ ] FAQ / knowledge hub — concise factual Q/As across all 4 locales (en/fr/es/ar); page copy + schema + SSR ship as one atomic unit
-- [ ] One strong Montreal local page with neighborhood FAQ signals
+- [ ] One strong Laval local page with neighborhood FAQ signals
 
 **Agent-readable + crawl:**
 - [ ] `llms.txt` — App Router route handler (`src/app/llms.txt/route.ts`, force-static) + a `proxy.test.ts` assertion locking its locale-routing exemption
@@ -57,7 +57,7 @@ Every important page opens with a direct, factual, schema-backed answer that hum
 
 <!-- Explicit boundaries with reasoning, to prevent re-adding. -->
 
-- Multi-location / multi-city page system — single Montreal location for now; revisit if the business expands
+- Multi-location / multi-city page system — single Laval location for now; revisit if the business expands
 - Large content expansion (comparison/"best-for"/cost-guide/care-guide pages at scale) — deferred to a content-expansion milestone; v1 proves the technical/answer foundation first
 - Greenfield rebuild — extending the working live site; throwing away proven infra adds risk with no GEO benefit
 - Backlink campaigns, external-mention outreach, monthly editorial-refresh operations — operational/marketing work, not a build milestone
@@ -79,7 +79,7 @@ Every important page opens with a direct, factual, schema-backed answer that hum
 - **Rendering**: Core content must be SSR/SSG (legible to crawlers) — no critical content behind client-only JS, per the plan's technical layer
 - **Deploy**: Dokploy auto-deploys on merge to `main`; runtime-only secrets (service-role key, admin password) never baked into the build
 - **Locale**: All public content is multilingual (en/fr/es/ar); new pages/schema must respect the i18n + RTL (Arabic) model
-- **Scope**: Single Montreal location
+- **Scope**: Single Laval location
 
 ## Key Decisions
 
@@ -87,7 +87,7 @@ Every important page opens with a direct, factual, schema-backed answer that hum
 |----------|-----------|---------|
 | Extend the live site (not greenfield rebuild) | Existing Next.js 16 + SEO/schema/i18n/reviews infra is working; GEO gains come from content structure + schema breadth, not a rebuild | — Pending |
 | v1 = GEO/technical core first | Citation-readiness (answer-first templates, schema, llms.txt, AI-referrer analytics) is the fastest path to AI visibility; defer bulk content | — Pending |
-| Single Montreal location (no multi-location system) | One physical salon; a multi-location page system would be speculative complexity | — Pending |
+| Single Laval location (no multi-location system) | One physical salon; a multi-location page system would be speculative complexity | — Pending |
 | Build GA4 + AI-referrer analytics from scratch | No analytics exists today; measurement is required to prove AI-referral value | — Pending |
 
 ## Evolution

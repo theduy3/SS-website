@@ -1,4 +1,4 @@
-# Roadmap: Ongles Sans Souci — AI-Search (SEO + GEO) Milestone
+# Roadmap: Sans Souci Ongles & Spa — AI-Search (SEO + GEO) Milestone
 
 ## Overview
 
@@ -37,7 +37,7 @@ Plans:
 **Success Criteria** (what must be TRUE):
   1. `curl https://onglessanssouci.com/en/faq | grep acceptedAnswer` returns at least 5 answer strings in raw HTML (not client-only JS); the FAQ hub exists in en/fr/es/ar with reciprocal hreflang on every variant
   2. `curl https://onglessanssouci.com/en/services/[any-service]` returns a `<script type="application/ld+json">` block containing Service + FAQPage JSON-LD in the raw HTML; `AggregateRating` is absent unless the Google reviews fetch script provides live data
-  3. Each key page (home, services, FAQ hub, Montreal local page) opens with a 40–60-word direct answer block visible in server-rendered HTML — confirmed by `curl | grep -A2 "answer"` showing the text before any client JS runs
+  3. Each key page (home, services, FAQ hub, Laval local page) opens with a 40–60-word direct answer block visible in server-rendered HTML — confirmed by `curl | grep -A2 "answer"` showing the text before any client JS runs
   4. `curl https://onglessanssouci.com/llms.txt` returns HTTP 200 with curated business content (not a locale redirect); `src/proxy.test.ts` has an assertion covering this path; `sitemap.ts` emits accurate `lastModified` and `x-default`
 **Plans**: TBD
 **UI hint**: yes
