@@ -10,7 +10,7 @@ This milestone hardens the existing Next.js 16 + schema infrastructure for AI-en
 - Integer phases (1, 2, 3, 4): Planned milestone work
 - Decimal phases (e.g., 1.1): Urgent insertions via `/gsd-phase --insert`
 
-- [ ] **Phase 1: Foundation Prerequisites** - XSS hardening, NAP constants, AI crawler access confirmed
+- [x] **Phase 1: Foundation Prerequisites** - XSS hardening, NAP constants, AI crawler access confirmed
 - [ ] **Phase 2: Content, Schema & Crawl Surface** - FAQ hub, answer-first copy, JSON-LD wiring, llms.txt route
 - [ ] **Phase 3: Measurement & Conversion** - GA4 AI-referrer channel, conversion events, trust signals, CWV
 
@@ -27,7 +27,7 @@ This milestone hardens the existing Next.js 16 + schema infrastructure for AI-en
   3. `curl https://onglessanssouci.com/robots.txt` shows explicit allow directives for GPTBot, ClaudeBot, OAI-SearchBot, and PerplexityBot; `curl -A "GPTBot/1.0" https://onglessanssouci.com/en` from an external machine returns HTTP 200 (not 403/429)
 **Plans**: 1 plan
 Plans:
-- [ ] 01-PLAN.md — FOUND-01/02/03: JSON-LD escape + NAP guard test + doc identity fix + robots AI-bot rules + live crawler audit
+- [x] 01-PLAN.md — FOUND-01/02/03: JSON-LD escape + NAP guard test + doc identity fix + robots AI-bot rules + live crawler audit ✓ 2026-06-17
 
 ### Phase 2: Content, Schema & Crawl Surface
 **Goal**: Every key page opens with a direct answer block, a FAQ knowledge hub exists in all 4 locales with FAQPage schema that mirrors visible SSR copy, service schema is wired per route, and AI agents have a curated `/llms.txt` entry point — all verified via `curl` of raw HTML before merge.
@@ -59,6 +59,6 @@ Plans:
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation Prerequisites | 0/TBD | Not started | - |
+| 1. Foundation Prerequisites | 1/1 | Complete | 2026-06-17 |
 | 2. Content, Schema & Crawl Surface | 0/TBD | Not started | - |
 | 3. Measurement & Conversion | 0/TBD | Not started | - |
