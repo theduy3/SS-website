@@ -15,6 +15,7 @@ const STANDALONE_PATHS = new Set([
   "/queue",
   "/clientportal",
   "/subscription",
+  "/llms.txt",
 ]);
 
 // Kept self-contained (reads + unseals the cookie directly, no shared modules)
