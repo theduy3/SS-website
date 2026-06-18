@@ -647,22 +647,25 @@ No new security surface beyond the existing patterns. The `llms.txt` route is pu
 
 ---
 
-## Open Questions
+## Open Questions (RESOLVED)
 
-1. **Services-index FAQPage schema**
+1. **Services-index FAQPage schema** — (RESOLVED: skip)
    - What we know: `servicesPage` in the dictionary has `heading` and `intro` but no `faq` key. The audit shows `faqPageGraph` is MISSING on the services index.
    - What's unclear: Does the services index page need a FAQPage schema? SCHEMA-01 says "every key route" — services index is a key route, but there are no FAQ items for it in the dictionary.
    - Recommendation: Skip `faqPageGraph` on services index (no source data exists); focus on `servicesGraph` + `breadcrumbGraph` already present there. Add a `dict.servicesPage.lead` key for CONTENT-01 only.
+   - **Resolution:** Implemented in 02-01 — services index gets a `lead` paragraph only; no FAQPage (skip-on-index rule).
 
-2. **home page breadcrumb**
+2. **home page breadcrumb** — (RESOLVED: skip breadcrumb, wire servicesGraph)
    - What we know: The home page has no `breadcrumbGraph` and no `<JsonLd>` calls. Layout provides `organizationGraph`.
    - What's unclear: Should home emit a `BreadcrumbList`? It's technically a single-node breadcrumb (just "Home") which has no navigation value.
    - Recommendation: Skip breadcrumb on home. Add `servicesGraph` and the lead paragraph — that satisfies SCHEMA-01 for home.
+   - **Resolution:** Implemented in 02-01 Task 2 — home emits `servicesGraph` ItemList (single-source `items` array) + lead paragraph; no breadcrumb. `organizationGraph` stays sitewide via `layout.tsx`.
 
-3. **Dict key for per-service lead paragraphs**
+3. **Dict key for per-service lead paragraphs** — (RESOLVED: new `lead` key)
    - What we know: `serviceDetails[id]` currently has: `title`, `heroAlt`, `intro` (array of paragraphs), `whyUs`, `included`, `addons`, `duration`, `aftercare`, `hygiene`, `faq`, `metaTitle`, `metaDescription`.
    - What's unclear: Should the lead paragraph reuse `intro[0]` (already 40–60 words on some services) or should a new `lead` key be added?
    - Recommendation: Add a new `lead` key per service (separate from `intro`) to guarantee exact 40–60 word control. This allows `intro` paragraphs to be longer without violating CONTENT-01. The planner should spec all 4 services × 4 locales = 16 `lead` strings in the copy-authorship wave.
+   - **Resolution:** Implemented in 02-01 — new `lead` dictionary key used across all content pages for precise 40–60-word SSR answer blocks.
 
 ---
 
