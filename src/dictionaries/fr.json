@@ -1187,5 +1187,41 @@
   "comparisonLabels": {
     "verdict": "Notre recommandation",
     "related": "Découvrez notre service :"
+  },
+  "laval": {
+    "heading": "LAVAL",
+    "lead": "Sans Souci Ongles & Spa se trouve au CF Carrefour Laval, au 3035, boulevard le Carrefour, Entrée 6, Laval (Québec). Ouvert sept jours sur sept, nous offrons manucures, pédicures, extensions de cils et épilation avec plus de 1000 couleurs gel, des outils stérilisés et plus de 20 ans d'expertise.",
+    "intro": "Un salon d'ongles et spa complet au CF Carrefour Laval, au service de Laval et de la Rive-Nord depuis 2003.",
+    "faqHeading": "Salon d'ongles à Laval — Questions fréquentes",
+    "facts": [
+      { "term": "Adresse", "detail": "3035, boulevard le Carrefour, Entrée 6, Laval, QC H7T 1C8 (à l'intérieur du CF Carrefour Laval)" },
+      { "term": "Stationnement", "detail": "Stationnement intérieur gratuit au CF Carrefour Laval — utilisez l'Entrée 6 pour l'accès le plus direct au salon." },
+      { "term": "Transport en commun", "detail": "Accessible par les lignes d'autobus STL 20, 50 et 60 (arrêt Carrefour Laval). La station de métro Montmorency est à quelques minutes en bus." },
+      { "term": "Points de repère", "detail": "Situé à l'intérieur du CF Carrefour Laval, près du Cineplex, de Simons et du food court principal au rez-de-chaussée." }
+    ],
+    "faq": {
+      "items": [
+        {
+          "q": "Où se trouve exactement Sans Souci Ongles & Spa à Laval ?",
+          "a": "Nous sommes au 3035, boulevard le Carrefour, Entrée 6, à l'intérieur du CF Carrefour Laval, Laval, QC H7T 1C8. Entrez par l'Entrée 6 pour l'accès le plus direct à notre salon."
+        },
+        {
+          "q": "Y a-t-il du stationnement au CF Carrefour Laval ?",
+          "a": "Oui — le CF Carrefour Laval offre un stationnement intérieur gratuit. Nous vous recommandons d'utiliser l'Entrée 6, l'entrée la plus proche de Sans Souci Ongles & Spa."
+        },
+        {
+          "q": "Comment me rendre à Sans Souci en transport en commun ?",
+          "a": "Prenez les lignes d'autobus STL 20, 50 ou 60 jusqu'à l'arrêt Carrefour Laval. Vous pouvez aussi prendre le métro ligne orange jusqu'à la station Montmorency, puis un bus en direction du Carrefour."
+        },
+        {
+          "q": "Acceptez-vous les clients sans rendez-vous à Laval ?",
+          "a": "Oui, les clients sans rendez-vous sont les bienvenus selon la disponibilité. Pour garantir l'heure et la technicienne de votre choix, nous recommandons de réserver en ligne ou d'appeler le (450) 505-6450 à l'avance."
+        },
+        {
+          "q": "Quels sont les horaires de votre salon à Laval ?",
+          "a": "Lundi–mardi 9 h–19 h ; mercredi–vendredi 9 h–21 h ; samedi–dimanche 9 h–17 h. Les horaires peuvent varier les jours fériés — appelez le (450) 505-6450 pour confirmer."
+        }
+      ]
+    }
   }
 }

@@ -1187,5 +1187,41 @@
   "comparisonLabels": {
     "verdict": "Our recommendation",
     "related": "Explore the service:"
+  },
+  "laval": {
+    "heading": "LAVAL",
+    "lead": "Sans Souci Ongles & Spa is located inside CF Carrefour Laval at 3035 Boulevard le Carrefour, Entrée 6, Laval, QC. Open seven days a week, we offer manicures, pedicures, lash extensions and waxing with 1000+ gel colours, sterilized tools and over 20 years of nail-care expertise.",
+    "intro": "A full-service nail salon and spa inside CF Carrefour Laval, serving Laval and the greater North Shore since 2003.",
+    "faqHeading": "Laval Nail Salon — Frequently Asked Questions",
+    "facts": [
+      { "term": "Address", "detail": "3035 Boulevard le Carrefour, Entrée 6, Laval, QC H7T 1C8 (inside CF Carrefour Laval)" },
+      { "term": "Parking", "detail": "Free indoor parking at CF Carrefour Laval — use Entrance 6 for the closest access to the salon." },
+      { "term": "Transit", "detail": "Accessible by STL bus (lines 20, 50 and 60 stop at Carrefour Laval). Montmorency metro station is a short bus ride away." },
+      { "term": "Landmarks", "detail": "Located inside CF Carrefour Laval, near Cineplex, Simons and the main food court on the ground level." }
+    ],
+    "faq": {
+      "items": [
+        {
+          "q": "Where exactly is Sans Souci Ongles & Spa in Laval?",
+          "a": "We're at 3035 Boulevard le Carrefour, Entrée 6, inside CF Carrefour Laval, Laval, QC H7T 1C8. Enter through Entrance 6 for the most direct route to our salon."
+        },
+        {
+          "q": "Is there parking at CF Carrefour Laval?",
+          "a": "Yes — CF Carrefour Laval offers free indoor parking. We recommend using Entrance 6, which is the closest mall entrance to Sans Souci Ongles & Spa."
+        },
+        {
+          "q": "How do I get to Sans Souci by public transit?",
+          "a": "Take STL bus lines 20, 50 or 60 to Carrefour Laval. You can also take the orange-line metro to Montmorency station and transfer to a Carrefour-bound bus."
+        },
+        {
+          "q": "Do you accept walk-ins at the Laval location?",
+          "a": "Yes, walk-ins are welcome based on availability. To guarantee your preferred time and technician, we recommend booking online or calling (450) 505-6450 in advance."
+        },
+        {
+          "q": "What are the hours at your Laval salon?",
+          "a": "Monday–Tuesday 9 am–7 pm; Wednesday–Friday 9 am–9 pm; Saturday–Sunday 9 am–5 pm. Hours may vary on holidays — call (450) 505-6450 to confirm."
+        }
+      ]
+    }
   }
 }
