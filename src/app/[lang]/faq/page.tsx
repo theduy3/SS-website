@@ -7,6 +7,8 @@ import { pageMetadata, faqPageGraph, breadcrumbGraph } from "@/lib/seo";
 import { JsonLd } from "@/components/JsonLd";
 import { PageHeader } from "@/components/PageHeader";
 import { Accordion } from "@/components/Accordion";
+import { KeyPageChrome } from "@/components/KeyPageChrome";
+import { readConsent } from "@/lib/consent";
 
 export async function generateMetadata({
   params,
@@ -24,8 +26,10 @@ export default async function FaqPage({ params }: LangParams) {
   const { lang } = await params;
   if (!isLocale(lang)) notFound();
   const dict = await getDictionary(lang);
+  const consent = await readConsent();
+  const consentKnown = consent !== undefined;
   return (
-    <>
+    <div className="pb-[64px] md:pb-0">
       <p
         className="mx-auto max-w-3xl px-6 pt-8 text-lg leading-relaxed text-mocha md:pt-12"
         dir={dirFor(lang)}
@@ -40,9 +44,11 @@ export default async function FaqPage({ params }: LangParams) {
         ])}
       />
       <PageHeader title={dict.faq.title} intro={dict.faq.intro} />
+      {/* Trust band + sticky Call/Book bar (key page) */}
+      <KeyPageChrome locale={lang} dict={dict} consentKnown={consentKnown} />
       <section className="mx-auto max-w-3xl px-6 py-20 md:py-28">
         <Accordion items={dict.faq.items} />
       </section>
-    </>
+    </div>
   );
 }

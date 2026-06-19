@@ -13,7 +13,9 @@ import { JsonLd } from "@/components/JsonLd";
 import { PageHeader } from "@/components/PageHeader";
 import { Accordion } from "@/components/Accordion";
 import { Button } from "@/components/Button";
+import { KeyPageChrome } from "@/components/KeyPageChrome";
 import { site } from "@/lib/site";
+import { readConsent } from "@/lib/consent";
 
 export async function generateMetadata({
   params,
@@ -31,9 +33,11 @@ export default async function LavalPage({ params }: LangParams) {
   const { lang } = await params;
   if (!isLocale(lang)) notFound();
   const dict = await getDictionary(lang);
+  const consent = await readConsent();
+  const consentKnown = consent !== undefined;
 
   return (
-    <>
+    <div className="pb-[64px] md:pb-0">
       {/* JSON-LD: single source — dict.laval.faq.items feeds both schema and Accordion */}
       <JsonLd data={faqPageGraph(dict.laval.faq.items)} />
       <JsonLd
@@ -55,6 +59,9 @@ export default async function LavalPage({ params }: LangParams) {
 
       {/* Page title + intro band */}
       <PageHeader title={dict.laval.heading} intro={dict.laval.intro} />
+
+      {/* Trust band + sticky Call/Book bar (key page) */}
+      <KeyPageChrome locale={lang} dict={dict} consentKnown={consentKnown} />
 
       {/* Location facts — address / parking / transit / landmarks */}
       <section className="mx-auto max-w-3xl px-6 py-20 md:py-28">
@@ -94,6 +101,6 @@ export default async function LavalPage({ params }: LangParams) {
           </a>
         </div>
       </section>
-    </>
+    </div>
   );
 }

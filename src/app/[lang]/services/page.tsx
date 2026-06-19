@@ -5,9 +5,11 @@ import { PageHeader } from "@/components/PageHeader";
 import { Button } from "@/components/Button";
 import { Reveal } from "@/components/Reveal";
 import { ServicePhoto } from "@/components/ServicePhoto";
+import { KeyPageChrome } from "@/components/KeyPageChrome";
 import { site } from "@/lib/site";
 import { JsonLd } from "@/components/JsonLd";
 import { services, servicePath } from "@/lib/services";
+import { readConsent } from "@/lib/consent";
 import { getDictionary } from "../dictionaries";
 import { isLocale, dirFor, type LangParams } from "@/lib/i18n";
 import { pageMetadata, servicesGraph, breadcrumbGraph } from "@/lib/seo";
@@ -29,6 +31,8 @@ export default async function ServicesPage({ params }: LangParams) {
   const { lang } = await params;
   if (!isLocale(lang)) notFound();
   const dict = await getDictionary(lang);
+  const consent = await readConsent();
+  const consentKnown = consent !== undefined;
 
   // Hub ItemList schema, built from the registry (price/slug) + dict (copy).
   const items = services.map((s) => ({
@@ -40,7 +44,7 @@ export default async function ServicesPage({ params }: LangParams) {
   }));
 
   return (
-    <>
+    <div className="pb-[64px] md:pb-0">
       <p
         className="mx-auto max-w-3xl px-6 pt-8 text-lg leading-relaxed text-mocha md:pt-12"
         dir={dirFor(lang)}
@@ -58,6 +62,9 @@ export default async function ServicesPage({ params }: LangParams) {
         title={dict.servicesPage.heading}
         intro={dict.servicesPage.intro}
       />
+
+      {/* Trust band + sticky Call/Book bar (key page) */}
+      <KeyPageChrome locale={lang} dict={dict} consentKnown={consentKnown} />
 
       <section className="mx-auto max-w-7xl px-6 py-20 md:py-28">
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2">
@@ -98,6 +105,6 @@ export default async function ServicesPage({ params }: LangParams) {
           </div>
         </Reveal>
       </section>
-    </>
+    </div>
   );
 }

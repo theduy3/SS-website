@@ -8,8 +8,10 @@ import { Gallery } from "@/components/Gallery";
 import { Stars } from "@/components/Stars";
 import { Testimonials } from "@/components/Testimonials";
 import { JsonLd } from "@/components/JsonLd";
+import { KeyPageChrome } from "@/components/KeyPageChrome";
 import { services, servicePath } from "@/lib/services";
 import { site } from "@/lib/site";
+import { readConsent } from "@/lib/consent";
 import { getDictionary } from "./dictionaries";
 import { isLocale, dirFor, type LangParams } from "@/lib/i18n";
 import { pageMetadata, servicesGraph } from "@/lib/seo";
@@ -30,6 +32,8 @@ export default async function Home({ params }: LangParams) {
   const { lang } = await params;
   if (!isLocale(lang)) notFound();
   const dict = await getDictionary(lang);
+  const consent = await readConsent();
+  const consentKnown = consent !== undefined;
 
   // Locale-aware number formatting: FR "4,9" (comma), EN "4.9".
   const localeTag = lang === "fr" ? "fr-CA" : "en-CA";
@@ -57,7 +61,7 @@ export default async function Home({ params }: LangParams) {
   }));
 
   return (
-    <>
+    <div className="pb-[64px] md:pb-0">
       <JsonLd data={servicesGraph(lang, serviceItems)} />
       <p
         className="mx-auto max-w-3xl px-6 pt-8 text-lg leading-relaxed text-mocha md:pt-12"
@@ -95,6 +99,9 @@ export default async function Home({ params }: LangParams) {
           </Reveal>
         </div>
       </section>
+
+      {/* Trust band (SSR credibility) + sticky Call/Book bar (mobile only) */}
+      <KeyPageChrome locale={lang} dict={dict} consentKnown={consentKnown} />
 
       {/* Reviews / ratings — soft-gray band, dark text */}
       <section className="bg-fog">
@@ -265,6 +272,6 @@ export default async function Home({ params }: LangParams) {
           </Reveal>
         </div>
       </section>
-    </>
+    </div>
   );
 }

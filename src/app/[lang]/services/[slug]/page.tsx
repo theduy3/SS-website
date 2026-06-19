@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Button } from "@/components/Button";
 import { Reveal } from "@/components/Reveal";
 import { ServicePhoto } from "@/components/ServicePhoto";
+import { KeyPageChrome } from "@/components/KeyPageChrome";
 import { JsonLd } from "@/components/JsonLd";
 import { site } from "@/lib/site";
 import {
@@ -12,6 +13,7 @@ import {
   servicePath,
   servicePathsByLocale,
 } from "@/lib/services";
+import { readConsent } from "@/lib/consent";
 import { getDictionary } from "../../dictionaries";
 import { isLocale, dirFor } from "@/lib/i18n";
 import { pageMetadata, serviceGraph, breadcrumbGraph, faqPageGraph } from "@/lib/seo";
@@ -52,9 +54,11 @@ export default async function ServiceDetailPage({ params }: Params) {
   const bookHref = `/${lang}${site.booking}`;
   const priceDisplay = formatFromPrice(lang, service.price, labels.priceFrom);
   const relatedComparisons = comparisonsForService(service.id);
+  const consent = await readConsent();
+  const consentKnown = consent !== undefined;
 
   return (
-    <>
+    <div className="pb-[64px] md:pb-0">
       <JsonLd
         data={serviceGraph(lang, {
           name: d.title,
@@ -112,6 +116,9 @@ export default async function ServiceDetailPage({ params }: Params) {
           </div>
         </Reveal>
       </section>
+
+      {/* Trust band + sticky Call/Book bar (key page) */}
+      <KeyPageChrome locale={lang} dict={dict} consentKnown={consentKnown} />
 
       {/* Why Sans Souci */}
       <section className="mx-auto max-w-3xl px-6 pb-4">
@@ -252,6 +259,6 @@ export default async function ServiceDetailPage({ params }: Params) {
           </div>
         </Reveal>
       </section>
-    </>
+    </div>
   );
 }
