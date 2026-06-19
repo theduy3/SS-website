@@ -64,6 +64,9 @@ export const site = {
       country: "CA",
     },
   },
+  // Year the salon opened at CF Carrefour Laval. Feeds the static "Since 2024"
+  // trust marker displayed in the Trust Band (D-08, plan 03-02).
+  established: 2024,
   // nav hrefs are locale-agnostic base paths; labels come from the dictionary
   // (dict.nav[key]). Pages prefix hrefs with the active /{locale}.
   nav: [
