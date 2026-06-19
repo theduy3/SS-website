@@ -13,7 +13,7 @@ This milestone hardens the existing Next.js 16 + schema infrastructure for AI-en
 
 - [x] **Phase 1: Foundation Prerequisites** - XSS hardening, NAP constants, AI crawler access confirmed
 - [x] **Phase 2: Content, Schema & Crawl Surface** - FAQ hub, answer-first copy, JSON-LD wiring, llms.txt route (completed 2026-06-17)
-- [x] **Phase 3: Measurement & Conversion** - GA4 AI-referrer channel, conversion events, trust signals, CWV (completed 2026-06-19)
+- [x] **Phase 3: Measurement & Conversion** - GA4 AI-referrer channel, conversion events, trust signals, CWV (completed 2026-06-18)
 
 ## Phase Details
 
