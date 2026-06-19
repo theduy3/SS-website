@@ -2,18 +2,18 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-current_phase: 02
-current_phase_name: content-schema-crawl-surface
-status: completed
+current_phase: 03
+current_phase_name: measurement-conversion
+status: executing
 stopped_at: Phase 3 UI-SPEC approved (6/6 PASS)
-last_updated: "2026-06-18T23:34:26.233Z"
-last_activity: 2026-06-18
-last_activity_desc: Phase 02-03 /llms.txt + sitemap hygiene shipped
+last_updated: "2026-06-19T00:49:17.076Z"
+last_activity: 2026-06-19
+last_activity_desc: Phase 03 execution started
 progress:
   total_phases: 3
   completed_phases: 2
-  total_plans: 4
-  completed_plans: 4
+  total_plans: 7
+  completed_plans: 5
   percent: 67
 ---
 
@@ -24,14 +24,14 @@ progress:
 See: .planning/PROJECT.md (updated 2026-06-17)
 
 **Core value:** Every important page opens with a direct, factual, schema-backed answer that humans trust and AI engines can cite — and a visitor can book or contact within seconds.
-**Current focus:** Phase 02 — content-schema-crawl-surface
+**Current focus:** Phase 03 — measurement-conversion
 
 ## Current Position
 
-Phase: 02 (content-schema-crawl-surface) — COMPLETE
-Plan: 3 of 3 (all done)
-Status: Phase 02 complete — all requirements SCHEMA-01/02/03, CONTENT-01/02/03, CRAWL-01/02 fulfilled
-Last activity: 2026-06-18 -- Phase 02-03 /llms.txt + sitemap hygiene shipped
+Phase: 03 (measurement-conversion) — EXECUTING
+Plan: 2 of 3
+Status: Ready to execute
+Last activity: 2026-06-19 — Phase 03 execution started
 
 Progress: [████████░░] 75% (phase 2 complete; 4/4 plans done across phases 1-2)
 
@@ -56,6 +56,7 @@ Progress: [████████░░] 75% (phase 2 complete; 4/4 plans done
 - Trend: on track — Phase 02 complete, all 8 requirements fulfilled
 
 *Updated after each plan completion*
+| Phase 03 P01 | 7 | 3 tasks | 12 files |
 
 ## Accumulated Context
 
@@ -71,6 +72,9 @@ Progress: [████████░░] 75% (phase 2 complete; 4/4 plans done
 - 02-03 (2026-06-17): STANDALONE_PATHS merge-gate established — every non-[lang] route requires proxy.test.ts assertion before merge (mirrors /clientportal pattern).
 - 02-03 (2026-06-17): sitemap lastModified uses static PAGE_DATES map (not live new Date()) — deterministic across builds (D-09).
 - 02-03 (2026-06-17): x-default alternate points to /fr/<slug> (defaultLocale=fr) consistent with hreflang strategy.
+- 03-01 (2026-06-19): Consent-default-denied stub uses strategy=beforeInteractive — confirmed against next/script docs that this works in [lang]/layout.tsx (App Router root layout) and runs before gtag.js on every route.
+- 03-01 (2026-06-19): ConsentBar uses useSyncExternalStore hydration gate — bar is provably absent from SSR HTML (identical pattern to Reveal.tsx).
+- 03-01 (2026-06-19): GA id validated against anchored /^G-[A-Z0-9-]+$/ before inline-script interpolation — prevents T-03-01 injection sink.
 
 ### Pending Todos
 
@@ -95,6 +99,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-06-18T23:34:26.224Z
+Last session: 2026-06-19T00:49:08.342Z
 Stopped at: Phase 3 UI-SPEC approved (6/6 PASS)
 Resume file: .planning/phases/03-measurement-conversion/03-UI-SPEC.md

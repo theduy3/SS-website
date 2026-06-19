@@ -75,10 +75,10 @@ Plans:
   3. A sticky mobile CTA and above-fold trust signals (aggregate rating, years in business) are visible on key pages without scrolling on a 375px viewport
   4. `web-vitals` RUM reports LCP < 2.5s, INP < 200ms, CLS < 0.1 for key pages; `ANALYZE=true bun run build` confirms Framer Motion is not double-loaded across server and client bundles
 
-**Plans**: 3 plans
+**Plans**: 1/3 plans executed
 **Wave 1**
 
-- [ ] 03-01-PLAN.md — GA4 + Consent Mode v2 default-denied + 4-locale consent bar + track()/grantConsent() helpers + ss_consent cookie + site.established + AI-referrer regex draft (MEAS-01)
+- [x] 03-01-PLAN.md — GA4 + Consent Mode v2 default-denied + 4-locale consent bar + track()/grantConsent() helpers + ss_consent cookie + site.established + AI-referrer regex draft (MEAS-01)
 
 **Wave 2** *(both depend on 03-01; no file overlap — run in parallel)*
 
@@ -93,4 +93,4 @@ Plans:
 |-------|----------------|--------|-----------|
 | 1. Foundation Prerequisites | 1/1 | Complete    | 2026-06-18 |
 | 2. Content, Schema & Crawl Surface | 3/3 | Complete | 2026-06-18 |
-| 3. Measurement & Conversion | 0/TBD | Not started | - |
+| 3. Measurement & Conversion | 1/3 | In Progress|  |
