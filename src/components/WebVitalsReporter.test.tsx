@@ -9,11 +9,14 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, act } from "@testing-library/react";
 
-// Mock web-vitals so we can capture registered callbacks without a real browser.
-const mockOnLCP = vi.fn();
-const mockOnINP = vi.fn();
-const mockOnCLS = vi.fn();
+// vi.hoisted ensures these are initialised before the hoisted vi.mock() factory runs.
+const { mockOnLCP, mockOnINP, mockOnCLS } = vi.hoisted(() => ({
+  mockOnLCP: vi.fn(),
+  mockOnINP: vi.fn(),
+  mockOnCLS: vi.fn(),
+}));
 
+// Mock web-vitals so we can capture registered callbacks without a real browser.
 vi.mock("web-vitals", () => ({
   onLCP: mockOnLCP,
   onINP: mockOnINP,

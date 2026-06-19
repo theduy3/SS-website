@@ -12,6 +12,7 @@ import { site } from "@/lib/site";
 import { organizationGraph } from "@/lib/seo";
 import { Analytics } from "@/components/Analytics";
 import { ConsentBar } from "@/components/ConsentBar";
+import { WebVitalsReporter } from "@/components/WebVitalsReporter";
 import { readConsent } from "@/lib/consent.server";
 
 // Archivo Black is a single-weight font — weight "400" is required.
@@ -82,8 +83,10 @@ export default async function RootLayout({
 
   // SSR consent read — passes consentKnown to ConsentBar so the bar does not
   // flash in on reload when the user has already made a decision (cookie set).
+  // consentGranted is passed to WebVitalsReporter to gate CWV listener registration.
   const consent = await readConsent();
   const consentKnown = consent !== undefined;
+  const consentGranted = consent === "granted";
 
   return (
     <html
@@ -107,6 +110,8 @@ export default async function RootLayout({
         <PopupHost locale={lang} />
         {/* JS-mounted consent bar — absent from SSR HTML (hydration gate). */}
         <ConsentBar dict={dict} locale={lang} consentKnown={consentKnown} />
+        {/* CWV reporter — registers onLCP/onINP/onCLS only after consent granted. */}
+        <WebVitalsReporter consentGranted={consentGranted} />
       </body>
     </html>
   );
