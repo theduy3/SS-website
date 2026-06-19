@@ -9,14 +9,16 @@
 //
 // When NEXT_PUBLIC_GA_ID is unset the component returns null — no GA scripts
 // are emitted (safe no-op build, D-01). The GA id is validated against the
-// canonical measurement-id shape (^G-[A-Z0-9-]+$) before interpolation to
-// prevent an inline-script injection sink (T-03-01).
+// canonical measurement-id shape (^G-[A-Z0-9][A-Z0-9-]*$) before interpolation
+// to prevent an inline-script injection sink (T-03-01).
 
 import Script from "next/script";
 
 // Anchored regex matching the GA4 measurement id format (e.g. G-XXXXXXXXXX).
 // Must be anchored (^ and $) to block partial matches / injection.
-const GA_ID_PATTERN = /^G-[A-Z0-9-]+$/;
+// Requires the first char after "G-" to be alphanumeric (not a dash) so
+// values like "G---------" are rejected (IN-03).
+const GA_ID_PATTERN = /^G-[A-Z0-9][A-Z0-9-]*$/;
 
 export function Analytics() {
   const gaId = process.env.NEXT_PUBLIC_GA_ID;
@@ -47,7 +49,8 @@ gtag('consent','default',{
   ad_storage:'denied',
   ad_user_data:'denied',
   ad_personalization:'denied',
-  analytics_storage:'denied'
+  analytics_storage:'denied',
+  wait_for_update:500
 });
 `.trim(),
         }}
@@ -72,7 +75,7 @@ gtag('consent','default',{
         id="ga4-config"
         strategy="afterInteractive"
         dangerouslySetInnerHTML={{
-          __html: `gtag('js',new Date());gtag('config','${gaId}');`,
+          __html: `gtag('js',new Date());gtag('config','${gaId}',{send_page_view:false});`,
         }}
       />
     </>
