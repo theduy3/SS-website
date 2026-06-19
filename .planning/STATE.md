@@ -5,15 +5,15 @@ milestone_name: milestone
 current_phase: 03
 current_phase_name: measurement-conversion
 status: executing
-stopped_at: Phase 3 UI-SPEC approved (6/6 PASS)
-last_updated: "2026-06-19T00:49:17.076Z"
+stopped_at: Completed 03-02-PLAN.md
+last_updated: "2026-06-19T01:04:03.447Z"
 last_activity: 2026-06-19
 last_activity_desc: Phase 03 execution started
 progress:
   total_phases: 3
   completed_phases: 2
   total_plans: 7
-  completed_plans: 5
+  completed_plans: 6
   percent: 67
 ---
 
@@ -29,7 +29,7 @@ See: .planning/PROJECT.md (updated 2026-06-17)
 ## Current Position
 
 Phase: 03 (measurement-conversion) — EXECUTING
-Plan: 2 of 3
+Plan: 3 of 3
 Status: Ready to execute
 Last activity: 2026-06-19 — Phase 03 execution started
 
@@ -57,6 +57,7 @@ Progress: [████████░░] 75% (phase 2 complete; 4/4 plans done
 
 *Updated after each plan completion*
 | Phase 03 P01 | 7 | 3 tasks | 12 files |
+| Phase 03 P02 | 10 | 3 tasks | 15 files |
 
 ## Accumulated Context
 
@@ -75,6 +76,9 @@ Progress: [████████░░] 75% (phase 2 complete; 4/4 plans done
 - 03-01 (2026-06-19): Consent-default-denied stub uses strategy=beforeInteractive — confirmed against next/script docs that this works in [lang]/layout.tsx (App Router root layout) and runs before gtag.js on every route.
 - 03-01 (2026-06-19): ConsentBar uses useSyncExternalStore hydration gate — bar is provably absent from SSR HTML (identical pattern to Reveal.tsx).
 - 03-01 (2026-06-19): GA id validated against anchored /^G-[A-Z0-9-]+$/ before inline-script interpolation — prevents T-03-01 injection sink.
+- [Phase ?]: Stars size prop defaults to h-6 w-6 preserving existing call sites; trust band passes h-4 w-4
+- [Phase ?]: StickyCtaBar suppressed when consentKnown=false to avoid double-bar with ConsentBar (UI-SPEC line 200)
+- [Phase ?]: KeyPageChrome is server component mounted per-page, not in layout.tsx, to avoid leaking onto non-key pages D-09
 
 ### Pending Todos
 
@@ -99,6 +103,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-06-19T00:49:08.342Z
-Stopped at: Phase 3 UI-SPEC approved (6/6 PASS)
-Resume file: .planning/phases/03-measurement-conversion/03-UI-SPEC.md
+Last session: 2026-06-19T01:04:03.437Z
+Stopped at: Completed 03-02-PLAN.md
+Resume file: None

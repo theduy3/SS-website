@@ -39,8 +39,8 @@ Requirements for this milestone (v1 = GEO/technical core, extending the live sit
 ### Measurement & Conversion
 
 - [x] **MEAS-01**: GA4 is installed with a custom channel group capturing AI referrers (ChatGPT, Perplexity, Claude, Gemini, Copilot) beyond GA4's native AI Assistant channel; configured before the first new page ships (no backfill)
-- [ ] **MEAS-02**: Page-level conversion events fire for phone call, contact-form submit, and booking-CTA click
-- [ ] **MEAS-03**: A sticky mobile book/contact CTA and above-the-fold trust signals (rating, years) are present on key pages
+- [x] **MEAS-02**: Page-level conversion events fire for phone call, contact-form submit, and booking-CTA click
+- [x] **MEAS-03**: A sticky mobile book/contact CTA and above-the-fold trust signals (rating, years) are present on key pages
 - [ ] **MEAS-04**: `web-vitals` RUM (INP/CLS) is captured and key pages meet "good" CWV thresholds with no regressions from added schema/content
 
 ## v2 Requirements
@@ -86,8 +86,8 @@ Explicitly excluded for this milestone.
 | CRAWL-01 | Phase 2 | Pending |
 | CRAWL-02 | Phase 2 | Pending |
 | MEAS-01 | Phase 3 | Complete |
-| MEAS-02 | Phase 3 | Pending |
-| MEAS-03 | Phase 3 | Pending |
+| MEAS-02 | Phase 3 | Complete |
+| MEAS-03 | Phase 3 | Complete |
 | MEAS-04 | Phase 3 | Pending |
 
 **Coverage:**
