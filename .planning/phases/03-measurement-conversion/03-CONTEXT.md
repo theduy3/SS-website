@@ -71,7 +71,7 @@ Scope = MEAS-01..04. This is **configuration + instrumentation + a small amount 
 - `src/components/ContactForm.tsx` — `status === "success"` is the `generate_lead` hook point
 - `src/app/[lang]/appointments/page.tsx` + `src/components/BookingWidget.tsx` — the cross-domain SalonX booking target (why completion is unmeasurable)
 - `src/dictionaries/{en,fr,es,ar}.json` — consent-banner + trust-band copy (4-locale single-source)
-- Root layout (`src/app/layout.tsx`) — GA4 `next/script` + Consent provider + banner mount point; web-vitals reporter mount
+- Root layout (`src/app/[lang]/layout.tsx` — there is no top-level `src/app/layout.tsx` in this repo) — GA4 `next/script` + Consent provider + banner mount point; web-vitals reporter mount
 
 ### Crawl-coupling note
 - Project memory `standalone-route-proxy-coupling` — **N/A this phase**: no new un-localized route is added. Recorded here so the planner doesn't re-raise it.
