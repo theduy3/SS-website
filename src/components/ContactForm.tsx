@@ -2,6 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import type { Dictionary } from "@/lib/dictionary";
+import { track } from "@/lib/analytics";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
@@ -32,6 +33,7 @@ export function ContactForm({ dict }: { dict: Pick<Dictionary, "form" | "cta"> }
         throw new Error(json.error ?? "Something went wrong. Please try again.");
       }
       setStatus("success");
+      track("generate_lead", { method: "contact_form" });
       form.reset();
     } catch (err) {
       setStatus("error");
