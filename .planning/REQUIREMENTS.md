@@ -19,22 +19,22 @@ Requirements for this milestone (v1 = GEO/technical core, extending the live sit
 
 <!-- Builders already exist in src/lib/seo.ts — this is wiring, coverage, and policy compliance. -->
 
-- [ ] **SCHEMA-01**: Every key route (home, each service page, FAQ hub, Laval local page) emits its expected JSON-LD (Service / FAQPage / BreadcrumbList) in server-rendered HTML, verified per route
-- [ ] **SCHEMA-02**: FAQPage schema text matches the visible SSR FAQ copy verbatim on every page that emits it
-- [ ] **SCHEMA-03**: `AggregateRating` is emitted only through the existing review-fetch gate (never hand-authored), preserving Google's no-self-controlled-reviews policy
+- [x] **SCHEMA-01**: Every key route (home, each service page, FAQ hub, Laval local page) emits its expected JSON-LD (Service / FAQPage / BreadcrumbList) in server-rendered HTML, verified per route
+- [x] **SCHEMA-02**: FAQPage schema text matches the visible SSR FAQ copy verbatim on every page that emits it
+- [x] **SCHEMA-03**: `AggregateRating` is emitted only through the existing review-fetch gate (never hand-authored), preserving Google's no-self-controlled-reviews policy
 
 ### Content
 
 <!-- Answer-object discipline in the dictionaries (4 locales) — consumed by existing Accordion + faqPageGraph. -->
 
-- [ ] **CONTENT-01**: Each key page opens with a direct 40–60-word answer block in the first screen, rendered server-side
-- [ ] **CONTENT-02**: A FAQ knowledge hub is published with concise factual Q/As in all 4 locales (en/fr/es/ar); copy, schema, and SSR ship as one atomic unit
-- [ ] **CONTENT-03**: One Laval local page exists with neighborhood-level FAQ signals, server-rendered
+- [x] **CONTENT-01**: Each key page opens with a direct 40–60-word answer block in the first screen, rendered server-side
+- [x] **CONTENT-02**: A FAQ knowledge hub is published with concise factual Q/As in all 4 locales (en/fr/es/ar); copy, schema, and SSR ship as one atomic unit
+- [x] **CONTENT-03**: One Laval local page exists with neighborhood-level FAQ signals, server-rendered
 
 ### Crawl & Agent-Readable
 
-- [ ] **CRAWL-01**: `/llms.txt` is served via an App Router route handler (force-static), with a `proxy.test.ts` assertion proving it bypasses locale routing
-- [ ] **CRAWL-02**: `sitemap.ts` emits accurate `lastModified` + `x-default`; navigation is link-based with no orphan pages and no critical content rendered client-only
+- [x] **CRAWL-01**: `/llms.txt` is served via an App Router route handler (force-static), with a `proxy.test.ts` assertion proving it bypasses locale routing
+- [x] **CRAWL-02**: `sitemap.ts` emits accurate `lastModified` + `x-default`; navigation is link-based with no orphan pages and no critical content rendered client-only
 
 ### Measurement & Conversion
 
@@ -77,14 +77,14 @@ Explicitly excluded for this milestone.
 | FOUND-01 | Phase 1 | Complete |
 | FOUND-02 | Phase 1 | Complete |
 | FOUND-03 | Phase 1 | Complete |
-| SCHEMA-01 | Phase 2 | Pending |
-| SCHEMA-02 | Phase 2 | Pending |
-| SCHEMA-03 | Phase 2 | Pending |
-| CONTENT-01 | Phase 2 | Pending |
-| CONTENT-02 | Phase 2 | Pending |
-| CONTENT-03 | Phase 2 | Pending |
-| CRAWL-01 | Phase 2 | Pending |
-| CRAWL-02 | Phase 2 | Pending |
+| SCHEMA-01 | Phase 2 | Complete |
+| SCHEMA-02 | Phase 2 | Complete |
+| SCHEMA-03 | Phase 2 | Complete |
+| CONTENT-01 | Phase 2 | Complete |
+| CONTENT-02 | Phase 2 | Complete |
+| CONTENT-03 | Phase 2 | Complete |
+| CRAWL-01 | Phase 2 | Complete |
+| CRAWL-02 | Phase 2 | Complete |
 | MEAS-01 | Phase 3 | Complete |
 | MEAS-02 | Phase 3 | Complete |
 | MEAS-03 | Phase 3 | Complete |

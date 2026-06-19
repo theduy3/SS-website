@@ -12,7 +12,7 @@ This milestone hardens the existing Next.js 16 + schema infrastructure for AI-en
 - Decimal phases (e.g., 1.1): Urgent insertions via `/gsd-phase --insert`
 
 - [x] **Phase 1: Foundation Prerequisites** - XSS hardening, NAP constants, AI crawler access confirmed
-- [ ] **Phase 2: Content, Schema & Crawl Surface** - FAQ hub, answer-first copy, JSON-LD wiring, llms.txt route
+- [x] **Phase 2: Content, Schema & Crawl Surface** - FAQ hub, answer-first copy, JSON-LD wiring, llms.txt route (completed 2026-06-17)
 - [x] **Phase 3: Measurement & Conversion** - GA4 AI-referrer channel, conversion events, trust signals, CWV (completed 2026-06-19)
 
 ## Phase Details
@@ -58,7 +58,7 @@ Plans:
 
 **Wave 3** *(blocked on Wave 2 completion)*
 
-- [ ] 02-03-PLAN.md — /llms.txt route + proxy STANDALONE registration & test + sitemap hygiene (CRAWL-01, CRAWL-02, SCHEMA-03)
+- [x] 02-03-PLAN.md — /llms.txt route + proxy STANDALONE registration & test + sitemap hygiene (CRAWL-01, CRAWL-02, SCHEMA-03) ✓ 2026-06-17
 
 **UI hint**: yes
 
