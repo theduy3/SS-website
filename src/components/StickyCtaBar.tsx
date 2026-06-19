@@ -6,6 +6,12 @@
 // around the Button component. Button.tsx is NOT modified (onClick ban, D-06,
 // UI-SPEC line 174).
 //
+// WR-02: Each span also has onKeyDown so keyboard users activating the inner
+// Button via Enter or Space trigger track() too. Navigation (tel:/Link) lives
+// on the inner Button which is the real focusable element — it is unaffected
+// by the span handler, and track() throwing can never block navigation because
+// the span handler fires in addition to (not instead of) the Button's own event.
+//
 // The bar is suppressed while the consent cookie is absent (consentKnown=false)
 // to avoid stacking with the ConsentBar (UI-SPEC line 200, z-40).
 // Once consent is recorded (either accepted or declined) this bar renders.
@@ -49,8 +55,16 @@ export function StickyCtaBar({
       <div
         className={`flex gap-3 items-center justify-center max-w-7xl mx-auto ${isRtl ? "flex-row-reverse" : ""}`}
       >
-        {/* Call: <span onClick> wrapper fires phone_click; inner <a> still initiates tel: */}
-        <span onClick={() => track("phone_click")} className="flex-1">
+        {/* Call: span wrapper fires phone_click on click and keyboard Enter/Space (WR-02).
+             The inner <a> (tel:) handles navigation independently — track() throwing
+             cannot block the call. */}
+        <span
+          onClick={() => track("phone_click")}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === " ") track("phone_click");
+          }}
+          className="flex-1"
+        >
           <Button
             href={site.contact.phoneHref}
             variant="light"
@@ -60,9 +74,14 @@ export function StickyCtaBar({
           </Button>
         </span>
 
-        {/* Book: <span onClick> wrapper fires book_cta_click; inner <Link> still navigates */}
+        {/* Book: span wrapper fires book_cta_click on click and keyboard Enter/Space (WR-02).
+             The inner <Link> handles navigation independently — track() throwing
+             cannot block navigation. */}
         <span
           onClick={() => track("book_cta_click")}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === " ") track("book_cta_click");
+          }}
           className="flex-1"
         >
           <Button
