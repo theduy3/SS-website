@@ -1188,6 +1188,12 @@
     "verdict": "Nuestra recomendación",
     "related": "Conoce nuestro servicio:"
   },
+  "consent": {
+    "body": "Usamos cookies analíticas para entender cómo nos encuentran. Puedes rechazarlas — el sitio funciona igual.",
+    "accept": "Aceptar",
+    "decline": "Rechazar",
+    "ariaLabel": "Consentimiento de cookies"
+  },
   "laval": {
     "heading": "LAVAL",
     "lead": "Sans Souci Ongles & Spa está ubicado dentro del CF Carrefour Laval en 3035 Boulevard le Carrefour, Entrada 6, Laval, QC. Abierto los siete días de la semana, ofrecemos manicuras, pedicuras, extensiones de pestañas y cera con más de 1000 colores de gel, herramientas esterilizadas y más de 20 años de experiencia.",
