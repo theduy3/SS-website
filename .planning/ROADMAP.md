@@ -13,7 +13,7 @@ This milestone hardens the existing Next.js 16 + schema infrastructure for AI-en
 
 - [x] **Phase 1: Foundation Prerequisites** - XSS hardening, NAP constants, AI crawler access confirmed
 - [ ] **Phase 2: Content, Schema & Crawl Surface** - FAQ hub, answer-first copy, JSON-LD wiring, llms.txt route
-- [ ] **Phase 3: Measurement & Conversion** - GA4 AI-referrer channel, conversion events, trust signals, CWV
+- [x] **Phase 3: Measurement & Conversion** - GA4 AI-referrer channel, conversion events, trust signals, CWV (completed 2026-06-19)
 
 ## Phase Details
 
@@ -75,7 +75,7 @@ Plans:
   3. A sticky mobile CTA and above-fold trust signals (aggregate rating, years in business) are visible on key pages without scrolling on a 375px viewport
   4. `web-vitals` RUM reports LCP < 2.5s, INP < 200ms, CLS < 0.1 for key pages; `ANALYZE=true bun run build` confirms Framer Motion is not double-loaded across server and client bundles
 
-**Plans**: 2/3 plans executed
+**Plans**: 3/3 plans complete
 **Wave 1**
 
 - [x] 03-01-PLAN.md — GA4 + Consent Mode v2 default-denied + 4-locale consent bar + track()/grantConsent() helpers + ss_consent cookie + site.established + AI-referrer regex draft (MEAS-01)
@@ -83,7 +83,7 @@ Plans:
 **Wave 2** *(both depend on 03-01; no file overlap — run in parallel)*
 
 - [x] 03-02-PLAN.md — Trust band (SSR, live-gated) + sticky mobile Call+Book bar + conversion events (phone_click/book_cta_click/generate_lead) on 5 key pages via KeyPageChrome (MEAS-02, MEAS-03)
-- [ ] 03-03-PLAN.md — web-vitals RUM (consent-gated LCP/INP/CLS → GA4) + @next/bundle-analyzer Framer double-load audit (MEAS-04)
+- [x] 03-03-PLAN.md — web-vitals RUM (consent-gated LCP/INP/CLS → GA4) + @next/bundle-analyzer Framer double-load audit (MEAS-04)
 
 **UI hint**: yes
 
@@ -93,4 +93,4 @@ Plans:
 |-------|----------------|--------|-----------|
 | 1. Foundation Prerequisites | 1/1 | Complete    | 2026-06-18 |
 | 2. Content, Schema & Crawl Surface | 3/3 | Complete | 2026-06-18 |
-| 3. Measurement & Conversion | 2/3 | In Progress|  |
+| 3. Measurement & Conversion | 3/3 | Complete   | 2026-06-19 |
