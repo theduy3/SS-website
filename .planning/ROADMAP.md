@@ -75,7 +75,16 @@ Plans:
   3. A sticky mobile CTA and above-fold trust signals (aggregate rating, years in business) are visible on key pages without scrolling on a 375px viewport
   4. `web-vitals` RUM reports LCP < 2.5s, INP < 200ms, CLS < 0.1 for key pages; `ANALYZE=true bun run build` confirms Framer Motion is not double-loaded across server and client bundles
 
-**Plans**: TBD
+**Plans**: 3 plans
+**Wave 1**
+
+- [ ] 03-01-PLAN.md — GA4 + Consent Mode v2 default-denied + 4-locale consent bar + track()/grantConsent() helpers + ss_consent cookie + site.established + AI-referrer regex draft (MEAS-01)
+
+**Wave 2** *(both depend on 03-01; no file overlap — run in parallel)*
+
+- [ ] 03-02-PLAN.md — Trust band (SSR, live-gated) + sticky mobile Call+Book bar + conversion events (phone_click/book_cta_click/generate_lead) on 5 key pages via KeyPageChrome (MEAS-02, MEAS-03)
+- [ ] 03-03-PLAN.md — web-vitals RUM (consent-gated LCP/INP/CLS → GA4) + @next/bundle-analyzer Framer double-load audit (MEAS-04)
+
 **UI hint**: yes
 
 ## Progress
