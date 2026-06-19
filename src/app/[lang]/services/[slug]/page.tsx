@@ -13,7 +13,7 @@ import {
   servicePath,
   servicePathsByLocale,
 } from "@/lib/services";
-import { readConsent } from "@/lib/consent";
+import { readConsent } from "@/lib/consent.server";
 import { getDictionary } from "../../dictionaries";
 import { isLocale, dirFor } from "@/lib/i18n";
 import { pageMetadata, serviceGraph, breadcrumbGraph, faqPageGraph } from "@/lib/seo";

@@ -15,7 +15,7 @@ import { Accordion } from "@/components/Accordion";
 import { Button } from "@/components/Button";
 import { KeyPageChrome } from "@/components/KeyPageChrome";
 import { site } from "@/lib/site";
-import { readConsent } from "@/lib/consent";
+import { readConsent } from "@/lib/consent.server";
 
 export async function generateMetadata({
   params,

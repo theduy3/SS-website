@@ -11,7 +11,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { KeyPageChrome } from "@/components/KeyPageChrome";
 import { services, servicePath } from "@/lib/services";
 import { site } from "@/lib/site";
-import { readConsent } from "@/lib/consent";
+import { readConsent } from "@/lib/consent.server";
 import { getDictionary } from "./dictionaries";
 import { isLocale, dirFor, type LangParams } from "@/lib/i18n";
 import { pageMetadata, servicesGraph } from "@/lib/seo";

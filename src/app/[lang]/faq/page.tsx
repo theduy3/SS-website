@@ -8,7 +8,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { PageHeader } from "@/components/PageHeader";
 import { Accordion } from "@/components/Accordion";
 import { KeyPageChrome } from "@/components/KeyPageChrome";
-import { readConsent } from "@/lib/consent";
+import { readConsent } from "@/lib/consent.server";
 
 export async function generateMetadata({
   params,

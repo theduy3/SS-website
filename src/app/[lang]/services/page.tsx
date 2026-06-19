@@ -9,7 +9,7 @@ import { KeyPageChrome } from "@/components/KeyPageChrome";
 import { site } from "@/lib/site";
 import { JsonLd } from "@/components/JsonLd";
 import { services, servicePath } from "@/lib/services";
-import { readConsent } from "@/lib/consent";
+import { readConsent } from "@/lib/consent.server";
 import { getDictionary } from "../dictionaries";
 import { isLocale, dirFor, type LangParams } from "@/lib/i18n";
 import { pageMetadata, servicesGraph, breadcrumbGraph } from "@/lib/seo";

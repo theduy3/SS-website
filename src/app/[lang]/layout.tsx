@@ -12,7 +12,7 @@ import { site } from "@/lib/site";
 import { organizationGraph } from "@/lib/seo";
 import { Analytics } from "@/components/Analytics";
 import { ConsentBar } from "@/components/ConsentBar";
-import { readConsent } from "@/lib/consent";
+import { readConsent } from "@/lib/consent.server";
 
 // Archivo Black is a single-weight font — weight "400" is required.
 const archivoBlack = Archivo_Black({
