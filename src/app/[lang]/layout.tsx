@@ -10,6 +10,9 @@ import { locales, isLocale, dirFor, type LangParams } from "@/lib/i18n";
 import { PopupHost } from "@/components/PopupHost";
 import { site } from "@/lib/site";
 import { organizationGraph } from "@/lib/seo";
+import { Analytics } from "@/components/Analytics";
+import { ConsentBar } from "@/components/ConsentBar";
+import { readConsent } from "@/lib/consent";
 
 // Archivo Black is a single-weight font — weight "400" is required.
 const archivoBlack = Archivo_Black({
@@ -77,6 +80,11 @@ export default async function RootLayout({
   if (!isLocale(lang)) notFound();
   const dict = await getDictionary(lang);
 
+  // SSR consent read — passes consentKnown to ConsentBar so the bar does not
+  // flash in on reload when the user has already made a decision (cookie set).
+  const consent = await readConsent();
+  const consentKnown = consent !== undefined;
+
   return (
     <html
       lang={lang}
@@ -91,10 +99,14 @@ export default async function RootLayout({
             description: dict.meta.homeDescription,
           })}
         />
+        {/* GA4 Consent Mode v2 stub + loader (no-op when NEXT_PUBLIC_GA_ID unset). */}
+        <Analytics />
         <Header dict={dict} locale={lang} />
         <main className="flex-1">{children}</main>
         <Footer dict={dict} locale={lang} />
         <PopupHost locale={lang} />
+        {/* JS-mounted consent bar — absent from SSR HTML (hydration gate). */}
+        <ConsentBar dict={dict} locale={lang} consentKnown={consentKnown} />
       </body>
     </html>
   );
