@@ -1,12 +1,12 @@
 gsd_state_version: 1.0
-milestone: v1.0 (archived 2026-06-21)
-current_phase: null
-status: milestone_complete
+milestone: v2.0
+current_phase: 04
+status: roadmap_ready
 last_updated: "2026-06-21"
 total_phases: 3
-completed_phases: 3
-total_plans: 7
-completed_plans: 7
-percent: 100
-current_phase_name: null
-next: /gsd-new-milestone (v2.0)
+completed_phases: 0
+total_plans: 0
+completed_plans: 0
+percent: 0
+current_phase_name: content-expansion
+next: /gsd-plan-phase 04
