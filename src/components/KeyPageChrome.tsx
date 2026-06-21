@@ -6,6 +6,10 @@
 // Key pages: home, services index, /services/[slug], faq, /laval.
 // MUST NOT be mounted in [lang]/layout.tsx — would leak onto non-key pages
 // (D-09, RESEARCH Pitfall 5).
+//
+// showTrustBand defaults to true. Home passes false: its reviews section
+// already shows the rating, so the bar would duplicate it — but the sticky
+// CTA still mounts.
 
 import { TrustBand } from "@/components/TrustBand";
 import { StickyCtaBar } from "@/components/StickyCtaBar";
@@ -18,15 +22,17 @@ export function KeyPageChrome({
   locale,
   dict,
   consentKnown,
+  showTrustBand = true,
 }: {
   locale: Locale;
   dict: ChromeDict;
   consentKnown: boolean;
+  showTrustBand?: boolean;
 }) {
   return (
     <>
       {/* TrustBand: SSR, inline in page flow — below hero, above first content */}
-      <TrustBand locale={locale} dict={dict} />
+      {showTrustBand && <TrustBand locale={locale} dict={dict} />}
       {/* StickyCtaBar: client, fixed position — DOM position irrelevant for fixed */}
       <StickyCtaBar locale={locale} dict={dict} consentKnown={consentKnown} />
     </>

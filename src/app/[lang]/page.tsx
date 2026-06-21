@@ -100,8 +100,14 @@ export default async function Home({ params }: LangParams) {
         <p className="text-lg leading-relaxed text-mocha">{dict.home.lead}</p>
       </section>
 
-      {/* Trust band (SSR credibility) + sticky Call/Book bar (mobile only) */}
-      <KeyPageChrome locale={lang} dict={dict} consentKnown={consentKnown} />
+      {/* Sticky Call/Book bar (mobile). TrustBand suppressed here — the reviews
+          section below already shows the rating; avoids a duplicate on home. */}
+      <KeyPageChrome
+        locale={lang}
+        dict={dict}
+        consentKnown={consentKnown}
+        showTrustBand={false}
+      />
 
       {/* Reviews / ratings — soft-gray band, dark text */}
       <section className="bg-fog">
