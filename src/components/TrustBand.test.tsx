@@ -18,7 +18,7 @@ import type { Dictionary } from "@/lib/dictionary";
 // Minimal dict subset TrustBand needs.
 const dict = {
   trust: {
-    established: "Since 2024",
+    established: "20+ years experience",
     reviewsWord: "Google reviews",
   },
 } as Pick<Dictionary, "trust">;
@@ -66,7 +66,7 @@ describe("TrustBand — live data present (reviewsFetchedAt truthy)", () => {
 
   it("renders the established string", () => {
     render(<TrustBand locale="en" dict={dict} />);
-    expect(screen.getByText("Since 2024")).toBeTruthy();
+    expect(screen.getByText("20+ years experience")).toBeTruthy();
   });
 });
 
@@ -77,7 +77,7 @@ describe("TrustBand — no live data (reviewsFetchedAt null)", () => {
 
   it("renders the established string", () => {
     render(<TrustBand locale="en" dict={dict} />);
-    expect(screen.getByText("Since 2024")).toBeTruthy();
+    expect(screen.getByText("20+ years experience")).toBeTruthy();
   });
 
   it("does NOT render any rating text (no placeholder)", () => {

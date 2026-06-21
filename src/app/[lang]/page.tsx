@@ -63,12 +63,6 @@ export default async function Home({ params }: LangParams) {
   return (
     <div className="pb-[64px] md:pb-0">
       <JsonLd data={servicesGraph(lang, serviceItems)} />
-      <p
-        className="mx-auto max-w-3xl px-6 pt-8 text-lg leading-relaxed text-mocha md:pt-12"
-        dir={dirFor(lang)}
-      >
-        {dict.home.lead}
-      </p>
       {/* Hero — white (top of the bright canvas, under the dark header) */}
       <section>
         <div className="mx-auto max-w-7xl px-6 py-20 text-center md:py-28">
@@ -98,6 +92,12 @@ export default async function Home({ params }: LangParams) {
             </div>
           </Reveal>
         </div>
+      </section>
+
+      {/* Intro — answer-first summary (SSR, AI-citable). MUST stay outside
+          <Reveal>: Framer's opacity:0 would hide it from AI crawlers (Pitfall 3). */}
+      <section className="mx-auto max-w-3xl px-6 pt-12 pb-6 md:pt-16" dir={dirFor(lang)}>
+        <p className="text-lg leading-relaxed text-mocha">{dict.home.lead}</p>
       </section>
 
       {/* Trust band (SSR credibility) + sticky Call/Book bar (mobile only) */}
