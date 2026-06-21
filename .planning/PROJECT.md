@@ -8,6 +8,16 @@ The live multilingual marketing site for **Sans Souci Ongles & Spa**, a Laval na
 
 Every important page opens with a direct, factual, schema-backed answer that humans trust and AI engines can cite — and a visitor (human or AI-referred) can book or contact within seconds.
 
+## Current State
+
+**Shipped: v1.0 — AI-Search (SEO + GEO)** (2026-06-18, archived 2026-06-21, audit passed).
+
+All 15 v1 requirements delivered across 3 phases (7 plans, 57 commits): JSON-LD XSS hardening + single-source NAP, confirmed AI-crawler access, answer-first content + 4-locale FAQ hub, per-route schema + `/llms.txt`, GA4 + Consent Mode v2, conversion events, mobile trust signals, and CWV RUM. Full record: [`milestones/v1.0-ROADMAP.md`](milestones/v1.0-ROADMAP.md). The "Active" requirements below are now shipped — see the archive.
+
+**Carried debt → v2.0:** (1) robots.txt explicit-allow awaits live redeploy verification; (2) GA4 Admin external actions (channel group, conversion mark-as, live CWV) verify on live traffic; (3) `aggregateRating` intentionally withheld until live review fetch populates.
+
+**Candidate v2.0 goals** (deferred v1 backlog): EXP-01 comparison/decision pages (HowTo schema), EXP-02 cost/care/best-for guides, EXP-03 markdown content routes for AI crawlers, GEO-01 SpeakableSpecification, GEO-02 edge-middleware dark AI-referrer logging.
+
 ## Requirements
 
 ### Validated
