@@ -10,7 +10,7 @@
 
 **Goal:** Scale the answer-first AI-citable surface (comparison + guide pages, `.md` twins for all content routes) and recover the dark AI-referred traffic GA4 misses. Schema is supporting, not the value driver (research: no schema↔citation correlation; HowTo/FAQ rich results deprecated). Phases continue v1 numbering.
 
-### Phase 04 — Content Expansion
+### Phase 04: Content Expansion
 **Depends on:** v1.0 (seo.ts builders, dictionaries, `[lang]` routing)
 **Requirements:** EXP-01, EXP-02
 **Why:** Highest citation leverage — more answer-first pages = more AI-citable surface. Reuses existing schema/i18n machinery; net-new is content + routes.
@@ -21,7 +21,7 @@
 **Plans:** ~2–3 (comparison set; guide set; dictionary + schema wiring). Exact comparison topics pinned at plan time.
 **UI hint:** yes (new page templates).
 
-### Phase 05 — Agent-Readable Surface (`.md` twins)
+### Phase 05: Agent-Readable Surface (`.md` twins)
 **Depends on:** Phase 04 (new pages must also get `.md` twins)
 **Requirements:** EXP-03
 **Why:** Gives AI crawlers clean machine-readable text for every content route; extends the v1 `/llms.txt` + STANDALONE_PATHS pattern.
@@ -32,7 +32,7 @@
 **Plans:** ~1–2 (route handler factory + proxy/test wiring + llms.txt index).
 **UI hint:** no.
 
-### Phase 06 — Dark-Referrer Recovery
+### Phase 06: Dark-Referrer Recovery
 **Depends on:** v1.0 (AI-referrer host set); independent of 04/05
 **Requirements:** GEO-02
 **Why:** Recovers pre-consent AI sessions GA4's consent gate drops — measurement that informs future GEO content bets.
