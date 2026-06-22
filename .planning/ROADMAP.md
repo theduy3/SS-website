@@ -21,18 +21,18 @@
 2. Comparison pages emit a scannable table + valid Product/Review/Breadcrumb JSON-LD (no HowTo).
 3. No content hidden behind opacity:0 / Reveal (AI-crawler visibility invariant).
 
-**Plans:** 1/4 plans executed
+**Plans:** 3/4 plans executed
 **Wave 1**
 
 - [x] 04-01-PLAN.md — seo.ts schema builders (productGraph/reviewGraph/articleGraph) + null-safe JsonLd + [PRICE:*] build-fail gate
 
 **Wave 2** *(blocked on Wave 1 completion)*
 
-- [ ] 04-02-PLAN.md — comparison set: retrofit 3 + add 3 category-alternatives, answer-first, Product/Review/Breadcrumb, KeyPageChrome, 4-locale copy
+- [x] 04-02-PLAN.md — comparison set: retrofit 3 + add 3 category-alternatives, answer-first, Product/Review/Breadcrumb, KeyPageChrome, 4-locale copy
 
 **Wave 3** *(blocked on Wave 2 completion)*
 
-- [ ] 04-03-PLAN.md — guide set: guides.ts registry + /guides/[slug] route + 3 guides (cost/care/best-for), Article/Breadcrumb, 4-locale copy
+- [x] 04-03-PLAN.md — guide set: guides.ts registry + /guides/[slug] route + 3 guides (cost/care/best-for), Article/Breadcrumb, 4-locale copy
 
 **Wave 4** *(blocked on Wave 3 completion)*
 
