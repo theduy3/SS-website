@@ -1,10 +1,11 @@
 ---
 phase: 04
 slug: content-expansion
-status: draft
+status: approved
 shadcn_initialized: false
 preset: none
 created: 2026-06-21
+reviewed_at: 2026-06-21
 ---
 
 # Phase 04 — UI Design Contract
