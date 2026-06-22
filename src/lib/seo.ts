@@ -279,6 +279,74 @@ export function imageGalleryGraph(
   };
 }
 
+/**
+ * Product node for a comparison page. The brand is linked by `@id` to the
+ * single LocalBusiness node emitted in the layout (organizationGraph) rather
+ * than inlined, so the graph stays normalised. Absolute, locale-prefixed url.
+ */
+export function productGraph(
+  lang: Locale,
+  {
+    name,
+    description,
+    path,
+  }: { name: string; description: string; path: string },
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name,
+    description,
+    url: `${site.url}/${lang}${path}`,
+    brand: { "@id": BUSINESS_ID },
+  };
+}
+
+/**
+ * Review node for a comparison/guide page — GATED on `reviewsFetchedAt`
+ * (SCHEMA-03 / D-04). Returns null until a genuine Google fetch has run, so we
+ * never emit a self-authored rating. `<JsonLd data={reviewGraph(lang)} />`
+ * no-ops on null, so callers can mount it unconditionally.
+ */
+export function reviewGraph(lang: Locale) {
+  void lang; // locale-agnostic today; kept for signature parity with siblings
+  if (!reviewsFetchedAt) return null;
+  return {
+    "@context": "https://schema.org",
+    "@type": "Review",
+    itemReviewed: { "@id": BUSINESS_ID },
+    reviewRating: {
+      "@type": "Rating",
+      ratingValue: site.reviews.ratingValue,
+      bestRating: site.reviews.bestRating,
+    },
+    author: { "@type": "Organization", name: site.name },
+  };
+}
+
+/**
+ * Article node for a guide page. `inLanguage` carries the locale so crawlers
+ * index the article per-language; publisher is `@id`-linked to the business.
+ */
+export function articleGraph(
+  lang: Locale,
+  {
+    name,
+    description,
+    path,
+  }: { name: string; description: string; path: string },
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: name,
+    description,
+    url: `${site.url}/${lang}${path}`,
+    publisher: { "@id": BUSINESS_ID },
+    inLanguage: lang,
+  };
+}
+
 /** BreadcrumbList for a sub-page (Home → … → leaf). */
 export function breadcrumbGraph(
   lang: Locale,

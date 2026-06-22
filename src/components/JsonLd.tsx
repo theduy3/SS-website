@@ -7,7 +7,11 @@
 // (FOUND-01, D-10). JSON.parse handles < natively, so the round-trip is
 // lossless.
 
-export function JsonLd({ data }: { data: object }) {
+export function JsonLd({ data }: { data: object | null | undefined }) {
+  // Gated builders (e.g. reviewGraph) return null when live data is absent, so
+  // a caller can mount <JsonLd data={reviewGraph(lang)} /> unconditionally and
+  // this no-ops — no empty <script> tag is emitted.
+  if (!data) return null;
   return (
     <script
       type="application/ld+json"
