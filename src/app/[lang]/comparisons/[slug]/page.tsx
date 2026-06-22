@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Button } from "@/components/Button";
 import { Reveal } from "@/components/Reveal";
+import { KeyPageChrome } from "@/components/KeyPageChrome";
 import { JsonLd } from "@/components/JsonLd";
 import { ComparisonTable } from "@/components/ComparisonTable";
 import { site } from "@/lib/site";
@@ -13,9 +14,15 @@ import {
   comparisonPathsByLocale,
 } from "@/lib/comparisons";
 import { services, servicePath } from "@/lib/services";
+import { readConsent } from "@/lib/consent.server";
 import { getDictionary } from "../../dictionaries";
 import { isLocale, dirFor } from "@/lib/i18n";
-import { pageMetadata, faqPageGraph, breadcrumbGraph } from "@/lib/seo";
+import {
+  pageMetadata,
+  productGraph,
+  reviewGraph,
+  breadcrumbGraph,
+} from "@/lib/seo";
 
 type Params = { params: Promise<{ lang: string; slug: string }> };
 
@@ -52,10 +59,19 @@ export default async function ComparisonPage({ params }: Params) {
   const service = services.find((s) => s.id === cmp.service)!;
   const sDetail = dict.serviceDetails[cmp.service];
   const bookHref = `/${lang}${site.booking}`;
+  const consent = await readConsent();
+  const consentKnown = consent !== undefined;
 
   return (
     <>
-      <JsonLd data={faqPageGraph(c.faq)} />
+      <JsonLd
+        data={productGraph(lang, {
+          name: c.title,
+          description: c.metaDescription,
+          path: comparisonPath(cmp, lang),
+        })}
+      />
+      <JsonLd data={reviewGraph(lang)} />
       <JsonLd
         data={breadcrumbGraph(lang, [
           { name: dict.nav.home, route: "" },
@@ -64,7 +80,7 @@ export default async function ComparisonPage({ params }: Params) {
         ])}
       />
 
-      {/* Intro */}
+      {/* Intro: answer-first verdict (bare SSR <p>) → table → detail */}
       <section className="mx-auto max-w-3xl px-6 py-16 md:py-24">
         <Reveal>
           <Link
@@ -77,8 +93,15 @@ export default async function ComparisonPage({ params }: Params) {
         <Reveal delay={0.05}>
           <h1 className="mt-6 text-3xl text-espresso md:text-5xl">{c.title}</h1>
         </Reveal>
+        {/* Answer-first verdict — bare <p> outside Reveal so crawlers see it in raw SSR HTML */}
+        <p
+          className="mt-8 text-lg leading-relaxed text-mocha"
+          dir={dirFor(lang)}
+        >
+          {c.verdict}
+        </p>
         <Reveal delay={0.1}>
-          <div className="mt-8 space-y-5 text-lg leading-relaxed text-mocha">
+          <div className="mt-6 space-y-5 text-lg leading-relaxed text-mocha">
             {c.intro.map((p) => (
               <p key={p}>{p}</p>
             ))}
@@ -86,17 +109,14 @@ export default async function ComparisonPage({ params }: Params) {
         </Reveal>
       </section>
 
-      {/* Comparison matrix + verdict */}
+      {/* Trust band + sticky Call/Book bar (key page) — mounted once (D-11) */}
+      <KeyPageChrome locale={lang} dict={dict} consentKnown={consentKnown} />
+
+      {/* Comparison matrix */}
       <section className="bg-fog">
         <div className="mx-auto max-w-4xl px-6 py-16 md:py-24">
           <Reveal>
             <ComparisonTable columns={c.columns} rows={c.rows} caption={c.title} />
-          </Reveal>
-          <Reveal delay={0.05}>
-            <h2 className="mt-12 text-2xl text-espresso md:text-3xl">
-              {labels.verdict}
-            </h2>
-            <p className="mt-4 leading-relaxed text-mocha">{c.verdict}</p>
           </Reveal>
         </div>
       </section>
