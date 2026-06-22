@@ -88,7 +88,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${site.url}/${locale}${comparisonPath(cmp, locale)}`,
       // Date keyed by the EN base path so all locales of a comparison share one
       // lastModified (the slug differs per locale; the content date does not).
-      lastModified: pageDate(comparisonPath(cmp, defaultLocale)),
+      // NB: keyed on the EN slug specifically — defaultLocale is "fr", so the
+      // PAGE_DATES keys (EN slugs) must be looked up via the EN path.
+      lastModified: pageDate(comparisonPath(cmp, "en")),
       changeFrequency: "monthly" as const,
       priority: 0.6,
       alternates: {
@@ -106,7 +108,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     guides.map((guide) => ({
       url: `${site.url}/${locale}${guidePath(guide, locale)}`,
       // Date keyed by the EN base path (see comparisonEntries note).
-      lastModified: pageDate(guidePath(guide, defaultLocale)),
+      lastModified: pageDate(guidePath(guide, "en")),
       changeFrequency: "monthly" as const,
       priority: 0.6,
       alternates: {
