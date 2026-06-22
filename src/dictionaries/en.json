@@ -1017,7 +1017,7 @@
           ]
         }
       ],
-      "verdict": "If you want a manicure that withstands daily tasks and stays glossy for weeks, gel or shellac is the superior choice. If you love switching colours often and prefer quick at-home removal, classic polish is a great option. Our nail technicians at Sans Souci Ongles & Spa are happy to recommend the best formula based on your nail health and lifestyle.",
+      "verdict": "Choose gel or shellac when you want a manicure that survives daily tasks and stays glossy for two to three weeks. Choose classic polish if you switch colours often and prefer fast, gentle removal. Both are good options. Book at Sans Souci Ongles & Spa and our technicians will recommend the right formula for your nails.",
       "faq": [
         {
           "q": "Does gel polish damage your nails?",
@@ -1093,7 +1093,7 @@
           ]
         }
       ],
-      "verdict": "The 2D classic style is ideal for those who want defined lashes without an over-the-top effect — perfect for everyday wear. The 3D volume set creates impressive fullness for special occasions or for clients who love a dramatic look. Hybrid offers the best of both worlds. All lash extension services at Sans Souci Ongles & Spa are performed by certified technicians using high-quality materials for safe, long-lasting results.",
+      "verdict": "Choose 2D classic for defined, natural lashes you can wear every day. Choose 3D volume for dramatic fullness at a special occasion. Hybrid blends both for soft volume. All three wear well between fills. Book at Sans Souci Ongles & Spa and our certified technicians will map a set to your eye shape and lash health.",
       "faq": [
         {
           "q": "What is the difference between 2D and 3D volume lashes?",
@@ -1163,7 +1163,7 @@
           ]
         }
       ],
-      "verdict": "Both waxing and sugaring deliver comparable results in terms of longevity and smoothness. Sugaring, made from sugar, water, and lemon juice, is praised for its natural formula and gentleness on sensitive skin. Professional waxing is a time-tested method effective on all body areas. At Sans Souci Ongles & Spa, we offer professional waxing services using quality products, applied by experienced technicians. To book your appointment or learn more, call us at (450) 505-6450.",
+      "verdict": "Waxing and sugaring give comparable smoothness and regrowth. Sugaring uses a natural sugar paste many find gentle on sensitive skin; professional waxing is fast and effective on every body area. At Sans Souci Ongles & Spa we offer professional waxing applied by experienced technicians. Book online or call (450) 505-6450 to plan your appointment.",
       "faq": [
         {
           "q": "What is the main difference between waxing and sugaring?",
@@ -1180,6 +1180,159 @@
         {
           "q": "Do you offer sugaring at Sans Souci?",
           "a": "No — we offer professional waxing only. It is an effective, proven method our technicians have perfected over more than 20 years of experience."
+        }
+      ]
+    },
+    "salon-gel-vs-diy-kit": {
+      "title": "Salon Gel vs At-Home Gel Kit: Which Is Worth It?",
+      "metaTitle": "Salon Gel vs At-Home Gel Kit · Sans Souci Ongles & Spa",
+      "metaDescription": "Salon gel or a DIY gel kit at home? Compare wear, cost, finish and nail safety at Sans Souci Ongles & Spa inside Carrefour Laval.",
+      "intro": [
+        "An at-home gel kit costs less up front and lets you paint your nails whenever you like. The trade-off is in the details: even curing, clean cuticle work, safe removal and a finish that lasts.",
+        "A salon gel service is applied and cured by a trained technician, so the colour sits evenly and the gel is removed without filing away your natural nail."
+      ],
+      "columns": ["Criterion", "At-Home Gel Kit", "Salon Gel"],
+      "rows": [
+        {
+          "label": "Up-front cost",
+          "cells": ["Lower — one kit, reused", "Higher — per appointment"]
+        },
+        {
+          "label": "Wear / Longevity",
+          "cells": ["Often lifts within days", "Even, glossy, 2 to 3 weeks"]
+        },
+        {
+          "label": "Application",
+          "cells": ["DIY — uneven curing common", "Trained technician, even cure"]
+        },
+        {
+          "label": "Removal & nail health",
+          "cells": ["Peeling risks thin, damaged nails", "Gentle soak-off, nail protected"]
+        },
+        {
+          "label": "Convenience",
+          "cells": ["Any time at home", "Booked appointment in Laval"]
+        }
+      ],
+      "verdict": "A home gel kit is cheaper and lets you paint on your own schedule. A salon service cures evenly, lasts two to three weeks, and removes the gel without thinning your natural nail. If you want reliable wear and healthy nails, book your gel manicure at Sans Souci Ongles & Spa.",
+      "faq": [
+        {
+          "q": "Is at-home gel bad for your nails?",
+          "a": "Not by itself — most damage comes from peeling gel off or filing too hard during removal. A salon soak-off protects the natural nail."
+        },
+        {
+          "q": "Does salon gel really last longer than a DIY kit?",
+          "a": "Usually, yes. Even curing and proper prep help salon gel stay glossy for two to three weeks, while DIY gel often lifts within days."
+        },
+        {
+          "q": "Can you fix a DIY gel manicure at the salon?",
+          "a": "Yes. Our technicians can safely remove a previous gel application and reapply a fresh, even set."
+        },
+        {
+          "q": "How do I book a gel manicure in Laval?",
+          "a": "Book online or call (450) 505-6450. Sans Souci Ongles & Spa is inside CF Carrefour Laval."
+        }
+      ]
+    },
+    "salon-lash-vs-diy-lash": {
+      "title": "Salon Lash Extensions vs DIY Lashes: Which to Pick?",
+      "metaTitle": "Salon Lash Extensions vs DIY Lashes · Sans Souci Ongles & Spa",
+      "metaDescription": "Salon lash extensions or DIY strip and cluster lashes? Compare wear, look and eye safety at Sans Souci Ongles & Spa inside Carrefour Laval.",
+      "intro": [
+        "DIY strip and cluster lashes are inexpensive and quick — you apply them yourself for a single occasion and remove them the same night.",
+        "Salon lash extensions are applied lash-by-lash by a certified technician, bonded to your natural lashes so they wear for weeks and look seamless up close."
+      ],
+      "columns": ["Criterion", "DIY Strip / Cluster Lashes", "Salon Extensions"],
+      "rows": [
+        {
+          "label": "Up-front cost",
+          "cells": ["Lower — drugstore strips", "Higher — per appointment"]
+        },
+        {
+          "label": "Wear / Longevity",
+          "cells": ["Hours — single wear", "Weeks, with fills"]
+        },
+        {
+          "label": "Application",
+          "cells": ["DIY — glue near the eye", "Certified technician, lash-by-lash"]
+        },
+        {
+          "label": "Natural-lash safety",
+          "cells": ["Glue and pulling can damage lashes", "Bonded to lashes, eyes kept closed"]
+        },
+        {
+          "label": "Best for",
+          "cells": ["One night, on a budget", "Seamless, long-lasting volume"]
+        }
+      ],
+      "verdict": "DIY strip lashes are cheap and fine for one evening. Salon extensions are applied lash-by-lash, wear for weeks with fills, and look seamless without daily glue near your eyes. If you want lasting, low-maintenance volume applied safely, book your lash set at Sans Souci Ongles & Spa.",
+      "faq": [
+        {
+          "q": "Are DIY lashes safe to apply at home?",
+          "a": "Occasional strip lashes are generally fine, but adhesive near the eye and repeated pulling can stress natural lashes over time."
+        },
+        {
+          "q": "How long do salon lash extensions last?",
+          "a": "Most clients return for a fill every 2 to 3 weeks as natural lashes shed and grow."
+        },
+        {
+          "q": "Will extensions damage my natural lashes?",
+          "a": "Applied correctly by a certified technician, each extension is bonded to a single natural lash and shed with it — no pulling required."
+        },
+        {
+          "q": "How do I book lash extensions in Laval?",
+          "a": "Book online or call (450) 505-6450. Sans Souci Ongles & Spa is inside CF Carrefour Laval."
+        }
+      ]
+    },
+    "salon-wax-vs-home-wax": {
+      "title": "Professional Waxing vs At-Home Waxing: Which Is Better?",
+      "metaTitle": "Professional vs At-Home Waxing · Sans Souci Ongles & Spa",
+      "metaDescription": "Professional waxing or an at-home wax kit? Compare results, comfort and skin safety at Sans Souci Ongles & Spa inside Carrefour Laval.",
+      "intro": [
+        "An at-home wax kit is inexpensive and private, and works well for small, easy-to-reach areas when you have time to spare.",
+        "Professional waxing is done by an experienced technician who controls temperature and technique, so larger or sensitive areas are treated evenly with less breakage and irritation."
+      ],
+      "columns": ["Criterion", "At-Home Wax Kit", "Professional Waxing"],
+      "rows": [
+        {
+          "label": "Up-front cost",
+          "cells": ["Lower — one kit", "Higher — per appointment"]
+        },
+        {
+          "label": "Result quality",
+          "cells": ["Uneven, missed patches common", "Even, smooth in one pass"]
+        },
+        {
+          "label": "Comfort & technique",
+          "cells": ["Temperature hard to judge", "Controlled heat, fast removal"]
+        },
+        {
+          "label": "Hard-to-reach areas",
+          "cells": ["Difficult alone", "Handled by the technician"]
+        },
+        {
+          "label": "Skin safety",
+          "cells": ["Burn and bruising risk", "Trained, hygienic application"]
+        }
+      ],
+      "verdict": "A home wax kit is cheaper and private and works for small areas. Professional waxing controls temperature and technique, so larger or sensitive areas come out even in fewer passes with less irritation. If you want smooth, reliable results with less risk, book professional waxing at Sans Souci Ongles & Spa.",
+      "faq": [
+        {
+          "q": "Is at-home waxing effective?",
+          "a": "For small, reachable areas it can work, but uneven temperature and angle often leave missed patches or cause bruising."
+        },
+        {
+          "q": "Why choose professional waxing?",
+          "a": "A technician controls the wax temperature and removal angle, treating larger and sensitive areas evenly with less breakage and irritation."
+        },
+        {
+          "q": "How long should hair be before a waxing appointment?",
+          "a": "About 3 to 5 mm, roughly two weeks of growth, gives the cleanest result."
+        },
+        {
+          "q": "How do I book waxing in Laval?",
+          "a": "Book online or call (450) 505-6450. Sans Souci Ongles & Spa is inside CF Carrefour Laval."
         }
       ]
     }
