@@ -18,6 +18,7 @@ import { getDictionary } from "../../dictionaries";
 import { isLocale, dirFor } from "@/lib/i18n";
 import { pageMetadata, serviceGraph, breadcrumbGraph, faqPageGraph } from "@/lib/seo";
 import { comparisonsForService, comparisonPath } from "@/lib/comparisons";
+import { guidesForService, guidePath } from "@/lib/guides";
 import { formatFromPrice } from "@/lib/format";
 
 type Params = { params: Promise<{ lang: string; slug: string }> };
@@ -54,6 +55,7 @@ export default async function ServiceDetailPage({ params }: Params) {
   const bookHref = `/${lang}${site.booking}`;
   const priceDisplay = formatFromPrice(lang, service.price, labels.priceFrom);
   const relatedComparisons = comparisonsForService(service.id);
+  const relatedGuides = guidesForService(service.id);
   const consent = await readConsent();
   const consentKnown = consent !== undefined;
 
@@ -221,8 +223,8 @@ export default async function ServiceDetailPage({ params }: Params) {
         </div>
       </section>
 
-      {/* Helpful guides */}
-      {relatedComparisons.length > 0 && (
+      {/* Helpful guides — reciprocal links to related comparisons and guides (D-12) */}
+      {(relatedComparisons.length > 0 || relatedGuides.length > 0) && (
         <section className="mx-auto max-w-3xl px-6 pb-4 pt-12 md:pt-16">
           <Reveal>
             <h2 className="text-2xl text-espresso md:text-3xl">
@@ -236,6 +238,16 @@ export default async function ServiceDetailPage({ params }: Params) {
                     className="text-espresso underline-offset-4 hover:underline"
                   >
                     {dict.comparisons[cmp.id].title}
+                  </Link>
+                </li>
+              ))}
+              {relatedGuides.map((g) => (
+                <li key={g.id}>
+                  <Link
+                    href={`/${lang}${guidePath(g, lang)}`}
+                    className="text-espresso underline-offset-4 hover:underline"
+                  >
+                    {dict.guides[g.id].title}
                   </Link>
                 </li>
               ))}
