@@ -6,7 +6,13 @@
 import { locales, type Locale } from "@/lib/i18n";
 import type { ServiceId } from "@/lib/services";
 
-export type ComparisonId = "gel-vs-regular" | "lash-styles" | "wax-vs-sugar";
+export type ComparisonId =
+  | "gel-vs-regular"
+  | "lash-styles"
+  | "wax-vs-sugar"
+  | "salon-gel-vs-diy-kit"
+  | "salon-lash-vs-diy-lash"
+  | "salon-wax-vs-home-wax";
 
 export type Comparison = {
   id: ComparisonId;
@@ -46,6 +52,36 @@ export const comparisons: readonly Comparison[] = [
       en: "waxing-vs-sugaring",
       es: "cera-vs-azucar",
       ar: "shamaa-vs-sukkar",
+    },
+    service: "waxing",
+  },
+  {
+    id: "salon-gel-vs-diy-kit",
+    slug: {
+      fr: "gel-salon-vs-kit-maison",
+      en: "salon-gel-vs-at-home-kit",
+      es: "gel-salon-vs-kit-casa",
+      ar: "jel-salon-am-tatbiq-manzili",
+    },
+    service: "manicure",
+  },
+  {
+    id: "salon-lash-vs-diy-lash",
+    slug: {
+      fr: "cils-salon-vs-cils-maison",
+      en: "salon-lashes-vs-diy-lashes",
+      es: "pestanas-salon-vs-pestanas-casa",
+      ar: "rumoosh-salon-am-rumoosh-manzili",
+    },
+    service: "lash-extensions",
+  },
+  {
+    id: "salon-wax-vs-home-wax",
+    slug: {
+      fr: "epilation-salon-vs-epilation-maison",
+      en: "professional-waxing-vs-at-home-waxing",
+      es: "depilacion-salon-vs-depilacion-casa",
+      ar: "izalat-shaar-salon-am-manzili",
     },
     service: "waxing",
   },
