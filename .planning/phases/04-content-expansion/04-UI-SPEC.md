@@ -59,7 +59,7 @@ Declared values (multiples of 4):
 
 | Role | Size | Family | Weight | Transform | Line Height | Source |
 |------|------|--------|--------|-----------|-------------|--------|
-| Body | 16px (base) | Space Grotesk (`font-body`) | 600 (semibold) | none | 1.5 (`leading-relaxed`) | `globals.css` body rule |
+| Body prose | 18px (`text-lg`) | Space Grotesk (`font-body`) | 400 (regular) | none | 1.5 (`leading-relaxed`) | Comparison `page.tsx` line 81; verdict, guide, FAQ answer blocks all use `text-lg leading-relaxed`. 16px is the CSS `body` cascade default (not a declared design token). |
 | Label / caption | 14px (`text-sm`) | Space Grotesk | 600 | uppercase + `tracking-wide` | 1.4 | `ComparisonTable.tsx` thead |
 | Heading (h2) | 24px / 30px (`text-2xl md:text-3xl`) | Archivo Black (`font-display`) | 400 | uppercase, `letter-spacing: -0.02em` | 1.05 | `globals.css` h1–h4 rule |
 | Display (h1) | 30px / 48px (`text-3xl md:text-5xl`) | Archivo Black (`font-display`) | 400 | uppercase, `letter-spacing: -0.02em` | 1.05 | existing comparison `page.tsx` |
@@ -129,6 +129,8 @@ All colors come from the `@theme` block in `globals.css`. No new color values ma
 | Empty state | Not applicable — guides are static SSR content; no empty-data state exists | — |
 | Error state | 404 via Next.js `notFound()` — no custom error copy in this phase | Same as existing comparison route pattern |
 | Destructive actions | None — this phase has no delete/remove/reset interactions | Not applicable |
+
+> **Visual anchor:** The guide answer block is the primary visual focal point — same role as the comparison verdict block on comparison pages.
 
 ### Shared across all 9 pages
 
