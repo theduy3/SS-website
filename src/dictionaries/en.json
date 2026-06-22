@@ -1337,6 +1337,130 @@
       ]
     }
   },
+  "guides": {
+    "manicure-cost-laval": {
+      "title": "How Much Does a Manicure Cost in Laval?",
+      "metaTitle": "Manicure Cost in Laval · Sans Souci Ongles & Spa",
+      "metaDescription": "How much is a manicure in Laval? See starting prices for classic and gel manicures at Sans Souci Ongles & Spa inside CF Carrefour Laval.",
+      "answer": "A classic manicure at Sans Souci Ongles & Spa in Laval starts at $[PRICE:manicure], and a gel manicure starts at $[PRICE:gel-manicure]. The final price depends on the finish you choose and any add-ons such as nail art or removal. Call (450) 505-6450 for an exact quote.",
+      "sections": [
+        {
+          "heading": "What changes the price",
+          "body": [
+            "Two things move a manicure price: the type of finish and any extras. A classic manicure covers shaping, cuticle care and one coat of regular polish. A gel (shellac) manicure adds a UV/LED-cured finish that lasts two to three weeks, so it starts a little higher.",
+            "Add-ons such as nail art, French tips, gel removal or a longer length will add to the base price. Our technician confirms the total with you before starting, so there are no surprises."
+          ]
+        },
+        {
+          "heading": "Classic vs gel — which is worth it",
+          "body": [
+            "If you change colours often or want a quick, gentle option, a classic manicure starting at $[PRICE:manicure] is the economical choice. If you want a finish that survives daily tasks and stays glossy for weeks, the gel manicure starting at $[PRICE:gel-manicure] usually costs less per week of wear.",
+            "Either way, prices at our CF Carrefour Laval salon are transparent and confirmed before your appointment begins."
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "How much does a manicure cost at Sans Souci in Laval?",
+          "a": "A classic manicure starts at $[PRICE:manicure] and a gel manicure starts at $[PRICE:gel-manicure]. The final price depends on your chosen finish and any add-ons. Call (450) 505-6450 to confirm."
+        },
+        {
+          "q": "Why does a gel manicure cost more than a classic one?",
+          "a": "Gel uses more product and a UV/LED curing step, and the finish lasts two to three weeks instead of about a week. You pay a little more up front for longer wear."
+        },
+        {
+          "q": "Are there extra charges I should know about?",
+          "a": "Add-ons such as nail art, French tips, extra length or gel removal are priced on top of the base manicure. Your technician confirms the full total before starting."
+        }
+      ]
+    },
+    "gel-manicure-care": {
+      "title": "How to Make Your Gel Manicure Last Longer",
+      "metaTitle": "Make Your Gel Manicure Last Longer · Laval",
+      "metaDescription": "Simple aftercare to make a gel manicure last two to three weeks: cuticle oil, gloves for chores, and professional removal. Tips from Sans Souci Ongles & Spa, Laval.",
+      "answer": "To make a gel manicure last two to three weeks, apply cuticle oil daily, wear gloves for cleaning and dishwashing, avoid using your nails as tools, and never peel the gel off. Book professional removal instead of picking — peeling strips the natural nail and shortens the life of your next set.",
+      "sections": [
+        {
+          "heading": "Daily habits that protect the gel",
+          "body": [
+            "Hydration is what keeps gel from lifting at the edges. Massage a drop of cuticle oil into each nail once or twice a day — it keeps the cuticle and the gel seal flexible so the finish stays bonded.",
+            "Treat your nails as jewels, not tools. Opening cans, scratching labels and prying things apart are the fastest way to chip or crack a gel edge."
+          ]
+        },
+        {
+          "heading": "Around water and chores",
+          "body": [
+            "Wear rubber gloves for dishwashing and household cleaning. Prolonged hot water and harsh detergents loosen the gel bond and dull the shine.",
+            "After swimming or long baths, dry your hands well and reapply cuticle oil. A quick top-up keeps the seal intact."
+          ]
+        },
+        {
+          "heading": "Removal — the part most people get wrong",
+          "body": [
+            "Never peel or pick gel off. Peeling pulls away layers of the natural nail and leaves it thin and weak.",
+            "Book a professional soak-off removal (about 15 minutes) at Sans Souci Ongles & Spa. We remove the gel gently and assess your natural nail before the next application."
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "How long should a gel manicure last?",
+          "a": "With good aftercare, two to three weeks. Daily cuticle oil, gloves for chores and avoiding peeling are the biggest factors in how long it holds."
+        },
+        {
+          "q": "Why is my gel lifting at the edges?",
+          "a": "Lifting is usually from dryness or water exposure. Keep cuticles oiled, wear gloves for wet chores, and avoid using your nails as tools."
+        },
+        {
+          "q": "Can I remove gel polish at home?",
+          "a": "We recommend professional removal to avoid thinning the natural nail. Peeling or picking damages the nail plate. We offer a gentle soak-off removal service at the salon."
+        }
+      ]
+    },
+    "best-nails-wedding": {
+      "title": "The Best Nails for a Wedding",
+      "metaTitle": "Best Nails for a Wedding · Sans Souci Ongles & Spa, Laval",
+      "metaDescription": "Bride or guest? Choose the right wedding nails by look and longevity — gel manicure, lash extensions and more — at Sans Souci Ongles & Spa in Laval.",
+      "answer": "For a wedding, choose by look and longevity rather than one fixed package. A gel manicure keeps a flawless finish through the day and photos; lash extensions open the eyes without daily mascara; a fresh pedicure suits open-toe shoes. Book each service that fits your day — separately or together — a few days before.",
+      "sections": [
+        {
+          "heading": "For the bride",
+          "body": [
+            "Photos are close-up and last forever, so pick services that stay perfect all day. A gel manicure in a soft neutral or classic French holds its shine from the ceremony through the late-night dancing without chipping.",
+            "Lash extensions are a favourite for the eyes — they add definition in photos and survive happy tears, with no mascara to smudge."
+          ]
+        },
+        {
+          "heading": "For guests and the bridal party",
+          "body": [
+            "If you are attending or standing with the bride, a gel manicure is the easy, long-lasting choice that matches any outfit. A fresh pedicure finishes the look for open-toe heels.",
+            "Pick the services that suit your role and your dress — there is no single mandatory combination."
+          ]
+        },
+        {
+          "heading": "When to book",
+          "body": [
+            "Book gel and lashes two to four days before the wedding so the finish is fresh but settled. Reserve early during spring and summer wedding season at CF Carrefour Laval.",
+            "Want manicure, pedicure and lashes the same day? Tell us when you book and we will arrange your appointments — each service stands on its own, so you choose only what you need."
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "What nails are best for a bride?",
+          "a": "A gel manicure in a neutral or French finish keeps a flawless look through the day and photos. Many brides add lash extensions for definition without mascara."
+        },
+        {
+          "q": "How far in advance should I book wedding nails?",
+          "a": "Two to four days before the wedding for gel and lashes — fresh but settled. Book early in spring and summer wedding season to secure your time."
+        },
+        {
+          "q": "Do I have to book a full bridal package?",
+          "a": "No. We recommend services by look and longevity — manicure, pedicure or lash extensions — and you book only the ones you want, separately or on the same day."
+        }
+      ]
+    }
+  },
   "comparisonLabels": {
     "verdict": "Our recommendation",
     "related": "Explore the service:"
