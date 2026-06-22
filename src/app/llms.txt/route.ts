@@ -6,8 +6,29 @@
 // un-localized — the proxy would otherwise redirect to /{locale}/llms.txt (T-02-08).
 
 import { site } from "@/lib/site";
+import { comparisons, comparisonPath } from "@/lib/comparisons";
+import { guides, guidePath } from "@/lib/guides";
 
 export const dynamic = "force-static";
+
+// Short human labels for the curated brief — concise, crawler-friendly summaries
+// (the dictionary metaTitles are SEO-length; these stay scannable). Keyed by the
+// registry id so a missing label fails loudly at type-check rather than silently
+// printing a raw slug.
+const comparisonLabels: Record<(typeof comparisons)[number]["id"], string> = {
+  "gel-vs-regular": "Gel vs regular manicure",
+  "lash-styles": "Lash extension styles (2D / 3D / Hybrid)",
+  "wax-vs-sugar": "Waxing vs sugaring",
+  "salon-gel-vs-diy-kit": "Salon gel vs at-home gel kit",
+  "salon-lash-vs-diy-lash": "Salon lash extensions vs DIY lashes",
+  "salon-wax-vs-home-wax": "Professional waxing vs at-home waxing",
+};
+
+const guideLabels: Record<(typeof guides)[number]["id"], string> = {
+  "manicure-cost-laval": "How much does a manicure cost in Laval?",
+  "gel-manicure-care": "How to make your gel manicure last longer",
+  "best-nails-wedding": "The best nails for a wedding",
+};
 
 function hoursLine(block: { days: readonly string[]; opens: string; closes: string }) {
   const dayMap: Record<string, string> = {
@@ -60,6 +81,16 @@ Book an appointment: ${site.url}/en${site.booking}
 - FAQ: ${site.url}/en/faq
 - Laval local info: ${site.url}/en/laval
 - Contact: ${site.url}/en/contact
+
+## Comparisons
+${comparisons
+  .map((c) => `- ${comparisonLabels[c.id]}: ${site.url}/en${comparisonPath(c, "en")}`)
+  .join("\n")}
+
+## Guides
+${guides
+  .map((g) => `- ${guideLabels[g.id]}: ${site.url}/en${guidePath(g, "en")}`)
+  .join("\n")}
 
 ## Social
 - Instagram: ${site.instagram}
