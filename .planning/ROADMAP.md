@@ -18,7 +18,11 @@
 1. ≥1 comparison page + ≥1 guide page render answer-first verdict/answer block in raw SSR HTML across en/fr/es/ar (`curl | grep`).
 2. Comparison pages emit a scannable table + valid Product/Review/Breadcrumb JSON-LD (no HowTo).
 3. No content hidden behind opacity:0 / Reveal (AI-crawler visibility invariant).
-**Plans:** ~2–3 (comparison set; guide set; dictionary + schema wiring). Exact comparison topics pinned at plan time.
+**Plans:** 4 plans
+- [ ] 04-01-PLAN.md — seo.ts schema builders (productGraph/reviewGraph/articleGraph) + null-safe JsonLd + [PRICE:*] build-fail gate
+- [ ] 04-02-PLAN.md — comparison set: retrofit 3 + add 3 category-alternatives, answer-first, Product/Review/Breadcrumb, KeyPageChrome, 4-locale copy
+- [ ] 04-03-PLAN.md — guide set: guides.ts registry + /guides/[slug] route + 3 guides (cost/care/best-for), Article/Breadcrumb, 4-locale copy
+- [ ] 04-04-PLAN.md — wiring: sitemap (9 routes + x-default), llms.txt links, reciprocal service↔content links
 **UI hint:** yes (new page templates).
 
 ### Phase 05: Agent-Readable Surface (`.md` twins)
