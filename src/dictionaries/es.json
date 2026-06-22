@@ -1337,6 +1337,130 @@
       ]
     }
   },
+  "guides": {
+    "manicure-cost-laval": {
+      "title": "¿Cuánto cuesta una manicura en Laval?",
+      "metaTitle": "Precio de una manicura en Laval · Sans Souci Ongles & Spa",
+      "metaDescription": "¿Cuánto cuesta una manicura en Laval? Consulta los precios iniciales de manicuras clásicas y de gel en Sans Souci Ongles & Spa, dentro de CF Carrefour Laval.",
+      "answer": "Una manicura clásica en Sans Souci Ongles & Spa en Laval comienza en $[PRICE:manicure], y una manicura de gel comienza en $[PRICE:gel-manicure]. El precio final depende del acabado que elijas y de cualquier extra como el nail art o la remoción. Llama al (450) 505-6450 para un precio exacto.",
+      "sections": [
+        {
+          "heading": "Qué cambia el precio",
+          "body": [
+            "Dos cosas mueven el precio de una manicura: el tipo de acabado y los extras. Una manicura clásica incluye el limado, el cuidado de cutículas y una capa de esmalte regular. Una manicura de gel (shellac) añade un acabado curado con UV/LED que dura de dos a tres semanas, por eso comienza un poco más alto.",
+            "Los extras como el nail art, las puntas francesas, la remoción del gel o un largo mayor se suman al precio base. Nuestra técnica confirma el total contigo antes de empezar, sin sorpresas."
+          ]
+        },
+        {
+          "heading": "Clásica o gel — cuál vale la pena",
+          "body": [
+            "Si cambias de color a menudo o quieres una opción rápida y suave, una manicura clásica desde $[PRICE:manicure] es la opción económica. Si quieres un acabado que resista las tareas diarias y se mantenga brillante durante semanas, la manicura de gel desde $[PRICE:gel-manicure] suele costar menos por semana de uso.",
+            "En cualquier caso, los precios en nuestro salón de CF Carrefour Laval son transparentes y se confirman antes de que comience tu cita."
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "¿Cuánto cuesta una manicura en Sans Souci en Laval?",
+          "a": "Una manicura clásica comienza en $[PRICE:manicure] y una manicura de gel en $[PRICE:gel-manicure]. El precio final depende del acabado elegido y de los extras. Llama al (450) 505-6450 para confirmar."
+        },
+        {
+          "q": "¿Por qué una manicura de gel cuesta más que una clásica?",
+          "a": "El gel usa más producto y un paso de curado con UV/LED, y el acabado dura de dos a tres semanas en lugar de aproximadamente una. Pagas un poco más al inicio por una mayor duración."
+        },
+        {
+          "q": "¿Hay cargos adicionales que deba conocer?",
+          "a": "Los extras como el nail art, las puntas francesas, un largo adicional o la remoción del gel se cobran sobre la manicura base. Tu técnica confirma el total completo antes de comenzar."
+        }
+      ]
+    },
+    "gel-manicure-care": {
+      "title": "Cómo hacer que tu manicura de gel dure más",
+      "metaTitle": "Haz que tu manicura de gel dure más · Laval",
+      "metaDescription": "Cuidados sencillos para que una manicura de gel dure de dos a tres semanas: aceite de cutículas, guantes para las tareas y remoción profesional. Consejos de Sans Souci Ongles & Spa, Laval.",
+      "answer": "Para que una manicura de gel dure de dos a tres semanas, aplica aceite de cutículas a diario, usa guantes para limpiar y lavar los platos, no uses las uñas como herramientas y nunca despegues el gel. Reserva una remoción profesional en lugar de arrancarlo — despegar el gel daña la uña natural y acorta la vida de tu próximo trabajo.",
+      "sections": [
+        {
+          "heading": "Hábitos diarios que protegen el gel",
+          "body": [
+            "La hidratación es lo que evita que el gel se levante en los bordes. Masajea una gota de aceite de cutículas en cada uña una o dos veces al día — mantiene la cutícula y el sellado del gel flexibles para que el acabado siga adherido.",
+            "Trata tus uñas como joyas, no como herramientas. Abrir latas, rascar etiquetas y forzar objetos es la forma más rápida de astillar o agrietar un borde de gel."
+          ]
+        },
+        {
+          "heading": "Alrededor del agua y las tareas",
+          "body": [
+            "Usa guantes de goma para lavar los platos y la limpieza del hogar. El agua caliente prolongada y los detergentes fuertes aflojan la adherencia del gel y opacan el brillo.",
+            "Después de nadar o de un baño largo, seca bien tus manos y vuelve a aplicar aceite de cutículas. Un retoque rápido mantiene el sellado intacto."
+          ]
+        },
+        {
+          "heading": "La remoción — lo que la mayoría hace mal",
+          "body": [
+            "Nunca despegues ni arranques el gel. Despegarlo arranca capas de la uña natural y la deja fina y débil.",
+            "Reserva una remoción profesional por remojo (unos 15 minutos) en Sans Souci Ongles & Spa. Retiramos el gel con suavidad y evaluamos tu uña natural antes de la siguiente aplicación."
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "¿Cuánto debería durar una manicura de gel?",
+          "a": "Con buenos cuidados, de dos a tres semanas. El aceite de cutículas diario, los guantes para las tareas y evitar despegarlo son los factores más importantes para su duración."
+        },
+        {
+          "q": "¿Por qué se me levanta el gel en los bordes?",
+          "a": "El levantamiento suele deberse a la sequedad o a la exposición al agua. Mantén las cutículas hidratadas, usa guantes para las tareas húmedas y no uses las uñas como herramientas."
+        },
+        {
+          "q": "¿Puedo quitar el esmalte de gel en casa?",
+          "a": "Recomendamos una remoción profesional para evitar adelgazar la uña natural. Despegar o arrancar daña la lámina de la uña. Ofrecemos un servicio de remoción por remojo suave en el salón."
+        }
+      ]
+    },
+    "best-nails-wedding": {
+      "title": "Las mejores uñas para una boda",
+      "metaTitle": "Mejores uñas para una boda · Sans Souci Ongles & Spa, Laval",
+      "metaDescription": "¿Novia o invitada? Elige las uñas de boda adecuadas según el look y la duración — manicura de gel, extensiones de pestañas y más — en Sans Souci Ongles & Spa en Laval.",
+      "answer": "Para una boda, elige según el look y la duración en lugar de un paquete fijo. Una manicura de gel mantiene un acabado impecable durante todo el día y en las fotos; las extensiones de pestañas abren la mirada sin máscara diaria; una pedicura fresca va con los zapatos abiertos. Reserva cada servicio que se ajuste a tu día — por separado o juntos — unos días antes.",
+      "sections": [
+        {
+          "heading": "Para la novia",
+          "body": [
+            "Las fotos son de primer plano y duran para siempre, así que elige servicios que se mantengan perfectos todo el día. Una manicura de gel en un neutro suave o un French clásico conserva su brillo desde la ceremonia hasta el baile de la madrugada sin astillarse.",
+            "Las extensiones de pestañas son una favorita para la mirada — añaden definición en las fotos y sobreviven a las lágrimas de alegría, sin máscara que se corra."
+          ]
+        },
+        {
+          "heading": "Para invitadas y el cortejo",
+          "body": [
+            "Si asistes o acompañas a la novia, una manicura de gel es la opción fácil y duradera que combina con cualquier atuendo. Una pedicura fresca completa el look para tacones abiertos.",
+            "Elige los servicios que se ajusten a tu papel y a tu vestido — no hay una combinación obligatoria."
+          ]
+        },
+        {
+          "heading": "Cuándo reservar",
+          "body": [
+            "Reserva el gel y las pestañas de dos a cuatro días antes de la boda para que el acabado esté fresco pero asentado. Reserva con antelación durante la temporada de bodas de primavera y verano en CF Carrefour Laval.",
+            "¿Quieres manicura, pedicura y pestañas el mismo día? Dínoslo al reservar y organizaremos tus citas — cada servicio se sostiene por sí solo, así que eliges solo lo que necesitas."
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "¿Qué uñas son las mejores para una novia?",
+          "a": "Una manicura de gel en un acabado neutro o French mantiene un look impecable durante todo el día y en las fotos. Muchas novias añaden extensiones de pestañas para definición sin máscara."
+        },
+        {
+          "q": "¿Con cuánta antelación debo reservar las uñas de boda?",
+          "a": "De dos a cuatro días antes de la boda para el gel y las pestañas — frescas pero asentadas. Reserva con antelación durante la temporada de bodas de primavera y verano para asegurar tu horario."
+        },
+        {
+          "q": "¿Tengo que reservar un paquete de novia completo?",
+          "a": "No. Recomendamos los servicios según el look y la duración — manicura, pedicura o extensiones de pestañas — y reservas solo los que quieras, por separado o el mismo día."
+        }
+      ]
+    }
+  },
   "comparisonLabels": {
     "verdict": "Nuestra recomendación",
     "related": "Conoce nuestro servicio:"
