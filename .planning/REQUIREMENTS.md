@@ -13,8 +13,8 @@
 
 ### Content Expansion
 
-- [ ] **EXP-01**: Comparison / decision pages with answer-first structure — each opens with a direct verdict (40–60 words) and a scannable comparison table, SSR, across all 4 locales (en/fr/es/ar). Supporting schema is valid Product/Review/Breadcrumb only (no HowTo). Exact comparison set (service-vs-service vs. competitor-alternatives) pinned at phase-plan time; competitor-named pages require sourced, dated facts if chosen.
-- [ ] **EXP-02**: Cost guides, care guides, and "best-for" guide pages — answer-first, factual, 4-locale, sourced from dictionaries through the existing `seo.ts` + `[lang]` routing model. Each guide opens with a direct answer block before any progressive-disclosure UI (no opacity:0 / Reveal hiding content from AI crawlers — v1 Pitfall 3 invariant holds).
+- [x] **EXP-01**: Comparison / decision pages with answer-first structure — each opens with a direct verdict (40–60 words) and a scannable comparison table, SSR, across all 4 locales (en/fr/es/ar). Supporting schema is valid Product/Review/Breadcrumb only (no HowTo). Exact comparison set (service-vs-service vs. competitor-alternatives) pinned at phase-plan time; competitor-named pages require sourced, dated facts if chosen.
+- [x] **EXP-02**: Cost guides, care guides, and "best-for" guide pages — answer-first, factual, 4-locale, sourced from dictionaries through the existing `seo.ts` + `[lang]` routing model. Each guide opens with a direct answer block before any progressive-disclosure UI (no opacity:0 / Reveal hiding content from AI crawlers — v1 Pitfall 3 invariant holds).
 
 ### Agent-Readable Surface
 

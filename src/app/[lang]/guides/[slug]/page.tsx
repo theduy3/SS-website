@@ -5,24 +5,18 @@ import { Button } from "@/components/Button";
 import { Reveal } from "@/components/Reveal";
 import { KeyPageChrome } from "@/components/KeyPageChrome";
 import { JsonLd } from "@/components/JsonLd";
-import { ComparisonTable } from "@/components/ComparisonTable";
 import { site } from "@/lib/site";
 import {
-  comparisonBySlug,
-  comparisonSlugParams,
-  comparisonPath,
-  comparisonPathsByLocale,
-} from "@/lib/comparisons";
+  guideBySlug,
+  guideSlugParams,
+  guidePath,
+  guidePathsByLocale,
+} from "@/lib/guides";
 import { services, servicePath } from "@/lib/services";
 import { readConsent } from "@/lib/consent.server";
 import { getDictionary } from "../../dictionaries";
 import { isLocale, dirFor } from "@/lib/i18n";
-import {
-  pageMetadata,
-  productGraph,
-  reviewGraph,
-  breadcrumbGraph,
-} from "@/lib/seo";
+import { pageMetadata, articleGraph, breadcrumbGraph } from "@/lib/seo";
 
 type Params = { params: Promise<{ lang: string; slug: string }> };
 
@@ -30,57 +24,56 @@ type Params = { params: Promise<{ lang: string; slug: string }> };
 // wrong-locale slug 404s instead of rendering a mismatched page.
 export function generateStaticParams({ params }: { params: { lang: string } }) {
   if (!isLocale(params.lang)) return [];
-  return comparisonSlugParams(params.lang);
+  return guideSlugParams(params.lang);
 }
 
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { lang, slug } = await params;
   if (!isLocale(lang)) return {};
-  const cmp = comparisonBySlug(lang, slug);
-  if (!cmp) return {};
-  const c = (await getDictionary(lang)).comparisons[cmp.id];
-  return pageMetadata(lang, comparisonPath(cmp, lang), {
-    title: c.metaTitle,
-    description: c.metaDescription,
-    routeByLocale: comparisonPathsByLocale(cmp),
+  const guide = guideBySlug(lang, slug);
+  if (!guide) return {};
+  const g = (await getDictionary(lang)).guides[guide.id];
+  return pageMetadata(lang, guidePath(guide, lang), {
+    title: g.metaTitle,
+    description: g.metaDescription,
+    routeByLocale: guidePathsByLocale(guide),
   });
 }
 
-export default async function ComparisonPage({ params }: Params) {
+export default async function GuidePage({ params }: Params) {
   const { lang, slug } = await params;
   if (!isLocale(lang)) notFound();
-  const cmp = comparisonBySlug(lang, slug);
-  if (!cmp) notFound();
+  const guide = guideBySlug(lang, slug);
+  if (!guide) notFound();
 
   const dict = await getDictionary(lang);
-  const c = dict.comparisons[cmp.id];
-  const labels = dict.comparisonLabels;
+  const g = dict.guides[guide.id];
   const sLabels = dict.serviceLabels;
-  const service = services.find((s) => s.id === cmp.service)!;
-  const sDetail = dict.serviceDetails[cmp.service];
+  const service = services.find((s) => s.id === guide.service)!;
+  const sDetail = dict.serviceDetails[guide.service];
   const bookHref = `/${lang}${site.booking}`;
   const consent = await readConsent();
   const consentKnown = consent !== undefined;
 
   return (
     <>
+      {/* Article + Breadcrumb only — no HowTo (D-08) */}
       <JsonLd
-        data={productGraph(lang, {
-          name: c.title,
-          description: c.metaDescription,
-          path: comparisonPath(cmp, lang),
+        data={articleGraph(lang, {
+          name: g.title,
+          description: g.metaDescription,
+          path: guidePath(guide, lang),
         })}
       />
-      <JsonLd data={reviewGraph(lang)} />
       <JsonLd
         data={breadcrumbGraph(lang, [
           { name: dict.nav.home, route: "" },
-          { name: dict.nav.services, route: "/services" },
-          { name: c.title, route: comparisonPath(cmp, lang) },
+          { name: sLabels.guides, route: "/services" },
+          { name: g.title, route: guidePath(guide, lang) },
         ])}
       />
 
-      {/* Intro: answer-first verdict (bare SSR <p>) → table → detail */}
+      {/* Intro: answer-first block (bare SSR <p>) → sections */}
       <section className="mx-auto max-w-3xl px-6 py-16 md:py-24">
         <Reveal>
           <Link
@@ -91,40 +84,44 @@ export default async function ComparisonPage({ params }: Params) {
           </Link>
         </Reveal>
         <Reveal delay={0.05}>
-          <h1 className="mt-6 text-3xl text-espresso md:text-5xl">{c.title}</h1>
+          <h1 className="mt-6 text-3xl text-espresso md:text-5xl">{g.title}</h1>
         </Reveal>
-        {/* Answer-first verdict — bare <p> outside Reveal so crawlers see it in raw SSR HTML */}
+        {/* Answer-first block — bare <p> outside Reveal so crawlers see it in raw SSR HTML */}
         <p
           className="mt-8 text-lg leading-relaxed text-mocha"
           dir={dirFor(lang)}
         >
-          {c.verdict}
+          {g.answer}
         </p>
-        <Reveal delay={0.1}>
-          <div className="mt-6 space-y-5 text-lg leading-relaxed text-mocha">
-            {c.intro.map((p) => (
-              <p key={p}>{p}</p>
-            ))}
-          </div>
-        </Reveal>
       </section>
 
       {/* Trust band + sticky Call/Book bar (key page) — mounted once (D-11) */}
       <KeyPageChrome locale={lang} dict={dict} consentKnown={consentKnown} />
 
-      {/* Comparison matrix */}
+      {/* Body sections */}
       <section className="bg-fog">
-        <div className="mx-auto max-w-4xl px-6 py-16 md:py-24">
-          <Reveal>
-            <ComparisonTable columns={c.columns} rows={c.rows} caption={c.title} />
-          </Reveal>
+        <div className="mx-auto max-w-3xl px-6 py-16 md:py-24">
+          <div className="space-y-12">
+            {g.sections.map((sec) => (
+              <Reveal key={sec.heading}>
+                <h2 className="text-2xl text-espresso md:text-3xl">
+                  {sec.heading}
+                </h2>
+                <div className="mt-4 space-y-4 text-lg leading-relaxed text-mocha">
+                  {sec.body.map((p) => (
+                    <p key={p}>{p}</p>
+                  ))}
+                </div>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Related service link */}
+      {/* Related service link (D-12) */}
       <section className="mx-auto max-w-3xl px-6 py-12 text-center">
         <Reveal>
-          <p className="text-mocha">{labels.related}</p>
+          <p className="text-mocha">{sLabels.allServices}</p>
           <Link
             href={`/${lang}${servicePath(service, lang)}`}
             className="mt-2 inline-block text-xl font-semibold text-espresso underline-offset-4 hover:underline"
@@ -141,7 +138,7 @@ export default async function ComparisonPage({ params }: Params) {
             <h2 className="text-2xl text-espresso md:text-3xl">{sLabels.faq}</h2>
           </Reveal>
           <dl className="mt-8 space-y-8">
-            {c.faq.map((item) => (
+            {g.faq.map((item) => (
               <Reveal key={item.q}>
                 <dt className="text-lg font-semibold text-espresso">{item.q}</dt>
                 <dd className="mt-2 leading-relaxed text-mocha">{item.a}</dd>
@@ -151,7 +148,7 @@ export default async function ComparisonPage({ params }: Params) {
         </div>
       </section>
 
-      {/* CTA */}
+      {/* CTA — book the related service (D-12) */}
       <section className="mx-auto max-w-3xl px-6 py-16 text-center md:py-24">
         <Reveal>
           <p className="text-lg text-mocha">{dict.reviews.ctaPrompt}</p>

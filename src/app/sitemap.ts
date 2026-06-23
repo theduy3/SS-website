@@ -3,6 +3,7 @@ import { locales, defaultLocale } from "@/lib/i18n";
 import { site } from "@/lib/site";
 import { services, servicePath } from "@/lib/services";
 import { comparisons, comparisonPath } from "@/lib/comparisons";
+import { guides, guidePath } from "@/lib/guides";
 
 // Bilingual sitemap. Nav routes share a path across locales; service pages use
 // LOCALIZED slugs, so each service's alternates point at its per-locale path.
@@ -24,6 +25,18 @@ const PAGE_DATES: Record<string, Date> = {
   "/terms": new Date("2026-06-01"),
   "/privacy": new Date("2026-06-01"),
   "/laval": new Date("2026-06-17"),
+  // Comparison pages (Phase 04). Keyed by the EN base path (comparisonPath in
+  // defaultLocale) so the date is locale-independent.
+  "/comparisons/gel-vs-regular-manicure": new Date("2026-06-21"),
+  "/comparisons/lashes-2d-3d-hybrid": new Date("2026-06-21"),
+  "/comparisons/waxing-vs-sugaring": new Date("2026-06-21"),
+  "/comparisons/salon-gel-vs-at-home-kit": new Date("2026-06-21"),
+  "/comparisons/salon-lashes-vs-diy-lashes": new Date("2026-06-21"),
+  "/comparisons/professional-waxing-vs-at-home-waxing": new Date("2026-06-21"),
+  // Guide pages (Phase 04). Keyed by the EN base path (guidePath in defaultLocale).
+  "/guides/manicure-cost-laval": new Date("2026-06-22"),
+  "/guides/gel-manicure-care": new Date("2026-06-22"),
+  "/guides/best-nails-wedding": new Date("2026-06-22"),
 };
 
 // Fallback date for any path not explicitly listed above.
@@ -73,7 +86,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const comparisonEntries: MetadataRoute.Sitemap = locales.flatMap((locale) =>
     comparisons.map((cmp) => ({
       url: `${site.url}/${locale}${comparisonPath(cmp, locale)}`,
-      lastModified: FALLBACK_DATE,
+      // Date keyed by the EN base path so all locales of a comparison share one
+      // lastModified (the slug differs per locale; the content date does not).
+      // NB: keyed on the EN slug specifically — defaultLocale is "fr", so the
+      // PAGE_DATES keys (EN slugs) must be looked up via the EN path.
+      lastModified: pageDate(comparisonPath(cmp, "en")),
       changeFrequency: "monthly" as const,
       priority: 0.6,
       alternates: {
@@ -82,6 +99,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
             locales.map((l) => [l, `${site.url}/${l}${comparisonPath(cmp, l)}`]),
           ),
           "x-default": `${site.url}/${defaultLocale}${comparisonPath(cmp, defaultLocale)}`,
+        },
+      },
+    })),
+  );
+
+  const guideEntries: MetadataRoute.Sitemap = locales.flatMap((locale) =>
+    guides.map((guide) => ({
+      url: `${site.url}/${locale}${guidePath(guide, locale)}`,
+      // Date keyed by the EN base path (see comparisonEntries note).
+      lastModified: pageDate(guidePath(guide, "en")),
+      changeFrequency: "monthly" as const,
+      priority: 0.6,
+      alternates: {
+        languages: {
+          ...Object.fromEntries(
+            locales.map((l) => [l, `${site.url}/${l}${guidePath(guide, l)}`]),
+          ),
+          "x-default": `${site.url}/${defaultLocale}${guidePath(guide, defaultLocale)}`,
         },
       },
     })),
@@ -128,5 +163,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...localEntries,
     ...serviceEntries,
     ...comparisonEntries,
+    ...guideEntries,
   ];
 }

@@ -1017,7 +1017,7 @@
           ]
         }
       ],
-      "verdict": "If you want a manicure that withstands daily tasks and stays glossy for weeks, gel or shellac is the superior choice. If you love switching colours often and prefer quick at-home removal, classic polish is a great option. Our nail technicians at Sans Souci Ongles & Spa are happy to recommend the best formula based on your nail health and lifestyle.",
+      "verdict": "Choose gel or shellac when you want a manicure that survives daily tasks and stays glossy for two to three weeks. Choose classic polish if you switch colours often and prefer fast, gentle removal. Both are good options. Book at Sans Souci Ongles & Spa and our technicians will recommend the right formula for your nails.",
       "faq": [
         {
           "q": "Does gel polish damage your nails?",
@@ -1093,7 +1093,7 @@
           ]
         }
       ],
-      "verdict": "The 2D classic style is ideal for those who want defined lashes without an over-the-top effect — perfect for everyday wear. The 3D volume set creates impressive fullness for special occasions or for clients who love a dramatic look. Hybrid offers the best of both worlds. All lash extension services at Sans Souci Ongles & Spa are performed by certified technicians using high-quality materials for safe, long-lasting results.",
+      "verdict": "Choose 2D classic for defined, natural lashes you can wear every day. Choose 3D volume for dramatic fullness at a special occasion. Hybrid blends both for soft volume. All three wear well between fills. Book at Sans Souci Ongles & Spa and our certified technicians will map a set to your eye shape and lash health.",
       "faq": [
         {
           "q": "What is the difference between 2D and 3D volume lashes?",
@@ -1163,7 +1163,7 @@
           ]
         }
       ],
-      "verdict": "Both waxing and sugaring deliver comparable results in terms of longevity and smoothness. Sugaring, made from sugar, water, and lemon juice, is praised for its natural formula and gentleness on sensitive skin. Professional waxing is a time-tested method effective on all body areas. At Sans Souci Ongles & Spa, we offer professional waxing services using quality products, applied by experienced technicians. To book your appointment or learn more, call us at (450) 505-6450.",
+      "verdict": "Waxing and sugaring give comparable smoothness and regrowth. Sugaring uses a natural sugar paste many find gentle on sensitive skin; professional waxing is fast and effective on every body area. At Sans Souci Ongles & Spa we offer professional waxing applied by experienced technicians. Book online or call (450) 505-6450 to plan your appointment.",
       "faq": [
         {
           "q": "What is the main difference between waxing and sugaring?",
@@ -1180,6 +1180,283 @@
         {
           "q": "Do you offer sugaring at Sans Souci?",
           "a": "No — we offer professional waxing only. It is an effective, proven method our technicians have perfected over more than 20 years of experience."
+        }
+      ]
+    },
+    "salon-gel-vs-diy-kit": {
+      "title": "Salon Gel vs At-Home Gel Kit: Which Is Worth It?",
+      "metaTitle": "Salon Gel vs At-Home Gel Kit · Sans Souci Ongles & Spa",
+      "metaDescription": "Salon gel or a DIY gel kit at home? Compare wear, cost, finish and nail safety at Sans Souci Ongles & Spa inside Carrefour Laval.",
+      "intro": [
+        "An at-home gel kit costs less up front and lets you paint your nails whenever you like. The trade-off is in the details: even curing, clean cuticle work, safe removal and a finish that lasts.",
+        "A salon gel service is applied and cured by a trained technician, so the colour sits evenly and the gel is removed without filing away your natural nail."
+      ],
+      "columns": ["Criterion", "At-Home Gel Kit", "Salon Gel"],
+      "rows": [
+        {
+          "label": "Up-front cost",
+          "cells": ["Lower — one kit, reused", "Higher — per appointment"]
+        },
+        {
+          "label": "Wear / Longevity",
+          "cells": ["Often lifts within days", "Even, glossy, 2 to 3 weeks"]
+        },
+        {
+          "label": "Application",
+          "cells": ["DIY — uneven curing common", "Trained technician, even cure"]
+        },
+        {
+          "label": "Removal & nail health",
+          "cells": ["Peeling risks thin, damaged nails", "Gentle soak-off, nail protected"]
+        },
+        {
+          "label": "Convenience",
+          "cells": ["Any time at home", "Booked appointment in Laval"]
+        }
+      ],
+      "verdict": "A home gel kit is cheaper and lets you paint on your own schedule. A salon service cures evenly, lasts two to three weeks, and removes the gel without thinning your natural nail. If you want reliable wear and healthy nails, book your gel manicure at Sans Souci Ongles & Spa.",
+      "faq": [
+        {
+          "q": "Is at-home gel bad for your nails?",
+          "a": "Not by itself — most damage comes from peeling gel off or filing too hard during removal. A salon soak-off protects the natural nail."
+        },
+        {
+          "q": "Does salon gel really last longer than a DIY kit?",
+          "a": "Usually, yes. Even curing and proper prep help salon gel stay glossy for two to three weeks, while DIY gel often lifts within days."
+        },
+        {
+          "q": "Can you fix a DIY gel manicure at the salon?",
+          "a": "Yes. Our technicians can safely remove a previous gel application and reapply a fresh, even set."
+        },
+        {
+          "q": "How do I book a gel manicure in Laval?",
+          "a": "Book online or call (450) 505-6450. Sans Souci Ongles & Spa is inside CF Carrefour Laval."
+        }
+      ]
+    },
+    "salon-lash-vs-diy-lash": {
+      "title": "Salon Lash Extensions vs DIY Lashes: Which to Pick?",
+      "metaTitle": "Salon Lash Extensions vs DIY Lashes · Sans Souci Ongles & Spa",
+      "metaDescription": "Salon lash extensions or DIY strip and cluster lashes? Compare wear, look and eye safety at Sans Souci Ongles & Spa inside Carrefour Laval.",
+      "intro": [
+        "DIY strip and cluster lashes are inexpensive and quick — you apply them yourself for a single occasion and remove them the same night.",
+        "Salon lash extensions are applied lash-by-lash by a certified technician, bonded to your natural lashes so they wear for weeks and look seamless up close."
+      ],
+      "columns": ["Criterion", "DIY Strip / Cluster Lashes", "Salon Extensions"],
+      "rows": [
+        {
+          "label": "Up-front cost",
+          "cells": ["Lower — drugstore strips", "Higher — per appointment"]
+        },
+        {
+          "label": "Wear / Longevity",
+          "cells": ["Hours — single wear", "Weeks, with fills"]
+        },
+        {
+          "label": "Application",
+          "cells": ["DIY — glue near the eye", "Certified technician, lash-by-lash"]
+        },
+        {
+          "label": "Natural-lash safety",
+          "cells": ["Glue and pulling can damage lashes", "Bonded to lashes, eyes kept closed"]
+        },
+        {
+          "label": "Best for",
+          "cells": ["One night, on a budget", "Seamless, long-lasting volume"]
+        }
+      ],
+      "verdict": "DIY strip lashes are cheap and fine for one evening. Salon extensions are applied lash-by-lash, wear for weeks with fills, and look seamless without daily glue near your eyes. If you want lasting, low-maintenance volume applied safely, book your lash set at Sans Souci Ongles & Spa.",
+      "faq": [
+        {
+          "q": "Are DIY lashes safe to apply at home?",
+          "a": "Occasional strip lashes are generally fine, but adhesive near the eye and repeated pulling can stress natural lashes over time."
+        },
+        {
+          "q": "How long do salon lash extensions last?",
+          "a": "Most clients return for a fill every 2 to 3 weeks as natural lashes shed and grow."
+        },
+        {
+          "q": "Will extensions damage my natural lashes?",
+          "a": "Applied correctly by a certified technician, each extension is bonded to a single natural lash and shed with it — no pulling required."
+        },
+        {
+          "q": "How do I book lash extensions in Laval?",
+          "a": "Book online or call (450) 505-6450. Sans Souci Ongles & Spa is inside CF Carrefour Laval."
+        }
+      ]
+    },
+    "salon-wax-vs-home-wax": {
+      "title": "Professional Waxing vs At-Home Waxing: Which Is Better?",
+      "metaTitle": "Professional vs At-Home Waxing · Sans Souci Ongles & Spa",
+      "metaDescription": "Professional waxing or an at-home wax kit? Compare results, comfort and skin safety at Sans Souci Ongles & Spa inside Carrefour Laval.",
+      "intro": [
+        "An at-home wax kit is inexpensive and private, and works well for small, easy-to-reach areas when you have time to spare.",
+        "Professional waxing is done by an experienced technician who controls temperature and technique, so larger or sensitive areas are treated evenly with less breakage and irritation."
+      ],
+      "columns": ["Criterion", "At-Home Wax Kit", "Professional Waxing"],
+      "rows": [
+        {
+          "label": "Up-front cost",
+          "cells": ["Lower — one kit", "Higher — per appointment"]
+        },
+        {
+          "label": "Result quality",
+          "cells": ["Uneven, missed patches common", "Even, smooth in one pass"]
+        },
+        {
+          "label": "Comfort & technique",
+          "cells": ["Temperature hard to judge", "Controlled heat, fast removal"]
+        },
+        {
+          "label": "Hard-to-reach areas",
+          "cells": ["Difficult alone", "Handled by the technician"]
+        },
+        {
+          "label": "Skin safety",
+          "cells": ["Burn and bruising risk", "Trained, hygienic application"]
+        }
+      ],
+      "verdict": "A home wax kit is cheaper and private and works for small areas. Professional waxing controls temperature and technique, so larger or sensitive areas come out even in fewer passes with less irritation. If you want smooth, reliable results with less risk, book professional waxing at Sans Souci Ongles & Spa.",
+      "faq": [
+        {
+          "q": "Is at-home waxing effective?",
+          "a": "For small, reachable areas it can work, but uneven temperature and angle often leave missed patches or cause bruising."
+        },
+        {
+          "q": "Why choose professional waxing?",
+          "a": "A technician controls the wax temperature and removal angle, treating larger and sensitive areas evenly with less breakage and irritation."
+        },
+        {
+          "q": "How long should hair be before a waxing appointment?",
+          "a": "About 3 to 5 mm, roughly two weeks of growth, gives the cleanest result."
+        },
+        {
+          "q": "How do I book waxing in Laval?",
+          "a": "Book online or call (450) 505-6450. Sans Souci Ongles & Spa is inside CF Carrefour Laval."
+        }
+      ]
+    }
+  },
+  "guides": {
+    "manicure-cost-laval": {
+      "title": "How Much Does a Manicure Cost in Laval?",
+      "metaTitle": "Manicure Cost in Laval · Sans Souci Ongles & Spa",
+      "metaDescription": "How much is a manicure in Laval? See starting prices for classic and gel manicures at Sans Souci Ongles & Spa inside CF Carrefour Laval.",
+      "answer": "A classic manicure at Sans Souci Ongles & Spa in Laval starts at $30, and a gel manicure starts at $40. The final price depends on the finish you choose and any add-ons such as nail art or removal. Call (450) 505-6450 for an exact quote.",
+      "sections": [
+        {
+          "heading": "What changes the price",
+          "body": [
+            "Two things move a manicure price: the type of finish and any extras. A classic manicure covers shaping, cuticle care and one coat of regular polish. A gel (shellac) manicure adds a UV/LED-cured finish that lasts two to three weeks, so it starts a little higher.",
+            "Add-ons such as nail art, French tips, gel removal or a longer length will add to the base price. Our technician confirms the total with you before starting, so there are no surprises."
+          ]
+        },
+        {
+          "heading": "Classic vs gel — which is worth it",
+          "body": [
+            "If you change colours often or want a quick, gentle option, a classic manicure starting at $30 is the economical choice. If you want a finish that survives daily tasks and stays glossy for weeks, the gel manicure starting at $40 usually costs less per week of wear.",
+            "Either way, prices at our CF Carrefour Laval salon are transparent and confirmed before your appointment begins."
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "How much does a manicure cost at Sans Souci in Laval?",
+          "a": "A classic manicure starts at $30 and a gel manicure starts at $40. The final price depends on your chosen finish and any add-ons. Call (450) 505-6450 to confirm."
+        },
+        {
+          "q": "Why does a gel manicure cost more than a classic one?",
+          "a": "Gel uses more product and a UV/LED curing step, and the finish lasts two to three weeks instead of about a week. You pay a little more up front for longer wear."
+        },
+        {
+          "q": "Are there extra charges I should know about?",
+          "a": "Add-ons such as nail art, French tips, extra length or gel removal are priced on top of the base manicure. Your technician confirms the full total before starting."
+        }
+      ]
+    },
+    "gel-manicure-care": {
+      "title": "How to Make Your Gel Manicure Last Longer",
+      "metaTitle": "Make Your Gel Manicure Last Longer · Laval",
+      "metaDescription": "Simple aftercare to make a gel manicure last two to three weeks: cuticle oil, gloves for chores, and professional removal. Tips from Sans Souci Ongles & Spa, Laval.",
+      "answer": "To make a gel manicure last two to three weeks, apply cuticle oil daily, wear gloves for cleaning and dishwashing, avoid using your nails as tools, and never peel the gel off. Book professional removal instead of picking — peeling strips the natural nail and shortens the life of your next set.",
+      "sections": [
+        {
+          "heading": "Daily habits that protect the gel",
+          "body": [
+            "Hydration is what keeps gel from lifting at the edges. Massage a drop of cuticle oil into each nail once or twice a day — it keeps the cuticle and the gel seal flexible so the finish stays bonded.",
+            "Treat your nails as jewels, not tools. Opening cans, scratching labels and prying things apart are the fastest way to chip or crack a gel edge."
+          ]
+        },
+        {
+          "heading": "Around water and chores",
+          "body": [
+            "Wear rubber gloves for dishwashing and household cleaning. Prolonged hot water and harsh detergents loosen the gel bond and dull the shine.",
+            "After swimming or long baths, dry your hands well and reapply cuticle oil. A quick top-up keeps the seal intact."
+          ]
+        },
+        {
+          "heading": "Removal — the part most people get wrong",
+          "body": [
+            "Never peel or pick gel off. Peeling pulls away layers of the natural nail and leaves it thin and weak.",
+            "Book a professional soak-off removal (about 15 minutes) at Sans Souci Ongles & Spa. We remove the gel gently and assess your natural nail before the next application."
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "How long should a gel manicure last?",
+          "a": "With good aftercare, two to three weeks. Daily cuticle oil, gloves for chores and avoiding peeling are the biggest factors in how long it holds."
+        },
+        {
+          "q": "Why is my gel lifting at the edges?",
+          "a": "Lifting is usually from dryness or water exposure. Keep cuticles oiled, wear gloves for wet chores, and avoid using your nails as tools."
+        },
+        {
+          "q": "Can I remove gel polish at home?",
+          "a": "We recommend professional removal to avoid thinning the natural nail. Peeling or picking damages the nail plate. We offer a gentle soak-off removal service at the salon."
+        }
+      ]
+    },
+    "best-nails-wedding": {
+      "title": "The Best Nails for a Wedding",
+      "metaTitle": "Best Nails for a Wedding · Sans Souci Ongles & Spa, Laval",
+      "metaDescription": "Bride or guest? Choose the right wedding nails by look and longevity — gel manicure, lash extensions and more — at Sans Souci Ongles & Spa in Laval.",
+      "answer": "For a wedding, choose by look and longevity rather than one fixed package. A gel manicure keeps a flawless finish through the day and photos; lash extensions open the eyes without daily mascara; a fresh pedicure suits open-toe shoes. Book each service that fits your day — separately or together — a few days before.",
+      "sections": [
+        {
+          "heading": "For the bride",
+          "body": [
+            "Photos are close-up and last forever, so pick services that stay perfect all day. A gel manicure in a soft neutral or classic French holds its shine from the ceremony through the late-night dancing without chipping.",
+            "Lash extensions are a favourite for the eyes — they add definition in photos and survive happy tears, with no mascara to smudge."
+          ]
+        },
+        {
+          "heading": "For guests and the bridal party",
+          "body": [
+            "If you are attending or standing with the bride, a gel manicure is the easy, long-lasting choice that matches any outfit. A fresh pedicure finishes the look for open-toe heels.",
+            "Pick the services that suit your role and your dress — there is no single mandatory combination."
+          ]
+        },
+        {
+          "heading": "When to book",
+          "body": [
+            "Book gel and lashes two to four days before the wedding so the finish is fresh but settled. Reserve early during spring and summer wedding season at CF Carrefour Laval.",
+            "Want manicure, pedicure and lashes the same day? Tell us when you book and we will arrange your appointments — each service stands on its own, so you choose only what you need."
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "What nails are best for a bride?",
+          "a": "A gel manicure in a neutral or French finish keeps a flawless look through the day and photos. Many brides add lash extensions for definition without mascara."
+        },
+        {
+          "q": "How far in advance should I book wedding nails?",
+          "a": "Two to four days before the wedding for gel and lashes — fresh but settled. Book early in spring and summer wedding season to secure your time."
+        },
+        {
+          "q": "Do I have to book a full bridal package?",
+          "a": "No. We recommend services by look and longevity — manicure, pedicure or lash extensions — and you book only the ones you want, separately or on the same day."
         }
       ]
     }
