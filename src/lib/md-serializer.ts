@@ -459,8 +459,8 @@ export function renderTermsMd(
   const intros = dict.legal.terms.intro.map((p: string) => p).join("\n\n");
 
   const sectionParts = dict.legal.terms.sections
-    .map((section: { heading: string; blocks: readonly Block[] }) => {
-      return [`## ${section.heading}`, "", renderBlocks(section.blocks)].join(
+    .map((section) => {
+      return [`## ${section.heading}`, "", renderBlocks(section.blocks as Block[])].join(
         "\n",
       );
     })
@@ -490,8 +490,8 @@ export function renderPrivacyMd(
   const intros = dict.legal.privacy.intro.map((p: string) => p).join("\n\n");
 
   const sectionParts = dict.legal.privacy.sections
-    .map((section: { heading: string; blocks: readonly Block[] }) => {
-      return [`## ${section.heading}`, "", renderBlocks(section.blocks)].join(
+    .map((section) => {
+      return [`## ${section.heading}`, "", renderBlocks(section.blocks as Block[])].join(
         "\n",
       );
     })
