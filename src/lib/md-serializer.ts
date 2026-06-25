@@ -18,6 +18,7 @@ import { pageDate } from "@/lib/page-dates";
 import { services, servicePath } from "@/lib/services";
 import { comparisons, comparisonPath } from "@/lib/comparisons";
 import { guides, guidePath } from "@/lib/guides";
+import { mdTwinUrl } from "@/lib/md-routes";
 
 // ─── Shared Types ─────────────────────────────────────────────────────────────
 
@@ -162,7 +163,7 @@ export function renderServicesIndexMd(
 }
 
 /**
- * Individual service page .md twin (e.g. /en/services/manicure.md).
+ * Individual service page .md twin (e.g. /en/services/manicure/index.md).
  * Includes: title, price, included/addons, FAQ Q&A, related links.
  */
 export function renderServiceMd(
@@ -189,12 +190,18 @@ export function renderServiceMd(
   // Related comparisons and guides
   const relatedComparisons = comparisons
     .filter((c) => c.service === service.id)
-    .map((c) => `- [${c.id}](${site.url}/${lang}${comparisonPath(c, lang)}.md)`)
+    .map(
+      (c) =>
+        `- [${c.id}](${site.url}${mdTwinUrl(`/${lang}${comparisonPath(c, lang)}`)})`,
+    )
     .join("\n");
 
   const relatedGuides = guides
     .filter((g) => g.service === service.id)
-    .map((g) => `- [${g.id}](${site.url}/${lang}${guidePath(g, lang)}.md)`)
+    .map(
+      (g) =>
+        `- [${g.id}](${site.url}${mdTwinUrl(`/${lang}${guidePath(g, lang)}`)})`,
+    )
     .join("\n");
 
   const parts = [
@@ -508,7 +515,7 @@ export function renderPrivacyMd(
 }
 
 /**
- * Comparison decision page .md twin (e.g. /en/comparisons/gel-vs-regular-manicure.md).
+ * Comparison decision page .md twin (e.g. /en/comparisons/gel-vs-regular-manicure/index.md).
  * Includes title, intro, comparison table (renderComparisonTable), verdict, FAQ.
  */
 export function renderComparisonMd(
@@ -552,7 +559,7 @@ export function renderComparisonMd(
 }
 
 /**
- * Guide page .md twin (e.g. /en/guides/manicure-cost-laval.md).
+ * Guide page .md twin (e.g. /en/guides/manicure-cost-laval/index.md).
  * Includes title, answer, sections, FAQ.
  */
 export function renderGuideMd(

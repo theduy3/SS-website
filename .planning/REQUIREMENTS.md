@@ -18,7 +18,7 @@
 
 ### Agent-Readable Surface
 
-- [ ] **EXP-03**: Every `[lang]` content route serves a clean-text `.md` twin (e.g. `/en/services.md`) for AI crawlers, linked from `llms.txt`. Each `.md` route is force-static, registered in `STANDALONE_PATHS` (`src/proxy.ts`) with a `proxy.test.ts` passthrough assertion (v1 merge-gate invariant), and content derives from the same dictionary source as the HTML page (no drift). Coverage = all content routes, including the new EXP-01/EXP-02 pages.
+- [x] **EXP-03**: Every `[lang]` content route serves a clean-text `.md` twin (nav/static → `/en/services.md`; dynamic-slug families → `/en/services/<slug>/index.md`, Option C) for AI crawlers, linked from `llms.txt`. Each `.md` route is force-static and auto-excluded from the proxy by the matcher's dotted-path rule (`.*\..*` in `src/proxy.ts` — explicit `STANDALONE_PATHS` entries are dead config and intentionally skipped), with a `proxy.test.ts` passthrough assertion as the merge-gate invariant, and content derives from the same dictionary source as the HTML page (no drift). Coverage = all content routes, including the new EXP-01/EXP-02 pages.
 
 ### Dark-Referrer Recovery (Measurement)
 
