@@ -6,6 +6,7 @@
 // un-localized — the proxy would otherwise redirect to /{locale}/llms.txt (T-02-08).
 
 import { site } from "@/lib/site";
+import { services, servicePath } from "@/lib/services";
 import { comparisons, comparisonPath } from "@/lib/comparisons";
 import { guides, guidePath } from "@/lib/guides";
 
@@ -28,6 +29,15 @@ const guideLabels: Record<(typeof guides)[number]["id"], string> = {
   "manicure-cost-laval": "How much does a manicure cost in Laval?",
   "gel-manicure-care": "How to make your gel manicure last longer",
   "best-nails-wedding": "The best nails for a wedding",
+};
+
+// Type-keyed by ServiceId: a missing label fails at build time (same pattern
+// as comparisonLabels/guideLabels above). Used in the .md index section (D-06).
+const serviceDetailLabels: Record<(typeof services)[number]["id"], string> = {
+  manicure: "Manicure services (gel, classic, nail art)",
+  pedicure: "Pedicure services (spa, express)",
+  "lash-extensions": "Lash extension services (2D, 3D, Hybrid)",
+  waxing: "Waxing services (face, body)",
 };
 
 function hoursLine(block: { days: readonly string[]; opens: string; closes: string }) {
@@ -90,6 +100,33 @@ ${comparisons
 ## Guides
 ${guides
   .map((g) => `- ${guideLabels[g.id]}: ${site.url}/en${guidePath(g, "en")}`)
+  .join("\n")}
+
+## Machine-Readable Pages (.md)
+EN-only index. FR/ES/AR variants: replace /en/ with /fr/, /es/, or /ar/.
+
+### Key Pages
+- Home: ${site.url}/en.md
+- Services overview: ${site.url}/en/services.md
+- About: ${site.url}/en/about.md
+- FAQ: ${site.url}/en/faq.md
+- Laval local info: ${site.url}/en/laval.md
+- Contact: ${site.url}/en/contact.md
+- Reviews: ${site.url}/en/reviews.md
+
+### Service Pages
+${services
+  .map((s) => `- ${serviceDetailLabels[s.id]}: ${site.url}/en${servicePath(s, "en")}.md`)
+  .join("\n")}
+
+### Comparisons
+${comparisons
+  .map((c) => `- ${comparisonLabels[c.id]}: ${site.url}/en${comparisonPath(c, "en")}.md`)
+  .join("\n")}
+
+### Guides
+${guides
+  .map((g) => `- ${guideLabels[g.id]}: ${site.url}/en${guidePath(g, "en")}.md`)
   .join("\n")}
 
 ## Social

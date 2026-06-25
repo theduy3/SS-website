@@ -35,4 +35,25 @@ describe("proxy locale routing", () => {
     const res = await proxy(req("/about"));
     expect(res.headers.get("location")).toContain("/about");
   });
+
+  it(
+    "does not locale-prefix locale-prefixed .md routes (EXP-03 merge gate: .md bypass invariant)",
+    async () => {
+      // Locale-prefixed .md paths are already under a known locale prefix,
+      // so the proxy's hasLocale check returns true → NextResponse.next() →
+      // no Location header. If the matcher ever starts processing these paths
+      // AND a redirect is issued, this test fails loudly (EXP-03 invariant).
+      const mdPaths = [
+        "/en/about.md",
+        "/en/services/manicure.md",
+        "/en/comparisons/gel-vs-regular-manicure.md",
+        "/en/guides/manicure-cost-laval.md",
+        "/en/services.md",
+      ];
+      for (const path of mdPaths) {
+        const res = await proxy(req(path));
+        expect(res.headers.get("location"), `expected no redirect for ${path}`).toBeNull();
+      }
+    },
+  );
 });
