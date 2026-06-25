@@ -181,3 +181,75 @@ Phase 05 is complete:
 *Phase: 05-agent-readable-surface-md-twins*
 *Status: complete*
 *Last updated: 2026-06-25*
+
+---
+
+## Post-Merge Integration Fix — Option C (2026-06-25)
+
+### Root Cause
+
+`app/[lang]/services/[slug].md/route.ts` (and the comparisons and guides equivalents)
+were silently dead. Next.js 16 strips `.md` from `[bracket].md` segment names when
+compiling route regexes, so:
+
+```
+/[lang]/services/[slug].md  → ^/([^/]+?)/services/([^/]+?)(?:/)?$
+/[lang]/services/[slug]     → ^/([^/]+?)/services/([^/]+?)(?:/)?$
+```
+
+The two regexes are byte-identical. The `page.tsx` wins; every
+`/en/services/<slug>.md` returned 404. Confirmed via `.next/routes-manifest.json`.
+
+### Fix Applied — Option C
+
+Move each slug-family twin to a static `index.md` folder nested UNDER `[slug]/`
+(deeper than `page.tsx`, so no collision; dotted name so the proxy matcher's
+`.*\\..*` dot-rule auto-excludes it — no `STANDALONE_PATHS` entry needed).
+
+**Deleted (broken):**
+- `src/app/[lang]/services/[slug].md/route.ts`
+- `src/app/[lang]/comparisons/[slug].md/route.ts`
+- `src/app/[lang]/guides/[slug].md/route.ts`
+
+**Created (working):**
+- `src/app/[lang]/services/[slug]/index.md/route.ts` → `/en/services/<slug>/index.md`
+- `src/app/[lang]/comparisons/[slug]/index.md/route.ts` → `/en/comparisons/<slug>/index.md`
+- `src/app/[lang]/guides/[slug]/index.md/route.ts` → `/en/guides/<slug>/index.md`
+
+Slug param is now clean (no `.md` suffix folded in) — `serviceBySlug(lang, slug)`
+called directly, no stripping needed.
+
+**Supporting fixes:**
+
+- `src/lib/md-routes.ts`: Added `mdTwinUrl(contentPath)` helper — nav/secondaryNav/
+  localPaths → `path.md`; services/comparisons/guides → `path/index.md`.
+- `src/md-coverage.test.ts`: D-02 parity gate updated to use `mdTwinUrl()` so the
+  "every sitemap entry has a .md twin" assertion checks real twin URLs.
+- `src/app/llms.txt/route.ts`: D-06 index now lists `/index.md` URLs for slug
+  families (was listing dead `.md` URLs).
+- `src/proxy.test.ts`: EXP-03 gate paths updated to `/index.md` form — invariant
+  still holds (paths still dotted → proxy still excludes them).
+
+### Verification
+
+```
+bun run test          → 183 tests, 23 files, all green
+bun run build --webpack → clean; routes-manifest shows:
+  /[lang]/services/[slug]           → ^/([^/]+?)/services/([^/]+?)(?:/)?$
+  /[lang]/services/[slug]/index.md  → ^/([^/]+?)/services/([^/]+?)/index\.md(?:/)?$
+  (DISTINCT — no collision)
+
+curl http://localhost:3123/en/services/manicure/index.md      → 200 text/markdown, --- frontmatter
+curl http://localhost:3123/fr/services/manucure/index.md      → 200 text/markdown, --- frontmatter
+curl http://localhost:3123/en/comparisons/gel-vs-regular-manicure/index.md → 200 text/markdown
+curl http://localhost:3123/en/guides/manicure-cost-laval/index.md          → 200 text/markdown
+curl http://localhost:3123/ar/services/rumoosh/index.md                    → 200 text/markdown
+
+curl http://localhost:3123/en/services/manicure.md      → 404 (old broken URL correctly gone)
+curl http://localhost:3123/en/about.md                  → 200 (nav twins untouched)
+curl http://localhost:3123/en/services.md               → 200 (nav twins untouched)
+```
+
+### Commit
+
+`a0a08ab` — fix(05-02): Option C — move dynamic-slug twins to [slug]/index.md to eliminate route collision
