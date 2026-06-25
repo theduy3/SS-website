@@ -51,9 +51,11 @@
 2. `.md` routes pass through the proxy un-prefixed with a passing `proxy.test.ts` passthrough assertion (the load-bearing EXP-03 merge-gate invariant). Note: the proxy `matcher` already excludes all dotted paths, so `.md` routes bypass the proxy automatically — the test assertion is the gate; explicit `STANDALONE_PATHS` entries are skipped as dead config (planner reconciliation in 05-02-PLAN.md).
 3. All `.md` routes linked from `/llms.txt` (EN-only index); `.md` content derives from same dictionary source as HTML (no drift).
 
-**Plans:** 2 plans
-- [ ] 05-01-PLAN.md — Foundation: page-dates + md-routes + md-serializer (pure, tested) + smoke-tested home `[lang].md` handler
-- [ ] 05-02-PLAN.md — Fan-out 13 `.md` handlers + llms.txt EN index + proxy.test passthrough gate + md-coverage parity gate + build/curl verify
+**Plans:** 2/2 plans complete
+
+- [x] 05-01-PLAN.md — Foundation: page-dates + md-routes + md-serializer (pure, tested) + smoke-tested home `[lang].md` handler
+- [x] 05-02-PLAN.md — Fan-out 13 `.md` handlers + llms.txt EN index + proxy.test passthrough gate + md-coverage parity gate + build/curl verify
+
 **UI hint:** no.
 
 ### Phase 06: Dark-Referrer Recovery
