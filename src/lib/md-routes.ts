@@ -3,8 +3,9 @@
 // this module is imported by the coverage parity test and by llms.txt/route.ts.
 //
 // allMdPaths() returns locale-prefixed paths WITHOUT the ".md" suffix.
-// The coverage test appends ".md" when comparing against sitemap paths.
-// The llms.txt index section appends ".md" when building URLs.
+// Use mdTwinUrl(path) to get the REAL twin URL for any content path:
+//   - nav/secondaryNav/localPaths → path + ".md"         (e.g. /en/about.md)
+//   - services/comparisons/guides → path + "/index.md"   (e.g. /en/services/manicure/index.md)
 //
 // Keep in sync with sitemap.ts — a new route group added there must be
 // mirrored here (and vice versa) to preserve coverage parity (D-02).
@@ -18,6 +19,29 @@ import { guides, guidePath } from "@/lib/guides";
 /** "/" → "" for nav items so the home path is `/{locale}` not `/{locale}/`. */
 function toPath(href: string): string {
   return href === "/" ? "" : href;
+}
+
+/**
+ * Returns the real .md twin URL for a locale-prefixed content path.
+ *
+ * Dynamic-slug families (services, comparisons, guides) serve their twin at
+ * `<path>/index.md` (Option C: deeper static segment, no route collision).
+ * All other families (nav, secondaryNav, localPaths) use `<path>.md`.
+ *
+ * Examples:
+ *   "/en/about"                         → "/en/about.md"
+ *   "/en/services/manicure"             → "/en/services/manicure/index.md"
+ *   "/en/comparisons/gel-vs-regular-manicure" → "/en/comparisons/gel-vs-regular-manicure/index.md"
+ *   "/en/guides/manicure-cost-laval"    → "/en/guides/manicure-cost-laval/index.md"
+ */
+export function mdTwinUrl(contentPath: string): string {
+  // Dynamic-slug families: path has 3 segments after locale, e.g. /en/services/<slug>
+  if (
+    /^\/[^/]+\/(services|comparisons|guides)\/[^/]+$/.test(contentPath)
+  ) {
+    return contentPath + "/index.md";
+  }
+  return contentPath + ".md";
 }
 
 /**

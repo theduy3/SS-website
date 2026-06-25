@@ -43,11 +43,15 @@ describe("proxy locale routing", () => {
       // so the proxy's hasLocale check returns true → NextResponse.next() →
       // no Location header. If the matcher ever starts processing these paths
       // AND a redirect is issued, this test fails loudly (EXP-03 invariant).
+      //
+      // Note: dynamic-slug twins now live at /index.md (Option C fix — no route
+      // collision with [slug]/page.tsx). These paths still contain a dot →
+      // the proxy matcher's .*\\..*  rule auto-excludes them. Invariant holds.
       const mdPaths = [
         "/en/about.md",
-        "/en/services/manicure.md",
-        "/en/comparisons/gel-vs-regular-manicure.md",
-        "/en/guides/manicure-cost-laval.md",
+        "/en/services/manicure/index.md",
+        "/en/comparisons/gel-vs-regular-manicure/index.md",
+        "/en/guides/manicure-cost-laval/index.md",
         "/en/services.md",
       ];
       for (const path of mdPaths) {

@@ -9,7 +9,7 @@
 
 import { describe, it, expect } from "vitest";
 import sitemap from "@/app/sitemap";
-import { allMdPaths } from "@/lib/md-routes";
+import { allMdPaths, mdTwinUrl } from "@/lib/md-routes";
 
 describe("md-coverage parity gate (D-02)", () => {
   it("every sitemap /en URL has a corresponding .md twin path", () => {
@@ -21,19 +21,21 @@ describe("md-coverage parity gate (D-02)", () => {
       .filter((p) => p.startsWith("/en"));
 
     // allMdPaths() returns locale-prefixed paths WITHOUT ".md" suffix.
-    // Append ".md" to get the expected twin path, then build a Set for O(1) lookup.
-    const mdPaths = new Set(
+    // Use mdTwinUrl() to get the REAL twin URL (nav → path.md, slug families → path/index.md).
+    // Build a Set of all real twin paths for O(1) lookup.
+    const mdTwinPaths = new Set(
       allMdPaths()
         .filter((p) => p.startsWith("/en"))
-        .map((p) => p + ".md"),
+        .map((p) => mdTwinUrl(p)),
     );
 
     // Find sitemap /en paths that have no .md twin.
-    // A sitemap path /en/about is covered by the twin /en/about.md.
     // The home path /en is covered by /en.md (literal locale folder from Plan 01).
+    // Nav paths e.g. /en/about → /en/about.md
+    // Slug paths e.g. /en/services/manicure → /en/services/manicure/index.md
     const missing = sitemapEnPaths.filter((p) => {
-      const twin = p === "/en" ? "/en.md" : p + ".md";
-      return !mdPaths.has(twin === "/en.md" ? "/en" + ".md" : twin);
+      const twin = p === "/en" ? "/en.md" : mdTwinUrl(p);
+      return !mdTwinPaths.has(twin);
     });
 
     expect(

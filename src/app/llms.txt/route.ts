@@ -116,17 +116,17 @@ EN-only index. FR/ES/AR variants: replace /en/ with /fr/, /es/, or /ar/.
 
 ### Service Pages
 ${services
-  .map((s) => `- ${serviceDetailLabels[s.id]}: ${site.url}/en${servicePath(s, "en")}.md`)
+  .map((s) => `- ${serviceDetailLabels[s.id]}: ${site.url}/en${servicePath(s, "en")}/index.md`)
   .join("\n")}
 
 ### Comparisons
 ${comparisons
-  .map((c) => `- ${comparisonLabels[c.id]}: ${site.url}/en${comparisonPath(c, "en")}.md`)
+  .map((c) => `- ${comparisonLabels[c.id]}: ${site.url}/en${comparisonPath(c, "en")}/index.md`)
   .join("\n")}
 
 ### Guides
 ${guides
-  .map((g) => `- ${guideLabels[g.id]}: ${site.url}/en${guidePath(g, "en")}.md`)
+  .map((g) => `- ${guideLabels[g.id]}: ${site.url}/en${guidePath(g, "en")}/index.md`)
   .join("\n")}
 
 ## Social
