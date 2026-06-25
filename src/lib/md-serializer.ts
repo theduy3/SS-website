@@ -16,8 +16,8 @@ import { site } from "@/lib/site";
 import { aggregate } from "@/lib/reviews";
 import { pageDate } from "@/lib/page-dates";
 import { services, servicePath } from "@/lib/services";
-import { comparisons, comparisonPath } from "@/lib/comparisons";
-import { guides, guidePath } from "@/lib/guides";
+import { comparisonPath, comparisonsForService } from "@/lib/comparisons";
+import { guidePath, guidesForService } from "@/lib/guides";
 import { mdTwinUrl } from "@/lib/md-routes";
 
 // ─── Shared Types ─────────────────────────────────────────────────────────────
@@ -29,6 +29,16 @@ export type Block = {
 };
 
 // ─── Shared Helpers ───────────────────────────────────────────────────────────
+
+/** Escape a value for a YAML double-quoted scalar (backslash, then quote). */
+function yamlQuote(value: string): string {
+  return value.replace(/\\/g, "\\\\").replace(/"/g, '\\"');
+}
+
+/** Escape a value for a markdown table cell (pipes would split the column). */
+function tableCell(value: string): string {
+  return value.replace(/\|/g, "\\|");
+}
 
 /**
  * Emit a YAML frontmatter block (D-05 fields: title, lang, canonical, updated).
@@ -42,7 +52,7 @@ export function frontmatter(opts: {
 }): string {
   return [
     "---",
-    `title: "${opts.title}"`,
+    `title: "${yamlQuote(opts.title)}"`,
     `lang: ${opts.lang}`,
     `canonical: ${opts.canonical}`,
     `updated: ${opts.updated}`,
@@ -81,7 +91,8 @@ export function renderComparisonTable(
   const header = `| ${columns.join(" | ")} |`;
   const separator = `| ${columns.map(() => "---").join(" | ")} |`;
   const dataRows = rows.map(
-    (row) => `| ${row.label} | ${row.cells.join(" | ")} |`,
+    (row) =>
+      `| ${tableCell(row.label)} | ${row.cells.map(tableCell).join(" | ")} |`,
   );
   return [header, separator, ...dataRows, ""].join("\n");
 }
@@ -187,20 +198,19 @@ export function renderServiceMd(
     .map((qa: { q: string; a: string }) => `**${qa.q}**\n\n${qa.a}`)
     .join("\n\n");
 
-  // Related comparisons and guides
-  const relatedComparisons = comparisons
-    .filter((c) => c.service === service.id)
+  // Related comparisons and guides — reuse the same selectors + localized
+  // titles the HTML page renders (D-12), so the .md twin never drifts.
+  const relatedComparisons = comparisonsForService(service.id)
     .map(
       (c) =>
-        `- [${c.id}](${site.url}${mdTwinUrl(`/${lang}${comparisonPath(c, lang)}`)})`,
+        `- [${dict.comparisons[c.id].title}](${site.url}${mdTwinUrl(`/${lang}${comparisonPath(c, lang)}`)})`,
     )
     .join("\n");
 
-  const relatedGuides = guides
-    .filter((g) => g.service === service.id)
+  const relatedGuides = guidesForService(service.id)
     .map(
       (g) =>
-        `- [${g.id}](${site.url}${mdTwinUrl(`/${lang}${guidePath(g, lang)}`)})`,
+        `- [${dict.guides[g.id].title}](${site.url}${mdTwinUrl(`/${lang}${guidePath(g, lang)}`)})`,
     )
     .join("\n");
 

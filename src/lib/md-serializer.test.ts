@@ -237,6 +237,33 @@ describe("renderServiceMd()", () => {
   it("contains FAQ answers", () => {
     expect(out).toContain(detail.faq[0].a);
   });
+
+  // Regression guard (this related-links path shipped two untested bugs):
+  // (1) link text drifted to the raw registry id, (2) the URL used a bare
+  // `.md` that 404s after Option C. Both must mirror the HTML page exactly.
+  const relCmp = comparisons.find((c) => c.service === service.id);
+  const relGuide = guides.find((g) => g.service === service.id);
+
+  it("has related comparison/guide fixtures for the service under test", () => {
+    expect(relCmp).toBeDefined();
+    expect(relGuide).toBeDefined();
+  });
+
+  it("related-link text is the localized dict title, never the raw id (no drift)", () => {
+    expect(out).toContain(`[${dict.comparisons[relCmp!.id].title}]`);
+    expect(out).toContain(`[${dict.guides[relGuide!.id].title}]`);
+    // the old bug rendered `[<registry-id>](…` — must never reappear
+    expect(out).not.toContain(`[${relCmp!.id}](`);
+    expect(out).not.toContain(`[${relGuide!.id}](`);
+  });
+
+  it("related-link URL is the Option-C /index.md twin, not a bare .md", () => {
+    expect(out).toContain(`/comparisons/${relCmp!.slug.en}/index.md`);
+    expect(out).toContain(`/guides/${relGuide!.slug.en}/index.md`);
+    expect(out).not.toMatch(
+      new RegExp(`/comparisons/${relCmp!.slug.en}\\.md\\)`),
+    );
+  });
 });
 
 // ─── renderAboutMd() ─────────────────────────────────────────────────────────
