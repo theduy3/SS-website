@@ -1,9 +1,15 @@
-// Unit tests for dark-referral detection helpers (06-01, GEO-02).
+// @vitest-environment node
+// Node environment: getSupabaseAdmin() runs without the browser guard, returns
+// null when env vars are absent — the natural degrade state for all tests here.
+// All functions under test (detectAiReferral, buildInsertPayload) are pure and
+// need no jsdom; getDarkReferrerCounts uses service-role admin client only.
+//
 // D-09 PII-allowlist gate is the load-bearing merge-gate invariant:
 //   it must FAIL if any 5th field (ip, cookie, created_at, etc.) is ever added.
 
 import { describe, it, expect } from "vitest";
 import { detectAiReferral, buildInsertPayload, AI_HOSTS } from "./dark-referral";
+import { getDarkReferrerCounts } from "./supabase";
 
 // ---------------------------------------------------------------------------
 // detectAiReferral()
@@ -101,5 +107,19 @@ describe("buildInsertPayload() — D-09 PII-allowlist gate", () => {
     const payload = buildInsertPayload(row);
     expect(payload).not.toBe(row);
     expect(payload).toEqual(row);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// getDarkReferrerCounts() — graceful degrade (D-08)
+// ---------------------------------------------------------------------------
+
+describe("getDarkReferrerCounts()", () => {
+  it("returns null when Supabase is unconfigured (no env vars → getSupabaseAdmin returns null)", async () => {
+    // In the node test environment, SUPABASE_SERVICE_ROLE_KEY / NEXT_PUBLIC_SUPABASE_URL
+    // are not set, so getSupabaseAdmin() naturally returns null — no mock needed.
+    // This verifies the graceful-degrade invariant: missing config → null, never throws.
+    const result = await getDarkReferrerCounts();
+    expect(result).toBeNull();
   });
 });
