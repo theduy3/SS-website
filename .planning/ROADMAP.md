@@ -70,8 +70,12 @@
 3. A query returns aggregate dark-referrer counts by host; row schema confirmed PII-free.
 
 **Plans:** 2 plans
+**Wave 1**
 
 - [ ] 06-01-PLAN.md — DB migration (dark_referrals, RLS deny-by-default) + pure detection lib (AI_HOSTS, detectAiReferral, buildInsertPayload) + getDarkReferrerCounts read helper + unit tests incl. D-09 PII-allowlist gate
+
+**Wave 2** *(blocked on Wave 1 completion)*
+
 - [ ] 06-02-PLAN.md — Secret-guarded internal log route (service-role insert) + proxy.ts detection wiring (after() non-blocking POST) + proxy.test detection assertions
 
 **UI hint:** no.
