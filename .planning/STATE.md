@@ -3,8 +3,8 @@ gsd_state_version: 1.0
 milestone: v2.0
 milestone_name: milestone
 status: completed
-stopped_at: Phase 05 context gathered
-last_updated: "2026-06-25T17:07:48.251Z"
+stopped_at: Phase 6 context gathered
+last_updated: "2026-06-26T09:18:31.001Z"
 progress:
   total_phases: 3
   completed_phases: 2
@@ -37,6 +37,6 @@ next: /gsd-verify-work 04 (all 4 plans executed — ready for verification)
 
 ## Session
 
-**Last session:** 2026-06-23T12:43:58.933Z
-**Stopped at:** Phase 05 context gathered
-**Resume file:** .planning/phases/05-agent-readable-surface-md-twins/05-CONTEXT.md
+**Last session:** 2026-06-26T09:18:30.991Z
+**Stopped at:** Phase 6 context gathered
+**Resume file:** .planning/phases/06-dark-referrer-recovery/06-CONTEXT.md
