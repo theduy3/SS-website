@@ -69,7 +69,11 @@
 2. Logging sits outside the Law25 consent gate (verified: no personal data) as aggregate analytics.
 3. A query returns aggregate dark-referrer counts by host; row schema confirmed PII-free.
 
-**Plans:** ~1–2 (Supabase table + RLS/grant; middleware logger + host-match + read path).
+**Plans:** 2 plans
+
+- [ ] 06-01-PLAN.md — DB migration (dark_referrals, RLS deny-by-default) + pure detection lib (AI_HOSTS, detectAiReferral, buildInsertPayload) + getDarkReferrerCounts read helper + unit tests incl. D-09 PII-allowlist gate
+- [ ] 06-02-PLAN.md — Secret-guarded internal log route (service-role insert) + proxy.ts detection wiring (after() non-blocking POST) + proxy.test detection assertions
+
 **UI hint:** no.
 
 ## Progress (v2.0)
@@ -78,4 +82,4 @@
 |-------|----------------|--------|
 | 04. Content Expansion | 0/? | Not started |
 | 05. Agent-Readable Surface | 0/2 | Planned |
-| 06. Dark-Referrer Recovery | 0/? | Not started |
+| 06. Dark-Referrer Recovery | 0/2 | Planned |
