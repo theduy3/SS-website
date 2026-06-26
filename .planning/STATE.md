@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v2.0
 milestone_name: milestone
-status: executing
-stopped_at: Phase 6 context gathered
-last_updated: "2026-06-26T11:19:31.980Z"
+status: complete
+stopped_at: Phase 06 Plan 02 complete — GEO-02 fully wired end-to-end
+last_updated: "2026-06-26T11:45:00.000Z"
 progress:
   total_phases: 3
-  completed_phases: 2
+  completed_phases: 3
   total_plans: 8
-  completed_plans: 7
-  percent: 67
+  completed_plans: 8
+  percent: 100
 ---
 
 gsd_state_version: 1.0
@@ -28,6 +28,9 @@ next: /gsd-verify-work 04 (all 4 plans executed — ready for verification)
 
 ## Decisions
 
+- vi.hoisted(() => vi.fn()) required for Vitest 4.x mock factory variable access — plain const puts variable in TDZ when vi.mock is hoisted above it.
+- DARK_REFERRAL_ORIGIN env var override resolves RESEARCH Open Question 1 (loopback vs public URL in Dokploy container) — default uses request.nextUrl.origin.
+- detectAiReferral placed as FIRST statement in proxy() before any early return — R-01 invariant (Referer only present on first bare-path request before locale 301).
 - reviewGraph keeps a `lang` param for signature parity with productGraph/articleGraph (void lang) though the Review node is locale-agnostic today.
 - The [PRICE:*] gate matcher is built via `new RegExp` from the fragment "PRICE" so the test file cannot self-match.
 - Guides mirror comparisons: a new informational route = registry (guides.ts) + route + dict.guides block, only names/`/guides/` prefix change.
@@ -37,12 +40,13 @@ next: /gsd-verify-work 04 (all 4 plans executed — ready for verification)
 
 ## Session
 
-**Last session:** 2026-06-26T11:19:22.656Z
-**Stopped at:** Phase 6 context gathered
-**Resume file:** .planning/phases/06-dark-referrer-recovery/06-CONTEXT.md
+**Last session:** 2026-06-26T11:42:06.479Z
+**Stopped at:** Phase 06 Plan 02 complete — proxy wiring + log route (GEO-02 end-to-end)
+**Resume file:** .planning/phases/06-dark-referrer-recovery/06-02-SUMMARY.md
 
 ## Performance Metrics
 
 | Phase | Plan | Duration | Notes |
 |-------|------|----------|-------|
 | Phase 06-dark-referrer-recovery P01 | 11m | 2 tasks | 4 files |
+| Phase 06-dark-referrer-recovery P02 | 20m | 2 tasks | 4 files |
