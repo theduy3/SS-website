@@ -1,9 +1,25 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, vi, beforeEach } from "vitest";
 import { NextRequest } from "next/server";
 import { proxy } from "./proxy";
 
+// Mock after() from next/server so we can assert it is called (or not)
+// without actually scheduling background work in tests.
+// vi.hoisted() is required so mockAfter is accessible inside the vi.mock factory
+// (vi.mock is auto-hoisted before imports; plain const would be in TDZ).
+// Spreads ...actual so NextRequest / NextResponse remain the real classes.
+const mockAfter = vi.hoisted(() => vi.fn());
+vi.mock("next/server", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("next/server")>();
+  return { ...actual, after: mockAfter };
+});
+
 function req(path: string) {
   return new NextRequest(new URL(`http://localhost${path}`));
+}
+
+/** Build a request with extra headers (for AI-referrer detection tests). */
+function reqWithHeaders(path: string, headers: Record<string, string>) {
+  return new NextRequest(new URL(`http://localhost${path}`), { headers });
 }
 
 describe("proxy locale routing", () => {
@@ -60,4 +76,30 @@ describe("proxy locale routing", () => {
       }
     },
   );
+});
+
+describe("proxy AI referrer detection wiring (D-01/D-04)", () => {
+  beforeEach(() => mockAfter.mockClear());
+
+  it("AI-referred request (chatgpt Referer) schedules after() callback once", async () => {
+    const res = await proxy(
+      reqWithHeaders("/about", { referer: "https://chatgpt.com/c/abc123" }),
+    );
+    expect(mockAfter).toHaveBeenCalledOnce();
+    // Detection must NOT change routing — still locale-redirects to /…/about
+    expect(res.headers.get("location")).toContain("/about");
+  });
+
+  it("non-AI request (google Referer) does NOT schedule after() callback", async () => {
+    const res = await proxy(
+      reqWithHeaders("/about", { referer: "https://google.com/" }),
+    );
+    expect(mockAfter).not.toHaveBeenCalled();
+    expect(res.headers.get("location")).toContain("/about");
+  });
+
+  it("utm_source=chatgpt.com with no Referer schedules after() once (D-01 gate)", async () => {
+    await proxy(req("/about?utm_source=chatgpt.com"));
+    expect(mockAfter).toHaveBeenCalledOnce();
+  });
 });
