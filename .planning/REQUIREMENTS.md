@@ -22,7 +22,7 @@
 
 ### Dark-Referrer Recovery (Measurement)
 
-- [ ] **GEO-02**: Edge middleware logs AI-referred requests (referrer **host + path + timestamp only — no IP, no PII, no cookie**) to self-hosted Supabase, capturing the pre-consent "dark" AI sessions GA4's Consent-Mode gate misses. Because no personal data is stored, logging sits **outside** the Law25 consent gate as aggregate analytics. Detection reuses the v1 AI-referrer host set (chatgpt.com, perplexity.ai, claude.ai, gemini/google, copilot.microsoft.com). A minimal read path (query/aggregate) confirms captured rows.
+- [x] **GEO-02**: Edge middleware logs AI-referred requests (referrer **host + path + timestamp only — no IP, no PII, no cookie**) to self-hosted Supabase, capturing the pre-consent "dark" AI sessions GA4's Consent-Mode gate misses. Because no personal data is stored, logging sits **outside** the Law25 consent gate as aggregate analytics. Detection reuses the v1 AI-referrer host set (chatgpt.com, perplexity.ai, claude.ai, gemini/google, copilot.microsoft.com). A minimal read path (query/aggregate) confirms captured rows.
 
 ## Success Criteria (milestone)
 
