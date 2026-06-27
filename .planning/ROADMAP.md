@@ -48,10 +48,14 @@
 **Success criteria:**
 
 1. Every `[lang]` content route (incl. Phase 04 pages) serves a force-static `.md` twin, HTTP 200 clean text.
-2. Each `.md` route registered in `STANDALONE_PATHS` with a passing `proxy.test.ts` passthrough assertion (merge-gate invariant).
-3. All `.md` routes linked from `/llms.txt`; `.md` content derives from same dictionary source as HTML (no drift).
+2. `.md` routes pass through the proxy un-prefixed with a passing `proxy.test.ts` passthrough assertion (the load-bearing EXP-03 merge-gate invariant). Note: the proxy `matcher` already excludes all dotted paths, so `.md` routes bypass the proxy automatically — the test assertion is the gate; explicit `STANDALONE_PATHS` entries are skipped as dead config (planner reconciliation in 05-02-PLAN.md).
+3. All `.md` routes linked from `/llms.txt` (EN-only index); `.md` content derives from same dictionary source as HTML (no drift).
 
-**Plans:** ~1–2 (route handler factory + proxy/test wiring + llms.txt index).
+**Plans:** 2/2 plans complete
+
+- [x] 05-01-PLAN.md — Foundation: page-dates + md-routes + md-serializer (pure, tested) + smoke-tested home `[lang].md` handler
+- [x] 05-02-PLAN.md — Fan-out 13 `.md` handlers + llms.txt EN index + proxy.test passthrough gate + md-coverage parity gate + build/curl verify
+
 **UI hint:** no.
 
 ### Phase 06: Dark-Referrer Recovery
@@ -65,7 +69,15 @@
 2. Logging sits outside the Law25 consent gate (verified: no personal data) as aggregate analytics.
 3. A query returns aggregate dark-referrer counts by host; row schema confirmed PII-free.
 
-**Plans:** ~1–2 (Supabase table + RLS/grant; middleware logger + host-match + read path).
+**Plans:** 2/2 plans complete
+**Wave 1**
+
+- [x] 06-01-PLAN.md — DB migration (dark_referrals, RLS deny-by-default) + pure detection lib (AI_HOSTS, detectAiReferral, buildInsertPayload) + getDarkReferrerCounts read helper + unit tests incl. D-09 PII-allowlist gate
+
+**Wave 2** *(blocked on Wave 1 completion)*
+
+- [x] 06-02-PLAN.md — Secret-guarded internal log route (service-role insert) + proxy.ts detection wiring (after() non-blocking POST) + proxy.test detection assertions
+
 **UI hint:** no.
 
 ## Progress (v2.0)
@@ -73,5 +85,5 @@
 | Phase | Plans Complete | Status |
 |-------|----------------|--------|
 | 04. Content Expansion | 0/? | Not started |
-| 05. Agent-Readable Surface | 0/? | Not started |
-| 06. Dark-Referrer Recovery | 0/? | Not started |
+| 05. Agent-Readable Surface | 0/2 | Planned |
+| 06. Dark-Referrer Recovery | 0/2 | Planned |

@@ -36,3 +36,22 @@ export function getSupabaseAdmin(): SupabaseClient | null {
 
 export const POPUPS_TABLE = "popups";
 export const POPUP_IMAGES_BUCKET = "popup-images";
+export const DARK_REFERRALS_TABLE = "dark_referrals";
+
+// D-08: Aggregate read helper — GROUP BY ai_source. Returns null when Supabase
+// is unconfigured (graceful degrade — matches the getSupabaseAdmin() pattern).
+// All reads use service-role (no anon GRANT needed on this table).
+export async function getDarkReferrerCounts(): Promise<
+  Array<{ ai_source: string; count: number }> | null
+> {
+  const db = getSupabaseAdmin();
+  if (!db) return null;
+
+  const { data, error } = await db
+    .from(DARK_REFERRALS_TABLE)
+    .select("ai_source, count:id.count()")
+    .order("count", { ascending: false });
+
+  if (error) return null;
+  return (data ?? []) as Array<{ ai_source: string; count: number }>;
+}

@@ -1,6 +1,7 @@
-import { NextResponse, type NextRequest } from "next/server";
+import { NextResponse, type NextRequest, after } from "next/server";
 import { unsealData } from "iron-session";
 import { locales, isLocale, matchLocale } from "@/lib/i18n";
+import { detectAiReferral, type DarkReferralRow } from "@/lib/dark-referral";
 
 // Proxy is Next.js 16's renamed Middleware. Only one proxy file is supported, so
 // it handles two concerns:
@@ -17,6 +18,31 @@ const STANDALONE_PATHS = new Set([
   "/subscription",
   "/llms.txt",
 ]);
+
+// Fire-and-forget helper — POST the 4-field row to the internal log route after
+// the response has been sent. Never awaited in proxy() (D-04: must not delay
+// the 301). Supabase SDK stays out of this file (kept in the route handler only).
+// Silent no-op when DARK_REFERRAL_SECRET is absent (graceful degrade — Pitfall 3).
+async function postDarkReferral(row: DarkReferralRow, origin: string): Promise<void> {
+  const secret = process.env.DARK_REFERRAL_SECRET;
+  if (!secret) return;
+
+  // DARK_REFERRAL_ORIGIN overrides the request origin so the container can
+  // reach itself via loopback instead of the public host (RESEARCH Open Question 1).
+  const base = process.env.DARK_REFERRAL_ORIGIN ?? origin;
+  try {
+    await fetch(`${base}/api/dark-referral`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        "x-dark-referral-secret": secret,
+      },
+      body: JSON.stringify(row),
+    });
+  } catch {
+    // Fire-and-forget: swallow errors — never crash or delay the page render
+  }
+}
 
 // Kept self-contained (reads + unseals the cookie directly, no shared modules)
 // per the proxy guidance. Admin handlers re-check via isAuthed() too.
@@ -37,6 +63,19 @@ async function hasValidSession(request: NextRequest): Promise<boolean> {
 
 export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
+
+  // AI referrer detection — MUST be the first statement, before www-redirect and
+  // every other early return (R-01: Referer is only present on the first bare-path
+  // request before the locale 301 fires). Schedules the DB write via after() so
+  // the redirect is never delayed (D-04). SDK stays out of this file (D-04 / D-05).
+  const row = detectAiReferral(
+    request.headers.get("referer"),
+    request.nextUrl.searchParams.get("utm_source"),
+    request.nextUrl.pathname,
+  );
+  if (row) {
+    after(() => void postDarkReferral(row, request.nextUrl.origin));
+  }
 
   // 0. Canonical host: 301 www → bare domain. Keeps SEO signals, the admin
   // session cookie, and analytics on a single host (cookies are host-scoped,

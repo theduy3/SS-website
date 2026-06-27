@@ -4,46 +4,18 @@ import { site } from "@/lib/site";
 import { services, servicePath } from "@/lib/services";
 import { comparisons, comparisonPath } from "@/lib/comparisons";
 import { guides, guidePath } from "@/lib/guides";
+import { pageDate as pageDateStr } from "@/lib/page-dates";
 
 // Bilingual sitemap. Nav routes share a path across locales; service pages use
 // LOCALIZED slugs, so each service's alternates point at its per-locale path.
 // Every entry declares hreflang alternates (including x-default → defaultLocale)
 // so Google pairs the FR/EN versions and search engines can select the best match.
 
-// Per-page static lastModified dates (deterministic — not a live new Date()).
-// Update these when the corresponding content changes significantly.
-// Format: YYYY-MM-DD (local midnight UTC is fine for sitemap granularity).
-const PAGE_DATES: Record<string, Date> = {
-  "/": new Date("2026-06-17"),
-  "/services": new Date("2026-06-17"),
-  "/about": new Date("2026-06-01"),
-  "/appointments": new Date("2026-06-01"),
-  "/contact": new Date("2026-06-01"),
-  "/gallery": new Date("2026-06-01"),
-  "/reviews": new Date("2026-06-01"),
-  "/faq": new Date("2026-06-17"),
-  "/terms": new Date("2026-06-01"),
-  "/privacy": new Date("2026-06-01"),
-  "/laval": new Date("2026-06-17"),
-  // Comparison pages (Phase 04). Keyed by the EN base path (comparisonPath in
-  // defaultLocale) so the date is locale-independent.
-  "/comparisons/gel-vs-regular-manicure": new Date("2026-06-21"),
-  "/comparisons/lashes-2d-3d-hybrid": new Date("2026-06-21"),
-  "/comparisons/waxing-vs-sugaring": new Date("2026-06-21"),
-  "/comparisons/salon-gel-vs-at-home-kit": new Date("2026-06-21"),
-  "/comparisons/salon-lashes-vs-diy-lashes": new Date("2026-06-21"),
-  "/comparisons/professional-waxing-vs-at-home-waxing": new Date("2026-06-21"),
-  // Guide pages (Phase 04). Keyed by the EN base path (guidePath in defaultLocale).
-  "/guides/manicure-cost-laval": new Date("2026-06-22"),
-  "/guides/gel-manicure-care": new Date("2026-06-22"),
-  "/guides/best-nails-wedding": new Date("2026-06-22"),
-};
-
-// Fallback date for any path not explicitly listed above.
-const FALLBACK_DATE = new Date("2026-06-01");
-
+// Per-page static lastModified dates live in @/lib/page-dates (single source of
+// truth shared with md-serializer.ts). pageDate() wraps the string value in a
+// Date so sitemap.ts preserves its existing lastModified: Date contract.
 function pageDate(path: string): Date {
-  return PAGE_DATES[path] ?? FALLBACK_DATE;
+  return new Date(pageDateStr(path));
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {
