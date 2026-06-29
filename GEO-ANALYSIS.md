@@ -236,7 +236,7 @@ The content template is already strong. Targeted upgrades:
 | GEO-C | 🟠 High | No off-site entity presence (Wikipedia/Reddit/YouTube/LinkedIn) | Seed Reddit/YouTube; add GBP to `sameAs` |
 | GEO-D | 🟠 High | No author/`Person` schema → weak E-E-A-T | Add `Person` + byline on guides |
 | GEO-E | 🟡 Medium | Answer blocks under optimal citation length | Expand to 134–167 words |
-| GEO-F | 🟡 Medium | Service pages lack extractable tables | Add per-service spec table |
+| GEO-F | ✅ Resolved | ~~Service pages lack extractable tables~~ Fixed 2026-06-28: added a "Quick facts" `SpecTable` (starting price · price range · duration · location · booking) high on every service page, SSR, across en/fr/es/ar. Price cells derive from `services.ts` (no drift). Verified in served HTML. | Done |
 
 ---
 

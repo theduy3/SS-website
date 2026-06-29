@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Button } from "@/components/Button";
 import { Reveal } from "@/components/Reveal";
 import { ServicePhoto } from "@/components/ServicePhoto";
+import { SpecTable } from "@/components/SpecTable";
 import { KeyPageChrome } from "@/components/KeyPageChrome";
 import { JsonLd } from "@/components/JsonLd";
 import { site } from "@/lib/site";
@@ -19,7 +20,7 @@ import { isLocale, dirFor } from "@/lib/i18n";
 import { pageMetadata, serviceGraph, breadcrumbGraph, faqPageGraph } from "@/lib/seo";
 import { comparisonsForService, comparisonPath } from "@/lib/comparisons";
 import { guidesForService, guidePath } from "@/lib/guides";
-import { formatFromPrice } from "@/lib/format";
+import { formatFromPrice, formatPrice, formatPriceRange } from "@/lib/format";
 
 type Params = { params: Promise<{ lang: string; slug: string }> };
 
@@ -54,6 +55,22 @@ export default async function ServiceDetailPage({ params }: Params) {
   const labels = dict.serviceLabels;
   const bookHref = `/${lang}${site.booking}`;
   const priceDisplay = formatFromPrice(lang, service.price, labels.priceFrom);
+  // "Quick facts" spec block — a self-contained, AI-extractable summary rendered
+  // high on the page. Price cells derive from the service registry (single source
+  // of truth) so they never drift from the Offer schema (GEO-F).
+  const specRows = [
+    { label: labels.startingPrice, value: formatPrice(lang, service.price) },
+    {
+      label: labels.priceRange,
+      value: formatPriceRange(lang, service.price, service.priceTo),
+    },
+    { label: labels.duration, value: d.duration },
+    {
+      label: labels.location,
+      value: `${site.contact.landmark}, ${site.contact.address.city}, ${site.contact.address.region}`,
+    },
+    { label: labels.booking, value: labels.bookingValue },
+  ];
   const relatedComparisons = comparisonsForService(service.id);
   const relatedGuides = guidesForService(service.id);
   const consent = await readConsent();
@@ -115,6 +132,11 @@ export default async function ServiceDetailPage({ params }: Params) {
             {d.intro.map((p) => (
               <p key={p}>{p}</p>
             ))}
+          </div>
+        </Reveal>
+        <Reveal delay={0.2}>
+          <div className="mt-10 max-w-2xl" dir={dirFor(lang)}>
+            <SpecTable caption={labels.quickFacts} rows={specRows} />
           </div>
         </Reveal>
       </section>

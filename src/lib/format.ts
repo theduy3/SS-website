@@ -21,3 +21,19 @@ export function formatFromPrice(
 ): string {
   return `${fromWord} ${formatPrice(lang, price)}`;
 }
+
+/**
+ * Inclusive price range for the "quick facts" spec table, e.g. "$50–$100" (most
+ * locales) or "50–100 $" (fr). Uses an en dash. `low`/`high` come from the
+ * service registry (price / priceTo) — the single source of truth — so the
+ * range never drifts from the Offer schema.
+ */
+export function formatPriceRange(
+  lang: Locale,
+  low: number,
+  high: number,
+): string {
+  return lang === "fr"
+    ? `${low}–${high} $`
+    : `${formatPrice(lang, low)}–${formatPrice(lang, high)}`;
+}
