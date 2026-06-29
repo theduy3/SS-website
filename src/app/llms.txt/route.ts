@@ -78,7 +78,7 @@ Landmark: ${site.contact.landmark}
 - Manicures (from $50 CAD)
 - Pedicures (from $40 CAD)
 - Lash Extensions (from $70 CAD)
-- Waxing (from $30 CAD)
+- Waxing (from $15 CAD)
 
 ## Opening Hours
 ${hoursLines}
