@@ -232,7 +232,7 @@ The content template is already strong. Targeted upgrades:
 | ID | Severity | Finding | Fix |
 |----|:--------:|---------|-----|
 | GEO-B | ✅ Resolved | ~~Manicure price conflicts: schema/llms.txt say $50, guide prose says $30/$40; waxing $15 vs $30~~ Fixed 2026-06-28: `services.ts` adopted as single source. Guide `manicure-cost-laval` reconciled to "from $50, up to $100" across en/fr/es/ar; `/llms.txt` waxing drift $30→$15. 209/209 tests pass. | Done |
-| GEO-A | 🟡 Medium | Dynamic `/llms.txt` route + static `public/llms.txt` can drift | Delete `public/llms.txt` or add a parity test |
+| GEO-A | ✅ Resolved | ~~Dynamic `/llms.txt` route + static `public/llms.txt` can drift~~ Fixed 2026-06-28: live `/llms.txt` was being **shadowed** by the static `public/llms.txt` (thinner — no prices, no `.md` index). Deleted the static file so the richer dynamic route (`STANDALONE_PATHS`-wired) serves. | Done |
 | GEO-C | 🟠 High | No off-site entity presence (Wikipedia/Reddit/YouTube/LinkedIn) | Seed Reddit/YouTube; add GBP to `sameAs` |
 | GEO-D | 🟠 High | No author/`Person` schema → weak E-E-A-T | Add `Person` + byline on guides |
 | GEO-E | 🟡 Medium | Answer blocks under optimal citation length | Expand to 134–167 words |
