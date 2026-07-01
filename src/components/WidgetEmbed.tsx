@@ -24,6 +24,8 @@ export function WidgetEmbed({
   storeAttr = "data-store",
   fallbackLabel,
   theme = "light",
+  lang,
+  minHeight = "min-h-screen",
 }: {
   src: string;
   store: string;
@@ -36,6 +38,16 @@ export function WidgetEmbed({
   // widget paints itself dark full-screen, so its overlay must be dark too; the
   // check-in and client-account widgets are light (the default).
   theme?: "light" | "dark";
+  // Sets data-lang so the widget's initial language matches the active locale.
+  // Only the booking widget is localized; the kiosk pages are not, so this is
+  // omitted there.
+  lang?: string;
+  // Container height while `fullHeight` (below) is true. Defaults to a full
+  // viewport, right for the standalone kiosk pages (check-in, queue, client
+  // account) that are the whole page. The booking widget is embedded mid-page
+  // on /appointments, alongside header/footer/other content, so it passes a
+  // fixed height instead.
+  minHeight?: string;
 }) {
   const dark = theme === "dark";
   const overlayBg = dark ? "bg-[#0b1220]" : "bg-fog";
@@ -50,7 +62,7 @@ export function WidgetEmbed({
   // board, which mounts to <body> and would otherwise be pushed a full screen
   // down.
   const fullHeight = !dark || status !== "ready";
-  const heightClass = fullHeight ? "min-h-screen" : "";
+  const heightClass = fullHeight ? minHeight : "";
   // Bumping this re-runs the injection effect — drives the retry button.
   const [attempt, setAttempt] = useState(0);
 
@@ -67,6 +79,7 @@ export function WidgetEmbed({
     script.src = src;
     script.async = true;
     script.setAttribute(storeAttr, store);
+    if (lang) script.setAttribute("data-lang", lang);
     script.onload = () => {
       if (!cancelled) setStatus("ready");
     };
@@ -79,7 +92,7 @@ export function WidgetEmbed({
       cancelled = true;
       container.replaceChildren();
     };
-  }, [src, store, storeAttr, attempt]);
+  }, [src, store, storeAttr, lang, attempt]);
 
   return (
     <div className={`relative ${heightClass}`}>
