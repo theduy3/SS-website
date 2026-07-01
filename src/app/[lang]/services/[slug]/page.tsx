@@ -18,8 +18,7 @@ import { readConsent } from "@/lib/consent.server";
 import { getDictionary } from "../../dictionaries";
 import { isLocale, dirFor } from "@/lib/i18n";
 import { pageMetadata, serviceGraph, breadcrumbGraph, faqPageGraph } from "@/lib/seo";
-import { comparisonsForService, comparisonPath } from "@/lib/comparisons";
-import { guidesForService, guidePath } from "@/lib/guides";
+import { relatedLinks } from "@/lib/related-links";
 import { formatFromPrice, formatPrice, formatPriceRange } from "@/lib/format";
 
 type Params = { params: Promise<{ lang: string; slug: string }> };
@@ -71,8 +70,7 @@ export default async function ServiceDetailPage({ params }: Params) {
     },
     { label: labels.booking, value: labels.bookingValue },
   ];
-  const relatedComparisons = comparisonsForService(service.id);
-  const relatedGuides = guidesForService(service.id);
+  const related = relatedLinks(service.id, lang, dict);
   const consent = await readConsent();
   const consentKnown = consent !== undefined;
 
@@ -246,30 +244,20 @@ export default async function ServiceDetailPage({ params }: Params) {
       </section>
 
       {/* Helpful guides — reciprocal links to related comparisons and guides (D-12) */}
-      {(relatedComparisons.length > 0 || relatedGuides.length > 0) && (
+      {related.length > 0 && (
         <section className="mx-auto max-w-3xl px-6 pb-4 pt-12 md:pt-16">
           <Reveal>
             <h2 className="text-2xl text-espresso md:text-3xl">
               {labels.guides}
             </h2>
             <ul className="mt-6 space-y-3">
-              {relatedComparisons.map((cmp) => (
-                <li key={cmp.id}>
+              {related.map((item) => (
+                <li key={`${item.kind}-${item.id}`}>
                   <Link
-                    href={`/${lang}${comparisonPath(cmp, lang)}`}
+                    href={`/${lang}${item.path}`}
                     className="text-espresso underline-offset-4 hover:underline"
                   >
-                    {dict.comparisons[cmp.id].title}
-                  </Link>
-                </li>
-              ))}
-              {relatedGuides.map((g) => (
-                <li key={g.id}>
-                  <Link
-                    href={`/${lang}${guidePath(g, lang)}`}
-                    className="text-espresso underline-offset-4 hover:underline"
-                  >
-                    {dict.guides[g.id].title}
+                    {item.title}
                   </Link>
                 </li>
               ))}
