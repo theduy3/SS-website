@@ -2,6 +2,7 @@ import { NextResponse, type NextRequest, after } from "next/server";
 import { unsealData } from "iron-session";
 import { locales, isLocale, matchLocale } from "@/lib/i18n";
 import { detectAiReferral, type DarkReferralRow } from "@/lib/dark-referral";
+import { STANDALONE_PATHS } from "@/lib/standalone-routes";
 
 // Proxy is Next.js 16's renamed Middleware. Only one proxy file is supported, so
 // it handles two concerns:
@@ -11,13 +12,8 @@ import { detectAiReferral, type DarkReferralRow } from "@/lib/dark-referral";
 const LOCALE_COOKIE = "NEXT_LOCALE";
 const SESSION_COOKIE = "bn_admin";
 const LOGIN_PATHS = new Set(["/admin/login", "/api/admin/login"]);
-const STANDALONE_PATHS = new Set([
-  "/checkin",
-  "/queue",
-  "/clientportal",
-  "/subscription",
-  "/llms.txt",
-]);
+// STANDALONE_PATHS lives in @/lib/standalone-routes (single source of truth,
+// filesystem-parity-tested) so a new kiosk route can't desync from the proxy.
 
 // Fire-and-forget helper — POST the 4-field row to the internal log route after
 // the response has been sent. Never awaited in proxy() (D-04: must not delay
