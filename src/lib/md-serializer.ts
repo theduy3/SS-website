@@ -15,7 +15,8 @@ import type { Guide } from "@/lib/guides";
 import { site } from "@/lib/site";
 import { aggregate } from "@/lib/reviews";
 import { pageDate } from "@/lib/page-dates";
-import { services, servicePath } from "@/lib/services";
+import { comparisonPath } from "@/lib/comparisons";
+import { guidePath } from "@/lib/guides";
 import { relatedLinks } from "@/lib/related-links";
 import { mdTwinUrl } from "@/lib/md-routes";
 
@@ -195,7 +196,10 @@ export function renderServiceMd(
     title: detail.title,
     lang,
     canonical,
-    updated: pageDate(`/services/${service.slug.en}`),
+    // Services share the /services dateKey (route-universe groups them there);
+    // keying per-slug silently fell back before the pageDate throw. Same key the
+    // sitemap uses for this service, so twin and sitemap can't drift.
+    updated: pageDate("/services"),
   });
 
   const includedLines = detail.included.map((item) => `- ${item}`).join("\n");
@@ -540,7 +544,9 @@ export function renderComparisonMd(
     title: cmpDict.title,
     lang,
     canonical,
-    updated: pageDate(`/comparisons/${comparison.slug.en}`),
+    // Same deriver route-universe uses for this comparison's dateKey — no inline
+    // key string, so the twin key and the sitemap key are identical by construction.
+    updated: pageDate(comparisonPath(comparison, "en")),
   });
 
   const table = renderComparisonTable(cmpDict.columns, cmpDict.rows);
@@ -582,7 +588,8 @@ export function renderGuideMd(
     title: guideDict.title,
     lang,
     canonical,
-    updated: pageDate(`/guides/${guide.slug.en}`),
+    // Same deriver route-universe uses for this guide's dateKey (see renderComparisonMd).
+    updated: pageDate(guidePath(guide, "en")),
   });
 
   const sectionParts = guideDict.sections
