@@ -3,8 +3,9 @@
 // results. Structural mirror of services.ts: localized slugs live here, prose
 // lives in dict.comparisons[id]. Each comparison links to a related service.
 
-import { locales, type Locale } from "@/lib/i18n";
+import type { Locale } from "@/lib/i18n";
 import type { ServiceId } from "@/lib/services";
+import { slugRegistry } from "@/lib/slug-registry";
 
 export type ComparisonId =
   | "gel-vs-regular"
@@ -87,32 +88,23 @@ export const comparisons: readonly Comparison[] = [
   },
 ] as const;
 
+// Slug mechanics delegate to the shared slug registry (CONTEXT.md); this lib
+// keeps only the data + type + the service relation.
+const registry = slugRegistry(comparisons, "/comparisons");
+
 /** This locale's slugs — feeds generateStaticParams (current locale only). */
-export function comparisonSlugParams(lang: Locale): { slug: string }[] {
-  return comparisons.map((c) => ({ slug: c.slug[lang] }));
-}
-
+export const comparisonSlugParams = registry.slugParams;
 /** Resolve a localized slug back to its comparison, or undefined (→ 404). */
-export function comparisonBySlug(
-  lang: Locale,
-  slug: string,
-): Comparison | undefined {
-  return comparisons.find((c) => c.slug[lang] === slug);
-}
-
+export const comparisonBySlug = registry.bySlug;
 /** Localized path, e.g. "/comparisons/gel-vs-vernis-regulier". */
-export function comparisonPath(c: Comparison, lang: Locale): string {
-  return `/comparisons/${c.slug[lang]}`;
-}
-
+export const comparisonPath = registry.path;
 /** Per-locale path map — feeds pageMetadata's hreflang/canonical. */
-export function comparisonPathsByLocale(c: Comparison): Record<Locale, string> {
-  return Object.fromEntries(
-    locales.map((l) => [l, `/comparisons/${c.slug[l]}`]),
-  ) as Record<Locale, string>;
-}
+export const comparisonPathsByLocale = registry.pathsByLocale;
 
-/** Comparisons related to a service — for cross-linking from service pages. */
+/**
+ * Comparisons related to a service — for cross-linking from service pages. Kept
+ * here (not in the registry): a relation between content types, not a slug concern.
+ */
 export function comparisonsForService(id: ServiceId): Comparison[] {
   return comparisons.filter((c) => c.service === id);
 }

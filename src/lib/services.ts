@@ -6,7 +6,8 @@
 // reached at a different path in each language. `id` is the stable key shared
 // with dict.serviceDetails and used for image filenames.
 
-import { locales, type Locale } from "@/lib/i18n";
+import type { Locale } from "@/lib/i18n";
+import { slugRegistry } from "@/lib/slug-registry";
 
 export type ServiceId = "manicure" | "pedicure" | "lash-extensions" | "waxing";
 
@@ -63,24 +64,16 @@ export const services: readonly Service[] = [
   },
 ] as const;
 
+// Slug mechanics delegate to the shared slug registry (CONTEXT.md); this lib
+// keeps only the data + type. Named re-exports preserve the existing interface —
+// note `slugParams` keeps its bare name (services predate the `<type>` prefix).
+const registry = slugRegistry(services, "/services");
+
 /** All slugs for one locale — feeds generateStaticParams (current locale only). */
-export function slugParams(lang: Locale): { slug: string }[] {
-  return services.map((s) => ({ slug: s.slug[lang] }));
-}
-
+export const slugParams = registry.slugParams;
 /** Resolve a localized slug back to its service, or undefined (→ 404). */
-export function serviceBySlug(lang: Locale, slug: string): Service | undefined {
-  return services.find((s) => s.slug[lang] === slug);
-}
-
+export const serviceBySlug = registry.bySlug;
 /** Localized path for a service in a given locale, e.g. "/services/extension-de-cils". */
-export function servicePath(service: Service, lang: Locale): string {
-  return `/services/${service.slug[lang]}`;
-}
-
+export const servicePath = registry.path;
 /** Per-locale path map for a service — feeds pageMetadata's hreflang/canonical. */
-export function servicePathsByLocale(service: Service): Record<Locale, string> {
-  return Object.fromEntries(
-    locales.map((l) => [l, `/services/${service.slug[l]}`]),
-  ) as Record<Locale, string>;
-}
+export const servicePathsByLocale = registry.pathsByLocale;

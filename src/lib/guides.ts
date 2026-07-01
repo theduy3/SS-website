@@ -4,8 +4,9 @@
 // mirror of comparisons.ts: localized slugs live here, prose lives in
 // dict.guides[id]. Each guide links to a related service.
 
-import { locales, type Locale } from "@/lib/i18n";
+import type { Locale } from "@/lib/i18n";
 import type { ServiceId } from "@/lib/services";
+import { slugRegistry } from "@/lib/slug-registry";
 
 export type GuideId =
   | "manicure-cost-laval"
@@ -55,29 +56,23 @@ export const guides: readonly Guide[] = [
   },
 ] as const;
 
+// Slug mechanics delegate to the shared slug registry (CONTEXT.md); this lib
+// keeps only the data + type + the service relation.
+const registry = slugRegistry(guides, "/guides");
+
 /** This locale's slugs — feeds generateStaticParams (current locale only). */
-export function guideSlugParams(lang: Locale): { slug: string }[] {
-  return guides.map((g) => ({ slug: g.slug[lang] }));
-}
-
+export const guideSlugParams = registry.slugParams;
 /** Resolve a localized slug back to its guide, or undefined (→ 404). */
-export function guideBySlug(lang: Locale, slug: string): Guide | undefined {
-  return guides.find((g) => g.slug[lang] === slug);
-}
-
+export const guideBySlug = registry.bySlug;
 /** Localized path, e.g. "/guides/prix-manucure-laval". */
-export function guidePath(g: Guide, lang: Locale): string {
-  return `/guides/${g.slug[lang]}`;
-}
-
+export const guidePath = registry.path;
 /** Per-locale path map — feeds pageMetadata's hreflang/canonical. */
-export function guidePathsByLocale(g: Guide): Record<Locale, string> {
-  return Object.fromEntries(
-    locales.map((l) => [l, `/guides/${g.slug[l]}`]),
-  ) as Record<Locale, string>;
-}
+export const guidePathsByLocale = registry.pathsByLocale;
 
-/** Guides related to a service — for cross-linking from service pages. */
+/**
+ * Guides related to a service — for cross-linking from service pages. Kept here
+ * (not in the registry): a relation between content types, not a slug concern.
+ */
 export function guidesForService(id: ServiceId): Guide[] {
   return guides.filter((g) => g.service === id);
 }
