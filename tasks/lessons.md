@@ -49,3 +49,36 @@ test. Narrowed to the one real duplication (a related-links selector) and
 recorded the rejection as an ADR (commit 33b1754, docs/adr/0001) so the bigger
 version doesn't get re-proposed next review. Always ground a "these two things
 render the same data" claim in a real diff before designing the merge.
+
+## Architecture review — an Explore-agent report is a hypothesis, not a finding
+Two more candidates from the same review round (popup-draft conversion,
+popups-store client seam) were both reported as structural leaks/missing
+seams, and both dissolved on inspection before any code changed:
+- Candidate said `admin/page.tsx` had conversion logic leaking inline. Reading
+  the actual line showed `toPopup(draft)` was already one delegated call — no
+  inline logic existed to extract (commit f89e9d3, docs/adr/0003).
+- Candidate said `popups-store.ts` lacked an injectable Supabase-client seam
+  to make it testable. Reading `dark-referral.test.ts` first showed this
+  codebase's actual working precedent: test the `not_configured`/`null`
+  degrade branch (env vars absent in test env), no mock, no injected client.
+  Adding a seam would've been a brand-new pattern to solve an already-solved
+  problem (commit 52d3a34, docs/adr/0004).
+In both cases the real, narrower gap was zero test coverage on an
+already-adequate seam — not the structural fix the report proposed. Before
+implementing any review candidate: (1) read the exact call site the report
+cites, don't trust its paraphrase; (2) grep for an existing precedent
+elsewhere in the codebase before inventing a new pattern (Rule 11). A
+candidate surviving this costs ~2 file reads; skipping it costs a wrong ADR.
+
+## UI merge candidates — check every existing caller's layout context
+Merging `BookingWidget` into the shared `WidgetEmbed` (real duplicate, real
+precedent for extending its props) still needed a design pass mid-implementation:
+`WidgetEmbed`'s light-theme sizing forces `min-h-screen` permanently, correct
+for its 3 existing callers (bare standalone kiosk routes, own layout, no
+header/footer) but wrong for `/appointments` (normal page, widget embedded
+mid-content) — would have pushed the footer far below empty space. Caught by
+checking each existing caller's route layout (`src/app/checkin/layout.tsx`
+etc.) before assuming the shared component's defaults transfer, then verified
+the fix visually in a real browser both locally and live post-deploy (commit
+fdd0cd3). A component being "the same widget-injection pattern" doesn't mean
+its layout defaults fit a new call site with a different page shape.
