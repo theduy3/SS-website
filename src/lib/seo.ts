@@ -8,7 +8,7 @@
 
 import type { Metadata } from "next";
 import type { Locale } from "@/lib/i18n";
-import { locales, defaultLocale } from "@/lib/i18n";
+import { hreflangAlternates, sameForAll } from "@/lib/i18n";
 import { site } from "@/lib/site";
 import { reviewsFetchedAt } from "@/lib/reviews";
 import type { GalleryImage } from "@/lib/gallery";
@@ -35,25 +35,6 @@ const DAY_NAME: Record<string, string> = {
   Su: "Sunday",
 };
 
-/** hreflang map for a route that is IDENTICAL across locales (incl. x-default→fr). */
-function languageAlternates(route: string): Record<string, string> {
-  const map: Record<string, string> = {};
-  for (const locale of locales) map[locale] = `/${locale}${route}`;
-  map["x-default"] = `/${defaultLocale}${route}`;
-  return map;
-}
-
-/** hreflang map for a route whose path DIFFERS per locale (localized slugs). */
-function localizedAlternates(
-  routeByLocale: Record<Locale, string>,
-): Record<string, string> {
-  const map: Record<string, string> = {};
-  for (const locale of locales)
-    map[locale] = `/${locale}${routeByLocale[locale]}`;
-  map["x-default"] = `/${defaultLocale}${routeByLocale[defaultLocale]}`;
-  return map;
-}
-
 /**
  * Per-page metadata fragment: canonical + reciprocal hreflang + OpenGraph/Twitter.
  * `route` is the locale-agnostic path WITHOUT the locale prefix ("" for home,
@@ -76,9 +57,9 @@ export function pageMetadata(
   const path = routeByLocale
     ? `/${lang}${routeByLocale[lang]}`
     : `/${lang}${route}`;
-  const languages = routeByLocale
-    ? localizedAlternates(routeByLocale)
-    : languageAlternates(route);
+  // Relative hreflang (base ""): composes against metadataBase. A shared route
+  // expands to a same-for-all map so both cases go through the one builder.
+  const languages = hreflangAlternates(routeByLocale ?? sameForAll(route));
   return {
     title,
     description,

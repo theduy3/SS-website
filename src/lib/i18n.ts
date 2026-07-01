@@ -46,3 +46,30 @@ export function matchLocale(acceptLanguage: string | null): Locale {
   }
   return defaultLocale;
 }
+
+/** A per-locale path map where every locale shares the same route. */
+export function sameForAll(route: string): Record<Locale, string> {
+  return Object.fromEntries(
+    locales.map((locale) => [locale, route]),
+  ) as Record<Locale, string>;
+}
+
+/**
+ * hreflang alternate map: `{ [locale]: prefixed path, "x-default": defaultLocale }`.
+ * The single owner of the locale-prefix + x-default→defaultLocale rule that
+ * seo.ts (relative canonical/hreflang) and sitemap.ts (absolute xml alternates)
+ * both project. `base` is "" for metadataBase-relative paths, site.url for the
+ * absolute URLs the sitemap requires. Locale order (then x-default) is preserved
+ * so the serialized output is stable.
+ */
+export function hreflangAlternates(
+  pathByLocale: Record<Locale, string>,
+  base = "",
+): Record<string, string> {
+  const map: Record<string, string> = {};
+  for (const locale of locales) {
+    map[locale] = `${base}/${locale}${pathByLocale[locale]}`;
+  }
+  map["x-default"] = `${base}/${defaultLocale}${pathByLocale[defaultLocale]}`;
+  return map;
+}
