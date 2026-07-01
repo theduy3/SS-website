@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { Button } from "@/components/Button";
 import { Reveal } from "@/components/Reveal";
 import { KeyPageChrome } from "@/components/KeyPageChrome";
 import { JsonLd } from "@/components/JsonLd";
 import { ComparisonTable } from "@/components/ComparisonTable";
-import { site } from "@/lib/site";
+import { Faq } from "@/components/Faq";
+import { BookCta } from "@/components/BookCta";
+import { BackToServices } from "@/components/BackToServices";
 import {
   comparisonBySlug,
   comparisonSlugParams,
@@ -58,7 +59,6 @@ export default async function ComparisonPage({ params }: Params) {
   const sLabels = dict.serviceLabels;
   const service = services.find((s) => s.id === cmp.service)!;
   const sDetail = dict.serviceDetails[cmp.service];
-  const bookHref = `/${lang}${site.booking}`;
   const consent = await readConsent();
   const consentKnown = consent !== undefined;
 
@@ -82,14 +82,7 @@ export default async function ComparisonPage({ params }: Params) {
 
       {/* Intro: answer-first verdict (bare SSR <p>) → table → detail */}
       <section className="mx-auto max-w-3xl px-6 py-16 md:py-24">
-        <Reveal>
-          <Link
-            href={`/${lang}/services`}
-            className="text-sm uppercase tracking-widest text-mocha hover:text-espresso"
-          >
-            {dirFor(lang) === "rtl" ? "→" : "←"} {sLabels.allServices}
-          </Link>
-        </Reveal>
+        <BackToServices lang={lang} label={sLabels.allServices} />
         <Reveal delay={0.05}>
           <h1 className="mt-6 text-3xl text-espresso md:text-5xl">{c.title}</h1>
         </Reveal>
@@ -135,37 +128,10 @@ export default async function ComparisonPage({ params }: Params) {
       </section>
 
       {/* FAQ */}
-      <section className="bg-fog">
-        <div className="mx-auto max-w-3xl px-6 py-16 md:py-24">
-          <Reveal>
-            <h2 className="text-2xl text-espresso md:text-3xl">{sLabels.faq}</h2>
-          </Reveal>
-          <dl className="mt-8 space-y-8">
-            {c.faq.map((item) => (
-              <Reveal key={item.q}>
-                <dt className="text-lg font-semibold text-espresso">{item.q}</dt>
-                <dd className="mt-2 leading-relaxed text-mocha">{item.a}</dd>
-              </Reveal>
-            ))}
-          </dl>
-        </div>
-      </section>
+      <Faq heading={sLabels.faq} items={c.faq} />
 
       {/* CTA */}
-      <section className="mx-auto max-w-3xl px-6 py-16 text-center md:py-24">
-        <Reveal>
-          <p className="text-lg text-mocha">{dict.reviews.ctaPrompt}</p>
-          <div className="mt-6 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button href={bookHref}>{dict.cta.book}</Button>
-            <a
-              href={site.contact.phoneHref}
-              className="font-semibold text-espresso transition-colors hover:text-mocha"
-            >
-              {site.contact.phone}
-            </a>
-          </div>
-        </Reveal>
-      </section>
+      <BookCta lang={lang} dict={dict} />
     </>
   );
 }

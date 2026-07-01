@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { Button } from "@/components/Button";
 import { Reveal } from "@/components/Reveal";
 import { KeyPageChrome } from "@/components/KeyPageChrome";
 import { JsonLd } from "@/components/JsonLd";
-import { site } from "@/lib/site";
+import { Faq } from "@/components/Faq";
+import { BookCta } from "@/components/BookCta";
+import { BackToServices } from "@/components/BackToServices";
 import {
   guideBySlug,
   guideSlugParams,
@@ -51,7 +52,6 @@ export default async function GuidePage({ params }: Params) {
   const sLabels = dict.serviceLabels;
   const service = services.find((s) => s.id === guide.service)!;
   const sDetail = dict.serviceDetails[guide.service];
-  const bookHref = `/${lang}${site.booking}`;
   const consent = await readConsent();
   const consentKnown = consent !== undefined;
 
@@ -75,14 +75,7 @@ export default async function GuidePage({ params }: Params) {
 
       {/* Intro: answer-first block (bare SSR <p>) → sections */}
       <section className="mx-auto max-w-3xl px-6 py-16 md:py-24">
-        <Reveal>
-          <Link
-            href={`/${lang}/services`}
-            className="text-sm uppercase tracking-widest text-mocha hover:text-espresso"
-          >
-            {dirFor(lang) === "rtl" ? "→" : "←"} {sLabels.allServices}
-          </Link>
-        </Reveal>
+        <BackToServices lang={lang} label={sLabels.allServices} />
         <Reveal delay={0.05}>
           <h1 className="mt-6 text-3xl text-espresso md:text-5xl">{g.title}</h1>
         </Reveal>
@@ -132,37 +125,10 @@ export default async function GuidePage({ params }: Params) {
       </section>
 
       {/* FAQ */}
-      <section className="bg-fog">
-        <div className="mx-auto max-w-3xl px-6 py-16 md:py-24">
-          <Reveal>
-            <h2 className="text-2xl text-espresso md:text-3xl">{sLabels.faq}</h2>
-          </Reveal>
-          <dl className="mt-8 space-y-8">
-            {g.faq.map((item) => (
-              <Reveal key={item.q}>
-                <dt className="text-lg font-semibold text-espresso">{item.q}</dt>
-                <dd className="mt-2 leading-relaxed text-mocha">{item.a}</dd>
-              </Reveal>
-            ))}
-          </dl>
-        </div>
-      </section>
+      <Faq heading={sLabels.faq} items={g.faq} />
 
       {/* CTA — book the related service (D-12) */}
-      <section className="mx-auto max-w-3xl px-6 py-16 text-center md:py-24">
-        <Reveal>
-          <p className="text-lg text-mocha">{dict.reviews.ctaPrompt}</p>
-          <div className="mt-6 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button href={bookHref}>{dict.cta.book}</Button>
-            <a
-              href={site.contact.phoneHref}
-              className="font-semibold text-espresso transition-colors hover:text-mocha"
-            >
-              {site.contact.phone}
-            </a>
-          </div>
-        </Reveal>
-      </section>
+      <BookCta lang={lang} dict={dict} />
     </>
   );
 }

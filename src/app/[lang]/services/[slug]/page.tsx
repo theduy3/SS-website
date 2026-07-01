@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { Button } from "@/components/Button";
 import { Reveal } from "@/components/Reveal";
+import { Faq } from "@/components/Faq";
+import { BookCta } from "@/components/BookCta";
+import { BackToServices } from "@/components/BackToServices";
 import { ServicePhoto } from "@/components/ServicePhoto";
 import { SpecTable } from "@/components/SpecTable";
 import { KeyPageChrome } from "@/components/KeyPageChrome";
@@ -52,7 +54,6 @@ export default async function ServiceDetailPage({ params }: Params) {
   const dict = await getDictionary(lang);
   const d = dict.serviceDetails[service.id];
   const labels = dict.serviceLabels;
-  const bookHref = `/${lang}${site.booking}`;
   const priceDisplay = formatFromPrice(lang, service.price, labels.priceFrom);
   // "Quick facts" spec block — a self-contained, AI-extractable summary rendered
   // high on the page. Price cells derive from the service registry (single source
@@ -102,14 +103,7 @@ export default async function ServiceDetailPage({ params }: Params) {
 
       {/* Hero: image + title + intro */}
       <section className="mx-auto max-w-5xl px-6 py-16 md:py-24">
-        <Reveal>
-          <Link
-            href={`/${lang}/services`}
-            className="text-sm uppercase tracking-widest text-mocha hover:text-espresso"
-          >
-            {dirFor(lang) === "rtl" ? "→" : "←"} {labels.allServices}
-          </Link>
-        </Reveal>
+        <BackToServices lang={lang} label={labels.allServices} />
         <Reveal delay={0.05}>
           <h1 className="mt-6 text-4xl text-espresso md:text-6xl">{d.title}</h1>
         </Reveal>
@@ -225,23 +219,7 @@ export default async function ServiceDetailPage({ params }: Params) {
       </section>
 
       {/* FAQ */}
-      <section className="bg-fog">
-        <div className="mx-auto max-w-3xl px-6 py-16 md:py-24">
-          <Reveal>
-            <h2 className="text-2xl text-espresso md:text-3xl">{labels.faq}</h2>
-          </Reveal>
-          <dl className="mt-8 space-y-8">
-            {d.faq.map((item) => (
-              <Reveal key={item.q}>
-                <dt className="text-lg font-semibold text-espresso">
-                  {item.q}
-                </dt>
-                <dd className="mt-2 leading-relaxed text-mocha">{item.a}</dd>
-              </Reveal>
-            ))}
-          </dl>
-        </div>
-      </section>
+      <Faq heading={labels.faq} items={d.faq} />
 
       {/* Helpful guides — reciprocal links to related comparisons and guides (D-12) */}
       {related.length > 0 && (
@@ -267,20 +245,7 @@ export default async function ServiceDetailPage({ params }: Params) {
       )}
 
       {/* CTA */}
-      <section className="mx-auto max-w-3xl px-6 py-16 text-center md:py-24">
-        <Reveal>
-          <p className="text-lg text-mocha">{dict.reviews.ctaPrompt}</p>
-          <div className="mt-6 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button href={bookHref}>{dict.cta.book}</Button>
-            <a
-              href={site.contact.phoneHref}
-              className="font-semibold text-espresso transition-colors hover:text-mocha"
-            >
-              {site.contact.phone}
-            </a>
-          </div>
-        </Reveal>
-      </section>
+      <BookCta lang={lang} dict={dict} />
     </div>
   );
 }
