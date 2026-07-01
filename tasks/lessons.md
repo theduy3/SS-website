@@ -104,3 +104,57 @@ state had to become two owned-per-hook errors merged at the render site
 (`listError ?? formError`) rather than a shared setter passed into both hooks
 (which would've recreated the exact coupling being removed). Resolve state
 ownership per hook explicitly before writing the extraction, not after.
+
+## Grilling an "enforce X" candidate — compute current state; the hypothetical is often already live
+The page-dates candidate (commit 38acd66) was filed as "a slug rename *would*
+silently get FALLBACK_DATE." Grilling it started by computing the actual join:
+route-universe groups all services under dateKey `/services`, but md-serializer
+keyed each service twin `/services/${slug.en}` — a key absent from the table.
+So the silent fallback was **already firing in production**: 4 service `.md`
+twins shipped `updated: 2026-06-01` while the sitemap said `2026-06-17`. That
+changed everything downstream — the fix is scoped-corrective (not purely
+defensive), and the verification must *expect* an output delta (those 4 twins),
+not assert byte-identical. Before implementing an enforcement candidate, run the
+join by hand against real data; the "would happen" risk is frequently a live bug
+that reshapes the fix and its acceptance test.
+
+## Output-preserving refactor — the real gate is stash+rebuild+curl-diff, not tsc+tests
+Candidates 1 and 3 (commits 66212cc, 300796b) claimed "no output change" (page
+`<head>` metadata/JSON-LD, hreflang links, sitemap.xml). tsc + a green suite
+prove neither — they can't see rendered HTML. The decisive gate: `git stash -u`
+→ `next build` at HEAD → curl target pages → diff against the after-build curl.
+Byte-identical = proof. Two builds + a stash dance, ~4 min, but it's the only
+thing that actually catches a metadata regression on pages that have no unit
+tests. Corollary: classify the candidate first — an output-*preserving* refactor
+wants an empty diff; an output-*corrective* one (page-dates) wants a diff that is
+non-empty and exactly the intended scope. Same tool, opposite pass condition.
+
+## A review/exploration friction list is leads, not work — verify each premise before acting
+The architecture-review Explore agent returned 11 friction points; only 4
+survived. Several were killed by reading the actual code: the "routing has a
+shadow regex duplicated across route-universe and md-routes" claim was false —
+md-routes.ts *imports* `isSlugFamilyPath` from route-universe.ts, no copy. Others
+were ADR-settled (registry re-exports are documented-intentional) or already
+shared (`frontmatter()` exists). Filter every agent-surfaced finding against
+three things before grilling it: the real imports/call sites (not the paraphrase),
+the ADRs, and the deletion test. Cost is ~1-2 reads per finding; skipping it
+means grilling a non-problem or re-suggesting an ADR-rejected change.
+
+## Generalizing a helper — audit every literal for caller-specificity, classify each behavior delta
+Extracting `parseBody` from the admin handlers (commit 95b65d6) meant the
+generic helper couldn't keep the popup-specific `?? "Invalid popup"` fallback.
+Before accepting the change to a generic `"Invalid request body"`, I traced
+whether that branch was reachable: zod always populates `issues` on a failure,
+so the `??` fallback fires only on an empty-issues error zod never produces —
+the string change is dead. When lifting caller code into a shared helper, list
+every literal/status/fallback it carries and label each delta reachable or dead;
+ship only after each reachable one is proven equivalent. A "byte-identical
+refactor" with an unaudited fallback string is an unverified claim.
+
+## Bash tool loops — use absolute paths for curl/wc; PATH is not guaranteed per-invocation
+`curl` and `wc` intermittently reported `command not found` inside `for` loops in
+the Bash tool (each call is a fresh profile-initialized shell; PATH resolution
+varied), while the same binary worked in a function body one call earlier. Cost
+several wasted round-trips this round. For any scripted verification loop, use
+`/usr/bin/curl`, `/usr/bin/wc` (resolve once via `command -v`) rather than bare
+names.
