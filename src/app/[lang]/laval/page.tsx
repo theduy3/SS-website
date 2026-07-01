@@ -5,10 +5,9 @@
 // on first paint and readable by no-JS AI crawlers (RESEARCH Pitfall 3).
 
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
-import { isLocale, dirFor, type LangParams } from "@/lib/i18n";
-import { getDictionary } from "../dictionaries";
-import { pageMetadata, faqPageGraph, breadcrumbGraph } from "@/lib/seo";
+import { dirFor, type LangParams } from "@/lib/i18n";
+import { resolveLangPage, langPageMetadata } from "@/lib/page-resolver";
+import { faqPageGraph, breadcrumbGraph } from "@/lib/seo";
 import { JsonLd } from "@/components/JsonLd";
 import { PageHeader } from "@/components/PageHeader";
 import { Accordion } from "@/components/Accordion";
@@ -17,22 +16,18 @@ import { KeyPageChrome } from "@/components/KeyPageChrome";
 import { site } from "@/lib/site";
 import { readConsent } from "@/lib/consent.server";
 
-export async function generateMetadata({
-  params,
-}: LangParams): Promise<Metadata> {
-  const { lang } = await params;
-  if (!isLocale(lang)) return {};
-  const dict = await getDictionary(lang);
-  return pageMetadata(lang, "/laval", {
-    title: `${dict.laval.heading} — ${site.name}`,
-    description: dict.laval.intro,
+export function generateMetadata({ params }: LangParams): Promise<Metadata> {
+  return langPageMetadata(params, {
+    route: "/laval",
+    meta: (dict) => ({
+      title: `${dict.laval.heading} — ${site.name}`,
+      description: dict.laval.intro,
+    }),
   });
 }
 
 export default async function LavalPage({ params }: LangParams) {
-  const { lang } = await params;
-  if (!isLocale(lang)) notFound();
-  const dict = await getDictionary(lang);
+  const { lang, dict } = await resolveLangPage(params);
   const consent = await readConsent();
   const consentKnown = consent !== undefined;
 

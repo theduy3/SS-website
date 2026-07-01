@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Reveal } from "@/components/Reveal";
 import { Faq } from "@/components/Faq";
@@ -17,9 +16,13 @@ import {
   servicePathsByLocale,
 } from "@/lib/services";
 import { readConsent } from "@/lib/consent.server";
-import { getDictionary } from "../../dictionaries";
-import { isLocale, dirFor } from "@/lib/i18n";
-import { pageMetadata, serviceGraph, breadcrumbGraph, faqPageGraph } from "@/lib/seo";
+import { dirFor } from "@/lib/i18n";
+import { serviceGraph, breadcrumbGraph, faqPageGraph } from "@/lib/seo";
+import {
+  resolveSlugPage,
+  slugPageMetadata,
+  slugStaticParams,
+} from "@/lib/page-resolver";
 import { relatedLinks } from "@/lib/related-links";
 import { formatFromPrice, formatPrice, formatPriceRange } from "@/lib/format";
 
@@ -27,31 +30,25 @@ type Params = { params: Promise<{ lang: string; slug: string }> };
 
 // Emit only THIS locale's slugs. /fr → French slugs, /en → English slugs, so a
 // wrong-locale slug (e.g. /fr/services/lash-extensions) is never generated → 404.
-export function generateStaticParams({ params }: { params: { lang: string } }) {
-  if (!isLocale(params.lang)) return [];
-  return slugParams(params.lang);
-}
+export const generateStaticParams = slugStaticParams(slugParams);
 
-export async function generateMetadata({ params }: Params): Promise<Metadata> {
-  const { lang, slug } = await params;
-  if (!isLocale(lang)) return {};
-  const service = serviceBySlug(lang, slug);
-  if (!service) return {};
-  const d = (await getDictionary(lang)).serviceDetails[service.id];
-  return pageMetadata(lang, servicePath(service, lang), {
-    title: d.metaTitle,
-    description: d.metaDescription,
-    routeByLocale: servicePathsByLocale(service),
+export function generateMetadata({ params }: Params): Promise<Metadata> {
+  return slugPageMetadata(params, {
+    bySlug: serviceBySlug,
+    path: servicePath,
+    pathsByLocale: servicePathsByLocale,
+    meta: (dict, service) => {
+      const d = dict.serviceDetails[service.id];
+      return { title: d.metaTitle, description: d.metaDescription };
+    },
   });
 }
 
 export default async function ServiceDetailPage({ params }: Params) {
-  const { lang, slug } = await params;
-  if (!isLocale(lang)) notFound();
-  const service = serviceBySlug(lang, slug);
-  if (!service) notFound();
-
-  const dict = await getDictionary(lang);
+  const { lang, entity: service, dict } = await resolveSlugPage(
+    params,
+    serviceBySlug,
+  );
   const d = dict.serviceDetails[service.id];
   const labels = dict.serviceLabels;
   const priceDisplay = formatFromPrice(lang, service.price, labels.priceFrom);

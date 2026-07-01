@@ -77,3 +77,17 @@ export const serviceBySlug = registry.bySlug;
 export const servicePath = registry.path;
 /** Per-locale path map for a service — feeds pageMetadata's hreflang/canonical. */
 export const servicePathsByLocale = registry.pathsByLocale;
+
+// Total id→Service lookup for the guide/comparison→service relation. Throws loud
+// on a miss (Rule: fail loud) instead of the silent `services.find(...)!` the
+// pages used — a removed ServiceId now fails visibly, not at a later `!` deref.
+const serviceMap = new Map<ServiceId, Service>(services.map((s) => [s.id, s]));
+
+/** Resolve a ServiceId relation to its Service; throws if none is registered. */
+export function serviceById(id: ServiceId): Service {
+  const service = serviceMap.get(id);
+  if (!service) {
+    throw new Error(`serviceById: no service registered for id "${id}"`);
+  }
+  return service;
+}

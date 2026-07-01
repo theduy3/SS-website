@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Reveal } from "@/components/Reveal";
 import { KeyPageChrome } from "@/components/KeyPageChrome";
@@ -14,50 +13,43 @@ import {
   comparisonPath,
   comparisonPathsByLocale,
 } from "@/lib/comparisons";
-import { services, servicePath } from "@/lib/services";
+import { serviceById, servicePath } from "@/lib/services";
 import { readConsent } from "@/lib/consent.server";
-import { getDictionary } from "../../dictionaries";
-import { isLocale, dirFor } from "@/lib/i18n";
+import { dirFor } from "@/lib/i18n";
+import { productGraph, reviewGraph, breadcrumbGraph } from "@/lib/seo";
 import {
-  pageMetadata,
-  productGraph,
-  reviewGraph,
-  breadcrumbGraph,
-} from "@/lib/seo";
+  resolveSlugPage,
+  slugPageMetadata,
+  slugStaticParams,
+} from "@/lib/page-resolver";
 
 type Params = { params: Promise<{ lang: string; slug: string }> };
 
 // Emit only THIS locale's slugs (matches the service-page convention), so a
 // wrong-locale slug 404s instead of rendering a mismatched page.
-export function generateStaticParams({ params }: { params: { lang: string } }) {
-  if (!isLocale(params.lang)) return [];
-  return comparisonSlugParams(params.lang);
-}
+export const generateStaticParams = slugStaticParams(comparisonSlugParams);
 
-export async function generateMetadata({ params }: Params): Promise<Metadata> {
-  const { lang, slug } = await params;
-  if (!isLocale(lang)) return {};
-  const cmp = comparisonBySlug(lang, slug);
-  if (!cmp) return {};
-  const c = (await getDictionary(lang)).comparisons[cmp.id];
-  return pageMetadata(lang, comparisonPath(cmp, lang), {
-    title: c.metaTitle,
-    description: c.metaDescription,
-    routeByLocale: comparisonPathsByLocale(cmp),
+export function generateMetadata({ params }: Params): Promise<Metadata> {
+  return slugPageMetadata(params, {
+    bySlug: comparisonBySlug,
+    path: comparisonPath,
+    pathsByLocale: comparisonPathsByLocale,
+    meta: (dict, cmp) => {
+      const c = dict.comparisons[cmp.id];
+      return { title: c.metaTitle, description: c.metaDescription };
+    },
   });
 }
 
 export default async function ComparisonPage({ params }: Params) {
-  const { lang, slug } = await params;
-  if (!isLocale(lang)) notFound();
-  const cmp = comparisonBySlug(lang, slug);
-  if (!cmp) notFound();
-
-  const dict = await getDictionary(lang);
+  const { lang, entity: cmp, dict } = await resolveSlugPage(
+    params,
+    comparisonBySlug,
+  );
   const c = dict.comparisons[cmp.id];
   const labels = dict.comparisonLabels;
   const sLabels = dict.serviceLabels;
-  const service = services.find((s) => s.id === cmp.service)!;
+  const service = serviceById(cmp.service);
   const sDetail = dict.serviceDetails[cmp.service];
   const consent = await readConsent();
   const consentKnown = consent !== undefined;

@@ -1,29 +1,24 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
 import { BookingWidget } from "@/components/BookingWidget";
 import { Reveal } from "@/components/Reveal";
 import { site } from "@/lib/site";
 import { JsonLd } from "@/components/JsonLd";
-import { getDictionary } from "../dictionaries";
-import { isLocale, type LangParams } from "@/lib/i18n";
-import { pageMetadata, breadcrumbGraph } from "@/lib/seo";
+import { type LangParams } from "@/lib/i18n";
+import { resolveLangPage, langPageMetadata } from "@/lib/page-resolver";
+import { breadcrumbGraph } from "@/lib/seo";
 
-export async function generateMetadata({
-  params,
-}: LangParams): Promise<Metadata> {
-  const { lang } = await params;
-  if (!isLocale(lang)) return {};
-  const dict = await getDictionary(lang);
-  return pageMetadata(lang, "/appointments", {
-    title: dict.meta.appointmentsTitle,
-    description: dict.meta.appointmentsDescription,
+export function generateMetadata({ params }: LangParams): Promise<Metadata> {
+  return langPageMetadata(params, {
+    route: "/appointments",
+    meta: (dict) => ({
+      title: dict.meta.appointmentsTitle,
+      description: dict.meta.appointmentsDescription,
+    }),
   });
 }
 
 export default async function AppointmentsPage({ params }: LangParams) {
-  const { lang } = await params;
-  if (!isLocale(lang)) notFound();
-  const dict = await getDictionary(lang);
+  const { lang, dict } = await resolveLangPage(params);
 
   return (
     <section className="mx-auto max-w-4xl px-6 py-16 md:py-24">

@@ -27,3 +27,23 @@ re-export named bindings.
   a relation between content types (a guide/comparison points at a service), not a
   slug concern, and only two of three types have it. It stays a one-line filter in
   its own lib.
+
+**Route factory** (`src/lib/md-route.ts`) — the deep module that owns the `.md`
+twin handler: the resolve-or-404 handshake (locale guard → `bySlug`/404 →
+`getDictionary` → canonical URL → `Response`) for every twin, plus
+`generateStaticParams`. Three shapes: `homeMd`, `navMd`, `slugMd`. One interface,
+one test surface (`md-route.test.ts`).
+
+**Page resolver** (`src/lib/page-resolver.ts`) — the HTML twin of the route
+factory. Owns the same resolve-or-404 handshake for the canonical HTML pages,
+but returns *context* (`{ lang, entity, dict }` for slug pages, `{ lang, dict }`
+for static) because an HTML page's body is bespoke JSX, not a pure `Response`.
+`resolveSlugPage`/`resolveLangPage` throw `notFound()` on a miss; their metadata
+twins (`slugPageMetadata`/`langPageMetadata`) return `{}` on a miss — the page/
+metadata 404 asymmetry is deliberate and preserved. `slugStaticParams` folds the
+locale-guarded `generateStaticParams`. A page can never resolve a slug its twin
+would 404, because both cross the same seam.
+
+**Total service lookup** (`serviceById` in `services.ts`) — resolves a
+`ServiceId` relation to its `Service`, throwing loud on a miss instead of the
+silent `services.find(...)!`. Lives in the relation's own lib, not the resolver.
