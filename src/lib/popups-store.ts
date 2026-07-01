@@ -15,7 +15,7 @@ type Row = { id: string; doc: unknown };
 
 // Parse rows through PopupSchema, dropping any that no longer match the schema
 // (e.g. a stale row left over from an older shape). Never throws.
-function parseRows(rows: Row[]): Popup[] {
+export function parseRows(rows: Row[]): Popup[] {
   const popups: Popup[] = [];
   for (const row of rows) {
     const parsed = PopupSchema.safeParse(row.doc);
