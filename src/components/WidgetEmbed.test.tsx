@@ -48,6 +48,51 @@ describe("WidgetEmbed storeAttr", () => {
   });
 });
 
+describe("WidgetEmbed lang", () => {
+  it("sets data-lang when lang is provided", () => {
+    const src = "https://example.test/booking.js";
+    render(
+      <WidgetEmbed src={src} store="SS" fallbackLabel="booking widget" lang="fr" />,
+    );
+    expect(injectedScript(src)!.getAttribute("data-lang")).toBe("fr");
+  });
+
+  it("omits data-lang when lang is not provided (kiosk widgets stay un-localized)", () => {
+    const src = "https://example.test/checkin-lang.js";
+    render(<WidgetEmbed src={src} store="SS" fallbackLabel="check-in" />);
+    expect(injectedScript(src)!.getAttribute("data-lang")).toBeNull();
+  });
+});
+
+describe("WidgetEmbed minHeight", () => {
+  it("defaults to min-h-screen for standalone kiosk callers", () => {
+    const { container } = render(
+      <WidgetEmbed
+        src="https://example.test/checkin-height.js"
+        store="SS"
+        fallbackLabel="check-in"
+      />,
+    );
+    expect((container.firstChild as HTMLElement).className).toContain(
+      "min-h-screen",
+    );
+  });
+
+  it("uses a caller-supplied minHeight for mid-page embeds", () => {
+    const { container } = render(
+      <WidgetEmbed
+        src="https://example.test/booking-height.js"
+        store="SS"
+        fallbackLabel="booking widget"
+        minHeight="min-h-[420px]"
+      />,
+    );
+    const wrapper = container.firstChild as HTMLElement;
+    expect(wrapper.className).toContain("min-h-[420px]");
+    expect(wrapper.className).not.toContain("min-h-screen");
+  });
+});
+
 describe("WidgetEmbed theme", () => {
   it("renders a dark loading overlay for theme=dark (T1)", () => {
     render(
