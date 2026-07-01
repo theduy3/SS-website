@@ -25,6 +25,33 @@ export type RouteGroup =
   | "comparisons"
   | "guides";
 
+/**
+ * The dynamic-slug families — content types whose pages live at
+ * `/{locale}/{group}/{slug}` and serve their .md twin at `<path>/index.md`
+ * (Option C: deeper static segment, no route collision). Every other group uses
+ * `<path>.md`. This is the single source of that fact — md-routes.ts consults it
+ * via isSlugFamilyPath() instead of re-declaring the family list in a regex.
+ */
+export const SLUG_FAMILY_GROUPS = [
+  "services",
+  "comparisons",
+  "guides",
+] as const satisfies readonly RouteGroup[];
+
+const slugFamilyPath = new RegExp(
+  `^/[^/]+/(${SLUG_FAMILY_GROUPS.join("|")})/[^/]+$`,
+);
+
+/**
+ * Does this locale-prefixed content path belong to a dynamic-slug family
+ * (services/comparisons/guides)? True → its .md twin is `<path>/index.md`.
+ * Derived from the path shape alone, so callers holding only a bare path string
+ * (e.g. the coverage gate parsing sitemap URLs) can classify it.
+ */
+export function isSlugFamilyPath(path: string): boolean {
+  return slugFamilyPath.test(path);
+}
+
 export type RouteEntry = {
   group: RouteGroup;
   locale: Locale;

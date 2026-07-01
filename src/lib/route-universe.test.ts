@@ -9,7 +9,12 @@ import { site } from "@/lib/site";
 import { services } from "@/lib/services";
 import { comparisons } from "@/lib/comparisons";
 import { guides } from "@/lib/guides";
-import { routeUniverse, type RouteGroup } from "./route-universe";
+import {
+  routeUniverse,
+  isSlugFamilyPath,
+  SLUG_FAMILY_GROUPS,
+  type RouteGroup,
+} from "./route-universe";
 
 const GROUP_ORDER: RouteGroup[] = [
   "nav",
@@ -58,5 +63,33 @@ describe("routeUniverse", () => {
     const cmp = universe.find((e) => e.group === "comparisons");
     expect(cmp!.dateKey).toBe(cmp!.pathByLocale.en);
     expect(cmp!.dateKey.startsWith("/comparisons/")).toBe(true);
+  });
+});
+
+describe("isSlugFamilyPath", () => {
+  it("matches a slug-family page path for every family", () => {
+    for (const group of SLUG_FAMILY_GROUPS) {
+      expect(isSlugFamilyPath(`/en/${group}/some-slug`)).toBe(true);
+    }
+  });
+
+  it("rejects the family index path (no slug segment)", () => {
+    expect(isSlugFamilyPath("/en/services")).toBe(false);
+  });
+
+  it("rejects non-family content paths", () => {
+    expect(isSlugFamilyPath("/en/about")).toBe(false);
+    expect(isSlugFamilyPath("/en/laval")).toBe(false);
+    expect(isSlugFamilyPath("/en")).toBe(false);
+  });
+
+  it("classifies every real slug-family route in the universe", () => {
+    for (const e of routeUniverse()) {
+      const path = `/${e.locale}${e.pathByLocale[e.locale]}`;
+      const expected = (SLUG_FAMILY_GROUPS as readonly RouteGroup[]).includes(
+        e.group,
+      );
+      expect(isSlugFamilyPath(path)).toBe(expected);
+    }
   });
 });

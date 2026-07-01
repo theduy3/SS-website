@@ -8,7 +8,7 @@
 //   - nav/secondaryNav/localPaths → path + ".md"         (e.g. /en/about.md)
 //   - services/comparisons/guides → path + "/index.md"   (e.g. /en/services/manicure/index.md)
 
-import { routeUniverse } from "@/lib/route-universe";
+import { routeUniverse, isSlugFamilyPath } from "@/lib/route-universe";
 
 /**
  * Returns the real .md twin URL for a locale-prefixed content path.
@@ -24,13 +24,11 @@ import { routeUniverse } from "@/lib/route-universe";
  *   "/en/guides/manicure-cost-laval"    → "/en/guides/manicure-cost-laval/index.md"
  */
 export function mdTwinUrl(contentPath: string): string {
-  // Dynamic-slug families: path has 3 segments after locale, e.g. /en/services/<slug>
-  if (
-    /^\/[^/]+\/(services|comparisons|guides)\/[^/]+$/.test(contentPath)
-  ) {
-    return contentPath + "/index.md";
-  }
-  return contentPath + ".md";
+  // Dynamic-slug families (services/comparisons/guides) serve at <path>/index.md.
+  // Membership is owned by route-universe.ts, not re-declared here.
+  return isSlugFamilyPath(contentPath)
+    ? contentPath + "/index.md"
+    : contentPath + ".md";
 }
 
 /**

@@ -11,6 +11,7 @@ import {
   frontmatter,
   renderBlocks,
   renderComparisonTable,
+  renderFaqPart,
   renderHomeMd,
   renderServicesIndexMd,
   renderServiceMd,
@@ -153,6 +154,32 @@ describe("renderComparisonTable()", () => {
     expect(out).toContain("Fast");
     expect(out).toContain("Cost");
     expect(out).toContain("Low");
+  });
+});
+
+// ─── renderFaqPart() ─────────────────────────────────────────────────────────
+
+describe("renderFaqPart()", () => {
+  it("renders each question in bold", () => {
+    const out = renderFaqPart([{ q: "How long does it last?", a: "About two weeks." }]);
+    expect(out).toContain("**How long does it last?**");
+  });
+
+  it("renders the answer beneath the question", () => {
+    const out = renderFaqPart([{ q: "How long does it last?", a: "About two weeks." }]);
+    expect(out).toContain("About two weeks.");
+  });
+
+  it("separates multiple Q&A pairs with a blank line", () => {
+    const out = renderFaqPart([
+      { q: "Q1", a: "A1" },
+      { q: "Q2", a: "A2" },
+    ]);
+    expect(out).toContain("A1\n\n**Q2**");
+  });
+
+  it("returns an empty string for an empty array", () => {
+    expect(renderFaqPart([])).toBe("");
   });
 });
 

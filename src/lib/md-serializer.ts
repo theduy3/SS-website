@@ -80,6 +80,14 @@ export function renderBlocks(blocks: readonly Block[]): string {
 }
 
 /**
+ * Render an FAQ array into markdown: bold question, blank line, answer.
+ * Shared by every content type that has a FAQ section.
+ */
+export function renderFaqPart(faq: readonly { q: string; a: string }[]): string {
+  return faq.map((qa) => `**${qa.q}**\n\n${qa.a}`).join("\n\n");
+}
+
+/**
  * Render a markdown comparison table from column headers and data rows.
  * Produces: header row | separator row of dashes | one row per entry.
  */
@@ -193,9 +201,7 @@ export function renderServiceMd(
   const includedLines = detail.included.map((item) => `- ${item}`).join("\n");
   const addonLines = detail.addons.map((item) => `- ${item}`).join("\n");
 
-  const faqPart = detail.faq
-    .map((qa: { q: string; a: string }) => `**${qa.q}**\n\n${qa.a}`)
-    .join("\n\n");
+  const faqPart = renderFaqPart(detail.faq);
 
   // Related comparisons and guides — same selector the HTML page renders
   // (relatedLinks: single source for membership, order, and localized title), so
@@ -407,9 +413,7 @@ export function renderFaqMd(
     updated: pageDate("/faq"),
   });
 
-  const faqItems = dict.faq.items
-    .map((qa: { q: string; a: string }) => `**${qa.q}**\n\n${qa.a}`)
-    .join("\n\n");
+  const faqPart = renderFaqPart(dict.faq.items);
 
   return [
     fm,
@@ -417,7 +421,7 @@ export function renderFaqMd(
     "",
     dict.faq.intro,
     "",
-    faqItems,
+    faqPart,
     "",
   ].join("\n");
 }
@@ -437,9 +441,7 @@ export function renderLavalMd(
     updated: pageDate("/laval"),
   });
 
-  const faqItems = dict.laval.faq.items
-    .map((qa: { q: string; a: string }) => `**${qa.q}**\n\n${qa.a}`)
-    .join("\n\n");
+  const faqPart = renderFaqPart(dict.laval.faq.items);
 
   return [
     fm,
@@ -451,7 +453,7 @@ export function renderLavalMd(
     "",
     `## ${dict.laval.faqHeading}`,
     "",
-    faqItems,
+    faqPart,
     "",
   ].join("\n");
 }
@@ -543,9 +545,7 @@ export function renderComparisonMd(
 
   const table = renderComparisonTable(cmpDict.columns, cmpDict.rows);
 
-  const faqPart = cmpDict.faq
-    .map((qa: { q: string; a: string }) => `**${qa.q}**\n\n${qa.a}`)
-    .join("\n\n");
+  const faqPart = renderFaqPart(cmpDict.faq);
 
   return [
     fm,
@@ -592,9 +592,7 @@ export function renderGuideMd(
     })
     .join("\n\n");
 
-  const faqPart = guideDict.faq
-    .map((qa: { q: string; a: string }) => `**${qa.q}**\n\n${qa.a}`)
-    .join("\n\n");
+  const faqPart = renderFaqPart(guideDict.faq);
 
   return [
     fm,
