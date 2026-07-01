@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import type { z } from "zod";
 import { isAuthed } from "@/lib/session";
 
 // Shared helpers for the admin API route handlers.
@@ -42,4 +43,36 @@ export function storeError(failure: StoreFailure): NextResponse {
 
 export function badRequest(message: string, status = 422): NextResponse {
   return NextResponse.json({ success: false, error: message }, { status });
+}
+
+export type ParseResult<T> =
+  | { ok: true; data: T }
+  | { ok: false; res: NextResponse };
+
+/**
+ * Read + validate an admin request body against a schema — the json-parse +
+ * safeParse plumbing both admin writers repeated. Returns the parsed data or an
+ * error response (400 for malformed JSON, 422 for schema failure carrying the
+ * first zod issue), so a handler reads guard → parseBody → store. The schema
+ * stays the caller's sole shape authority (PopupSchema); this only owns the
+ * parse mechanics, not the shape (distinct from ADR-0002).
+ */
+export async function parseBody<T>(
+  request: Request,
+  schema: z.ZodType<T>,
+): Promise<ParseResult<T>> {
+  let body: unknown;
+  try {
+    body = await request.json();
+  } catch {
+    return { ok: false, res: badRequest("Invalid request body", 400) };
+  }
+  const parsed = schema.safeParse(body);
+  if (!parsed.success) {
+    return {
+      ok: false,
+      res: badRequest(parsed.error.issues[0]?.message ?? "Invalid request body"),
+    };
+  }
+  return { ok: true, data: parsed.data };
 }
