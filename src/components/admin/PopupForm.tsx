@@ -1,52 +1,10 @@
 "use client";
 
-import { useState } from "react";
-import { locales, defaultLocale, type Locale } from "@/lib/i18n";
+import { type Locale } from "@/lib/i18n";
 import type { Draft } from "@/lib/popup-draft";
-
-const REQUIRED_LOCALES: readonly Locale[] = ["en", defaultLocale];
-
-const inputClass =
-  "w-full rounded-lg border border-tan bg-beige px-3 py-2 text-sm outline-none focus:border-espresso";
-
-function LocalizedGroup({
-  label,
-  values,
-  onChange,
-  required,
-}: {
-  label: string;
-  values: Record<Locale, string>;
-  onChange: (locale: Locale, value: string) => void;
-  required?: boolean;
-}) {
-  return (
-    <fieldset className="rounded-xl border border-fog bg-beige/60 p-3">
-      <legend className="px-1 text-xs font-semibold uppercase tracking-wide text-mocha">
-        {label}
-      </legend>
-      <div className="grid gap-2 sm:grid-cols-2">
-        {locales.map((loc) => {
-          const isRequired = required && REQUIRED_LOCALES.includes(loc);
-          return (
-            <label key={loc} className="flex flex-col gap-1 text-xs">
-              <span className="text-tan">
-                {loc.toUpperCase()}
-                {isRequired ? " *" : ""}
-              </span>
-              <input
-                className={inputClass}
-                value={values[loc]}
-                required={isRequired}
-                onChange={(e) => onChange(loc, e.target.value)}
-              />
-            </label>
-          );
-        })}
-      </div>
-    </fieldset>
-  );
-}
+import { LocalizedGroup } from "./LocalizedGroup";
+import { inputClass } from "./field-style";
+import { usePopupImageUpload } from "@/app/admin/use-popup-image-upload";
 
 export function PopupForm({
   draft,
@@ -63,8 +21,9 @@ export function PopupForm({
   saving: boolean;
   isNew: boolean;
 }) {
-  const [uploading, setUploading] = useState(false);
-  const [uploadError, setUploadError] = useState<string | null>(null);
+  const { upload, uploading, error: uploadError } = usePopupImageUpload({
+    onUploaded: (url) => setDraft({ ...draft, imageUrl: url }),
+  });
 
   const set = <K extends keyof Draft>(key: K, value: Draft[K]) =>
     setDraft({ ...draft, [key]: value });
@@ -75,30 +34,9 @@ export function PopupForm({
     value: string,
   ) => setDraft({ ...draft, [key]: { ...draft[key], [loc]: value } });
 
-  async function onPickImage(e: React.ChangeEvent<HTMLInputElement>) {
+  function onPickImage(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
-    if (!file) return;
-    setUploadError(null);
-    setUploading(true);
-    try {
-      const form = new FormData();
-      form.append("file", file);
-      const res = await fetch("/api/admin/upload", {
-        method: "POST",
-        body: form,
-      });
-      const data = await res.json();
-      if (res.ok && data.success)
-        setDraft({ ...draft, imageUrl: data.data.url });
-      else {
-        const base = data.error ?? "Upload failed";
-        setUploadError(data.detail ? `${base} (${data.detail})` : base);
-      }
-    } catch {
-      setUploadError("Upload network error");
-    } finally {
-      setUploading(false);
-    }
+    if (file) upload(file);
   }
 
   return (
