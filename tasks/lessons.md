@@ -82,3 +82,25 @@ etc.) before assuming the shared component's defaults transfer, then verified
 the fix visually in a real browser both locally and live post-deploy (commit
 fdd0cd3). A component being "the same widget-injection pattern" doesn't mean
 its layout defaults fit a new call site with a different page shape.
+
+## After adding props to a shared component — check for its existing test file
+Added `lang`/`minHeight` props to `WidgetEmbed` (commit fdd0cd3) without
+checking whether it already had a test file — it did (`WidgetEmbed.test.tsx`,
+RTL `render()` coverage for `storeAttr`/`theme`). The new props shipped
+untested until a later, unrelated task re-surfaced the file. Fixed in
+commit 421be98. Before editing any component's props, `ls` for a sibling
+`.test.tsx` first — a component with existing test coverage has an implicit
+contract that new props are expected to extend, not skip.
+
+## Extracting hooks for a single call site — still needs error-ownership design
+Extracted `usePopupList`/`usePopupForm` from `admin/page.tsx` (commit 12ba0df)
+even though only one call site exists (weak reuse case) — the real
+justification was locality (a 217-line component mixing list/draft/API-
+lifecycle state, implicated in a real 502 incident), not leverage. Splitting
+one component's state into two hooks isn't just a mechanical move-the-code
+step: `remove()` had to be reassigned from "next to save()" to the list hook
+(it mutates list contents, not the draft), and the single shared `error`
+state had to become two owned-per-hook errors merged at the render site
+(`listError ?? formError`) rather than a shared setter passed into both hooks
+(which would've recreated the exact coupling being removed). Resolve state
+ownership per hook explicitly before writing the extraction, not after.
