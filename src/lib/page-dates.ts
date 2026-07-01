@@ -36,10 +36,17 @@ export const PAGE_DATES: Record<string, string> = {
   "/guides/best-nails-wedding": "2026-06-22",
 };
 
-// Fallback date for any path not explicitly listed above.
-export const FALLBACK_DATE = "2026-06-01";
-
-/** Return the YYYY-MM-DD date string for a given EN base path. */
+/**
+ * Return the YYYY-MM-DD date string for a given route dateKey. Throws loud on an
+ * unknown key rather than silently returning a fallback: a missing date is a
+ * build/test failure, not a wrong `updated`/`lastModified` shipped to SEO. The
+ * key set is the route universe's dateKeys — page-dates.test.ts gates that the
+ * table exactly matches it, so a real miss can only mean an unmaintained table.
+ */
 export function pageDate(path: string): string {
-  return PAGE_DATES[path] ?? FALLBACK_DATE;
+  const date = PAGE_DATES[path];
+  if (!date) {
+    throw new Error(`pageDate: no date registered for key "${path}"`);
+  }
+  return date;
 }

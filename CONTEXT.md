@@ -47,3 +47,13 @@ would 404, because both cross the same seam.
 **Total service lookup** (`serviceById` in `services.ts`) — resolves a
 `ServiceId` relation to its `Service`, throwing loud on a miss instead of the
 silent `services.find(...)!`. Lives in the relation's own lib, not the resolver.
+
+**Page-dates join** (`src/lib/page-dates.ts`) — the per-route last-modified
+table, keyed by the route universe's `dateKey` (services share `/services`;
+comparisons/guides use `xPath(entity, "en")`; static/nav use their path).
+`pageDate(key)` throws loud on an unknown key — no silent fallback — and both
+consumers derive the key the same way: `sitemap` reads `entry.dateKey`, the
+`.md` serializer calls the same `comparisonPath`/`guidePath`/literal, so a twin's
+`updated` can't drift from the sitemap's `lastModified`. `page-dates.test.ts`
+gates the table ⇔ route-universe parity in both directions (missing date and
+orphan date), the same parity-gate idiom as `md-coverage` and `standalone-routes`.
