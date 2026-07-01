@@ -17,10 +17,15 @@ export const site = {
   instagram: "https://www.instagram.com/sans.souci.cflaval",
   // Official Sans Souci Facebook page.
   facebook: "https://www.facebook.com/sans.souci.cflaval/",
-  // Profiles emitted as schema.org `sameAs` on the business node.
+  // Profiles emitted as schema.org `sameAs` on the business node — each links the
+  // website entity to an authoritative external profile (GEO-C). Order: owned
+  // social first, then the Google Business Profile and directory listings.
   socialProfiles: [
     "https://www.instagram.com/sans.souci.cflaval",
     "https://www.facebook.com/sans.souci.cflaval/",
+    "https://maps.app.goo.gl/wNJvwCYG4fShGckBA",
+    "https://www.tiktok.com/@sans.souci.ongles.spa",
+    "https://www.yelp.ca/biz/sans-souci-ongles-and-spa-laval",
   ],
   // Schema.org priceRange hint ($ = inexpensive … $$$$ = very pricey). $$ for a mid-tier salon.
   priceRange: "$$",
