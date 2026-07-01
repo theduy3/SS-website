@@ -14,6 +14,11 @@ export default defineConfig({
     exclude: ["e2e/**", "node_modules/**"],
   },
   resolve: {
-    alias: { "@": resolve(__dirname, "./src") },
+    alias: {
+      "@": resolve(__dirname, "./src"),
+      // Next's `server-only` marker is unresolvable under Vitest — stub it so
+      // server-only modules (md-route factory, dictionary loader) import cleanly.
+      "server-only": resolve(__dirname, "./vitest.server-only-stub.ts"),
+    },
   },
 });
