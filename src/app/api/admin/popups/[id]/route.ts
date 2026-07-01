@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { PopupSchema } from "@/lib/popup";
-import { guard, storeError, badRequest } from "@/lib/admin-http";
+import { guard, storeError, badRequest, parseBody } from "@/lib/admin-http";
 import { deletePopup, upsertPopup } from "@/lib/popups-store";
 
 // PUT: update an existing popup. DELETE: remove it. The route param is the
@@ -14,17 +14,9 @@ export async function PUT(request: Request, ctx: Ctx) {
 
   const { id } = await ctx.params;
 
-  let body: unknown;
-  try {
-    body = await request.json();
-  } catch {
-    return badRequest("Invalid request body", 400);
-  }
+  const parsed = await parseBody(request, PopupSchema);
+  if (!parsed.ok) return parsed.res;
 
-  const parsed = PopupSchema.safeParse(body);
-  if (!parsed.success) {
-    return badRequest(parsed.error.issues[0]?.message ?? "Invalid popup");
-  }
   if (parsed.data.id !== id) {
     return badRequest("Popup id in body does not match the URL");
   }

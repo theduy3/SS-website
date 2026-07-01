@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { PopupSchema } from "@/lib/popup";
-import { guard, storeError, badRequest } from "@/lib/admin-http";
+import { guard, storeError, parseBody } from "@/lib/admin-http";
 import { listPopups, upsertPopup } from "@/lib/popups-store";
 
 // GET: list every popup (active or not) for the editor.
@@ -19,17 +19,8 @@ export async function POST(request: Request) {
   const denied = await guard();
   if (denied) return denied;
 
-  let body: unknown;
-  try {
-    body = await request.json();
-  } catch {
-    return badRequest("Invalid request body", 400);
-  }
-
-  const parsed = PopupSchema.safeParse(body);
-  if (!parsed.success) {
-    return badRequest(parsed.error.issues[0]?.message ?? "Invalid popup");
-  }
+  const parsed = await parseBody(request, PopupSchema);
+  if (!parsed.ok) return parsed.res;
 
   const result = await upsertPopup(parsed.data);
   if (!result.ok) return storeError(result);
