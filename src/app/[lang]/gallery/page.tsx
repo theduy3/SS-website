@@ -1,31 +1,26 @@
 // src/app/[lang]/gallery/page.tsx
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
 import Image from "next/image";
-import { isLocale, type LangParams } from "@/lib/i18n";
-import { getDictionary } from "../dictionaries";
-import { pageMetadata, imageGalleryGraph, breadcrumbGraph } from "@/lib/seo";
+import { type LangParams } from "@/lib/i18n";
+import { resolveLangPage, langPageMetadata } from "@/lib/page-resolver";
+import { imageGalleryGraph, breadcrumbGraph } from "@/lib/seo";
 import { JsonLd } from "@/components/JsonLd";
 import { PageHeader } from "@/components/PageHeader";
 import { Reveal } from "@/components/Reveal";
 import { galleryImages } from "@/lib/gallery";
 
-export async function generateMetadata({
-  params,
-}: LangParams): Promise<Metadata> {
-  const { lang } = await params;
-  if (!isLocale(lang)) return {};
-  const dict = await getDictionary(lang);
-  return pageMetadata(lang, "/gallery", {
-    title: dict.meta.galleryTitle,
-    description: dict.meta.galleryDescription,
+export function generateMetadata({ params }: LangParams): Promise<Metadata> {
+  return langPageMetadata(params, {
+    route: "/gallery",
+    meta: (dict) => ({
+      title: dict.meta.galleryTitle,
+      description: dict.meta.galleryDescription,
+    }),
   });
 }
 
 export default async function GalleryPage({ params }: LangParams) {
-  const { lang } = await params;
-  if (!isLocale(lang)) notFound();
-  const dict = await getDictionary(lang);
+  const { lang, dict } = await resolveLangPage(params);
 
   function photo(id: string) {
     return dict.gallery.photos[id as keyof typeof dict.gallery.photos];

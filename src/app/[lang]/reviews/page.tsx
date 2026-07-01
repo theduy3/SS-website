@@ -1,9 +1,8 @@
 // src/app/[lang]/reviews/page.tsx
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
-import { isLocale, type LangParams } from "@/lib/i18n";
-import { getDictionary } from "../dictionaries";
-import { pageMetadata, breadcrumbGraph } from "@/lib/seo";
+import { type LangParams } from "@/lib/i18n";
+import { resolveLangPage, langPageMetadata } from "@/lib/page-resolver";
+import { breadcrumbGraph } from "@/lib/seo";
 import { JsonLd } from "@/components/JsonLd";
 import { PageHeader } from "@/components/PageHeader";
 import { Stars } from "@/components/Stars";
@@ -19,22 +18,18 @@ const localeTag: Record<string, string> = {
   ar: "ar",
 };
 
-export async function generateMetadata({
-  params,
-}: LangParams): Promise<Metadata> {
-  const { lang } = await params;
-  if (!isLocale(lang)) return {};
-  const dict = await getDictionary(lang);
-  return pageMetadata(lang, "/reviews", {
-    title: dict.meta.reviewsTitle,
-    description: dict.meta.reviewsDescription,
+export function generateMetadata({ params }: LangParams): Promise<Metadata> {
+  return langPageMetadata(params, {
+    route: "/reviews",
+    meta: (dict) => ({
+      title: dict.meta.reviewsTitle,
+      description: dict.meta.reviewsDescription,
+    }),
   });
 }
 
 export default async function ReviewsPage({ params }: LangParams) {
-  const { lang } = await params;
-  if (!isLocale(lang)) notFound();
-  const dict = await getDictionary(lang);
+  const { lang, dict } = await resolveLangPage(params);
   const tag = localeTag[lang];
   const rating = site.reviews.ratingValue.toLocaleString(tag, {
     minimumFractionDigits: 1,

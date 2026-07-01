@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
 import Link from "next/link";
 import { PageHeader } from "@/components/PageHeader";
 import { Button } from "@/components/Button";
@@ -10,27 +9,23 @@ import { site } from "@/lib/site";
 import { JsonLd } from "@/components/JsonLd";
 import { services, servicePath } from "@/lib/services";
 import { readConsent } from "@/lib/consent.server";
-import { getDictionary } from "../dictionaries";
-import { isLocale, dirFor, type LangParams } from "@/lib/i18n";
-import { pageMetadata, servicesGraph, breadcrumbGraph } from "@/lib/seo";
+import { dirFor, type LangParams } from "@/lib/i18n";
+import { resolveLangPage, langPageMetadata } from "@/lib/page-resolver";
+import { servicesGraph, breadcrumbGraph } from "@/lib/seo";
 import { formatFromPrice } from "@/lib/format";
 
-export async function generateMetadata({
-  params,
-}: LangParams): Promise<Metadata> {
-  const { lang } = await params;
-  if (!isLocale(lang)) return {};
-  const dict = await getDictionary(lang);
-  return pageMetadata(lang, "/services", {
-    title: dict.meta.servicesTitle,
-    description: dict.meta.servicesDescription,
+export function generateMetadata({ params }: LangParams): Promise<Metadata> {
+  return langPageMetadata(params, {
+    route: "/services",
+    meta: (dict) => ({
+      title: dict.meta.servicesTitle,
+      description: dict.meta.servicesDescription,
+    }),
   });
 }
 
 export default async function ServicesPage({ params }: LangParams) {
-  const { lang } = await params;
-  if (!isLocale(lang)) notFound();
-  const dict = await getDictionary(lang);
+  const { lang, dict } = await resolveLangPage(params);
   const consent = await readConsent();
   const consentKnown = consent !== undefined;
 

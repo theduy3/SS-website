@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
 import Image from "next/image";
 import { Button } from "@/components/Button";
 import { Reveal } from "@/components/Reveal";
@@ -12,26 +11,22 @@ import { KeyPageChrome } from "@/components/KeyPageChrome";
 import { services, servicePath } from "@/lib/services";
 import { site } from "@/lib/site";
 import { readConsent } from "@/lib/consent.server";
-import { getDictionary } from "./dictionaries";
-import { isLocale, dirFor, type LangParams } from "@/lib/i18n";
-import { pageMetadata, servicesGraph } from "@/lib/seo";
+import { dirFor, type LangParams } from "@/lib/i18n";
+import { resolveLangPage, langPageMetadata } from "@/lib/page-resolver";
+import { servicesGraph } from "@/lib/seo";
 
-export async function generateMetadata({
-  params,
-}: LangParams): Promise<Metadata> {
-  const { lang } = await params;
-  if (!isLocale(lang)) return {};
-  const dict = await getDictionary(lang);
-  return pageMetadata(lang, "", {
-    title: dict.meta.homeTitle,
-    description: dict.meta.homeDescription,
+export function generateMetadata({ params }: LangParams): Promise<Metadata> {
+  return langPageMetadata(params, {
+    route: "",
+    meta: (dict) => ({
+      title: dict.meta.homeTitle,
+      description: dict.meta.homeDescription,
+    }),
   });
 }
 
 export default async function Home({ params }: LangParams) {
-  const { lang } = await params;
-  if (!isLocale(lang)) notFound();
-  const dict = await getDictionary(lang);
+  const { lang, dict } = await resolveLangPage(params);
   const consent = await readConsent();
   const consentKnown = consent !== undefined;
 

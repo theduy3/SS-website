@@ -1,30 +1,25 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
 import { PageHeader } from "@/components/PageHeader";
 import { Reveal } from "@/components/Reveal";
 import { ContactForm } from "@/components/ContactForm";
 import { site } from "@/lib/site";
 import { JsonLd } from "@/components/JsonLd";
-import { getDictionary } from "../dictionaries";
-import { isLocale, type LangParams } from "@/lib/i18n";
-import { pageMetadata, breadcrumbGraph } from "@/lib/seo";
+import { type LangParams } from "@/lib/i18n";
+import { resolveLangPage, langPageMetadata } from "@/lib/page-resolver";
+import { breadcrumbGraph } from "@/lib/seo";
 
-export async function generateMetadata({
-  params,
-}: LangParams): Promise<Metadata> {
-  const { lang } = await params;
-  if (!isLocale(lang)) return {};
-  const dict = await getDictionary(lang);
-  return pageMetadata(lang, "/contact", {
-    title: dict.meta.contactTitle,
-    description: dict.meta.contactDescription,
+export function generateMetadata({ params }: LangParams): Promise<Metadata> {
+  return langPageMetadata(params, {
+    route: "/contact",
+    meta: (dict) => ({
+      title: dict.meta.contactTitle,
+      description: dict.meta.contactDescription,
+    }),
   });
 }
 
 export default async function ContactPage({ params }: LangParams) {
-  const { lang } = await params;
-  if (!isLocale(lang)) notFound();
-  const dict = await getDictionary(lang);
+  const { lang, dict } = await resolveLangPage(params);
 
   return (
     <>

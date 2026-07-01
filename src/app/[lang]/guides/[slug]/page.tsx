@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Reveal } from "@/components/Reveal";
 import { KeyPageChrome } from "@/components/KeyPageChrome";
@@ -13,44 +12,42 @@ import {
   guidePath,
   guidePathsByLocale,
 } from "@/lib/guides";
-import { services, servicePath } from "@/lib/services";
+import { serviceById, servicePath } from "@/lib/services";
 import { readConsent } from "@/lib/consent.server";
-import { getDictionary } from "../../dictionaries";
-import { isLocale, dirFor } from "@/lib/i18n";
-import { pageMetadata, articleGraph, breadcrumbGraph } from "@/lib/seo";
+import { dirFor } from "@/lib/i18n";
+import { articleGraph, breadcrumbGraph } from "@/lib/seo";
+import {
+  resolveSlugPage,
+  slugPageMetadata,
+  slugStaticParams,
+} from "@/lib/page-resolver";
 
 type Params = { params: Promise<{ lang: string; slug: string }> };
 
 // Emit only THIS locale's slugs (matches the service-page convention), so a
 // wrong-locale slug 404s instead of rendering a mismatched page.
-export function generateStaticParams({ params }: { params: { lang: string } }) {
-  if (!isLocale(params.lang)) return [];
-  return guideSlugParams(params.lang);
-}
+export const generateStaticParams = slugStaticParams(guideSlugParams);
 
-export async function generateMetadata({ params }: Params): Promise<Metadata> {
-  const { lang, slug } = await params;
-  if (!isLocale(lang)) return {};
-  const guide = guideBySlug(lang, slug);
-  if (!guide) return {};
-  const g = (await getDictionary(lang)).guides[guide.id];
-  return pageMetadata(lang, guidePath(guide, lang), {
-    title: g.metaTitle,
-    description: g.metaDescription,
-    routeByLocale: guidePathsByLocale(guide),
+export function generateMetadata({ params }: Params): Promise<Metadata> {
+  return slugPageMetadata(params, {
+    bySlug: guideBySlug,
+    path: guidePath,
+    pathsByLocale: guidePathsByLocale,
+    meta: (dict, guide) => {
+      const g = dict.guides[guide.id];
+      return { title: g.metaTitle, description: g.metaDescription };
+    },
   });
 }
 
 export default async function GuidePage({ params }: Params) {
-  const { lang, slug } = await params;
-  if (!isLocale(lang)) notFound();
-  const guide = guideBySlug(lang, slug);
-  if (!guide) notFound();
-
-  const dict = await getDictionary(lang);
+  const { lang, entity: guide, dict } = await resolveSlugPage(
+    params,
+    guideBySlug,
+  );
   const g = dict.guides[guide.id];
   const sLabels = dict.serviceLabels;
-  const service = services.find((s) => s.id === guide.service)!;
+  const service = serviceById(guide.service);
   const sDetail = dict.serviceDetails[guide.service];
   const consent = await readConsent();
   const consentKnown = consent !== undefined;
