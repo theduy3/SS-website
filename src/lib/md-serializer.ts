@@ -16,8 +16,7 @@ import { site } from "@/lib/site";
 import { aggregate } from "@/lib/reviews";
 import { pageDate } from "@/lib/page-dates";
 import { services, servicePath } from "@/lib/services";
-import { comparisonPath, comparisonsForService } from "@/lib/comparisons";
-import { guidePath, guidesForService } from "@/lib/guides";
+import { relatedLinks } from "@/lib/related-links";
 import { mdTwinUrl } from "@/lib/md-routes";
 
 // ─── Shared Types ─────────────────────────────────────────────────────────────
@@ -198,20 +197,20 @@ export function renderServiceMd(
     .map((qa: { q: string; a: string }) => `**${qa.q}**\n\n${qa.a}`)
     .join("\n\n");
 
-  // Related comparisons and guides — reuse the same selectors + localized
-  // titles the HTML page renders (D-12), so the .md twin never drifts.
-  const relatedComparisons = comparisonsForService(service.id)
-    .map(
-      (c) =>
-        `- [${dict.comparisons[c.id].title}](${site.url}${mdTwinUrl(`/${lang}${comparisonPath(c, lang)}`)})`,
-    )
+  // Related comparisons and guides — same selector the HTML page renders
+  // (relatedLinks: single source for membership, order, and localized title), so
+  // the .md twin can't drift. Each link points at the target's .md twin URL.
+  const related = relatedLinks(service.id, lang, dict);
+  const mdLink = (r: (typeof related)[number]) =>
+    `- [${r.title}](${site.url}${mdTwinUrl(`/${lang}${r.path}`)})`;
+  const relatedComparisons = related
+    .filter((r) => r.kind === "comparison")
+    .map(mdLink)
     .join("\n");
 
-  const relatedGuides = guidesForService(service.id)
-    .map(
-      (g) =>
-        `- [${dict.guides[g.id].title}](${site.url}${mdTwinUrl(`/${lang}${guidePath(g, lang)}`)})`,
-    )
+  const relatedGuides = related
+    .filter((r) => r.kind === "guide")
+    .map(mdLink)
     .join("\n");
 
   const parts = [
