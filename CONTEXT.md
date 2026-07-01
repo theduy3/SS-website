@@ -57,3 +57,18 @@ consumers derive the key the same way: `sitemap` reads `entry.dateKey`, the
 `updated` can't drift from the sitemap's `lastModified`. `page-dates.test.ts`
 gates the table ⇔ route-universe parity in both directions (missing date and
 orphan date), the same parity-gate idiom as `md-coverage` and `standalone-routes`.
+
+**Widget catalog** (`src/lib/widgets.ts`) — the single home for every SalonX
+embed's identity (script `src`, `store`, `storeAttr`, overlay `theme`,
+`fallbackLabel`, `minHeight`). Pure data; pages render
+`<WidgetEmbed {...widgets.<key>} />`, the only dynamic prop being `lang` (booking
+is localized, supplied by the page). Replaced five one-caller wrapper components
+(Checkin/Queue/ClientPortal/Subscribe/BookingWidget) that each held nothing but
+these constants. `WidgetEmbed` stays the generic deep module (script injection,
+loading/error/retry overlay, theme, height) — the one interface every page
+crosses. The catalog is an adapter typed `satisfies Record<string, WidgetConfig>`
+where `WidgetConfig = Omit<WidgetEmbedProps, "lang">`, so a renamed/removed prop
+on `WidgetEmbed` is a compile error in the catalog — the interface is the test
+surface. `widgets.test.ts` guards only what types can't: the non-default
+`storeAttr` overrides (the historically-regressed class where a widget can't
+locate its own script) and non-empty `src`/`fallbackLabel`.
