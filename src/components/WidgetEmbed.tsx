@@ -18,15 +18,10 @@ type Status = "loading" | "ready" | "error";
 // kiosk pages are un-localized. The attribute the widget reads to find its own
 // script varies: check-in/queue use "data-store" (the default); the
 // client-account widget uses "data-account-store" (pass storeAttr).
-export function WidgetEmbed({
-  src,
-  store,
-  storeAttr = "data-store",
-  fallbackLabel,
-  theme = "light",
-  lang,
-  minHeight = "min-h-screen",
-}: {
+// The full interface every SalonX widget crosses. The widget catalog
+// (@/lib/widgets) is typed against the static subset of this (Omit<…, "lang">),
+// so a renamed/removed prop here is a compile error in the catalog.
+export type WidgetEmbedProps = {
   src: string;
   store: string;
   // Attribute the widget reads to locate its <script> and identify the store.
@@ -48,7 +43,17 @@ export function WidgetEmbed({
   // on /appointments, alongside header/footer/other content, so it passes a
   // fixed height instead.
   minHeight?: string;
-}) {
+};
+
+export function WidgetEmbed({
+  src,
+  store,
+  storeAttr = "data-store",
+  fallbackLabel,
+  theme = "light",
+  lang,
+  minHeight = "min-h-screen",
+}: WidgetEmbedProps) {
   const dark = theme === "dark";
   const overlayBg = dark ? "bg-[#0b1220]" : "bg-fog";
   const spinnerBorder = dark

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { BookingWidget } from "@/components/BookingWidget";
+import { WidgetEmbed } from "@/components/WidgetEmbed";
+import { widgets } from "@/lib/widgets";
 import { Reveal } from "@/components/Reveal";
 import { site } from "@/lib/site";
 import { JsonLd } from "@/components/JsonLd";
@@ -41,8 +42,11 @@ export default async function AppointmentsPage({ params }: LangParams) {
         </p>
       </Reveal>
 
-      {/* Sans Souci booking widget — injects the scheduler UI client-side. */}
-      <BookingWidget locale={lang} />
+      {/* Sans Souci booking widget — injects the scheduler UI client-side.
+          Static identity from the widget catalog; lang is the page's live locale. */}
+      <div className="mt-10">
+        <WidgetEmbed {...widgets.booking} lang={lang} />
+      </div>
     </section>
   );
 }
