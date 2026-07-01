@@ -1,25 +1,14 @@
-// Canonical .md route enumerator — mirrors sitemap.ts's registry enumeration
-// exactly (same order, same six registry groups). No server-only marker:
-// this module is imported by the coverage parity test and by llms.txt/route.ts.
+// Canonical .md route enumerator — a path projection of the shared route universe
+// (@/lib/route-universe), so it enumerates exactly the same routes as sitemap.ts
+// by construction (previously hand-synced). No server-only marker: imported by the
+// coverage parity test and by llms.txt/route.ts.
 //
 // allMdPaths() returns locale-prefixed paths WITHOUT the ".md" suffix.
 // Use mdTwinUrl(path) to get the REAL twin URL for any content path:
 //   - nav/secondaryNav/localPaths → path + ".md"         (e.g. /en/about.md)
 //   - services/comparisons/guides → path + "/index.md"   (e.g. /en/services/manicure/index.md)
-//
-// Keep in sync with sitemap.ts — a new route group added there must be
-// mirrored here (and vice versa) to preserve coverage parity (D-02).
 
-import { locales } from "@/lib/i18n";
-import { site } from "@/lib/site";
-import { services, servicePath } from "@/lib/services";
-import { comparisons, comparisonPath } from "@/lib/comparisons";
-import { guides, guidePath } from "@/lib/guides";
-
-/** "/" → "" for nav items so the home path is `/{locale}` not `/{locale}/`. */
-function toPath(href: string): string {
-  return href === "/" ? "" : href;
-}
+import { routeUniverse } from "@/lib/route-universe";
 
 /**
  * Returns the real .md twin URL for a locale-prefixed content path.
@@ -48,41 +37,11 @@ export function mdTwinUrl(contentPath: string): string {
  * All locale-prefixed content paths that have a .md twin.
  * Returns paths WITHOUT the ".md" suffix, e.g. "/en/about", "/en/services/manicure".
  *
- * Order mirrors sitemap.ts exactly:
- *   nav → secondaryNav → localPaths → services → comparisons → guides
+ * Order follows the route universe: nav → secondary → local → services →
+ * comparisons → guides (locale-outer within each group).
  */
 export function allMdPaths(): string[] {
-  const navPaths = locales.flatMap((locale) =>
-    site.nav.map((item) => `/${locale}${toPath(item.href)}`),
+  return routeUniverse().map(
+    (entry) => `/${entry.locale}${entry.pathByLocale[entry.locale]}`,
   );
-
-  const secondaryPaths = locales.flatMap((locale) =>
-    site.secondaryNav.map((item) => `/${locale}${toPath(item.href)}`),
-  );
-
-  const localPaths = ["/laval"];
-  const localEntryPaths = locales.flatMap((locale) =>
-    localPaths.map((path) => `/${locale}${path}`),
-  );
-
-  const servicePaths = locales.flatMap((locale) =>
-    services.map((service) => `/${locale}${servicePath(service, locale)}`),
-  );
-
-  const comparisonPaths = locales.flatMap((locale) =>
-    comparisons.map((cmp) => `/${locale}${comparisonPath(cmp, locale)}`),
-  );
-
-  const guidePaths = locales.flatMap((locale) =>
-    guides.map((guide) => `/${locale}${guidePath(guide, locale)}`),
-  );
-
-  return [
-    ...navPaths,
-    ...secondaryPaths,
-    ...localEntryPaths,
-    ...servicePaths,
-    ...comparisonPaths,
-    ...guidePaths,
-  ];
 }
