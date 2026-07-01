@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { locales, defaultLocale, type Locale } from "@/lib/i18n";
+import { hreflangAlternates, type Locale } from "@/lib/i18n";
 import { site } from "@/lib/site";
 import { pageDate as pageDateStr } from "@/lib/page-dates";
 import {
@@ -35,15 +35,10 @@ function priorityFor(entry: RouteEntry): number {
   return entry.group === "nav" && entry.dateKey === "/" ? 1 : PRIORITY[entry.group];
 }
 
+// Absolute hreflang (base site.url): sitemap.xml requires fully-qualified URLs.
+// Same builder + x-default rule seo.ts uses relative — one owner, two projections.
 function alternates(pathByLocale: Record<Locale, string>) {
-  return {
-    languages: {
-      ...Object.fromEntries(
-        locales.map((l) => [l, `${site.url}/${l}${pathByLocale[l]}`]),
-      ),
-      "x-default": `${site.url}/${defaultLocale}${pathByLocale[defaultLocale]}`,
-    },
-  };
+  return { languages: hreflangAlternates(pathByLocale, site.url) };
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {
