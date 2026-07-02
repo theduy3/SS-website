@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { RelatedServiceLink } from "@/components/RelatedServiceLink";
 import { Reveal } from "@/components/Reveal";
 import { KeyPageChrome } from "@/components/KeyPageChrome";
 import { JsonLd } from "@/components/JsonLd";
@@ -13,7 +13,6 @@ import {
   comparisonPath,
   comparisonPathsByLocale,
 } from "@/lib/comparisons";
-import { serviceById, servicePath } from "@/lib/services";
 import { readConsent } from "@/lib/consent.server";
 import { dirFor } from "@/lib/i18n";
 import { productGraph, reviewGraph, breadcrumbGraph } from "@/lib/seo";
@@ -49,8 +48,6 @@ export default async function ComparisonPage({ params }: Params) {
   const c = dict.comparisons[cmp.id];
   const labels = dict.comparisonLabels;
   const sLabels = dict.serviceLabels;
-  const service = serviceById(cmp.service);
-  const sDetail = dict.serviceDetails[cmp.service];
   const consent = await readConsent();
   const consentKnown = consent !== undefined;
 
@@ -107,17 +104,12 @@ export default async function ComparisonPage({ params }: Params) {
       </section>
 
       {/* Related service link */}
-      <section className="mx-auto max-w-3xl px-6 py-12 text-center">
-        <Reveal>
-          <p className="text-mocha">{labels.related}</p>
-          <Link
-            href={`/${lang}${servicePath(service, lang)}`}
-            className="mt-2 inline-block text-xl font-semibold text-espresso underline-offset-4 hover:underline"
-          >
-            {sDetail.title}
-          </Link>
-        </Reveal>
-      </section>
+      <RelatedServiceLink
+        lang={lang}
+        dict={dict}
+        serviceId={cmp.service}
+        label={labels.related}
+      />
 
       {/* FAQ */}
       <Faq heading={sLabels.faq} items={c.faq} />
