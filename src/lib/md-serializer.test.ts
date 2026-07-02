@@ -34,6 +34,7 @@ import { guides } from "@/lib/guides";
 const dict = enDict as unknown as Dictionary;
 const lang = "en";
 const baseUrl = "https://onglessanssouci.com";
+const UPDATED = "2026-01-01";
 
 // ─── frontmatter() ────────────────────────────────────────────────────────────
 
@@ -187,7 +188,7 @@ describe("renderFaqPart()", () => {
 
 describe("renderHomeMd()", () => {
   const canonical = `${baseUrl}/en`;
-  const out = renderHomeMd(lang, dict, canonical);
+  const out = renderHomeMd(lang, dict, { canonical, updated: UPDATED });
 
   it("starts with frontmatter fence", () => {
     expect(out.trimStart()).toMatch(/^---/);
@@ -215,7 +216,7 @@ describe("renderHomeMd()", () => {
 
 describe("renderServicesIndexMd()", () => {
   const canonical = `${baseUrl}/en/services`;
-  const out = renderServicesIndexMd(lang, dict, canonical);
+  const out = renderServicesIndexMd(lang, dict, { canonical, updated: UPDATED });
 
   it("starts with frontmatter fence", () => {
     expect(out.trimStart()).toMatch(/^---/);
@@ -235,7 +236,7 @@ describe("renderServiceMd()", () => {
   const service = services[0]; // manicure
   const canonical = `${baseUrl}/en/services/manicure`;
   const detail = dict.serviceDetails[service.id];
-  const out = renderServiceMd(lang, dict, service, canonical);
+  const out = renderServiceMd(lang, dict, service, { canonical, updated: UPDATED });
 
   it("starts with frontmatter fence", () => {
     expect(out.trimStart()).toMatch(/^---/);
@@ -297,7 +298,7 @@ describe("renderServiceMd()", () => {
 
 describe("renderAboutMd()", () => {
   const canonical = `${baseUrl}/en/about`;
-  const out = renderAboutMd(lang, dict, canonical);
+  const out = renderAboutMd(lang, dict, { canonical, updated: UPDATED });
 
   it("starts with frontmatter fence", () => {
     expect(out.trimStart()).toMatch(/^---/);
@@ -316,7 +317,7 @@ describe("renderAboutMd()", () => {
 
 describe("renderAppointmentsMd()", () => {
   const canonical = `${baseUrl}/en/appointments`;
-  const out = renderAppointmentsMd(lang, dict, canonical);
+  const out = renderAppointmentsMd(lang, dict, { canonical, updated: UPDATED });
 
   it("starts with frontmatter fence", () => {
     expect(out.trimStart()).toMatch(/^---/);
@@ -335,7 +336,7 @@ describe("renderAppointmentsMd()", () => {
 
 describe("renderContactMd()", () => {
   const canonical = `${baseUrl}/en/contact`;
-  const out = renderContactMd(lang, dict, canonical);
+  const out = renderContactMd(lang, dict, { canonical, updated: UPDATED });
 
   it("starts with frontmatter fence", () => {
     expect(out.trimStart()).toMatch(/^---/);
@@ -350,7 +351,7 @@ describe("renderContactMd()", () => {
 
 describe("renderGalleryMd()", () => {
   const canonical = `${baseUrl}/en/gallery`;
-  const out = renderGalleryMd(lang, dict, canonical);
+  const out = renderGalleryMd(lang, dict, { canonical, updated: UPDATED });
 
   it("starts with frontmatter fence", () => {
     expect(out.trimStart()).toMatch(/^---/);
@@ -369,7 +370,7 @@ describe("renderGalleryMd()", () => {
 
 describe("renderReviewsMd()", () => {
   const canonical = `${baseUrl}/en/reviews`;
-  const out = renderReviewsMd(lang, dict, canonical);
+  const out = renderReviewsMd(lang, dict, { canonical, updated: UPDATED });
 
   it("starts with frontmatter fence", () => {
     expect(out.trimStart()).toMatch(/^---/);
@@ -388,7 +389,7 @@ describe("renderReviewsMd()", () => {
 
 describe("renderFaqMd()", () => {
   const canonical = `${baseUrl}/en/faq`;
-  const out = renderFaqMd(lang, dict, canonical);
+  const out = renderFaqMd(lang, dict, { canonical, updated: UPDATED });
 
   it("starts with frontmatter fence", () => {
     expect(out.trimStart()).toMatch(/^---/);
@@ -407,7 +408,7 @@ describe("renderFaqMd()", () => {
 
 describe("renderLavalMd()", () => {
   const canonical = `${baseUrl}/en/laval`;
-  const out = renderLavalMd(lang, dict, canonical);
+  const out = renderLavalMd(lang, dict, { canonical, updated: UPDATED });
 
   it("starts with frontmatter fence", () => {
     expect(out.trimStart()).toMatch(/^---/);
@@ -423,7 +424,7 @@ describe("renderLavalMd()", () => {
 
 describe("renderTermsMd()", () => {
   const canonical = `${baseUrl}/en/terms`;
-  const out = renderTermsMd(lang, dict, canonical);
+  const out = renderTermsMd(lang, dict, { canonical, updated: UPDATED });
 
   it("starts with frontmatter fence", () => {
     expect(out.trimStart()).toMatch(/^---/);
@@ -443,7 +444,7 @@ describe("renderTermsMd()", () => {
 
 describe("renderPrivacyMd()", () => {
   const canonical = `${baseUrl}/en/privacy`;
-  const out = renderPrivacyMd(lang, dict, canonical);
+  const out = renderPrivacyMd(lang, dict, { canonical, updated: UPDATED });
 
   it("starts with frontmatter fence", () => {
     expect(out.trimStart()).toMatch(/^---/);
@@ -460,7 +461,7 @@ describe("renderComparisonMd()", () => {
   const cmp = comparisons[0]; // gel-vs-regular
   const canonical = `${baseUrl}/en/comparisons/${cmp.slug.en}`;
   const cmpDict = dict.comparisons[cmp.id];
-  const out = renderComparisonMd(lang, dict, cmp, canonical);
+  const out = renderComparisonMd(lang, dict, cmp, { canonical, updated: UPDATED });
 
   it("starts with frontmatter fence", () => {
     expect(out.trimStart()).toMatch(/^---/);
@@ -481,7 +482,7 @@ describe("renderGuideMd()", () => {
   const guide = guides[0]; // manicure-cost-laval
   const canonical = `${baseUrl}/en/guides/${guide.slug.en}`;
   const guideDict = dict.guides[guide.id];
-  const out = renderGuideMd(lang, dict, guide, canonical);
+  const out = renderGuideMd(lang, dict, guide, { canonical, updated: UPDATED });
 
   it("starts with frontmatter fence", () => {
     expect(out.trimStart()).toMatch(/^---/);
