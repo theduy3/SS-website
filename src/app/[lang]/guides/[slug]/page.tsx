@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { RelatedServiceLink } from "@/components/RelatedServiceLink";
 import { Reveal } from "@/components/Reveal";
 import { KeyPageChrome } from "@/components/KeyPageChrome";
 import { JsonLd } from "@/components/JsonLd";
@@ -12,7 +12,6 @@ import {
   guidePath,
   guidePathsByLocale,
 } from "@/lib/guides";
-import { serviceById, servicePath } from "@/lib/services";
 import { readConsent } from "@/lib/consent.server";
 import { dirFor } from "@/lib/i18n";
 import { articleGraph, breadcrumbGraph } from "@/lib/seo";
@@ -47,8 +46,6 @@ export default async function GuidePage({ params }: Params) {
   );
   const g = dict.guides[guide.id];
   const sLabels = dict.serviceLabels;
-  const service = serviceById(guide.service);
-  const sDetail = dict.serviceDetails[guide.service];
   const consent = await readConsent();
   const consentKnown = consent !== undefined;
 
@@ -109,17 +106,12 @@ export default async function GuidePage({ params }: Params) {
       </section>
 
       {/* Related service link (D-12) */}
-      <section className="mx-auto max-w-3xl px-6 py-12 text-center">
-        <Reveal>
-          <p className="text-mocha">{sLabels.allServices}</p>
-          <Link
-            href={`/${lang}${servicePath(service, lang)}`}
-            className="mt-2 inline-block text-xl font-semibold text-espresso underline-offset-4 hover:underline"
-          >
-            {sDetail.title}
-          </Link>
-        </Reveal>
-      </section>
+      <RelatedServiceLink
+        lang={lang}
+        dict={dict}
+        serviceId={guide.service}
+        label={sLabels.allServices}
+      />
 
       {/* FAQ */}
       <Faq heading={sLabels.faq} items={g.faq} />
