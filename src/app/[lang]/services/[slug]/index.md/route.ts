@@ -8,6 +8,7 @@
 // lookup guards path traversal).
 import "server-only";
 import { slugMd } from "@/lib/md-route";
+import { SERVICE_DATE_KEY } from "@/lib/route-universe";
 import { serviceBySlug, servicePath, slugParams } from "@/lib/services";
 import { renderServiceMd } from "@/lib/md-serializer";
 
@@ -16,5 +17,9 @@ export const { GET, generateStaticParams } = slugMd({
   slugParams,
   bySlug: serviceBySlug,
   path: servicePath,
+  // Services share one date (unlike comparisons/guides, which key on their own
+  // EN path — the slugMd default). Read from route-universe so this "/services"
+  // key and the sitemap's are the same string by construction.
+  dateKey: () => SERVICE_DATE_KEY,
   render: renderServiceMd,
 });

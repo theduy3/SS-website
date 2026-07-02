@@ -51,10 +51,14 @@ silent `services.find(...)!`. Lives in the relation's own lib, not the resolver.
 **Page-dates join** (`src/lib/page-dates.ts`) — the per-route last-modified
 table, keyed by the route universe's `dateKey` (services share `/services`;
 comparisons/guides use `xPath(entity, "en")`; static/nav use their path).
-`pageDate(key)` throws loud on an unknown key — no silent fallback — and both
-consumers derive the key the same way: `sitemap` reads `entry.dateKey`, the
-`.md` serializer calls the same `comparisonPath`/`guidePath`/literal, so a twin's
-`updated` can't drift from the sitemap's `lastModified`. `page-dates.test.ts`
+`pageDate(key)` throws loud on an unknown key — no silent fallback. The `.md`
+serializer no longer resolves dates at all: the **md-route factory** owns the
+`updated` frontmatter field, keying nav/home on the route path, slug families on
+the entity's EN path (`SERVICE_DATE_KEY`, exported here from `route-universe`,
+overrides that for services — they share one date). So `sitemap` (reads
+`entry.dateKey`) and the factory derive from the same rule, and a twin's
+`updated` can't drift from the sitemap's `lastModified` by construction, not by a
+policed duplication. `page-dates.test.ts`
 gates the table ⇔ route-universe parity in both directions (missing date and
 orphan date), the same parity-gate idiom as `md-coverage` and `standalone-routes`.
 

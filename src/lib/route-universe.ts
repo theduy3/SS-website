@@ -88,6 +88,13 @@ function expand(group: RouteGroup, items: readonly Item[]): RouteEntry[] {
 
 const LOCAL_PATHS = ["/laval"];
 
+// Services all share one last-modified key (the /services index date), unlike
+// comparisons/guides which key on their own EN path. This is the one dateKey the
+// md-route factory can't derive from an entity's path, so it's exported: the svc
+// entry below and the service .md twin's slugMd wiring both read it from here —
+// the single home for the "/services" literal.
+export const SERVICE_DATE_KEY = "/services";
+
 /**
  * Every locale-prefixed content route, in canonical order:
  *   nav → secondary → local → services → comparisons → guides.
@@ -107,7 +114,7 @@ export function routeUniverse(): RouteEntry[] {
   }));
   const svc: Item[] = services.map((s) => ({
     pathByLocale: servicePathsByLocale(s),
-    dateKey: "/services",
+    dateKey: SERVICE_DATE_KEY,
   }));
   const cmp: Item[] = comparisons.map((c) => ({
     pathByLocale: comparisonPathsByLocale(c),

@@ -4,8 +4,10 @@
 // (RESEARCH Pitfall 3). All data comes from pure lib/ modules and dictionary
 // slices passed by callers.
 //
-// Every renderXxxMd() function opens with frontmatter() using pageDate() from
-// page-dates.ts — deterministic, not new Date() (RESEARCH Pitfall 4).
+// Every renderXxxMd() takes a RouteMeta ({ canonical, updated }) from the
+// md-route factory and opens with frontmatter(). It never resolves its own date
+// — page-dates lives in the factory now, so this module is pure body emission
+// and stays deterministic (no new Date(), RESEARCH Pitfall 4).
 
 import type { Dictionary } from "@/lib/dictionary";
 import type { Locale } from "@/lib/i18n";
@@ -14,9 +16,6 @@ import type { Comparison } from "@/lib/comparisons";
 import type { Guide } from "@/lib/guides";
 import { site } from "@/lib/site";
 import { aggregate } from "@/lib/reviews";
-import { pageDate } from "@/lib/page-dates";
-import { comparisonPath } from "@/lib/comparisons";
-import { guidePath } from "@/lib/guides";
 import { relatedLinks } from "@/lib/related-links";
 import { mdTwinUrl } from "@/lib/md-routes";
 
@@ -26,6 +25,14 @@ export type Block = {
   kind: "p" | "h3" | "ul";
   text: string;
   items: readonly string[];
+};
+
+// Route-derived frontmatter fields the md-route factory supplies (canonical +
+// last-modified date). Grouped so a renderer never computes its own date --
+// page-dates now lives in the factory, and md-serializer is pure body emission.
+export type RouteMeta = {
+  canonical: string;
+  updated: string;
 };
 
 // ─── Shared Helpers ───────────────────────────────────────────────────────────
@@ -114,13 +121,13 @@ export function renderComparisonTable(
 export function renderHomeMd(
   lang: Locale,
   dict: Dictionary,
-  canonical: string,
+  meta: RouteMeta,
 ): string {
   const fm = frontmatter({
     title: dict.meta.homeTitle,
     lang,
-    canonical,
-    updated: pageDate("/"),
+    canonical: meta.canonical,
+    updated: meta.updated,
   });
 
   const servicePart = dict.services
@@ -158,13 +165,13 @@ export function renderHomeMd(
 export function renderServicesIndexMd(
   lang: Locale,
   dict: Dictionary,
-  canonical: string,
+  meta: RouteMeta,
 ): string {
   const fm = frontmatter({
     title: dict.meta.servicesTitle,
     lang,
-    canonical,
-    updated: pageDate("/services"),
+    canonical: meta.canonical,
+    updated: meta.updated,
   });
 
   const servicePart = dict.services
@@ -189,17 +196,14 @@ export function renderServiceMd(
   lang: Locale,
   dict: Dictionary,
   service: Service,
-  canonical: string,
+  meta: RouteMeta,
 ): string {
   const detail = dict.serviceDetails[service.id];
   const fm = frontmatter({
     title: detail.title,
     lang,
-    canonical,
-    // Services share the /services dateKey (route-universe groups them there);
-    // keying per-slug silently fell back before the pageDate throw. Same key the
-    // sitemap uses for this service, so twin and sitemap can't drift.
-    updated: pageDate("/services"),
+    canonical: meta.canonical,
+    updated: meta.updated,
   });
 
   const includedLines = detail.included.map((item) => `- ${item}`).join("\n");
@@ -262,13 +266,13 @@ export function renderServiceMd(
 export function renderAboutMd(
   lang: Locale,
   dict: Dictionary,
-  canonical: string,
+  meta: RouteMeta,
 ): string {
   const fm = frontmatter({
     title: dict.about.heading,
     lang,
-    canonical,
-    updated: pageDate("/about"),
+    canonical: meta.canonical,
+    updated: meta.updated,
   });
 
   return [fm, `# ${dict.about.heading}`, "", dict.about.lead, ""].join("\n");
@@ -281,13 +285,13 @@ export function renderAboutMd(
 export function renderAppointmentsMd(
   lang: Locale,
   dict: Dictionary,
-  canonical: string,
+  meta: RouteMeta,
 ): string {
   const fm = frontmatter({
     title: dict.appointments.heading,
     lang,
-    canonical,
-    updated: pageDate("/appointments"),
+    canonical: meta.canonical,
+    updated: meta.updated,
   });
 
   return [
@@ -300,7 +304,7 @@ export function renderAppointmentsMd(
     "",
     dict.appointments.helpAfter,
     "",
-    `Book online: ${canonical}`,
+    `Book online: ${meta.canonical}`,
     "",
   ].join("\n");
 }
@@ -311,13 +315,13 @@ export function renderAppointmentsMd(
 export function renderContactMd(
   lang: Locale,
   dict: Dictionary,
-  canonical: string,
+  meta: RouteMeta,
 ): string {
   const fm = frontmatter({
     title: dict.contact.heading,
     lang,
-    canonical,
-    updated: pageDate("/contact"),
+    canonical: meta.canonical,
+    updated: meta.updated,
   });
 
   const addr = site.contact.address;
@@ -342,13 +346,13 @@ export function renderContactMd(
 export function renderGalleryMd(
   lang: Locale,
   dict: Dictionary,
-  canonical: string,
+  meta: RouteMeta,
 ): string {
   const fm = frontmatter({
     title: dict.gallery.title,
     lang,
-    canonical,
-    updated: pageDate("/gallery"),
+    canonical: meta.canonical,
+    updated: meta.updated,
   });
 
   const photoLines = Object.values(dict.gallery.photos)
@@ -363,7 +367,7 @@ export function renderGalleryMd(
     "",
     photoLines,
     "",
-    `View here: ${canonical}`,
+    `View here: ${meta.canonical}`,
     "",
   ].join("\n");
 }
@@ -376,13 +380,13 @@ export function renderGalleryMd(
 export function renderReviewsMd(
   lang: Locale,
   dict: Dictionary,
-  canonical: string,
+  meta: RouteMeta,
 ): string {
   const fm = frontmatter({
     title: dict.reviewsPage.title,
     lang,
-    canonical,
-    updated: pageDate("/reviews"),
+    canonical: meta.canonical,
+    updated: meta.updated,
   });
 
   const ratingLine = `${aggregate.ratingValue}/5 (${aggregate.reviewCount} ${site.reviews.source} reviews)`;
@@ -397,7 +401,7 @@ export function renderReviewsMd(
     "",
     ratingLine,
     "",
-    `[${dict.reviewsPage.cta}](${canonical})`,
+    `[${dict.reviewsPage.cta}](${meta.canonical})`,
     "",
   ].join("\n");
 }
@@ -408,13 +412,13 @@ export function renderReviewsMd(
 export function renderFaqMd(
   lang: Locale,
   dict: Dictionary,
-  canonical: string,
+  meta: RouteMeta,
 ): string {
   const fm = frontmatter({
     title: dict.faq.title,
     lang,
-    canonical,
-    updated: pageDate("/faq"),
+    canonical: meta.canonical,
+    updated: meta.updated,
   });
 
   const faqPart = renderFaqPart(dict.faq.items);
@@ -436,13 +440,13 @@ export function renderFaqMd(
 export function renderLavalMd(
   lang: Locale,
   dict: Dictionary,
-  canonical: string,
+  meta: RouteMeta,
 ): string {
   const fm = frontmatter({
     title: dict.laval.heading,
     lang,
-    canonical,
-    updated: pageDate("/laval"),
+    canonical: meta.canonical,
+    updated: meta.updated,
   });
 
   const faqPart = renderFaqPart(dict.laval.faq.items);
@@ -469,13 +473,13 @@ export function renderLavalMd(
 export function renderTermsMd(
   lang: Locale,
   dict: Dictionary,
-  canonical: string,
+  meta: RouteMeta,
 ): string {
   const fm = frontmatter({
     title: dict.legal.terms.heading,
     lang,
-    canonical,
-    updated: pageDate("/terms"),
+    canonical: meta.canonical,
+    updated: meta.updated,
   });
 
   const intros = dict.legal.terms.intro.map((p: string) => p).join("\n\n");
@@ -500,13 +504,13 @@ export function renderTermsMd(
 export function renderPrivacyMd(
   lang: Locale,
   dict: Dictionary,
-  canonical: string,
+  meta: RouteMeta,
 ): string {
   const fm = frontmatter({
     title: dict.legal.privacy.heading,
     lang,
-    canonical,
-    updated: pageDate("/privacy"),
+    canonical: meta.canonical,
+    updated: meta.updated,
   });
 
   const intros = dict.legal.privacy.intro.map((p: string) => p).join("\n\n");
@@ -537,16 +541,14 @@ export function renderComparisonMd(
   lang: Locale,
   dict: Dictionary,
   comparison: Comparison,
-  canonical: string,
+  meta: RouteMeta,
 ): string {
   const cmpDict = dict.comparisons[comparison.id];
   const fm = frontmatter({
     title: cmpDict.title,
     lang,
-    canonical,
-    // Same deriver route-universe uses for this comparison's dateKey — no inline
-    // key string, so the twin key and the sitemap key are identical by construction.
-    updated: pageDate(comparisonPath(comparison, "en")),
+    canonical: meta.canonical,
+    updated: meta.updated,
   });
 
   const table = renderComparisonTable(cmpDict.columns, cmpDict.rows);
@@ -581,15 +583,14 @@ export function renderGuideMd(
   lang: Locale,
   dict: Dictionary,
   guide: Guide,
-  canonical: string,
+  meta: RouteMeta,
 ): string {
   const guideDict = dict.guides[guide.id];
   const fm = frontmatter({
     title: guideDict.title,
     lang,
-    canonical,
-    // Same deriver route-universe uses for this guide's dateKey (see renderComparisonMd).
-    updated: pageDate(guidePath(guide, "en")),
+    canonical: meta.canonical,
+    updated: meta.updated,
   });
 
   const sectionParts = guideDict.sections

@@ -10,22 +10,26 @@ import { site } from "@/lib/site";
 import { homeMd, navMd, slugMd } from "./md-route";
 import { services, serviceBySlug, servicePath, slugParams } from "@/lib/services";
 import { renderServiceMd } from "@/lib/md-serializer";
+import { PAGE_DATES } from "@/lib/page-dates";
+import { SERVICE_DATE_KEY } from "@/lib/route-universe";
 
 const req = new Request("http://test.local/");
 const ctx = <T>(params: T) => ({ params: Promise.resolve(params) });
 const MD_CT = "text/markdown; charset=utf-8";
 
 describe("navMd", () => {
+  // `route` doubles as the page-dates key now that the factory resolves `updated`,
+  // so use a real one — pageDate throws loud on an unknown key.
   const nav = navMd({
-    route: "/things",
-    render: (lang, _dict, canonical) => `NAV ${lang} ${canonical}`,
+    route: "/about",
+    render: (lang, _dict, meta) => `NAV ${lang} ${meta.canonical}`,
   });
 
   it("serves 200 with the markdown header and canonical url/{lang}{route}", async () => {
     const res = await nav.GET(req, ctx({ lang: "en" }));
     expect(res.status).toBe(200);
     expect(res.headers.get("content-type")).toBe(MD_CT);
-    expect(await res.text()).toBe(`NAV en ${site.url}/en/things`);
+    expect(await res.text()).toBe(`NAV en ${site.url}/en/about`);
   });
 
   it("404s an unknown locale", async () => {
@@ -47,7 +51,9 @@ describe("slugMd", () => {
     slugParams: (lang) => ents.map((e) => ({ slug: e.slug[lang] })),
     bySlug: (lang, s) => ents.find((e) => e.slug[lang] === s),
     path: (e, lang) => `/x/${e.slug[lang]}`,
-    render: (_lang, _dict, e, canonical) => `SLUG ${e.id} ${canonical}`,
+    // The fake path isn't in PAGE_DATES; override to a real key so pageDate resolves.
+    dateKey: () => "/services",
+    render: (_lang, _dict, e, meta) => `SLUG ${e.id} ${meta.canonical}`,
   });
 
   it("serves 200 for a known slug with canonical from path()", async () => {
@@ -84,10 +90,13 @@ describe("homeMd", () => {
 
 // Smoke: real registry + real renderer through slugMd (integration, not a fake).
 describe("slugMd — real service twin", () => {
+  // Mirrors the real service .md wiring, including the dateKey override — the
+  // service twin keys on the shared /services date, not its per-slug path.
   const svc = slugMd({
     slugParams,
     bySlug: serviceBySlug,
     path: servicePath,
+    dateKey: () => SERVICE_DATE_KEY,
     render: renderServiceMd,
   });
   const firstSlug = services[0].slug.en;
@@ -98,6 +107,9 @@ describe("slugMd — real service twin", () => {
     const body = await res.text();
     expect(body).toContain("# ");
     expect(body).toContain(`${site.url}/en/services/${firstSlug}`);
+    // End-to-end proof of the hoist: services override → SERVICE_DATE_KEY →
+    // pageDate → frontmatter `updated`, resolved by the factory (not the renderer).
+    expect(body).toContain(`updated: ${PAGE_DATES["/services"]}`);
   });
 
   it("generateStaticParams matches the registry's slugParams", () => {
