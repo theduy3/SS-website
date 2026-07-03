@@ -2,19 +2,13 @@
 
 import { useCallback, useEffect, useState } from "react";
 import type { Popup } from "@/lib/popup";
-import { errText } from "./admin-error";
+import { adminRequest, type AdminResult } from "./admin-request";
 
-type ListResult = { ok: true; data: Popup[] } | { ok: false; error: string };
-
-async function fetchPopups(): Promise<ListResult> {
-  try {
-    const res = await fetch("/api/admin/popups");
-    const data = await res.json();
-    if (res.ok && data.success) return { ok: true, data: data.data };
-    return { ok: false, error: errText(data, "Failed to load popups") };
-  } catch {
-    return { ok: false, error: "Network error loading popups" };
-  }
+function fetchPopups(): Promise<AdminResult<Popup[]>> {
+  return adminRequest<Popup[]>("/api/admin/popups", undefined, {
+    fail: "Failed to load popups",
+    network: "Network error loading popups",
+  });
 }
 
 // Owns the popup list: initial fetch, manual refresh (called after a save or
@@ -26,7 +20,7 @@ export function usePopupList() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const applyList = useCallback((result: ListResult) => {
+  const applyList = useCallback((result: AdminResult<Popup[]>) => {
     if (result.ok) {
       setPopups(result.data);
       setError(null);
@@ -56,16 +50,13 @@ export function usePopupList() {
     async (id: string) => {
       if (!confirm(`Delete popup "${id}"? This cannot be undone.`)) return;
       setError(null);
-      try {
-        const res = await fetch(`/api/admin/popups/${encodeURIComponent(id)}`, {
-          method: "DELETE",
-        });
-        const data = await res.json();
-        if (res.ok && data.success) await refresh();
-        else setError(errText(data, "Delete failed"));
-      } catch {
-        setError("Network error while deleting");
-      }
+      const result = await adminRequest(
+        `/api/admin/popups/${encodeURIComponent(id)}`,
+        { method: "DELETE" },
+        { fail: "Delete failed", network: "Network error while deleting" },
+      );
+      if (result.ok) await refresh();
+      else setError(result.error);
     },
     [refresh],
   );

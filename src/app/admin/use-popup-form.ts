@@ -3,7 +3,7 @@
 import { useState } from "react";
 import type { Popup } from "@/lib/popup";
 import { emptyDraft, toDraft, toPopup, type Draft } from "@/lib/popup-draft";
-import { errText } from "./admin-error";
+import { adminRequest } from "./admin-request";
 
 // Owns the currently-open draft: create/edit/cancel and save. Has no
 // knowledge of the list itself — `onSaved` is called after a successful save
@@ -44,7 +44,7 @@ export function usePopupForm({
     setError(null);
     try {
       const popup = toPopup(draft);
-      const res = await fetch(
+      const result = await adminRequest(
         isNew
           ? "/api/admin/popups"
           : `/api/admin/popups/${encodeURIComponent(popup.id)}`,
@@ -53,16 +53,14 @@ export function usePopupForm({
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(popup),
         },
+        { fail: "Save failed", network: "Network error while saving" },
       );
-      const data = await res.json();
-      if (res.ok && data.success) {
+      if (result.ok) {
         setDraft(null);
         await onSaved();
       } else {
-        setError(errText(data, "Save failed"));
+        setError(result.error);
       }
-    } catch {
-      setError("Network error while saving");
     } finally {
       setSaving(false);
     }
