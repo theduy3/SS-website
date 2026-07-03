@@ -8,7 +8,7 @@
 //   (e) faqPageGraph(dict.laval.faq.items) returns @type "FAQPage" with all items.
 //   (f) SSR render output contains "carrefour" (location signal).
 //   (g) SSR render output contains the "@type":"FAQPage" JSON-LD literal.
-//   (h) The lead <p> text precedes the PageHeader title in document order.
+//   (h) The lead <p> renders below the PageHeader title as the first body paragraph.
 //
 // Note: getDictionary is guarded by "server-only". We import the JSON files
 // directly — same data, no server-only boundary in vitest/jsdom.

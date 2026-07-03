@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { PageHeader } from "@/components/PageHeader";
 import { Button } from "@/components/Button";
 import { Reveal } from "@/components/Reveal";
-import { dirFor, type LangParams } from "@/lib/i18n";
+import { type LangParams } from "@/lib/i18n";
+import { LeadParagraph } from "@/components/LeadParagraph";
 import { resolveLangPage, langPageMetadata } from "@/lib/page-resolver";
 import { PageBreadcrumb } from "@/components/PageBreadcrumb";
 
@@ -21,18 +22,13 @@ export default async function AboutPage({ params }: LangParams) {
 
   return (
     <>
-      <p
-        className="mx-auto max-w-3xl px-6 pt-8 text-lg leading-relaxed text-mocha md:pt-12"
-        dir={dirFor(lang)}
-      >
-        {dict.about.lead}
-      </p>
       <PageBreadcrumb
         lang={lang}
         dict={dict}
         crumbs={[{ name: dict.nav.about, route: "/about" }]}
       />
       <PageHeader title={dict.about.heading} />
+      <LeadParagraph lang={lang} text={dict.about.lead} />
 
       <section className="mx-auto max-w-3xl px-6 py-20 md:py-28">
         <div className="space-y-6">

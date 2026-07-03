@@ -5,7 +5,8 @@
 // on first paint and readable by no-JS AI crawlers (RESEARCH Pitfall 3).
 
 import type { Metadata } from "next";
-import { dirFor, type LangParams } from "@/lib/i18n";
+import { type LangParams } from "@/lib/i18n";
+import { LeadParagraph } from "@/components/LeadParagraph";
 import { resolveLangPage, langPageMetadata } from "@/lib/page-resolver";
 import { faqPageGraph } from "@/lib/seo";
 import { PageBreadcrumb } from "@/components/PageBreadcrumb";
@@ -39,18 +40,11 @@ export default async function LavalPage({ params }: LangParams) {
         crumbs={[{ name: dict.laval.heading, route: "/laval" }]}
       />
 
-      {/* Answer-first lead — plain <p>, NOT wrapped in <Reveal>/motion.
-          Framer Motion sets opacity:0 server-side; that hides the lead from
-          no-JS AI crawlers on first paint. Must be SSR-visible (Pitfall 3). */}
-      <p
-        className="mx-auto max-w-3xl px-6 pt-8 text-lg leading-relaxed text-mocha md:pt-12"
-        dir={dirFor(lang)}
-      >
-        {dict.laval.lead}
-      </p>
-
       {/* Page title + intro band */}
       <PageHeader title={dict.laval.heading} intro={dict.laval.intro} />
+
+      {/* Answer-first lead — SSR-visible constraint documented in LeadParagraph */}
+      <LeadParagraph lang={lang} text={dict.laval.lead} />
 
       {/* Trust band + sticky Call/Book bar (key page) */}
       <KeyPageChrome locale={lang} dict={dict} />
