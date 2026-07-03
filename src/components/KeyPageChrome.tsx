@@ -13,22 +13,26 @@
 
 import { TrustBand } from "@/components/TrustBand";
 import { StickyCtaBar } from "@/components/StickyCtaBar";
+import { readConsent } from "@/lib/consent.server";
 import type { Locale } from "@/lib/i18n";
 import type { Dictionary } from "@/lib/dictionary";
 
 type ChromeDict = Pick<Dictionary, "trust" | "cta">;
 
-export function KeyPageChrome({
+export async function KeyPageChrome({
   locale,
   dict,
-  consentKnown,
   showTrustBand = true,
 }: {
   locale: Locale;
   dict: ChromeDict;
-  consentKnown: boolean;
   showTrustBand?: boolean;
 }) {
+  // Consent is read here, not passed in, so the key pages don't each repeat the
+  // readConsent()/`!== undefined` ritual. cookies() dedupes per request, so this
+  // shares the layout's existing read — StickyCtaBar (the sole consumer) hides
+  // until the visitor's consent state is known.
+  const consentKnown = (await readConsent()) !== undefined;
   return (
     <>
       {/* TrustBand: SSR, inline in page flow — below hero, above first content */}

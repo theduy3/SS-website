@@ -13,7 +13,6 @@ import {
   comparisonPath,
   comparisonPathsByLocale,
 } from "@/lib/comparisons";
-import { readConsent } from "@/lib/consent.server";
 import { dirFor } from "@/lib/i18n";
 import { productGraph, reviewGraph } from "@/lib/seo";
 import { PageBreadcrumb } from "@/components/PageBreadcrumb";
@@ -49,8 +48,6 @@ export default async function ComparisonPage({ params }: Params) {
   const c = dict.comparisons[cmp.id];
   const labels = dict.comparisonLabels;
   const sLabels = dict.serviceLabels;
-  const consent = await readConsent();
-  const consentKnown = consent !== undefined;
 
   return (
     <>
@@ -94,7 +91,7 @@ export default async function ComparisonPage({ params }: Params) {
       </section>
 
       {/* Trust band + sticky Call/Book bar (key page) — mounted once (D-11) */}
-      <KeyPageChrome locale={lang} dict={dict} consentKnown={consentKnown} />
+      <KeyPageChrome locale={lang} dict={dict} />
 
       {/* Comparison matrix */}
       <section className="bg-fog">

@@ -10,7 +10,6 @@ import { JsonLd } from "@/components/JsonLd";
 import { KeyPageChrome } from "@/components/KeyPageChrome";
 import { services, servicePath } from "@/lib/services";
 import { site } from "@/lib/site";
-import { readConsent } from "@/lib/consent.server";
 import { dirFor, type LangParams } from "@/lib/i18n";
 import { resolveLangPage, langPageMetadata } from "@/lib/page-resolver";
 import { servicesGraph } from "@/lib/seo";
@@ -27,8 +26,6 @@ export function generateMetadata({ params }: LangParams): Promise<Metadata> {
 
 export default async function Home({ params }: LangParams) {
   const { lang, dict } = await resolveLangPage(params);
-  const consent = await readConsent();
-  const consentKnown = consent !== undefined;
 
   // Locale-aware number formatting: FR "4,9" (comma), EN "4.9".
   const localeTag = lang === "fr" ? "fr-CA" : "en-CA";
@@ -97,12 +94,7 @@ export default async function Home({ params }: LangParams) {
 
       {/* Sticky Call/Book bar (mobile). TrustBand suppressed here — the reviews
           section below already shows the rating; avoids a duplicate on home. */}
-      <KeyPageChrome
-        locale={lang}
-        dict={dict}
-        consentKnown={consentKnown}
-        showTrustBand={false}
-      />
+      <KeyPageChrome locale={lang} dict={dict} showTrustBand={false} />
 
       {/* Reviews / ratings — soft-gray band, dark text */}
       <section className="bg-fog">

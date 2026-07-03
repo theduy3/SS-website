@@ -8,7 +8,6 @@ import { JsonLd } from "@/components/JsonLd";
 import { PageHeader } from "@/components/PageHeader";
 import { Accordion } from "@/components/Accordion";
 import { KeyPageChrome } from "@/components/KeyPageChrome";
-import { readConsent } from "@/lib/consent.server";
 
 export function generateMetadata({ params }: LangParams): Promise<Metadata> {
   return langPageMetadata(params, {
@@ -22,8 +21,6 @@ export function generateMetadata({ params }: LangParams): Promise<Metadata> {
 
 export default async function FaqPage({ params }: LangParams) {
   const { lang, dict } = await resolveLangPage(params);
-  const consent = await readConsent();
-  const consentKnown = consent !== undefined;
   return (
     <div className="pb-[64px] md:pb-0">
       <p
@@ -40,7 +37,7 @@ export default async function FaqPage({ params }: LangParams) {
       />
       <PageHeader title={dict.faq.title} intro={dict.faq.intro} />
       {/* Trust band + sticky Call/Book bar (key page) */}
-      <KeyPageChrome locale={lang} dict={dict} consentKnown={consentKnown} />
+      <KeyPageChrome locale={lang} dict={dict} />
       <section className="mx-auto max-w-3xl px-6 py-20 md:py-28">
         <Accordion items={dict.faq.items} />
       </section>
