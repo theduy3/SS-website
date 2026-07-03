@@ -8,7 +8,7 @@ export type Locale = (typeof locales)[number];
 export const defaultLocale: Locale = "fr";
 
 // Right-to-left locales. Arabic renders RTL; everything else is LTR.
-export const rtlLocales: readonly Locale[] = ["ar"];
+const rtlLocales: readonly Locale[] = ["ar"];
 export function dirFor(locale: Locale): "rtl" | "ltr" {
   return rtlLocales.includes(locale) ? "rtl" : "ltr";
 }

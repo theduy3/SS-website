@@ -8,7 +8,7 @@ import type { Locale } from "@/lib/i18n";
 import type { ServiceId } from "@/lib/services";
 import { slugRegistry } from "@/lib/slug-registry";
 
-export type GuideId =
+type GuideId =
   | "manicure-cost-laval"
   | "gel-manicure-care"
   | "best-nails-wedding";

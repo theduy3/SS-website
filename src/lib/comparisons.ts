@@ -7,7 +7,7 @@ import type { Locale } from "@/lib/i18n";
 import type { ServiceId } from "@/lib/services";
 import { slugRegistry } from "@/lib/slug-registry";
 
-export type ComparisonId =
+type ComparisonId =
   | "gel-vs-regular"
   | "lash-styles"
   | "wax-vs-sugar"
