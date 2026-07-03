@@ -12,7 +12,6 @@ import {
   guidePath,
   guidePathsByLocale,
 } from "@/lib/guides";
-import { readConsent } from "@/lib/consent.server";
 import { dirFor } from "@/lib/i18n";
 import { articleGraph, breadcrumbGraph } from "@/lib/seo";
 import {
@@ -46,8 +45,6 @@ export default async function GuidePage({ params }: Params) {
   );
   const g = dict.guides[guide.id];
   const sLabels = dict.serviceLabels;
-  const consent = await readConsent();
-  const consentKnown = consent !== undefined;
 
   return (
     <>
@@ -83,7 +80,7 @@ export default async function GuidePage({ params }: Params) {
       </section>
 
       {/* Trust band + sticky Call/Book bar (key page) — mounted once (D-11) */}
-      <KeyPageChrome locale={lang} dict={dict} consentKnown={consentKnown} />
+      <KeyPageChrome locale={lang} dict={dict} />
 
       {/* Body sections */}
       <section className="bg-fog">

@@ -15,7 +15,6 @@ import {
   servicePath,
   servicePathsByLocale,
 } from "@/lib/services";
-import { readConsent } from "@/lib/consent.server";
 import { dirFor } from "@/lib/i18n";
 import { serviceGraph, breadcrumbGraph, faqPageGraph } from "@/lib/seo";
 import {
@@ -69,8 +68,6 @@ export default async function ServiceDetailPage({ params }: Params) {
     { label: labels.booking, value: labels.bookingValue },
   ];
   const related = relatedLinks(service.id, lang, dict);
-  const consent = await readConsent();
-  const consentKnown = consent !== undefined;
 
   return (
     <div className="pb-[64px] md:pb-0">
@@ -131,7 +128,7 @@ export default async function ServiceDetailPage({ params }: Params) {
       </section>
 
       {/* Trust band + sticky Call/Book bar (key page) */}
-      <KeyPageChrome locale={lang} dict={dict} consentKnown={consentKnown} />
+      <KeyPageChrome locale={lang} dict={dict} />
 
       {/* Why Sans Souci */}
       <section className="mx-auto max-w-3xl px-6 pb-4">

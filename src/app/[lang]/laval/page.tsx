@@ -14,7 +14,6 @@ import { Accordion } from "@/components/Accordion";
 import { Button } from "@/components/Button";
 import { KeyPageChrome } from "@/components/KeyPageChrome";
 import { site } from "@/lib/site";
-import { readConsent } from "@/lib/consent.server";
 
 export function generateMetadata({ params }: LangParams): Promise<Metadata> {
   return langPageMetadata(params, {
@@ -28,8 +27,6 @@ export function generateMetadata({ params }: LangParams): Promise<Metadata> {
 
 export default async function LavalPage({ params }: LangParams) {
   const { lang, dict } = await resolveLangPage(params);
-  const consent = await readConsent();
-  const consentKnown = consent !== undefined;
 
   return (
     <div className="pb-[64px] md:pb-0">
@@ -56,7 +53,7 @@ export default async function LavalPage({ params }: LangParams) {
       <PageHeader title={dict.laval.heading} intro={dict.laval.intro} />
 
       {/* Trust band + sticky Call/Book bar (key page) */}
-      <KeyPageChrome locale={lang} dict={dict} consentKnown={consentKnown} />
+      <KeyPageChrome locale={lang} dict={dict} />
 
       {/* Location facts — address / parking / transit / landmarks */}
       <section className="mx-auto max-w-3xl px-6 py-20 md:py-28">

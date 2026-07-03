@@ -8,7 +8,6 @@ import { KeyPageChrome } from "@/components/KeyPageChrome";
 import { site } from "@/lib/site";
 import { JsonLd } from "@/components/JsonLd";
 import { services, servicePath } from "@/lib/services";
-import { readConsent } from "@/lib/consent.server";
 import { dirFor, type LangParams } from "@/lib/i18n";
 import { resolveLangPage, langPageMetadata } from "@/lib/page-resolver";
 import { servicesGraph, breadcrumbGraph } from "@/lib/seo";
@@ -26,8 +25,6 @@ export function generateMetadata({ params }: LangParams): Promise<Metadata> {
 
 export default async function ServicesPage({ params }: LangParams) {
   const { lang, dict } = await resolveLangPage(params);
-  const consent = await readConsent();
-  const consentKnown = consent !== undefined;
 
   // Hub ItemList schema, built from the registry (price/slug) + dict (copy).
   const items = services.map((s) => ({
@@ -59,7 +56,7 @@ export default async function ServicesPage({ params }: LangParams) {
       />
 
       {/* Trust band + sticky Call/Book bar (key page) */}
-      <KeyPageChrome locale={lang} dict={dict} consentKnown={consentKnown} />
+      <KeyPageChrome locale={lang} dict={dict} />
 
       <section className="mx-auto max-w-7xl px-6 py-20 md:py-28">
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2">
