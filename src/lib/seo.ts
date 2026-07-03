@@ -307,7 +307,11 @@ export function reviewGraph(lang: Locale) {
 
 /**
  * Article node for a guide page. `inLanguage` carries the locale so crawlers
- * index the article per-language; publisher is `@id`-linked to the business.
+ * index the article per-language; publisher and author are `@id`-linked to the
+ * business. Dates are YYYY-MM-DD strings: `datePublished` is the immutable
+ * publish date (lives on the guide entity), `dateModified` the mutable
+ * last-edit date (lives in PAGE_DATES) — separate sources so bumping a page's
+ * modified date can never silently rewrite its publish date (GEO-G).
  */
 export function articleGraph(
   lang: Locale,
@@ -315,7 +319,15 @@ export function articleGraph(
     name,
     description,
     path,
-  }: { name: string; description: string; path: string },
+    datePublished,
+    dateModified,
+  }: {
+    name: string;
+    description: string;
+    path: string;
+    datePublished: string;
+    dateModified: string;
+  },
 ) {
   return {
     "@context": "https://schema.org",
@@ -324,6 +336,9 @@ export function articleGraph(
     description,
     url: `${site.url}/${lang}${path}`,
     publisher: { "@id": BUSINESS_ID },
+    author: { "@id": BUSINESS_ID },
+    datePublished,
+    dateModified,
     inLanguage: lang,
   };
 }

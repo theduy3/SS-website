@@ -1,13 +1,19 @@
 # GEO Analysis — Sans Souci Ongles & Spa
 
 **Domain:** onglessanssouci.com
-**Analyzed:** 2026-06-28
-**Method:** Static source audit (Next.js App Router) + GEO criteria (Feb 2026)
+**Analyzed:** 2026-06-28 · **Re-audited (live production):** 2026-07-03
+**Method:** Static source audit (Next.js App Router) + live curl verification + GEO criteria (Feb 2026)
 **Scope:** AI Overviews · ChatGPT search · Perplexity · Bing Copilot
 
----
+> **2026-07-03 live re-audit:** all shipped fixes verified in production HTML —
+> dynamic `/llms.txt` serving (prices + `.md` index, no longer shadowed, GEO-A),
+> guide lead blocks measured at **137 words** in served HTML (GEO-E), prices
+> consistent across schema / llms.txt / prose (GEO-B), waxing $15 everywhere,
+> robots.txt allow-list live. One new gap found: `Article` JSON-LD emits only
+> `headline/description/url/publisher/inLanguage` — no `datePublished` /
+> `dateModified` / `author` (GEO-G, folds into the GEO-D E-E-A-T work).
 
-## 1. GEO Readiness Score: **79 / 100**
+## 1. GEO Readiness Score: **83 / 100** (was 79 on 2026-06-28)
 
 This site is already well above the median local-business baseline. The technical
 foundation (server-side rendering, AI-crawler allow-list, dual `llms.txt`, agent
@@ -18,12 +24,12 @@ citation trust.
 
 | Criterion | Weight | Score | Notes |
 |-----------|:-----:|:-----:|-------|
-| Citability | 25% | 21/25 | Answer-first blocks + FAQ are textbook; price conflicts cost points |
-| Structural Readability | 20% | 18/20 | Question headings, short paragraphs, comparison tables, FAQ |
+| Citability | 25% | 23/25 | Price conflicts resolved (GEO-B); 137-word answer blocks live-verified in the 134–167 sweet spot (GEO-E) |
+| Structural Readability | 20% | 18/20 | Question headings, short paragraphs, SpecTables on service pages (GEO-F), FAQ |
 | Multi-Modal Content | 15% | 9/15 | Images + ImageGallery schema; no video, no tools/calculators |
-| Authority & Brand | 20% | 12/20 | NAP + schema solid; no Person/author, thin off-site entity presence |
-| Technical Accessibility | 20% | 19/20 | SSR, AI bots allowed, llms.txt, .md twins, hreflang, sitemap |
-| **Total** | 100% | **79** | |
+| Authority & Brand | 20% | 13/20 | `sameAs` now 5 entities incl. GBP (GEO-C on-site half); still no Person/author, no Article dates (GEO-D/G), off-site presence thin |
+| Technical Accessibility | 20% | 20/20 | SSR + llms.txt shadow fix live-verified (GEO-A); AI bots allowed, .md twins, hreflang, sitemap |
+| **Total** | 100% | **83** | |
 
 ---
 
@@ -118,18 +124,17 @@ authority is near-zero beyond IG/FB. This caps ChatGPT/Perplexity ceiling.
 **Strong — this is the site's best feature.** Guide/comparison content follows an
 answer-first template that maps directly onto how AI engines extract passages.
 
-Example (`dict.guides['manicure-cost-laval']`):
+Example (`dict.guides['manicure-cost-laval']`, live-verified 2026-07-03):
 - **Question H1:** "How Much Does a Manicure Cost in Laval?"
-- **`answer` block (~45 words, self-contained):** "A classic manicure at Sans
-  Souci Ongles & Spa in Laval starts at $30, and a gel manicure starts at $40…
-  Call (450) 505-6450 for an exact quote." → direct answer in first 40–60 words ✅
+- **`answer` block (137 words, self-contained, measured in served HTML):**
+  "A manicure at Sans Souci Ongles & Spa in Laval starts at $50, and the final
+  price depends on the finish you choose — classic or gel — and any add-ons…"
+  → direct answer ("starts at $50") in the first 40–60 words ✅, block inside the
+  134–167-word citation sweet spot ✅ (GEO-E resolved), renders as a bare `<p>`
+  right after `</h1>` ✅
 - **Question-style H2s:** "What changes the price", "Classic vs gel — which is worth it"
 - **FAQ** with repeated Q&A (also emitted as `FAQPage` schema)
 - Specific facts: prices, phone, duration ("two to three weeks"), location landmark
-
-Each guide is ~350 words split into ~50–90-word self-contained blocks — slightly
-under the 134–167-word citation sweet spot per block, but the answer-first
-structure compensates.
 
 > ✅ **Resolved 2026-06-28 (GEO-B).** The conflict below was reconciled — all
 > sources now state manicure from $50 (up to $100) and waxing from $15. Kept for
@@ -171,17 +176,23 @@ structure compensates.
 
 ## 8. Top 5 Highest-Impact Changes
 
-1. **🔴 Reconcile price facts across schema, llms.txt, and guide prose** (GEO-B).
-   Single source of truth = `services.ts`. Conflicting facts are the one thing
-   actively *hurting* an otherwise strong citability profile.
-2. **🟠 Build off-site entity presence** — Reddit + YouTube + Google Business
-   Profile in `sameAs`. This is the gate on ChatGPT/Perplexity (Sections 2, 5).
-3. **🟠 Add author / E-E-A-T signals** — a named technician/owner with credentials
-   (`Person` schema + byline on guides) raises Authority from 12→~16/20.
-4. **🟡 Resolve the dual-llms.txt drift risk** (GEO-A) — delete the static copy or
-   add a parity test so the two never contradict.
-5. **🟡 Add multi-modal depth** — embed a short video or a price/duration
-   reference table per service page (multi-modal content sees +156% selection).
+1. **🟠 Build off-site entity presence** — Reddit + YouTube seeding (GEO-C
+   off-site half). This is the gate on ChatGPT/Perplexity (Sections 2, 5) and the
+   single biggest remaining lever. A **Wikidata entity** (NailSalon, address,
+   official site, `sameAs` back-link) is achievable for a local business and
+   feeds every LLM's entity graph.
+2. **🟠 Add author / E-E-A-T signals** (GEO-D) — a named technician/owner with
+   credentials (`Person` schema + byline on guides) raises Authority to ~16/20.
+3. **🟠 Add `datePublished` / `dateModified` / `author` to `Article` JSON-LD**
+   (GEO-G, `src/lib/seo.ts`). Freshness is a direct AI-citation signal; the
+   `updated` date already exists in `.md` frontmatter — wire the same value in.
+4. **🟡 Add multi-modal depth** — a short video per top service (YouTube-hosted,
+   doubling as the GEO-C YouTube seed) — multi-modal content sees +156% selection.
+5. **🟡 Publish one piece of original data** — e.g. a small "Laval nail-salon
+   price survey 2026". Unique statistics are the most citable asset class; nobody
+   else will have this data.
+
+*(Prior #1 price reconciliation and #4 llms.txt drift shipped — see register.)*
 
 ---
 
@@ -235,6 +246,7 @@ The content template is already strong. Targeted upgrades:
 | GEO-A | ✅ Resolved | ~~Dynamic `/llms.txt` route + static `public/llms.txt` can drift~~ Fixed 2026-06-28: live `/llms.txt` was being **shadowed** by the static `public/llms.txt` (thinner — no prices, no `.md` index). Deleted the static file so the richer dynamic route (`STANDALONE_PATHS`-wired) serves. | Done |
 | GEO-C | 🟡 Partial | On-site done 2026-07-01: added Google Business Profile, TikTok, and Yelp to schema `sameAs` (5 entities now link the business node). **Off-site half still open** — Reddit/YouTube seeding is manual, non-code. | Seed Reddit/YouTube (manual) |
 | GEO-D | 🟠 High | No author/`Person` schema → weak E-E-A-T | Add `Person` + byline on guides |
+| GEO-G | ✅ Resolved | ~~`Article` JSON-LD missing `datePublished`/`dateModified`/`author`~~ Fixed 2026-07-03: `articleGraph` now emits `datePublished` (immutable, from new `Guide.published` field), `dateModified` (from `PAGE_DATES` via the same EN-base-path key the sitemap/.md twin use — no drift), and `author` `@id`-linked to the business node. Gated by guides.test.ts invariant published ≤ modified. Verified in served standalone HTML (EN+FR). 362/362 tests. Upgrade to `Person` author lands with GEO-D. | Done |
 | GEO-E | ✅ Resolved | ~~Answer blocks under optimal citation length~~ Fixed 2026-06-28: expanded all 3 guide `answer` blocks to the 134–167-word citation sweet spot (137/149/150 EN), answer-first preserved, across en/fr/es/ar. Composed from existing translated sentences; prices unchanged. | Done |
 | GEO-F | ✅ Resolved | ~~Service pages lack extractable tables~~ Fixed 2026-06-28: added a "Quick facts" `SpecTable` (starting price · price range · duration · location · booking) high on every service page, SSR, across en/fr/es/ar. Price cells derive from `services.ts` (no drift). Verified in served HTML. | Done |
 

@@ -86,12 +86,16 @@ describe("productGraph", () => {
 });
 
 describe("articleGraph", () => {
+  const options = {
+    name: "Combien coûte une manucure à Laval ?",
+    description: "Tarifs de manucure expliqués.",
+    path: "/guides/cout-manucure-laval",
+    datePublished: "2026-06-22",
+    dateModified: "2026-06-22",
+  };
+
   it("emits an Article node with inLanguage, headline, @id-linked publisher and absolute url", () => {
-    const graph = articleGraph("fr", {
-      name: "Combien coûte une manucure à Laval ?",
-      description: "Tarifs de manucure expliqués.",
-      path: "/guides/cout-manucure-laval",
-    });
+    const graph = articleGraph("fr", options);
 
     expect(graph["@context"]).toBe("https://schema.org");
     expect(graph["@type"]).toBe("Article");
@@ -101,6 +105,16 @@ describe("articleGraph", () => {
     expect(graph.publisher).toEqual({ "@id": `${site.url}/#business` });
     // inLanguage carries the locale so crawlers index the article per-language.
     expect(graph.inLanguage).toBe("fr");
+  });
+
+  it("emits datePublished, dateModified and an @id-linked author (GEO-G freshness/E-E-A-T signals)", () => {
+    const graph = articleGraph("fr", options);
+
+    expect(graph.datePublished).toBe("2026-06-22");
+    expect(graph.dateModified).toBe("2026-06-22");
+    // Author @id-links the existing business Organization node — one fact,
+    // one place, same convention as publisher.
+    expect(graph.author).toEqual({ "@id": `${site.url}/#business` });
   });
 });
 
