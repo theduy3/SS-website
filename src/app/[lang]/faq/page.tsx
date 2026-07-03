@@ -1,6 +1,7 @@
 // src/app/[lang]/faq/page.tsx
 import type { Metadata } from "next";
-import { dirFor, type LangParams } from "@/lib/i18n";
+import { type LangParams } from "@/lib/i18n";
+import { LeadParagraph } from "@/components/LeadParagraph";
 import { resolveLangPage, langPageMetadata } from "@/lib/page-resolver";
 import { faqPageGraph } from "@/lib/seo";
 import { PageBreadcrumb } from "@/components/PageBreadcrumb";
@@ -23,12 +24,6 @@ export default async function FaqPage({ params }: LangParams) {
   const { lang, dict } = await resolveLangPage(params);
   return (
     <div className="pb-[64px] md:pb-0">
-      <p
-        className="mx-auto max-w-3xl px-6 pt-8 text-lg leading-relaxed text-mocha md:pt-12"
-        dir={dirFor(lang)}
-      >
-        {dict.faq.lead}
-      </p>
       <JsonLd data={faqPageGraph(dict.faq.items)} />
       <PageBreadcrumb
         lang={lang}
@@ -36,6 +31,7 @@ export default async function FaqPage({ params }: LangParams) {
         crumbs={[{ name: dict.nav.faq, route: "/faq" }]}
       />
       <PageHeader title={dict.faq.title} intro={dict.faq.intro} />
+      <LeadParagraph lang={lang} text={dict.faq.lead} />
       {/* Trust band + sticky Call/Book bar (key page) */}
       <KeyPageChrome locale={lang} dict={dict} />
       <section className="mx-auto max-w-3xl px-6 py-20 md:py-28">

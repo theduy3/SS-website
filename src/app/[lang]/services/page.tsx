@@ -8,7 +8,8 @@ import { KeyPageChrome } from "@/components/KeyPageChrome";
 import { site } from "@/lib/site";
 import { JsonLd } from "@/components/JsonLd";
 import { services, servicePath } from "@/lib/services";
-import { dirFor, type LangParams } from "@/lib/i18n";
+import { type LangParams } from "@/lib/i18n";
+import { LeadParagraph } from "@/components/LeadParagraph";
 import { resolveLangPage, langPageMetadata } from "@/lib/page-resolver";
 import { servicesGraph } from "@/lib/seo";
 import { PageBreadcrumb } from "@/components/PageBreadcrumb";
@@ -38,12 +39,6 @@ export default async function ServicesPage({ params }: LangParams) {
 
   return (
     <div className="pb-[64px] md:pb-0">
-      <p
-        className="mx-auto max-w-3xl px-6 pt-8 text-lg leading-relaxed text-mocha md:pt-12"
-        dir={dirFor(lang)}
-      >
-        {dict.servicesPage.lead}
-      </p>
       <JsonLd data={servicesGraph(lang, items)} />
       <PageBreadcrumb
         lang={lang}
@@ -54,6 +49,7 @@ export default async function ServicesPage({ params }: LangParams) {
         title={dict.servicesPage.heading}
         intro={dict.servicesPage.intro}
       />
+      <LeadParagraph lang={lang} text={dict.servicesPage.lead} />
 
       {/* Trust band + sticky Call/Book bar (key page) */}
       <KeyPageChrome locale={lang} dict={dict} />

@@ -90,12 +90,6 @@ export default async function ServiceDetailPage({ params }: Params) {
         ]}
       />
       <JsonLd data={faqPageGraph(d.faq)} />
-      <p
-        className="mx-auto max-w-3xl px-6 pt-8 text-lg leading-relaxed text-mocha md:pt-12"
-        dir={dirFor(lang)}
-      >
-        {d.lead}
-      </p>
 
       {/* Hero: image + title + intro */}
       <section className="mx-auto max-w-5xl px-6 py-16 md:py-24">
@@ -103,6 +97,14 @@ export default async function ServiceDetailPage({ params }: Params) {
         <Reveal delay={0.05}>
           <h1 className="mt-6 text-4xl text-espresso md:text-6xl">{d.title}</h1>
         </Reveal>
+        {/* Answer-first lead (GEO) — bare <p> outside <Reveal> so it stays
+            visible in raw SSR HTML for no-JS AI crawlers. */}
+        <p
+          className="mt-6 max-w-3xl text-lg leading-relaxed text-mocha"
+          dir={dirFor(lang)}
+        >
+          {d.lead}
+        </p>
         <Reveal delay={0.1}>
           <div className="relative mx-auto mt-10 aspect-[16/9] w-full overflow-hidden rounded-2xl">
             <ServicePhoto
