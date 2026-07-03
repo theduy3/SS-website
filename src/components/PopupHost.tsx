@@ -6,38 +6,7 @@ import type { Popup } from "@/lib/popup";
 import type { Locale } from "@/lib/i18n";
 import { PopupRich } from "./PopupRich";
 import { PopupEmbed } from "./PopupEmbed";
-
-const seenKey = (p: Popup) => `popup:${p.id}:${p.version}`;
-
-function shouldShow(p: Popup): boolean {
-  if (p.frequency === "always") return true;
-  try {
-    const key = seenKey(p);
-    if (p.frequency === "daily") {
-      const last = Number(localStorage.getItem(key) ?? 0);
-      return Date.now() - last > 86_400_000;
-    }
-    const store = p.frequency === "session" ? sessionStorage : localStorage;
-    return !store.getItem(key);
-  } catch {
-    return true; // storage blocked → show once this load
-  }
-}
-
-function markSeen(p: Popup) {
-  try {
-    if (p.frequency === "always") return;
-    if (p.frequency === "daily")
-      localStorage.setItem(seenKey(p), String(Date.now()));
-    else
-      (p.frequency === "session" ? sessionStorage : localStorage).setItem(
-        seenKey(p),
-        "1",
-      );
-  } catch {
-    /* ignore */
-  }
-}
+import { shouldShow, markSeen } from "@/lib/popup-frequency";
 
 export function PopupHost({ locale }: { locale: Locale }) {
   const [popup, setPopup] = useState<Popup | null>(null);
