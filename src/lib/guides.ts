@@ -21,6 +21,10 @@ export type Guide = {
   // Related service — drives the breadcrumb trail and the internal link back to
   // the money page.
   service: ServiceId;
+  // Immutable first-publish date (YYYY-MM-DD) → Article.datePublished. Never
+  // bump on edits — last-modified lives in PAGE_DATES (guides.test.ts gates
+  // published ≤ modified).
+  published: string;
 };
 
 export const guides: readonly Guide[] = [
@@ -33,6 +37,7 @@ export const guides: readonly Guide[] = [
       ar: "siar-manikir-laval",
     },
     service: "manicure",
+    published: "2026-06-22",
   },
   {
     id: "gel-manicure-care",
@@ -43,6 +48,7 @@ export const guides: readonly Guide[] = [
       ar: "alinaya-manikir-jel",
     },
     service: "manicure",
+    published: "2026-06-22",
   },
   {
     id: "best-nails-wedding",
@@ -53,6 +59,7 @@ export const guides: readonly Guide[] = [
       ar: "afdal-azafir-zafaf",
     },
     service: "manicure",
+    published: "2026-06-22",
   },
 ] as const;
 

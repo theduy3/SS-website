@@ -13,6 +13,7 @@ import {
   guidePathsByLocale,
 } from "@/lib/guides";
 import { dirFor } from "@/lib/i18n";
+import { pageDate } from "@/lib/page-dates";
 import { articleGraph } from "@/lib/seo";
 import { PageBreadcrumb } from "@/components/PageBreadcrumb";
 import {
@@ -55,6 +56,10 @@ export default async function GuidePage({ params }: Params) {
           name: g.title,
           description: g.metaDescription,
           path: guidePath(guide, lang),
+          datePublished: guide.published,
+          // PAGE_DATES is keyed by the EN base path — the same key the sitemap
+          // and .md twin use, so Article/sitemap/frontmatter dates can't drift.
+          dateModified: pageDate(guidePath(guide, "en")),
         })}
       />
       <PageBreadcrumb
