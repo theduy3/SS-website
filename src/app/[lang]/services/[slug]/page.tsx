@@ -17,7 +17,8 @@ import {
 } from "@/lib/services";
 import { readConsent } from "@/lib/consent.server";
 import { dirFor } from "@/lib/i18n";
-import { serviceGraph, breadcrumbGraph, faqPageGraph } from "@/lib/seo";
+import { serviceGraph, faqPageGraph } from "@/lib/seo";
+import { PageBreadcrumb } from "@/components/PageBreadcrumb";
 import {
   resolveSlugPage,
   slugPageMetadata,
@@ -83,12 +84,13 @@ export default async function ServiceDetailPage({ params }: Params) {
           path: servicePath(service, lang),
         })}
       />
-      <JsonLd
-        data={breadcrumbGraph(lang, [
-          { name: dict.nav.home, route: "" },
+      <PageBreadcrumb
+        lang={lang}
+        dict={dict}
+        crumbs={[
           { name: dict.nav.services, route: "/services" },
           { name: d.title, route: servicePath(service, lang) },
-        ])}
+        ]}
       />
       <JsonLd data={faqPageGraph(d.faq)} />
       <p

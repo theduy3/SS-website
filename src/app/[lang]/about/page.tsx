@@ -2,10 +2,9 @@ import type { Metadata } from "next";
 import { PageHeader } from "@/components/PageHeader";
 import { Button } from "@/components/Button";
 import { Reveal } from "@/components/Reveal";
-import { JsonLd } from "@/components/JsonLd";
 import { dirFor, type LangParams } from "@/lib/i18n";
 import { resolveLangPage, langPageMetadata } from "@/lib/page-resolver";
-import { breadcrumbGraph } from "@/lib/seo";
+import { PageBreadcrumb } from "@/components/PageBreadcrumb";
 
 export function generateMetadata({ params }: LangParams): Promise<Metadata> {
   return langPageMetadata(params, {
@@ -28,11 +27,10 @@ export default async function AboutPage({ params }: LangParams) {
       >
         {dict.about.lead}
       </p>
-      <JsonLd
-        data={breadcrumbGraph(lang, [
-          { name: dict.nav.home, route: "" },
-          { name: dict.nav.about, route: "/about" },
-        ])}
+      <PageBreadcrumb
+        lang={lang}
+        dict={dict}
+        crumbs={[{ name: dict.nav.about, route: "/about" }]}
       />
       <PageHeader title={dict.about.heading} />
 

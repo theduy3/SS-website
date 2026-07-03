@@ -3,7 +3,8 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { type LangParams } from "@/lib/i18n";
 import { resolveLangPage, langPageMetadata } from "@/lib/page-resolver";
-import { imageGalleryGraph, breadcrumbGraph } from "@/lib/seo";
+import { imageGalleryGraph } from "@/lib/seo";
+import { PageBreadcrumb } from "@/components/PageBreadcrumb";
 import { JsonLd } from "@/components/JsonLd";
 import { PageHeader } from "@/components/PageHeader";
 import { Reveal } from "@/components/Reveal";
@@ -33,11 +34,10 @@ export default async function GalleryPage({ params }: LangParams) {
           photo(id),
         )}
       />
-      <JsonLd
-        data={breadcrumbGraph(lang, [
-          { name: dict.nav.home, route: "/" },
-          { name: dict.nav.gallery, route: "/gallery" },
-        ])}
+      <PageBreadcrumb
+        lang={lang}
+        dict={dict}
+        crumbs={[{ name: dict.nav.gallery, route: "/gallery" }]}
       />
       <PageHeader title={dict.gallery.title} intro={dict.gallery.intro} />
       <section className="mx-auto max-w-6xl px-6 py-20 md:py-28">

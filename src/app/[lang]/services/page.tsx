@@ -11,7 +11,8 @@ import { services, servicePath } from "@/lib/services";
 import { readConsent } from "@/lib/consent.server";
 import { dirFor, type LangParams } from "@/lib/i18n";
 import { resolveLangPage, langPageMetadata } from "@/lib/page-resolver";
-import { servicesGraph, breadcrumbGraph } from "@/lib/seo";
+import { servicesGraph } from "@/lib/seo";
+import { PageBreadcrumb } from "@/components/PageBreadcrumb";
 import { formatFromPrice } from "@/lib/format";
 
 export function generateMetadata({ params }: LangParams): Promise<Metadata> {
@@ -47,11 +48,10 @@ export default async function ServicesPage({ params }: LangParams) {
         {dict.servicesPage.lead}
       </p>
       <JsonLd data={servicesGraph(lang, items)} />
-      <JsonLd
-        data={breadcrumbGraph(lang, [
-          { name: dict.nav.home, route: "" },
-          { name: dict.nav.services, route: "/services" },
-        ])}
+      <PageBreadcrumb
+        lang={lang}
+        dict={dict}
+        crumbs={[{ name: dict.nav.services, route: "/services" }]}
       />
       <PageHeader
         title={dict.servicesPage.heading}

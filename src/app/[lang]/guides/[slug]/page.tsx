@@ -14,7 +14,8 @@ import {
 } from "@/lib/guides";
 import { readConsent } from "@/lib/consent.server";
 import { dirFor } from "@/lib/i18n";
-import { articleGraph, breadcrumbGraph } from "@/lib/seo";
+import { articleGraph } from "@/lib/seo";
+import { PageBreadcrumb } from "@/components/PageBreadcrumb";
 import {
   resolveSlugPage,
   slugPageMetadata,
@@ -59,12 +60,13 @@ export default async function GuidePage({ params }: Params) {
           path: guidePath(guide, lang),
         })}
       />
-      <JsonLd
-        data={breadcrumbGraph(lang, [
-          { name: dict.nav.home, route: "" },
+      <PageBreadcrumb
+        lang={lang}
+        dict={dict}
+        crumbs={[
           { name: sLabels.guides, route: "/services" },
           { name: g.title, route: guidePath(guide, lang) },
-        ])}
+        ]}
       />
 
       {/* Intro: answer-first block (bare SSR <p>) → sections */}
