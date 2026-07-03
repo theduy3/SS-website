@@ -3,10 +3,9 @@ import { WidgetEmbed } from "@/components/WidgetEmbed";
 import { widgets } from "@/lib/widgets";
 import { Reveal } from "@/components/Reveal";
 import { site } from "@/lib/site";
-import { JsonLd } from "@/components/JsonLd";
 import { type LangParams } from "@/lib/i18n";
 import { resolveLangPage, langPageMetadata } from "@/lib/page-resolver";
-import { breadcrumbGraph } from "@/lib/seo";
+import { PageBreadcrumb } from "@/components/PageBreadcrumb";
 
 export function generateMetadata({ params }: LangParams): Promise<Metadata> {
   return langPageMetadata(params, {
@@ -23,11 +22,10 @@ export default async function AppointmentsPage({ params }: LangParams) {
 
   return (
     <section className="mx-auto max-w-4xl px-6 py-16 md:py-24">
-      <JsonLd
-        data={breadcrumbGraph(lang, [
-          { name: dict.nav.home, route: "" },
-          { name: dict.nav.appointments, route: "/appointments" },
-        ])}
+      <PageBreadcrumb
+        lang={lang}
+        dict={dict}
+        crumbs={[{ name: dict.nav.appointments, route: "/appointments" }]}
       />
       <Reveal className="text-center">
         <p className="leading-relaxed text-mocha">

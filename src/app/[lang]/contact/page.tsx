@@ -3,10 +3,9 @@ import { PageHeader } from "@/components/PageHeader";
 import { Reveal } from "@/components/Reveal";
 import { ContactForm } from "@/components/ContactForm";
 import { site } from "@/lib/site";
-import { JsonLd } from "@/components/JsonLd";
 import { type LangParams } from "@/lib/i18n";
 import { resolveLangPage, langPageMetadata } from "@/lib/page-resolver";
-import { breadcrumbGraph } from "@/lib/seo";
+import { PageBreadcrumb } from "@/components/PageBreadcrumb";
 
 export function generateMetadata({ params }: LangParams): Promise<Metadata> {
   return langPageMetadata(params, {
@@ -23,11 +22,10 @@ export default async function ContactPage({ params }: LangParams) {
 
   return (
     <>
-      <JsonLd
-        data={breadcrumbGraph(lang, [
-          { name: dict.nav.home, route: "" },
-          { name: dict.nav.contact, route: "/contact" },
-        ])}
+      <PageBreadcrumb
+        lang={lang}
+        dict={dict}
+        crumbs={[{ name: dict.nav.contact, route: "/contact" }]}
       />
       <PageHeader title={dict.contact.heading} intro={dict.contact.intro} />
 

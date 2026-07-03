@@ -15,7 +15,8 @@ import {
 } from "@/lib/comparisons";
 import { readConsent } from "@/lib/consent.server";
 import { dirFor } from "@/lib/i18n";
-import { productGraph, reviewGraph, breadcrumbGraph } from "@/lib/seo";
+import { productGraph, reviewGraph } from "@/lib/seo";
+import { PageBreadcrumb } from "@/components/PageBreadcrumb";
 import {
   resolveSlugPage,
   slugPageMetadata,
@@ -61,12 +62,13 @@ export default async function ComparisonPage({ params }: Params) {
         })}
       />
       <JsonLd data={reviewGraph(lang)} />
-      <JsonLd
-        data={breadcrumbGraph(lang, [
-          { name: dict.nav.home, route: "" },
+      <PageBreadcrumb
+        lang={lang}
+        dict={dict}
+        crumbs={[
           { name: dict.nav.services, route: "/services" },
           { name: c.title, route: comparisonPath(cmp, lang) },
-        ])}
+        ]}
       />
 
       {/* Intro: answer-first verdict (bare SSR <p>) → table → detail */}

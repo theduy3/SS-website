@@ -7,7 +7,8 @@
 import type { Metadata } from "next";
 import { dirFor, type LangParams } from "@/lib/i18n";
 import { resolveLangPage, langPageMetadata } from "@/lib/page-resolver";
-import { faqPageGraph, breadcrumbGraph } from "@/lib/seo";
+import { faqPageGraph } from "@/lib/seo";
+import { PageBreadcrumb } from "@/components/PageBreadcrumb";
 import { JsonLd } from "@/components/JsonLd";
 import { PageHeader } from "@/components/PageHeader";
 import { Accordion } from "@/components/Accordion";
@@ -35,11 +36,10 @@ export default async function LavalPage({ params }: LangParams) {
     <div className="pb-[64px] md:pb-0">
       {/* JSON-LD: single source — dict.laval.faq.items feeds both schema and Accordion */}
       <JsonLd data={faqPageGraph(dict.laval.faq.items)} />
-      <JsonLd
-        data={breadcrumbGraph(lang, [
-          { name: dict.nav.home, route: "" },
-          { name: dict.laval.heading, route: "/laval" },
-        ])}
+      <PageBreadcrumb
+        lang={lang}
+        dict={dict}
+        crumbs={[{ name: dict.laval.heading, route: "/laval" }]}
       />
 
       {/* Answer-first lead — plain <p>, NOT wrapped in <Reveal>/motion.

@@ -2,7 +2,8 @@
 import type { Metadata } from "next";
 import { dirFor, type LangParams } from "@/lib/i18n";
 import { resolveLangPage, langPageMetadata } from "@/lib/page-resolver";
-import { faqPageGraph, breadcrumbGraph } from "@/lib/seo";
+import { faqPageGraph } from "@/lib/seo";
+import { PageBreadcrumb } from "@/components/PageBreadcrumb";
 import { JsonLd } from "@/components/JsonLd";
 import { PageHeader } from "@/components/PageHeader";
 import { Accordion } from "@/components/Accordion";
@@ -32,11 +33,10 @@ export default async function FaqPage({ params }: LangParams) {
         {dict.faq.lead}
       </p>
       <JsonLd data={faqPageGraph(dict.faq.items)} />
-      <JsonLd
-        data={breadcrumbGraph(lang, [
-          { name: dict.nav.home, route: "/" },
-          { name: dict.nav.faq, route: "/faq" },
-        ])}
+      <PageBreadcrumb
+        lang={lang}
+        dict={dict}
+        crumbs={[{ name: dict.nav.faq, route: "/faq" }]}
       />
       <PageHeader title={dict.faq.title} intro={dict.faq.intro} />
       {/* Trust band + sticky Call/Book bar (key page) */}

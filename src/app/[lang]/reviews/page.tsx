@@ -2,8 +2,7 @@
 import type { Metadata } from "next";
 import { type LangParams } from "@/lib/i18n";
 import { resolveLangPage, langPageMetadata } from "@/lib/page-resolver";
-import { breadcrumbGraph } from "@/lib/seo";
-import { JsonLd } from "@/components/JsonLd";
+import { PageBreadcrumb } from "@/components/PageBreadcrumb";
 import { PageHeader } from "@/components/PageHeader";
 import { Stars } from "@/components/Stars";
 import { ReviewCard } from "@/components/ReviewCard";
@@ -38,11 +37,10 @@ export default async function ReviewsPage({ params }: LangParams) {
 
   return (
     <>
-      <JsonLd
-        data={breadcrumbGraph(lang, [
-          { name: dict.nav.home, route: "/" },
-          { name: dict.nav.reviews, route: "/reviews" },
-        ])}
+      <PageBreadcrumb
+        lang={lang}
+        dict={dict}
+        crumbs={[{ name: dict.nav.reviews, route: "/reviews" }]}
       />
       <PageHeader
         title={dict.reviewsPage.title}
