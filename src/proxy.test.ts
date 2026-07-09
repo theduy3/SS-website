@@ -78,6 +78,42 @@ describe("proxy locale routing", () => {
   );
 });
 
+describe("proxy legacy-slug redirects", () => {
+  it("301s an un-prefixed legacy slug to its localized target", async () => {
+    const res = await proxy(req("/prix"));
+    expect(res.status).toBe(301);
+    expect(res.headers.get("location")).toBe("http://localhost/fr/services");
+  });
+
+  it("301s a locale-prefixed legacy slug without losing the locale", async () => {
+    // /prix currently 301s to /fr/prix (the blind locale prefix) and 404s there.
+    // Google follows that chain, so /fr/prix must resolve until it recrawls.
+    const res = await proxy(req("/en/prix"));
+    expect(res.status).toBe(301);
+    expect(res.headers.get("location")).toBe("http://localhost/en/services");
+  });
+
+  it("301s /annonce to the locale home (no announcements surface exists)", async () => {
+    const res = await proxy(req("/annonce"));
+    expect(res.headers.get("location")).toBe("http://localhost/fr");
+  });
+
+  it("redirects legacy slugs permanently, not temporarily", async () => {
+    // 302 would leak the old URL's ranking signals instead of consolidating them
+    // onto the target — the whole point of the map.
+    for (const path of ["/prix", "/reservation", "/carte-cadeau", "/annonce"]) {
+      const res = await proxy(req(path));
+      expect(res.status, `expected 301 for ${path}`).toBe(301);
+    }
+  });
+
+  it("leaves a live route to normal locale routing (control)", async () => {
+    const res = await proxy(req("/services"));
+    expect(res.headers.get("location")).toBe("http://localhost/fr/services");
+    expect(res.status).not.toBe(301);
+  });
+});
+
 describe("proxy AI referrer detection wiring (D-01/D-04)", () => {
   beforeEach(() => mockAfter.mockClear());
 
