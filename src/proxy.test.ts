@@ -85,6 +85,17 @@ describe("proxy legacy-slug redirects", () => {
     expect(res.headers.get("location")).toBe("http://localhost/fr/services");
   });
 
+  it("preserves the query string across a legacy redirect", async () => {
+    // Old ad links and shared URLs carry ?gclid=/?utm_source=. nextUrl.clone()
+    // keeps search params and we only overwrite pathname — swapping in a bare
+    // `new URL(path, origin)` would silently strip attribution on every legacy hit.
+    const res = await proxy(req("/prix?utm_source=google&gclid=abc"));
+    expect(res.status).toBe(301);
+    expect(res.headers.get("location")).toBe(
+      "http://localhost/fr/services?utm_source=google&gclid=abc",
+    );
+  });
+
   it("301s a locale-prefixed legacy slug without losing the locale", async () => {
     // /prix currently 301s to /fr/prix (the blind locale prefix) and 404s there.
     // Google follows that chain, so /fr/prix must resolve until it recrawls.
