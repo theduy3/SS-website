@@ -3,6 +3,7 @@ import { unsealData } from "iron-session";
 import { locales, isLocale, matchLocale } from "@/lib/i18n";
 import { detectAiReferral, type DarkReferralRow } from "@/lib/dark-referral";
 import { STANDALONE_PATHS } from "@/lib/standalone-routes";
+import { matchLegacyPath } from "@/lib/legacy-redirects";
 
 // Proxy is Next.js 16's renamed Middleware. Only one proxy file is supported, so
 // it handles two concerns:
@@ -57,6 +58,14 @@ async function hasValidSession(request: NextRequest): Promise<boolean> {
   }
 }
 
+/** Visitor's locale: explicit cookie choice wins, else Accept-Language. */
+function resolveLocale(request: NextRequest) {
+  const cookieLocale = request.cookies.get(LOCALE_COOKIE)?.value;
+  return cookieLocale && isLocale(cookieLocale)
+    ? cookieLocale
+    : matchLocale(request.headers.get("accept-language"));
+}
+
 export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
@@ -101,19 +110,25 @@ export async function proxy(request: NextRequest) {
   // 1b. Standalone, un-localized kiosk pages (check-in, queue). No locale prefix.
   if (STANDALONE_PATHS.has(pathname)) return NextResponse.next();
 
+  // 1c. Legacy slugs from the pre-relaunch site. MUST precede the hasLocale
+  // check below: Google's live chain is /prix → /fr/prix, and the prefixed form
+  // would otherwise pass straight through to a 404. 301 (not the 307 that normal
+  // locale routing uses) so the old URLs' ranking signals consolidate onto the
+  // target instead of being held open.
+  const legacy = matchLegacyPath(pathname);
+  if (legacy) {
+    const url = request.nextUrl.clone();
+    url.pathname = `/${legacy.locale ?? resolveLocale(request)}${legacy.target}`;
+    return NextResponse.redirect(url, 301);
+  }
+
   // 2. Locale routing for public pages.
   const hasLocale = locales.some(
     (locale) => pathname === `/${locale}` || pathname.startsWith(`/${locale}/`),
   );
   if (hasLocale) return NextResponse.next();
 
-  const cookieLocale = request.cookies.get(LOCALE_COOKIE)?.value;
-  const locale =
-    cookieLocale && isLocale(cookieLocale)
-      ? cookieLocale
-      : matchLocale(request.headers.get("accept-language"));
-
-  request.nextUrl.pathname = `/${locale}${pathname}`;
+  request.nextUrl.pathname = `/${resolveLocale(request)}${pathname}`;
   return NextResponse.redirect(request.nextUrl);
 }
 
