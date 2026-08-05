@@ -3,10 +3,11 @@ import Link from "next/link";
 import { Reveal } from "@/components/Reveal";
 import { Faq } from "@/components/Faq";
 import { BookCta } from "@/components/BookCta";
-import { BackToServices } from "@/components/BackToServices";
 import { ServicePhoto } from "@/components/ServicePhoto";
-import { SpecTable } from "@/components/SpecTable";
+import { FactRail } from "@/components/FactRail";
+import { SubpageIntro } from "@/components/SubpageIntro";
 import { KeyPageChrome } from "@/components/KeyPageChrome";
+import { Button } from "@/components/Button";
 import { JsonLd } from "@/components/JsonLd";
 import { site } from "@/lib/site";
 import {
@@ -15,7 +16,6 @@ import {
   servicePath,
   servicePathsByLocale,
 } from "@/lib/services";
-import { dirFor } from "@/lib/i18n";
 import { serviceGraph, faqPageGraph } from "@/lib/seo";
 import { PageBreadcrumb } from "@/components/PageBreadcrumb";
 import {
@@ -28,8 +28,7 @@ import { formatFromPrice, formatPrice, formatPriceRange } from "@/lib/format";
 
 type Params = { params: Promise<{ lang: string; slug: string }> };
 
-// Emit only THIS locale's slugs. /fr → French slugs, /en → English slugs, so a
-// wrong-locale slug (e.g. /fr/services/lash-extensions) is never generated → 404.
+// Emit only this locale's slugs. A wrong-locale slug still resolves to 404.
 export const generateStaticParams = slugStaticParams(slugParams);
 
 export function generateMetadata({ params }: Params): Promise<Metadata> {
@@ -52,10 +51,9 @@ export default async function ServiceDetailPage({ params }: Params) {
   const d = dict.serviceDetails[service.id];
   const labels = dict.serviceLabels;
   const priceDisplay = formatFromPrice(lang, service.price, labels.priceFrom);
-  // "Quick facts" spec block — a self-contained, AI-extractable summary rendered
-  // high on the page. Price cells derive from the service registry (single source
-  // of truth) so they never drift from the Offer schema (GEO-F).
-  const specRows = [
+  const related = relatedLinks(service.id, lang, dict);
+
+  const factRows = [
     { label: labels.startingPrice, value: formatPrice(lang, service.price) },
     {
       label: labels.priceRange,
@@ -68,10 +66,9 @@ export default async function ServiceDetailPage({ params }: Params) {
     },
     { label: labels.booking, value: labels.bookingValue },
   ];
-  const related = relatedLinks(service.id, lang, dict);
 
   return (
-    <div className="pb-[64px] md:pb-0">
+    <div className="pb-[calc(76px+env(safe-area-inset-bottom))] md:pb-0">
       <JsonLd
         data={serviceGraph(lang, {
           name: d.title,
@@ -91,149 +88,141 @@ export default async function ServiceDetailPage({ params }: Params) {
       />
       <JsonLd data={faqPageGraph(d.faq)} />
 
-      {/* Hero: image + title + intro */}
-      <section className="mx-auto max-w-5xl px-6 py-16 md:py-24">
-        <BackToServices lang={lang} label={labels.allServices} />
-        <Reveal delay={0.05}>
-          <h1 className="mt-6 text-4xl text-espresso md:text-6xl">{d.title}</h1>
-        </Reveal>
-        {/* Answer-first lead (GEO) — bare <p> outside <Reveal> so it stays
-            visible in raw SSR HTML for no-JS AI crawlers. */}
-        <p
-          className="mt-6 max-w-3xl text-lg leading-relaxed text-mocha"
-          dir={dirFor(lang)}
-        >
-          {d.lead}
+      <SubpageIntro
+        lang={lang}
+        eyebrow={dict.nav.services}
+        title={d.title}
+        answer={d.lead}
+        answerVariant="hero"
+        backLink={{ href: `/${lang}/services`, label: labels.allServices }}
+        media={
+          <ServicePhoto
+            id={service.id}
+            photo={service.photo}
+            alt={d.heroAlt}
+            label={d.title}
+            sizes="(max-width: 1024px) 100vw, 52vw"
+            className="h-full w-full"
+          />
+        }
+      >
+        <p className="mt-5 text-sm font-semibold uppercase tracking-[0.12em] text-tan">
+          {labels.price}: <span className="text-espresso">{priceDisplay}</span>
         </p>
-        <Reveal delay={0.1}>
-          <div className="relative mx-auto mt-10 aspect-[16/9] w-full overflow-hidden rounded-2xl">
-            <ServicePhoto
-              id={service.id}
-              photo={service.photo}
-              alt={d.heroAlt}
-              label={d.title}
-              sizes="(max-width: 768px) 100vw, 1024px"
-              className="h-full w-full"
-            />
-          </div>
-        </Reveal>
-        <Reveal delay={0.15}>
-          <div className="mt-10 max-w-3xl space-y-5 text-lg leading-relaxed text-mocha">
-            {d.intro.map((p) => (
-              <p key={p}>{p}</p>
-            ))}
-          </div>
-        </Reveal>
-        <Reveal delay={0.2}>
-          <div className="mt-10 max-w-2xl" dir={dirFor(lang)}>
-            <SpecTable caption={labels.quickFacts} rows={specRows} />
-          </div>
-        </Reveal>
-      </section>
+        <div className="mt-8 flex flex-wrap items-center gap-3">
+          <Button href={`/${lang}${site.booking}`}>{dict.cta.book}</Button>
+          <a
+            href={site.contact.phoneHref}
+            className="inline-flex min-h-11 items-center font-semibold text-espresso transition-colors hover:text-mocha focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tan"
+          >
+            {site.contact.phone}
+          </a>
+        </div>
+      </SubpageIntro>
 
-      {/* Trust band + sticky Call/Book bar (key page) */}
-      <KeyPageChrome locale={lang} dict={dict} />
+      <div className="mx-auto max-w-7xl px-6">
+        <FactRail label={labels.quickFacts} rows={factRows} className="-mt-px" />
+      </div>
 
-      {/* Why Sans Souci */}
-      <section className="mx-auto max-w-3xl px-6 pb-4">
-        <Reveal>
-          <h2 className="text-2xl text-espresso md:text-3xl">{labels.why}</h2>
-          <p className="mt-6 leading-relaxed text-mocha">{d.whyUs}</p>
-        </Reveal>
-      </section>
+      {/* Keep the high-intent mobile bar on service details only. */}
+      <KeyPageChrome locale={lang} dict={dict} showTrustBand={false} />
 
-      {/* What's included + add-ons */}
-      <section className="bg-fog">
-        <div className="mx-auto grid max-w-5xl grid-cols-1 gap-12 px-6 py-16 md:grid-cols-2 md:py-24">
+      <section className="mx-auto max-w-7xl px-6 py-16 md:py-24">
+        <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr]">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-tan">
+              {labels.why}
+            </p>
+            <div className="mt-5 space-y-5 text-lg leading-relaxed text-mocha">
+              {d.intro.map((paragraph) => (
+                <Reveal key={paragraph}>
+                  <p>{paragraph}</p>
+                </Reveal>
+              ))}
+            </div>
+          </div>
           <Reveal>
-            <h2 className="text-2xl text-espresso md:text-3xl">
-              {labels.included}
-            </h2>
-            <ul className="mt-6 space-y-3 text-mocha">
+            <aside className="border-l-2 border-tan bg-cream px-6 py-6 md:px-8 md:py-8">
+              <h2 className="text-3xl text-espresso md:text-4xl">{labels.why}</h2>
+              <p className="mt-5 leading-relaxed text-mocha">{d.whyUs}</p>
+            </aside>
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="border-y border-espresso/10 bg-fog">
+        <div className="mx-auto grid max-w-7xl gap-12 px-6 py-16 md:grid-cols-2 md:py-24">
+          <Reveal>
+            <h2 className="text-3xl text-espresso md:text-5xl">{labels.included}</h2>
+            <ul className="mt-7 space-y-4 text-mocha">
               {d.included.map((item) => (
                 <li key={item} className="flex gap-3 leading-relaxed">
-                  <span aria-hidden className="text-tan">
-                    —
-                  </span>
-                  {item}
+                  <span aria-hidden className="mt-2 size-2 shrink-0 rounded-full bg-tan" />
+                  <span>{item}</span>
                 </li>
               ))}
             </ul>
           </Reveal>
           <Reveal delay={0.1}>
-            <h2 className="text-2xl text-espresso md:text-3xl">
-              {labels.addons}
-            </h2>
-            <ul className="mt-6 space-y-3 text-mocha">
+            <h2 className="text-3xl text-espresso md:text-5xl">{labels.addons}</h2>
+            <ul className="mt-7 space-y-4 text-mocha">
               {d.addons.map((item) => (
                 <li key={item} className="flex gap-3 leading-relaxed">
-                  <span aria-hidden className="text-tan">
-                    +
-                  </span>
-                  {item}
+                  <span aria-hidden className="mt-2 size-2 shrink-0 rounded-full bg-tan" />
+                  <span>{item}</span>
                 </li>
               ))}
             </ul>
-            <dl className="mt-10 space-y-4">
+            <dl className="mt-10 grid gap-5 border-t border-espresso/15 pt-5 sm:grid-cols-2">
               <div>
-                <dt className="text-sm uppercase tracking-wide text-mocha">
+                <dt className="text-xs font-semibold uppercase tracking-[0.12em] text-mocha">
                   {labels.price}
                 </dt>
-                <dd className="mt-1 text-lg font-semibold text-espresso">
-                  {priceDisplay}
-                </dd>
+                <dd className="mt-1 text-lg font-semibold text-espresso">{priceDisplay}</dd>
               </div>
               <div>
-                <dt className="text-sm uppercase tracking-wide text-mocha">
+                <dt className="text-xs font-semibold uppercase tracking-[0.12em] text-mocha">
                   {labels.duration}
                 </dt>
-                <dd className="mt-1 leading-relaxed text-mocha">
-                  {d.duration}
-                </dd>
+                <dd className="mt-1 leading-relaxed text-mocha">{d.duration}</dd>
               </div>
             </dl>
           </Reveal>
         </div>
       </section>
 
-      {/* Aftercare */}
-      <section className="mx-auto max-w-3xl px-6 pt-16 md:pt-24">
+      <section className="mx-auto grid max-w-7xl gap-10 px-6 py-16 md:grid-cols-2 md:py-24">
         <Reveal>
-          <h2 className="text-2xl text-espresso md:text-3xl">
+          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-tan">
             {labels.aftercare}
-          </h2>
-          <p className="mt-6 leading-relaxed text-mocha">{d.aftercare}</p>
+          </p>
+          <h2 className="mt-3 text-3xl text-espresso md:text-5xl">{labels.aftercare}</h2>
+          <p className="mt-5 max-w-xl leading-relaxed text-mocha">{d.aftercare}</p>
         </Reveal>
-      </section>
-
-      {/* Hygiene & safety */}
-      <section className="mx-auto max-w-3xl px-6 pb-16 pt-12 md:pb-24 md:pt-16">
-        <Reveal>
-          <h2 className="text-2xl text-espresso md:text-3xl">
+        <Reveal delay={0.1}>
+          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-tan">
             {labels.hygiene}
-          </h2>
-          <p className="mt-6 leading-relaxed text-mocha">{d.hygiene}</p>
+          </p>
+          <h2 className="mt-3 text-3xl text-espresso md:text-5xl">{labels.hygiene}</h2>
+          <p className="mt-5 max-w-xl leading-relaxed text-mocha">{d.hygiene}</p>
         </Reveal>
       </section>
 
-      {/* FAQ */}
       <Faq heading={labels.faq} items={d.faq} />
 
-      {/* Helpful guides — reciprocal links to related comparisons and guides (D-12) */}
       {related.length > 0 && (
-        <section className="mx-auto max-w-3xl px-6 pb-4 pt-12 md:pt-16">
+        <section className="mx-auto max-w-7xl px-6 py-16 md:py-20">
           <Reveal>
-            <h2 className="text-2xl text-espresso md:text-3xl">
-              {labels.guides}
-            </h2>
-            <ul className="mt-6 space-y-3">
+            <h2 className="text-3xl text-espresso md:text-5xl">{labels.guides}</h2>
+            <ul className="mt-7 grid gap-3 sm:grid-cols-2">
               {related.map((item) => (
                 <li key={`${item.kind}-${item.id}`}>
                   <Link
                     href={`/${lang}${item.path}`}
-                    className="text-espresso underline-offset-4 hover:underline"
+                    className="flex min-h-14 items-center justify-between border-t border-espresso/15 py-4 font-semibold text-espresso transition-colors hover:text-mocha"
                   >
                     {item.title}
+                    <span aria-hidden className="ms-4 text-tan">→</span>
                   </Link>
                 </li>
               ))}
@@ -242,7 +231,6 @@ export default async function ServiceDetailPage({ params }: Params) {
         </section>
       )}
 
-      {/* CTA */}
       <BookCta lang={lang} dict={dict} />
     </div>
   );

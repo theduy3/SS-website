@@ -11,6 +11,35 @@ array + a dictionary slice. Three exist: **Service** (the money pages),
 Each is keyed by a stable `id` (also the image filename / dictionary key) and a
 per-locale `slug`.
 
+**Answer module**: the visible, direct response to a page's primary intent. It
+is the user-facing form of the answer-first SEO/GEO content and belongs near
+the page title, where it frames the content instead of interrupting it later.
+
+**Sub-page family**: a group of routes that share a content job and therefore a
+visual reading pattern. Current families are service, decision content (guide
+and comparison), utility (FAQ, Laval, appointments, and contact), visual
+(gallery and reviews), and legal (terms and privacy).
+
+**Editorial Atlas**: the approved sub-page design direction. It keeps one
+shared brand system while giving each sub-page family its own composition,
+with the answer module as the common top-of-page anchor.
+
+**Adaptive mobile order**: the mobile reading order follows the job of the
+sub-page family rather than forcing every route into one template. Service,
+guide, and comparison pages lead with the answer and action; visual pages may
+lead with proof or imagery; utility pages lead with the answer, form, widget,
+or essential visit facts; legal pages remain reading-first.
+
+**Contextual mobile action bar**: a reserved, safe-area-aware bottom action
+shown only when a page has a high-intent action that benefits from persistent
+access. Service detail pages may use Book and Call. Pages whose widget, form,
+or useful content already owns the action do not inherit the bar by default.
+
+**Stacked decision cards**: the mobile presentation for comparison matrices.
+Each criterion remains visible as a labeled block containing both alternatives,
+so the decision evidence stays readable without a squeezed table or hidden
+horizontal drag.
+
 ## Seams
 
 **Slug registry** — the deep module (`src/lib/slug-registry.ts`) that owns the

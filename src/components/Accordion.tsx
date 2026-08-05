@@ -8,14 +8,14 @@ export function Accordion({
   return (
     <div className="divide-y divide-tan/30 border-y border-tan/30">
       {items.map((item, i) => (
-        <details key={i} className="group py-4">
-          <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-lg font-semibold">
+        <details key={i} className="group py-3">
+          <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-4 text-lg font-semibold text-espresso outline-none focus-visible:ring-2 focus-visible:ring-tan focus-visible:ring-offset-4">
             {item.q}
-            <span className="text-tan transition-transform group-open:rotate-45" aria-hidden>
+            <span className="shrink-0 text-2xl font-normal text-tan transition-transform group-open:rotate-45" aria-hidden>
               +
             </span>
           </summary>
-          <p className="mt-3 leading-relaxed text-mocha">{item.a}</p>
+          <p className="max-w-3xl pb-3 pt-2 leading-relaxed text-mocha">{item.a}</p>
         </details>
       ))}
     </div>

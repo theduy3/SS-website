@@ -1,4 +1,5 @@
 import { Reveal } from "@/components/Reveal";
+import { Accordion } from "@/components/Accordion";
 
 // Shared FAQ block for key content pages (service / guide / comparison). The
 // three pages rendered byte-identical <section>…<dl> markup differing only in the
@@ -11,19 +12,12 @@ export function Faq({
   items: readonly { q: string; a: string }[];
 }) {
   return (
-    <section className="bg-fog">
-      <div className="mx-auto max-w-3xl px-6 py-16 md:py-24">
+    <section className="border-t border-espresso/10 bg-fog">
+      <div className="mx-auto grid max-w-7xl gap-10 px-6 py-16 md:grid-cols-[0.7fr_1.3fr] md:py-24">
         <Reveal>
-          <h2 className="text-2xl text-espresso md:text-3xl">{heading}</h2>
+          <h2 className="max-w-sm text-3xl text-espresso md:text-5xl">{heading}</h2>
         </Reveal>
-        <dl className="mt-8 space-y-8">
-          {items.map((item) => (
-            <Reveal key={item.q}>
-              <dt className="text-lg font-semibold text-espresso">{item.q}</dt>
-              <dd className="mt-2 leading-relaxed text-mocha">{item.a}</dd>
-            </Reveal>
-          ))}
-        </dl>
+        <Accordion items={items} />
       </div>
     </section>
   );

@@ -14,7 +14,25 @@ export function ComparisonTable({
   caption?: string;
 }) {
   return (
-    <div className="overflow-x-auto">
+    <div>
+      <div className="space-y-3 md:hidden">
+        {rows.map((row) => (
+          <article key={row.label} className="border-t border-espresso/15 py-4">
+            <h3 className="text-lg text-espresso">{row.label}</h3>
+            <dl className="mt-3 grid gap-3 sm:grid-cols-2">
+              {row.cells.map((cell, i) => (
+                <div key={`${row.label}-${i}`} className="bg-cream px-4 py-3">
+                  <dt className="text-xs font-semibold uppercase tracking-[0.12em] text-tan">
+                    {columns[i + 1]}
+                  </dt>
+                  <dd className="mt-1 leading-relaxed text-mocha">{cell}</dd>
+                </div>
+              ))}
+            </dl>
+          </article>
+        ))}
+      </div>
+      <div className="hidden overflow-x-auto md:block">
       <table className="w-full min-w-[32rem] border-collapse text-left text-mocha">
         {caption ? <caption className="sr-only">{caption}</caption> : null}
         <thead>
@@ -53,6 +71,7 @@ export function ComparisonTable({
           ))}
         </tbody>
       </table>
+      </div>
     </div>
   );
 }

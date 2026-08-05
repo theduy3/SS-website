@@ -30,7 +30,7 @@ export function Button({
   className = "",
   ariaLabel,
 }: Props) {
-  const classes = `inline-flex items-center justify-center rounded-pill px-8 py-3 text-sm font-semibold uppercase tracking-wide transition-[color,background-color,transform] active:scale-[0.98] ${variants[variant]} ${className}`;
+  const classes = `inline-flex min-h-11 items-center justify-center rounded-pill px-8 py-3 text-sm font-semibold uppercase tracking-wide transition-[color,background-color,transform] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tan active:scale-[0.98] ${variants[variant]} ${className}`;
 
   const isHttp = /^https?:\/\//.test(href);
   const isExternalScheme = /^(tel:|mailto:)/.test(href);
