@@ -1,17 +1,19 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { Button } from "@/components/Button";
-import { Reveal } from "@/components/Reveal";
-import { ContactForm } from "@/components/ContactForm";
 import { Gallery } from "@/components/Gallery";
-import { Stars } from "@/components/Stars";
-import { Testimonials } from "@/components/Testimonials";
 import { JsonLd } from "@/components/JsonLd";
 import { KeyPageChrome } from "@/components/KeyPageChrome";
+import { OpeningHours } from "@/components/OpeningHours";
+import { Reveal } from "@/components/Reveal";
+import { Testimonials } from "@/components/Testimonials";
+import { Stars } from "@/components/Stars";
+import { dirFor, type LangParams } from "@/lib/i18n";
+import { formatFromPrice } from "@/lib/format";
+import { resolveLangPage, langPageMetadata } from "@/lib/page-resolver";
 import { services, servicePath } from "@/lib/services";
 import { site } from "@/lib/site";
-import { dirFor, type LangParams } from "@/lib/i18n";
-import { resolveLangPage, langPageMetadata } from "@/lib/page-resolver";
 import { servicesGraph } from "@/lib/seo";
 
 export function generateMetadata({ params }: LangParams): Promise<Metadata> {
@@ -34,9 +36,9 @@ export default async function Home({ params }: LangParams) {
   });
   const reviewCountDisplay = site.reviews.reviewCount.toLocaleString(localeTag);
 
-  // Gallery slides: real service photos paired with short captions (same order
-  // as the services registry) and the rich heroAlt for accessible alt text.
-  const gallerySlides = services.map((s, i) => ({
+  // The homepage gallery is intentionally curated to three static images. The
+  // full service set remains available in the service finder above it.
+  const gallerySlides = services.slice(0, 3).map((s, i) => ({
     id: s.id,
     photo: s.photo,
     alt: dict.serviceDetails[s.id].heroAlt,
@@ -55,212 +57,312 @@ export default async function Home({ params }: LangParams) {
   return (
     <div className="pb-[64px] md:pb-0">
       <JsonLd data={servicesGraph(lang, serviceItems)} />
-      {/* Hero — white (top of the bright canvas, under the dark header) */}
-      <section>
-        <div className="mx-auto max-w-7xl px-6 py-20 text-center md:py-28">
+
+      {/* Hero: split statement with one real image and one clear action. */}
+      <section className="bg-beige">
+        <div className="mx-auto max-w-7xl px-6 py-12 md:py-20">
+          <div className="grid items-stretch gap-10 md:grid-cols-[0.85fr_1.15fr] md:gap-16">
+            <div className="flex flex-col justify-center py-4 md:py-12">
+              <Reveal>
+                <h1 className="max-w-xl text-5xl leading-[0.98] sm:text-6xl md:text-7xl">
+                  {dict.hero.tagline}
+                </h1>
+              </Reveal>
+              <Reveal delay={0.08}>
+                <p className="mt-6 max-w-md text-base leading-relaxed text-mocha md:text-lg">
+                  {dict.home.heroSupport}
+                </p>
+              </Reveal>
+              <Reveal delay={0.14}>
+                <div className="mt-8 flex flex-col items-start gap-4 sm:flex-row">
+                  <Button href={`/${lang}${site.booking}`}>
+                    {dict.cta.book}
+                  </Button>
+                  <Button href={site.contact.phoneHref} variant="outline">
+                    {dict.cta.callNow}
+                  </Button>
+                </div>
+              </Reveal>
+            </div>
+            <Reveal delay={0.08} className="h-full">
+              <div className="relative min-h-[460px] overflow-hidden rounded-2xl bg-fog md:min-h-[620px]">
+                <Image
+                  src="/images/hero.jpg"
+                  alt={dict.hero.alt}
+                  fill
+                  priority
+                  sizes="(max-width: 768px) 100vw, (max-width: 1280px) 55vw, 700px"
+                  className="object-cover object-[50%_62%]"
+                />
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* Proof strip: simple, SSR-visible facts directly below the first screen. */}
+      <section className="border-y border-espresso/10">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 px-6 md:grid-cols-3">
+          <div className="py-6 md:pr-8">
+            <strong className="block text-3xl tracking-tight text-espresso">
+              20+
+            </strong>
+            <span className="text-sm text-mocha">{dict.home.proof.experience}</span>
+          </div>
+          <div className="border-espresso/10 py-6 md:border-l md:px-8">
+            <strong className="block text-3xl tracking-tight text-espresso">
+              1,000+
+            </strong>
+            <span className="text-sm text-mocha">{dict.home.proof.colours}</span>
+          </div>
+          <div className="border-espresso/10 py-6 md:border-l md:pl-8">
+            <strong className="block text-3xl tracking-tight text-espresso">
+              7
+            </strong>
+            <span className="text-sm text-mocha">{dict.home.proof.openDays}</span>
+          </div>
+        </div>
+      </section>
+
+      {/* Intro: answer-first summary stays in the initial HTML for SEO and GEO. */}
+      <section
+        className="mx-auto max-w-7xl px-6 py-16 md:py-20"
+        dir={dirFor(lang)}
+      >
+        <p className="max-w-3xl text-xl leading-relaxed text-mocha md:text-2xl">
+          {dict.home.lead}
+        </p>
+      </section>
+
+      {/* Sticky Call/Book bar on mobile. */}
+      <KeyPageChrome locale={lang} dict={dict} showTrustBand={false} />
+
+      {/* Services: one featured image plus a concise, scannable service finder. */}
+      <section className="mx-auto max-w-7xl px-6 py-20 md:py-28">
+        <div className="max-w-2xl">
           <Reveal>
-            <h1 className="mx-auto max-w-4xl text-4xl leading-tight sm:text-5xl md:text-6xl">
-              {dict.hero.tagline}
-            </h1>
+            <h2 className="text-4xl text-espresso md:text-6xl">
+              {dict.home.servicesHeading}
+            </h2>
           </Reveal>
-          <Reveal delay={0.1}>
-            <div className="relative mx-auto mt-12 aspect-[16/9] w-full max-w-4xl overflow-hidden rounded-2xl">
+          <Reveal delay={0.06}>
+            <p className="mt-5 max-w-xl text-lg leading-relaxed text-mocha">
+              {dict.servicesPage.intro}
+            </p>
+          </Reveal>
+        </div>
+        <div className="mt-12 grid grid-cols-1 items-stretch gap-12 md:grid-cols-[1.05fr_0.95fr] md:gap-16">
+          <Reveal>
+            <div className="relative min-h-[420px] overflow-hidden rounded-2xl bg-fog md:min-h-[560px]">
               <Image
-                src="/images/hero.jpg"
-                alt={dict.hero.alt}
+                src="/images/services/manicure.jpg"
+                alt={dict.serviceDetails.manicure.heroAlt}
                 fill
-                priority
-                sizes="(max-width: 768px) 100vw, 896px"
+                sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover"
               />
             </div>
           </Reveal>
-          <Reveal delay={0.2}>
-            <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Button href={`/${lang}${site.booking}`}>{dict.cta.book}</Button>
-              <Button href={site.contact.phoneHref} variant="outline">
-                {dict.cta.callNow}
+          <div className="border-t border-espresso/15">
+            {dict.services.map((service, i) => {
+              const svc = services[i];
+              return (
+                <Reveal key={service.title} delay={i * 0.05}>
+                  <Link
+                    href={`/${lang}${servicePath(svc, lang)}`}
+                    className="group grid grid-cols-[1fr_auto] gap-5 border-b border-espresso/15 py-6 transition-colors hover:border-tan"
+                  >
+                    <div>
+                      <h3 className="text-2xl text-espresso transition-colors group-hover:text-tan">
+                        {service.title}
+                      </h3>
+                      <p className="mt-2 max-w-[42ch] text-sm leading-relaxed text-mocha">
+                        {dict.home.serviceSummaries[i]}
+                      </p>
+                    </div>
+                    <div className="flex flex-col items-end gap-2 text-right">
+                      <span className="whitespace-nowrap text-sm font-semibold text-tan">
+                        {formatFromPrice(lang, svc.price, dict.serviceLabels.priceFrom)}
+                      </span>
+                      <span
+                        className="text-2xl text-mocha transition-transform group-hover:translate-x-1"
+                        aria-hidden
+                      >
+                        ↗
+                      </span>
+                    </div>
+                  </Link>
+                </Reveal>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Trust: real team image, hygiene, experience, and location. */}
+      <section className="bg-espresso text-cream">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-6 py-20 md:grid-cols-[0.8fr_1.2fr] md:gap-16 md:py-28">
+          <Reveal>
+            <div className="relative min-h-[420px] overflow-hidden rounded-2xl md:min-h-[580px]">
+              <Image
+                src="/images/team.jpg"
+                alt={dict.home.storyAlt}
+                fill
+                sizes="(max-width: 768px) 100vw, 40vw"
+                className="object-cover object-[52%_38%]"
+              />
+            </div>
+          </Reveal>
+          <Reveal delay={0.08}>
+            <div>
+              <h2 className="max-w-xl text-4xl text-cream md:text-6xl">
+                {dict.home.storyHeading}
+              </h2>
+              <p className="mt-6 max-w-xl text-lg leading-relaxed text-cream/75">
+                {dict.home.story}
+              </p>
+              <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-3">
+                {dict.home.trustPoints.map((point) => (
+                  <div
+                    key={point.title}
+                    className="border-t border-cream/25 pt-4"
+                  >
+                    <strong className="block text-sm text-cream">
+                      {point.title}
+                    </strong>
+                    <span className="mt-2 block text-sm leading-relaxed text-cream/65">
+                      {point.detail}
+                    </span>
+                  </div>
+                ))}
+              </div>
+              <div className="mt-10">
+                <Button
+                  href={`/${lang}/about`}
+                  variant="light"
+                  ariaLabel={dict.cta.learnMoreAria}
+                >
+                  {dict.cta.learnMore}
+                </Button>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Reviews: aggregate stays visible; individual text appears only when verified. */}
+      <section className="mx-auto max-w-7xl px-6 py-20 md:py-28">
+        <div className="grid grid-cols-1 items-start gap-12 md:grid-cols-[0.8fr_1.2fr] md:gap-16">
+          <div>
+            <Reveal>
+              <p className="text-sm font-semibold tracking-wide text-tan">
+                {dict.reviews.eyebrow}
+              </p>
+            </Reveal>
+            <Reveal delay={0.05}>
+              <h2 className="mt-4 max-w-md text-4xl text-espresso md:text-6xl">
+                {dict.reviews.headlineMain}
+              </h2>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <div
+                role="img"
+                className="mt-10 flex flex-col items-start gap-2"
+                aria-label={`${ratingDisplay} / ${site.reviews.bestRating}, ${dict.reviews.basedOn} ${reviewCountDisplay} ${dict.reviews.reviewsWord}`}
+              >
+                <Stars className="text-tan" />
+                <p className="text-3xl font-semibold text-espresso">
+                  {ratingDisplay}{" "}
+                  <span className="text-espresso/40">
+                    / {site.reviews.bestRating}
+                  </span>
+                </p>
+                <p className="text-sm text-mocha">
+                  {dict.reviews.basedOn} {reviewCountDisplay}{" "}
+                  {dict.reviews.reviewsWord}
+                </p>
+              </div>
+            </Reveal>
+          </div>
+          <Reveal delay={0.12}>
+            <div>
+              <Testimonials emptyLabel={dict.reviewsPage.empty} />
+              <div className="mt-8 flex flex-col items-start gap-4 sm:flex-row">
+                <Button href={`/${lang}${site.booking}`}>
+                  {dict.reviews.bookOnline}
+                </Button>
+                <Button href={`/${lang}/reviews`} variant="outline">
+                  {dict.nav.reviews}
+                </Button>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Gallery: one static image rhythm replaces the old autoplay marquee. */}
+      <section className="bg-fog">
+        <div className="mx-auto max-w-7xl px-6 py-20 md:py-28">
+          <div className="max-w-2xl">
+            <Reveal>
+              <h2 className="text-4xl text-espresso md:text-6xl">
+                {dict.home.galleryHeading}
+              </h2>
+            </Reveal>
+            <Reveal delay={0.06}>
+              <p className="mt-5 text-lg leading-relaxed text-mocha">
+                {dict.gallery.intro}
+              </p>
+            </Reveal>
+          </div>
+          <Reveal delay={0.1}>
+            <div className="mt-12">
+              <Gallery slides={gallerySlides} />
+            </div>
+          </Reveal>
+          <Reveal>
+            <div className="mt-10 flex flex-wrap gap-4">
+              <Button href={site.instagram}>Instagram</Button>
+              <Button href={site.facebook} variant="outline">
+                Facebook
               </Button>
             </div>
           </Reveal>
         </div>
       </section>
 
-      {/* Intro — answer-first summary (SSR, AI-citable). MUST stay outside
-          <Reveal>: Framer's opacity:0 would hide it from AI crawlers (Pitfall 3). */}
-      <section className="mx-auto max-w-3xl px-6 pt-12 pb-6 md:pt-16" dir={dirFor(lang)}>
-        <p className="text-lg leading-relaxed text-mocha">{dict.home.lead}</p>
-      </section>
-
-      {/* Sticky Call/Book bar (mobile). TrustBand suppressed here — the reviews
-          section below already shows the rating; avoids a duplicate on home. */}
-      <KeyPageChrome locale={lang} dict={dict} showTrustBand={false} />
-
-      {/* Reviews / ratings — soft-gray band, dark text */}
-      <section className="bg-fog">
-        <div className="mx-auto max-w-3xl px-6 py-20 text-center md:py-28">
-          <Reveal>
-            <p className="text-sm uppercase tracking-widest text-mocha">
-              {dict.reviews.eyebrow}
-            </p>
-          </Reveal>
-          <Reveal delay={0.05}>
-            <p className="mt-6 text-mocha">{dict.reviews.headlineLead}</p>
-            <h2 className="mt-2 text-3xl md:text-5xl">
-              {dict.reviews.headlineMain}
-            </h2>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <div
-              role="img"
-              className="mt-10 flex flex-col items-center gap-2"
-              aria-label={`${ratingDisplay} / ${site.reviews.bestRating} — ${dict.reviews.basedOn} ${reviewCountDisplay} ${dict.reviews.reviewsWord}`}
-            >
-              <Stars className="text-espresso" />
-              <p className="text-2xl font-semibold">
-                {ratingDisplay}{" "}
-                <span className="text-espresso/40">
-                  / {site.reviews.bestRating}
-                </span>
-              </p>
-              <p className="text-sm uppercase tracking-wide text-mocha">
-                {dict.reviews.basedOn} {reviewCountDisplay}{" "}
-                {dict.reviews.reviewsWord}
-              </p>
-            </div>
-          </Reveal>
-          <Reveal delay={0.12}>
-            <Testimonials />
-          </Reveal>
-          <Reveal delay={0.15}>
-            <div className="mt-12">
-              <p className="text-mocha">{dict.reviews.ctaPrompt}</p>
-              <div className="mt-6 flex flex-col items-center justify-center gap-4 sm:flex-row">
-                <Button href={`/${lang}${site.booking}`}>
-                  {dict.reviews.bookOnline}
-                </Button>
-                <Button href={site.contact.phoneHref} variant="outline">
-                  {dict.cta.callNow}
-                </Button>
-              </div>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* Services */}
-      <section className="mx-auto max-w-7xl px-6 py-20 md:py-28">
-        <Reveal>
-          <h2 className="text-3xl text-espresso md:text-5xl">
-            {dict.home.servicesHeading}
-          </h2>
-        </Reveal>
-        <div className="mt-12 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
-          {dict.services.map((service, i) => {
-            const svc = services[i];
-            return (
-              <Reveal key={service.title} delay={i * 0.1}>
-                <article>
-                  <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl">
-                    <Image
-                      src={`/images/services/${svc.id}.jpg`}
-                      alt={dict.serviceDetails[svc.id].heroAlt}
-                      fill
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                      className="object-cover"
-                    />
-                  </div>
-                  <h3 className="mt-6 text-xl text-espresso">
-                    {service.title}
-                  </h3>
-                  <p className="mt-3 leading-relaxed text-mocha">
-                    {service.body}
-                  </p>
-                </article>
-              </Reveal>
-            );
-          })}
-        </div>
-        <Reveal>
-          <div className="mt-12">
-            <Button href={`/${lang}/services`}>{dict.cta.services}</Button>
-          </div>
-        </Reveal>
-      </section>
-
-      {/* Why choose us — soft-gray band */}
-      <section className="bg-fog">
-        <div className="mx-auto max-w-7xl px-6 py-20 md:py-28">
-          <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-2">
+      {/* Booking finish: location, hours, and the two conversion actions. */}
+      <section className="bg-tan/10">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 px-6 py-20 md:grid-cols-[1.15fr_0.85fr] md:items-end md:gap-16 md:py-28">
+          <div>
             <Reveal>
-              <div className="relative aspect-[4/5] w-full overflow-hidden rounded-xl bg-tan/40">
-                <Image
-                  src="/images/team.jpg"
-                  alt={dict.home.storyAlt}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover"
-                />
-              </div>
+              <h2 className="max-w-2xl text-4xl text-espresso md:text-6xl">
+                {dict.appointments.heading}
+              </h2>
+              <p className="mt-6 max-w-xl text-lg leading-relaxed text-mocha">
+                {dict.appointments.intro}
+              </p>
             </Reveal>
-            <Reveal delay={0.1}>
+            <div className="mt-10 grid grid-cols-1 gap-8 border-t border-tan/45 pt-6 sm:grid-cols-2">
               <div>
-                <h2 className="text-3xl text-mocha md:text-5xl">
-                  {dict.home.storyHeading}
-                </h2>
-                <p className="mt-6 leading-relaxed text-mocha">
-                  {dict.home.story}
+                <h3 className="text-base text-tan">{dict.labels.location}</h3>
+                <p className="mt-2 leading-relaxed text-espresso">
+                  {site.contact.landmark}
+                  <br />
+                  {site.contact.address.line1}
+                  <br />
+                  {site.contact.address.line2}
                 </p>
-                <div className="mt-8">
-                  <Button
-                    href={`/${lang}/about`}
-                    ariaLabel={dict.cta.learnMoreAria}
-                  >
-                    {dict.cta.learnMore}
-                  </Button>
-                </div>
               </div>
-            </Reveal>
+              <OpeningHours locale={lang} dict={dict} />
+            </div>
           </div>
-        </div>
-      </section>
-
-      {/* Our Work — continuous marquee of real service photos */}
-      <section className="mx-auto max-w-7xl px-6 py-20 text-center md:py-28">
-        <Reveal>
-          <h2 className="text-2xl text-espresso md:text-4xl">
-            {dict.home.galleryHeading}
-          </h2>
-        </Reveal>
-        <Reveal delay={0.1}>
-          <div className="mt-12">
-            <Gallery slides={gallerySlides} />
-          </div>
-        </Reveal>
-        <Reveal>
-          <div className="mt-12 flex flex-wrap justify-center gap-4">
-            <Button href={site.instagram}>Instagram</Button>
-            <Button href={site.facebook} variant="outline">
-              Facebook
-            </Button>
-          </div>
-        </Reveal>
-      </section>
-
-      {/* Contact — soft-gray band */}
-      <section className="bg-fog">
-        <div className="mx-auto max-w-3xl px-6 py-20 md:py-28">
-          <Reveal>
-            <h2 className="text-3xl text-espresso md:text-5xl">
-              {dict.home.contactHeading}
-            </h2>
-            <p className="mt-6 leading-relaxed text-mocha">
-              {dict.home.contactIntro}
-            </p>
-          </Reveal>
           <Reveal delay={0.1}>
-            <div className="mt-10">
-              <ContactForm dict={dict} />
+            <div className="flex flex-col items-start gap-4 sm:flex-row md:justify-end">
+              <Button href={`/${lang}${site.booking}`}>{dict.cta.book}</Button>
+              <Button href={site.contact.phoneHref} variant="outline">
+                {dict.cta.callNow}
+              </Button>
             </div>
           </Reveal>
         </div>

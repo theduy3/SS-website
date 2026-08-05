@@ -1,14 +1,15 @@
 import { site } from "@/lib/site";
 import type { Dictionary } from "@/lib/dictionary";
 import type { Locale } from "@/lib/i18n";
+import { OpeningHours } from "@/components/OpeningHours";
 
 // Server Component — no interactivity, ships zero JS.
 export function Footer({ dict, locale }: { dict: Dictionary; locale: Locale }) {
   return (
     <footer className="bg-espresso text-cream">
-      <div className="mx-auto max-w-7xl px-6 py-16">
-        <h2 className="text-3xl md:text-5xl">{site.name}</h2>
-        <div className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-3">
+      <div className="mx-auto max-w-7xl px-6 py-16 md:py-20">
+        <h2 className="text-4xl md:text-6xl">{site.name}</h2>
+        <div className="mt-12 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div>
             <h3 className="text-base text-tan">{dict.labels.location}</h3>
             <p className="mt-2 leading-relaxed">
@@ -34,6 +35,7 @@ export function Footer({ dict, locale }: { dict: Dictionary; locale: Locale }) {
               </a>
             </p>
           </div>
+          <OpeningHours locale={locale} dict={dict} />
           <div>
             <h3 className="text-base text-tan">{site.name}</h3>
             <ul className="mt-2 space-y-1">
@@ -47,7 +49,7 @@ export function Footer({ dict, locale }: { dict: Dictionary; locale: Locale }) {
             </ul>
           </div>
         </div>
-        <p className="mt-12 text-xs uppercase tracking-wide text-cream/50">
+        <p className="mt-12 text-xs tracking-wide text-cream/50">
           © {new Date().getFullYear()} {site.name}
         </p>
       </div>

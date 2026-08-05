@@ -33,8 +33,8 @@ export function Header({ dict, locale }: { dict: Dictionary; locale: Locale }) {
     href === "/" ? `/${locale}` : `/${locale}${href}`;
 
   return (
-    <header className="sticky top-0 z-50 bg-espresso text-cream">
-      <div className="relative mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+    <header className="sticky top-0 z-50 border-b border-cream/10 bg-espresso/95 text-cream backdrop-blur">
+      <div className="relative mx-auto flex max-w-7xl items-center justify-between px-6 py-3">
         {/* Mobile-only locale switch — sits at the left of the centred logo. */}
         <div className="md:hidden">
           <LocaleSwitch locale={locale} />
@@ -52,16 +52,16 @@ export function Header({ dict, locale }: { dict: Dictionary; locale: Locale }) {
             width={1159}
             height={370}
             priority
-            className="h-8 w-auto mix-blend-screen sm:h-10"
+            className="h-7 w-auto mix-blend-screen sm:h-8"
           />
         </Link>
 
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="hidden items-center gap-6 md:flex">
           {site.nav.map((item) => (
             <Link
               key={item.key}
               href={localizedHref(item.href)}
-              className="text-sm uppercase tracking-wide transition-colors hover:text-tan"
+              className="text-sm tracking-wide transition-colors hover:text-tan"
             >
               {dict.nav[item.key]}
             </Link>
@@ -117,7 +117,7 @@ export function Header({ dict, locale }: { dict: Dictionary; locale: Locale }) {
                   key={item.key}
                   href={localizedHref(item.href)}
                   onClick={() => setOpen(false)}
-                  className="py-2 text-sm uppercase tracking-wide transition-colors hover:text-tan"
+                  className="py-2 text-sm tracking-wide transition-colors hover:text-tan"
                 >
                   {dict.nav[item.key]}
                 </Link>

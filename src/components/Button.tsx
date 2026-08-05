@@ -4,10 +4,10 @@ import type { ReactNode } from "react";
 type Variant = "solid" | "light" | "outline";
 
 const variants: Record<Variant, string> = {
-  solid: "bg-espresso text-cream hover:bg-mocha",
+  solid: "bg-tan text-cream hover:bg-espresso",
   light: "bg-cream text-espresso hover:bg-tan",
   outline:
-    "border border-current text-espresso hover:bg-espresso hover:text-cream",
+    "border border-espresso/35 text-espresso hover:bg-espresso hover:text-cream",
 };
 
 type Props = {
@@ -30,7 +30,7 @@ export function Button({
   className = "",
   ariaLabel,
 }: Props) {
-  const classes = `inline-flex items-center justify-center rounded-pill px-8 py-3 text-sm font-semibold uppercase tracking-wide transition-colors ${variants[variant]} ${className}`;
+  const classes = `inline-flex items-center justify-center rounded-pill px-8 py-3 text-sm font-semibold uppercase tracking-wide transition-[color,background-color,transform] active:scale-[0.98] ${variants[variant]} ${className}`;
 
   const isHttp = /^https?:\/\//.test(href);
   const isExternalScheme = /^(tel:|mailto:)/.test(href);
