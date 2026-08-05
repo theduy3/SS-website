@@ -86,7 +86,7 @@ export function Header({ dict, locale }: { dict: Dictionary; locale: Locale }) {
 
         <button
           onClick={() => setOpen((v) => !v)}
-          className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 md:hidden"
+          className="flex h-11 w-11 flex-col items-center justify-center gap-1.5 md:hidden focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tan"
           aria-label="Toggle menu"
           aria-expanded={open}
         >
@@ -117,7 +117,7 @@ export function Header({ dict, locale }: { dict: Dictionary; locale: Locale }) {
                   key={item.key}
                   href={localizedHref(item.href)}
                   onClick={() => setOpen(false)}
-                  className="py-2 text-sm tracking-wide transition-colors hover:text-tan"
+                  className="flex min-h-11 items-center py-2 text-sm tracking-wide transition-colors hover:text-tan"
                 >
                   {dict.nav[item.key]}
                 </Link>
@@ -127,7 +127,7 @@ export function Header({ dict, locale }: { dict: Dictionary; locale: Locale }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
-                className="py-2 transition-colors hover:text-tan"
+                  className="flex min-h-11 items-center py-2 transition-colors hover:text-tan"
               >
                 <InstagramIcon className="h-5 w-5" />
               </a>

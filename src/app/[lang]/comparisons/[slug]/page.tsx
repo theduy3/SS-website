@@ -1,19 +1,17 @@
 import type { Metadata } from "next";
 import { RelatedServiceLink } from "@/components/RelatedServiceLink";
 import { Reveal } from "@/components/Reveal";
-import { KeyPageChrome } from "@/components/KeyPageChrome";
+import { SubpageIntro } from "@/components/SubpageIntro";
 import { JsonLd } from "@/components/JsonLd";
 import { ComparisonTable } from "@/components/ComparisonTable";
 import { Faq } from "@/components/Faq";
 import { BookCta } from "@/components/BookCta";
-import { BackToServices } from "@/components/BackToServices";
 import {
   comparisonBySlug,
   comparisonSlugParams,
   comparisonPath,
   comparisonPathsByLocale,
 } from "@/lib/comparisons";
-import { dirFor } from "@/lib/i18n";
 import { productGraph, reviewGraph } from "@/lib/seo";
 import { PageBreadcrumb } from "@/components/PageBreadcrumb";
 import {
@@ -24,8 +22,6 @@ import {
 
 type Params = { params: Promise<{ lang: string; slug: string }> };
 
-// Emit only THIS locale's slugs (matches the service-page convention), so a
-// wrong-locale slug 404s instead of rendering a mismatched page.
 export const generateStaticParams = slugStaticParams(comparisonSlugParams);
 
 export function generateMetadata({ params }: Params): Promise<Metadata> {
@@ -68,41 +64,42 @@ export default async function ComparisonPage({ params }: Params) {
         ]}
       />
 
-      {/* Intro: answer-first verdict (bare SSR <p>) → table → detail */}
-      <section className="mx-auto max-w-3xl px-6 py-16 md:py-24">
-        <BackToServices lang={lang} label={sLabels.allServices} />
-        <Reveal delay={0.05}>
-          <h1 className="mt-6 text-3xl text-espresso md:text-5xl">{c.title}</h1>
-        </Reveal>
-        {/* Answer-first verdict — bare <p> outside Reveal so crawlers see it in raw SSR HTML */}
-        <p
-          className="mt-8 text-lg leading-relaxed text-mocha"
-          dir={dirFor(lang)}
-        >
-          {c.verdict}
-        </p>
-        <Reveal delay={0.1}>
-          <div className="mt-6 space-y-5 text-lg leading-relaxed text-mocha">
-            {c.intro.map((p) => (
-              <p key={p}>{p}</p>
-            ))}
-          </div>
-        </Reveal>
+      <SubpageIntro
+        lang={lang}
+        eyebrow={dict.nav.services}
+        title={c.title}
+        answer={c.verdict}
+        answerLabel={labels.verdict}
+        answerVariant="verdict"
+        backLink={{ href: `/${lang}/services`, label: sLabels.allServices }}
+      />
+
+      <section className="mx-auto max-w-5xl px-6 py-12 md:py-16">
+        <div className="grid gap-4 text-lg leading-relaxed text-mocha md:grid-cols-2">
+          {c.intro.map((paragraph) => (
+            <Reveal key={paragraph}>
+              <p>{paragraph}</p>
+            </Reveal>
+          ))}
+        </div>
       </section>
 
-      {/* Trust band + sticky Call/Book bar (key page) — mounted once (D-11) */}
-      <KeyPageChrome locale={lang} dict={dict} />
-
-      {/* Comparison matrix */}
-      <section className="bg-fog">
-        <div className="mx-auto max-w-4xl px-6 py-16 md:py-24">
+      <section className="border-y border-espresso/10 bg-fog">
+        <div className="mx-auto max-w-5xl px-6 py-16 md:py-24">
+          <div className="mb-8 flex items-end justify-between gap-6">
+            <h2 className="max-w-xl text-3xl text-espresso md:text-5xl">
+              {labels.verdict}
+            </h2>
+            <span className="hidden text-xs font-semibold uppercase tracking-[0.16em] text-tan md:block">
+              {c.columns.slice(1).join(" / ")}
+            </span>
+          </div>
           <Reveal>
             <ComparisonTable columns={c.columns} rows={c.rows} caption={c.title} />
           </Reveal>
         </div>
       </section>
 
-      {/* Related service link */}
       <RelatedServiceLink
         lang={lang}
         dict={dict}
@@ -110,10 +107,7 @@ export default async function ComparisonPage({ params }: Params) {
         label={labels.related}
       />
 
-      {/* FAQ */}
       <Faq heading={sLabels.faq} items={c.faq} />
-
-      {/* CTA */}
       <BookCta lang={lang} dict={dict} />
     </>
   );

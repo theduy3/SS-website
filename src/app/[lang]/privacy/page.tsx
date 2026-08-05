@@ -24,7 +24,7 @@ export default async function PrivacyPage({ params }: LangParams) {
         dict={dict}
         crumbs={[{ name: dict.nav.privacy, route: "/privacy" }]}
       />
-      <LegalDocument doc={dict.legal.privacy} />
+      <LegalDocument doc={dict.legal.privacy} lang={lang} />
     </>
   );
 }

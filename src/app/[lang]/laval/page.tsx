@@ -6,15 +6,14 @@
 
 import type { Metadata } from "next";
 import { type LangParams } from "@/lib/i18n";
-import { LeadParagraph } from "@/components/LeadParagraph";
 import { resolveLangPage, langPageMetadata } from "@/lib/page-resolver";
 import { faqPageGraph } from "@/lib/seo";
 import { PageBreadcrumb } from "@/components/PageBreadcrumb";
 import { JsonLd } from "@/components/JsonLd";
-import { PageHeader } from "@/components/PageHeader";
 import { Accordion } from "@/components/Accordion";
 import { Button } from "@/components/Button";
-import { KeyPageChrome } from "@/components/KeyPageChrome";
+import { SubpageIntro } from "@/components/SubpageIntro";
+import { FactRail } from "@/components/FactRail";
 import { site } from "@/lib/site";
 
 export function generateMetadata({ params }: LangParams): Promise<Metadata> {
@@ -31,7 +30,7 @@ export default async function LavalPage({ params }: LangParams) {
   const { lang, dict } = await resolveLangPage(params);
 
   return (
-    <div className="pb-[64px] md:pb-0">
+    <div>
       {/* JSON-LD: single source — dict.laval.faq.items feeds both schema and Accordion */}
       <JsonLd data={faqPageGraph(dict.laval.faq.items)} />
       <PageBreadcrumb
@@ -40,44 +39,38 @@ export default async function LavalPage({ params }: LangParams) {
         crumbs={[{ name: dict.laval.heading, route: "/laval" }]}
       />
 
-      {/* Page title + intro band */}
-      <PageHeader title={dict.laval.heading} intro={dict.laval.intro} />
+      <SubpageIntro
+        lang={lang}
+        eyebrow={dict.labels.location}
+        title={dict.laval.heading}
+        intro={dict.laval.intro}
+        answer={dict.laval.lead}
+        answerVariant="hero"
+      />
 
-      {/* Answer-first lead — SSR-visible constraint documented in LeadParagraph */}
-      <LeadParagraph lang={lang} text={dict.laval.lead} />
-
-      {/* Trust band + sticky Call/Book bar (key page) */}
-      <KeyPageChrome locale={lang} dict={dict} />
-
-      {/* Location facts — address / parking / transit / landmarks */}
-      <section className="mx-auto max-w-3xl px-6 py-20 md:py-28">
-        <dl className="space-y-8">
-          {dict.laval.facts.map((f) => (
-            <div key={f.term}>
-              <dt className="text-sm uppercase tracking-wide text-mocha">
-                {f.term}
-              </dt>
-              <dd className="mt-1 leading-relaxed text-mocha">{f.detail}</dd>
-            </div>
-          ))}
-        </dl>
+      <section className="mx-auto max-w-7xl px-6 py-16 md:py-24">
+        <FactRail
+          label={dict.labels.location}
+          rows={dict.laval.facts.map((fact) => ({
+            label: fact.term,
+            value: fact.detail,
+          }))}
+        />
       </section>
 
       {/* FAQ Accordion — same items as faqPageGraph above (SCHEMA-02) */}
       <section className="bg-fog">
-        <div className="mx-auto max-w-3xl px-6 py-20 md:py-28">
-          <h2 className="text-2xl text-espresso md:text-3xl">
+        <div className="mx-auto grid max-w-7xl gap-10 px-6 py-16 md:grid-cols-[0.7fr_1.3fr] md:py-24">
+          <h2 className="max-w-sm text-3xl text-espresso md:text-5xl">
             {dict.laval.faqHeading}
           </h2>
-          <div className="mt-8">
-            <Accordion items={dict.laval.faq.items} />
-          </div>
+          <Accordion items={dict.laval.faq.items} />
         </div>
       </section>
 
       {/* CTA */}
-      <section className="mx-auto max-w-3xl px-6 py-16 text-center md:py-24">
-        <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+      <section className="mx-auto max-w-7xl px-6 py-16 md:py-24">
+        <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center">
           <Button href={`/${lang}${site.booking}`}>{dict.cta.book}</Button>
           <a
             href={site.contact.phoneHref}

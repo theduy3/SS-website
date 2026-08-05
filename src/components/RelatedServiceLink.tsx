@@ -3,6 +3,7 @@ import { Reveal } from "@/components/Reveal";
 import type { Locale } from "@/lib/i18n";
 import type { Dictionary } from "@/lib/dictionary";
 import { serviceById, servicePath, type ServiceId } from "@/lib/services";
+import { ServicePhoto } from "@/components/ServicePhoto";
 
 // Related-service backlink for the guide & comparison pages — the "here's the
 // service this page is about" section both rendered verbatim (differing only in
@@ -29,18 +30,35 @@ export function RelatedServiceLink({
   label: string;
 }) {
   const service = serviceById(serviceId);
-  const title = dict.serviceDetails[serviceId].title;
+  const detail = dict.serviceDetails[serviceId];
 
   return (
-    <section className="mx-auto max-w-3xl px-6 py-12 text-center">
+    <section className="mx-auto max-w-7xl px-6 py-16 md:py-20">
       <Reveal>
-        <p className="text-mocha">{label}</p>
-        <Link
-          href={`/${lang}${servicePath(service, lang)}`}
-          className="mt-2 inline-block text-xl font-semibold text-espresso underline-offset-4 hover:underline"
-        >
-          {title}
-        </Link>
+        <div className="grid gap-8 border-y border-espresso/15 py-8 md:grid-cols-[0.8fr_1.2fr] md:items-center md:py-10">
+          <ServicePhoto
+            id={service.id}
+            photo={service.photo}
+            alt={detail.heroAlt}
+            label={detail.title}
+            sizes="(max-width: 768px) 100vw, 35vw"
+            className="aspect-[4/3] w-full rounded-2xl"
+          />
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-tan">
+              {label}
+            </p>
+            <Link
+              href={`/${lang}${servicePath(service, lang)}`}
+              className="mt-3 inline-block text-3xl text-espresso underline-offset-4 transition-colors hover:text-mocha md:text-5xl"
+            >
+              {detail.title}
+            </Link>
+            <p className="mt-4 max-w-xl leading-relaxed text-mocha">
+              {detail.metaDescription}
+            </p>
+          </div>
+        </div>
       </Reveal>
     </section>
   );

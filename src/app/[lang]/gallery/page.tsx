@@ -6,9 +6,9 @@ import { resolveLangPage, langPageMetadata } from "@/lib/page-resolver";
 import { imageGalleryGraph } from "@/lib/seo";
 import { PageBreadcrumb } from "@/components/PageBreadcrumb";
 import { JsonLd } from "@/components/JsonLd";
-import { PageHeader } from "@/components/PageHeader";
 import { Reveal } from "@/components/Reveal";
 import { galleryImages } from "@/lib/gallery";
+import { SubpageIntro } from "@/components/SubpageIntro";
 
 export function generateMetadata({ params }: LangParams): Promise<Metadata> {
   return langPageMetadata(params, {
@@ -39,25 +39,34 @@ export default async function GalleryPage({ params }: LangParams) {
         dict={dict}
         crumbs={[{ name: dict.nav.gallery, route: "/gallery" }]}
       />
-      <PageHeader title={dict.gallery.title} intro={dict.gallery.intro} />
-      <section className="mx-auto max-w-6xl px-6 py-20 md:py-28">
+      <SubpageIntro
+        lang={lang}
+        eyebrow={dict.nav.gallery}
+        title={dict.gallery.title}
+        intro={dict.gallery.intro}
+      />
+      <section className="mx-auto max-w-7xl px-6 py-16 md:py-24">
         <Reveal>
-          <ul className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-            {galleryImages.map((img) => {
+          <ul className="columns-2 gap-3 sm:columns-3 lg:columns-4">
+            {galleryImages.map((img, index) => {
               const { alt, caption } = photo(img.id);
               return (
-                <li key={img.id}>
+                <li key={img.id} className="mb-4 break-inside-avoid">
                   <figure>
-                    <div className="relative aspect-square overflow-hidden rounded-lg">
+                    <div
+                      className={`relative overflow-hidden rounded-2xl ${
+                        index % 3 === 0 ? "aspect-[4/5]" : "aspect-[4/3]"
+                      }`}
+                    >
                       <Image
                         src={img.file}
                         alt={alt}
                         fill
                         sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, 20vw"
-                        className="object-cover transition-transform duration-300 hover:scale-105"
+                        className="object-cover transition-transform duration-500 hover:scale-[1.03]"
                       />
                     </div>
-                    <figcaption className="mt-2 text-center text-sm text-mocha">
+                    <figcaption className="mt-2 text-sm text-mocha">
                       {caption}
                     </figcaption>
                   </figure>

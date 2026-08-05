@@ -49,7 +49,7 @@ export function StickyCtaBar({
 
   return (
     <div
-      className="fixed bottom-0 left-0 right-0 z-40 bg-espresso text-cream py-3 px-4 md:hidden"
+      className="fixed inset-x-0 bottom-0 z-40 bg-espresso px-4 pb-[calc(0.75rem+env(safe-area-inset-bottom))] pt-3 text-cream md:hidden"
       aria-label="Quick contact"
     >
       <div

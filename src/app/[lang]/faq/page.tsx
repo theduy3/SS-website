@@ -1,14 +1,12 @@
 // src/app/[lang]/faq/page.tsx
 import type { Metadata } from "next";
 import { type LangParams } from "@/lib/i18n";
-import { LeadParagraph } from "@/components/LeadParagraph";
 import { resolveLangPage, langPageMetadata } from "@/lib/page-resolver";
 import { faqPageGraph } from "@/lib/seo";
 import { PageBreadcrumb } from "@/components/PageBreadcrumb";
 import { JsonLd } from "@/components/JsonLd";
-import { PageHeader } from "@/components/PageHeader";
 import { Accordion } from "@/components/Accordion";
-import { KeyPageChrome } from "@/components/KeyPageChrome";
+import { SubpageIntro } from "@/components/SubpageIntro";
 
 export function generateMetadata({ params }: LangParams): Promise<Metadata> {
   return langPageMetadata(params, {
@@ -23,18 +21,30 @@ export function generateMetadata({ params }: LangParams): Promise<Metadata> {
 export default async function FaqPage({ params }: LangParams) {
   const { lang, dict } = await resolveLangPage(params);
   return (
-    <div className="pb-[64px] md:pb-0">
+    <div>
       <JsonLd data={faqPageGraph(dict.faq.items)} />
       <PageBreadcrumb
         lang={lang}
         dict={dict}
         crumbs={[{ name: dict.nav.faq, route: "/faq" }]}
       />
-      <PageHeader title={dict.faq.title} intro={dict.faq.intro} />
-      <LeadParagraph lang={lang} text={dict.faq.lead} />
-      {/* Trust band + sticky Call/Book bar (key page) */}
-      <KeyPageChrome locale={lang} dict={dict} />
-      <section className="mx-auto max-w-3xl px-6 py-20 md:py-28">
+      <SubpageIntro
+        lang={lang}
+        eyebrow={dict.nav.faq}
+        title={dict.faq.title}
+        intro={dict.faq.intro}
+        answer={dict.faq.lead}
+        answerVariant="rail"
+      />
+      <section className="mx-auto grid max-w-7xl gap-10 px-6 py-16 md:grid-cols-[0.7fr_1.3fr] md:py-24">
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-tan">
+            {dict.nav.faq}
+          </p>
+          <h2 className="mt-3 max-w-sm text-3xl text-espresso md:text-5xl">
+            {dict.faq.intro}
+          </h2>
+        </div>
         <Accordion items={dict.faq.items} />
       </section>
     </div>

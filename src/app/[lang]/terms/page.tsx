@@ -24,7 +24,7 @@ export default async function TermsPage({ params }: LangParams) {
         dict={dict}
         crumbs={[{ name: dict.nav.terms, route: "/terms" }]}
       />
-      <LegalDocument doc={dict.legal.terms} />
+      <LegalDocument doc={dict.legal.terms} lang={lang} />
     </>
   );
 }

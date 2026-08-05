@@ -1,18 +1,16 @@
 import type { Metadata } from "next";
 import { RelatedServiceLink } from "@/components/RelatedServiceLink";
 import { Reveal } from "@/components/Reveal";
-import { KeyPageChrome } from "@/components/KeyPageChrome";
+import { SubpageIntro } from "@/components/SubpageIntro";
 import { JsonLd } from "@/components/JsonLd";
 import { Faq } from "@/components/Faq";
 import { BookCta } from "@/components/BookCta";
-import { BackToServices } from "@/components/BackToServices";
 import {
   guideBySlug,
   guideSlugParams,
   guidePath,
   guidePathsByLocale,
 } from "@/lib/guides";
-import { dirFor } from "@/lib/i18n";
 import { pageDate } from "@/lib/page-dates";
 import { articleGraph } from "@/lib/seo";
 import { PageBreadcrumb } from "@/components/PageBreadcrumb";
@@ -24,8 +22,6 @@ import {
 
 type Params = { params: Promise<{ lang: string; slug: string }> };
 
-// Emit only THIS locale's slugs (matches the service-page convention), so a
-// wrong-locale slug 404s instead of rendering a mismatched page.
 export const generateStaticParams = slugStaticParams(guideSlugParams);
 
 export function generateMetadata({ params }: Params): Promise<Metadata> {
@@ -50,15 +46,12 @@ export default async function GuidePage({ params }: Params) {
 
   return (
     <>
-      {/* Article + Breadcrumb only — no HowTo (D-08) */}
       <JsonLd
         data={articleGraph(lang, {
           name: g.title,
           description: g.metaDescription,
           path: guidePath(guide, lang),
           datePublished: guide.published,
-          // PAGE_DATES is keyed by the EN base path — the same key the sitemap
-          // and .md twin use, so Article/sitemap/frontmatter dates can't drift.
           dateModified: pageDate(guidePath(guide, "en")),
         })}
       />
@@ -71,45 +64,34 @@ export default async function GuidePage({ params }: Params) {
         ]}
       />
 
-      {/* Intro: answer-first block (bare SSR <p>) → sections */}
-      <section className="mx-auto max-w-3xl px-6 py-16 md:py-24">
-        <BackToServices lang={lang} label={sLabels.allServices} />
-        <Reveal delay={0.05}>
-          <h1 className="mt-6 text-3xl text-espresso md:text-5xl">{g.title}</h1>
-        </Reveal>
-        {/* Answer-first block — bare <p> outside Reveal so crawlers see it in raw SSR HTML */}
-        <p
-          className="mt-8 text-lg leading-relaxed text-mocha"
-          dir={dirFor(lang)}
-        >
-          {g.answer}
-        </p>
-      </section>
+      <SubpageIntro
+        lang={lang}
+        eyebrow={sLabels.guides}
+        title={g.title}
+        answer={g.answer}
+        answerVariant="hero"
+        backLink={{ href: `/${lang}/services`, label: sLabels.allServices }}
+      />
 
-      {/* Trust band + sticky Call/Book bar (key page) — mounted once (D-11) */}
-      <KeyPageChrome locale={lang} dict={dict} />
-
-      {/* Body sections */}
-      <section className="bg-fog">
-        <div className="mx-auto max-w-3xl px-6 py-16 md:py-24">
-          <div className="space-y-12">
-            {g.sections.map((sec) => (
-              <Reveal key={sec.heading}>
-                <h2 className="text-2xl text-espresso md:text-3xl">
-                  {sec.heading}
+      <section className="mx-auto max-w-5xl px-6 py-16 md:py-24">
+        <div className="divide-y divide-espresso/15">
+          {g.sections.map((section) => (
+            <Reveal key={section.heading}>
+              <article className="py-8 first:pt-0 md:py-10">
+                <h2 className="max-w-2xl text-3xl text-espresso md:text-5xl">
+                  {section.heading}
                 </h2>
-                <div className="mt-4 space-y-4 text-lg leading-relaxed text-mocha">
-                  {sec.body.map((p) => (
-                    <p key={p}>{p}</p>
+                <div className="mt-5 max-w-3xl space-y-4 text-lg leading-relaxed text-mocha">
+                  {section.body.map((paragraph) => (
+                    <p key={paragraph}>{paragraph}</p>
                   ))}
                 </div>
-              </Reveal>
-            ))}
-          </div>
+              </article>
+            </Reveal>
+          ))}
         </div>
       </section>
 
-      {/* Related service link (D-12) */}
       <RelatedServiceLink
         lang={lang}
         dict={dict}
@@ -117,10 +99,7 @@ export default async function GuidePage({ params }: Params) {
         label={sLabels.allServices}
       />
 
-      {/* FAQ */}
       <Faq heading={sLabels.faq} items={g.faq} />
-
-      {/* CTA — book the related service (D-12) */}
       <BookCta lang={lang} dict={dict} />
     </>
   );
