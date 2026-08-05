@@ -8,40 +8,38 @@ export type GallerySlide = {
   caption: string;
 };
 
-// Continuous right→left marquee of real service photos. CSS-only (no JS) via the
-// shared .animate-marquee / .marquee-pause utilities in globals.css. The track
-// holds the slides duplicated once, so the -50% translate loops seamlessly;
-// hover pauses it, and prefers-reduced-motion stops it (handled in CSS).
+// Static asymmetric gallery of real service photos. The homepage uses three
+// carefully cropped images so the work feels curated instead of auto-playing.
 export function Gallery({ slides }: { slides: GallerySlide[] }) {
   if (slides.length === 0) return null;
-  const items = [...slides, ...slides];
   return (
-    <div className="marquee-pause overflow-hidden">
-      <ul className="animate-marquee flex w-max">
-        {items.map((s, i) => (
-          <li
-            key={i}
-            aria-hidden={i >= slides.length || undefined}
-            className="mr-6 w-[360px] shrink-0"
-          >
-            <div className="relative aspect-[4/3] overflow-hidden rounded-xl">
+    <ul className="grid grid-cols-1 items-end gap-6 md:grid-cols-[1.15fr_0.85fr_0.7fr]">
+      {slides.map((s, i) => {
+        const height =
+          i === 0
+            ? "h-[360px] md:h-[520px]"
+            : i === 1
+              ? "h-[320px] md:h-[420px]"
+              : "h-[280px] md:h-[340px]";
+
+        return (
+          <li key={s.id}>
+            <div className={`overflow-hidden rounded-2xl ${height}`}>
               <ServicePhoto
                 id={s.id}
                 photo={s.photo}
                 alt={s.alt}
                 label={s.caption}
-                sizes="360px"
-                className="pointer-events-none h-full w-full"
+                sizes="(max-width: 768px) 100vw, 40vw"
+                className="h-full w-full"
               />
-              <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-espresso/70 to-transparent p-6 pt-12 text-left">
-                <span className="text-lg font-medium text-cream">
-                  {s.caption}
-                </span>
-              </div>
             </div>
+            <p className="mt-4 text-left text-sm font-semibold text-mocha">
+              {s.caption}
+            </p>
           </li>
-        ))}
-      </ul>
-    </div>
+        );
+      })}
+    </ul>
   );
 }

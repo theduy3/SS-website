@@ -45,13 +45,30 @@
   },
   "hero": {
     "tagline": "The ultimate nail care experience",
-    "alt": "Sans Souci Ongles & Spa salon interior"
+    "alt": "Close-up manicure with dark polish at Sans Souci Ongles & Spa"
   },
   "home": {
     "lead": "Sans Souci Ongles & Spa is a nail salon and spa inside CF Carrefour Laval (3035 Boulevard le Carrefour, Entrée 6). We offer manicures, pedicures, lash extensions and waxing. With over 20 years of experience and 1,000+ gel colours, we serve Laval and Greater Montreal. Walk-ins welcome.",
+    "heroSupport": "Manicures, spa pedicures, lash extensions and waxing inside CF Carrefour Laval.",
+    "proof": {
+      "experience": "years of experience",
+      "colours": "gel colours to choose from",
+      "openDays": "open seven days a week"
+    },
+    "trustPoints": [
+      { "title": "Clean by design", "detail": "Tools and stations are sterilized between services." },
+      { "title": "Experienced hands", "detail": "More than 20 years of nail care experience." },
+      { "title": "Easy to visit", "detail": "Inside CF Carrefour Laval at Entrance 6." }
+    ],
+    "serviceSummaries": [
+      "Premium products, 1,000+ gel colours and precise care for every finish.",
+      "Nail shaping, cuticle care, exfoliation, massage and deep hydration.",
+      "2D, 3D and hybrid sets tailored to your natural look.",
+      "Comfortable waxing from brows to full bikini service."
+    ],
     "servicesHeading": "Our Services",
     "storyHeading": "Why choose us",
-    "story": "With over 20 years of experience in nail artistry, our friendly, professional team delivers the best nail care in Laval. Your satisfaction is guaranteed — and every client is part of our family.",
+    "story": "With over 20 years of experience in nail artistry, our friendly, professional team delivers the best nail care in Laval. Your satisfaction is guaranteed, and every client is part of our family.",
     "storyAlt": "Our friendly nail salon team at Sans Souci Ongles & Spa in Laval",
     "contactHeading": "Contact Us",
     "contactIntro": "Questions or ready to book? Send us a message and we'll reply shortly.",
@@ -93,7 +110,7 @@
   },
   "appointments": {
     "heading": "Book Today",
-    "intro": "Book online in seconds — pick your service and time, and we'll take care of the rest.",
+    "intro": "Book online in seconds. Pick your service and time, and we'll take care of the rest.",
     "helpBefore": "If you have trouble booking online, it's best to call us directly at ",
     "helpAfter": "."
   },
@@ -119,7 +136,8 @@
   },
   "labels": {
     "location": "Location",
-    "contact": "Contact"
+    "contact": "Contact",
+    "hours": "Hours"
   },
   "serviceDetails": {
     "manicure": {
@@ -349,12 +367,12 @@
   "reviewsPage": {
     "title": "Reviews",
     "intro": "Hear from the people who sit in our chairs.",
-    "empty": "Come find out why our clients keep coming back — book your visit today.",
+    "empty": "Come find out why our clients keep coming back. Book your visit today.",
     "cta": "Book online"
   },
   "gallery": {
     "title": "Gallery",
-    "intro": "A look at our work — nails, lashes and more.",
+    "intro": "A look at our work: nails, lashes and more.",
     "photos": {
       "manicure": { "alt": "Freshly painted manicure at Sans Souci Ongles & Spa in Laval", "caption": "Manicure" },
       "pedicure": { "alt": "Relaxing pedicure treatment at our Laval salon", "caption": "Pedicure" },

@@ -27,6 +27,14 @@ describe("home page — answer-first lead (02-01)", () => {
       expect(typeof dict.home.lead).toBe("string");
       expect(dict.home.lead.trim().length).toBeGreaterThan(0);
     });
+
+    it(`redesign proof and service content is complete for locale "${lang}"`, () => {
+      const dict = dicts[lang];
+      expect(dict.home.heroSupport.trim().length).toBeGreaterThan(0);
+      expect(dict.home.trustPoints).toHaveLength(3);
+      expect(dict.home.serviceSummaries).toHaveLength(services.length);
+      expect(dict.home.serviceSummaries.every((summary) => summary.trim().length > 0)).toBe(true);
+    });
   }
 });
 

@@ -45,13 +45,30 @@
   },
   "hero": {
     "tagline": "L'expérience ultime du soin des ongles",
-    "alt": "Intérieur du salon Sans Souci Ongles & Spa"
+    "alt": "Gros plan sur une manucure foncée chez Sans Souci Ongles & Spa"
   },
   "home": {
     "lead": "Sans Souci Ongles & Spa est un salon d'ongles et spa situé au CF Carrefour Laval (3035 Boulevard le Carrefour, Entrée 6). Nous offrons manucures, pédicures, extensions de cils et épilation. Avec plus de 20 ans d'expérience et 1 000+ couleurs de gel, nous servons Laval et le Grand Montréal. Sans rendez-vous bienvenu.",
+    "heroSupport": "Manucures, pédicures spa, extensions de cils et épilation au CF Carrefour Laval.",
+    "proof": {
+      "experience": "ans d'expérience",
+      "colours": "couleurs de gel au choix",
+      "openDays": "ouvert sept jours sur sept"
+    },
+    "trustPoints": [
+      { "title": "Hygiène rigoureuse", "detail": "Outils et stations sont stérilisés entre les services." },
+      { "title": "Des mains expertes", "detail": "Plus de 20 ans d'expérience en soins des ongles." },
+      { "title": "Facile à visiter", "detail": "Au CF Carrefour Laval, Entrée 6." }
+    ],
+    "serviceSummaries": [
+      "Produits de qualité, 1 000+ couleurs de gel et soin précis pour chaque fini.",
+      "Mise en forme, cuticules, exfoliation, massage et hydratation profonde.",
+      "Styles 2D, 3D et hybrides adaptés à votre regard naturel.",
+      "Épilation confortable, des sourcils au maillot complet."
+    ],
     "servicesHeading": "Nos services",
     "storyHeading": "Pourquoi nous choisir",
-    "story": "Avec plus de 20 ans d'expérience dans l'art des ongles, notre équipe chaleureuse et professionnelle offre les meilleurs soins à Laval. Votre satisfaction est garantie — et chaque client fait partie de notre famille.",
+    "story": "Avec plus de 20 ans d'expérience dans l'art des ongles, notre équipe chaleureuse et professionnelle offre les meilleurs soins à Laval. Votre satisfaction est garantie, et chaque client fait partie de notre famille.",
     "storyAlt": "Notre équipe chaleureuse au salon Sans Souci Ongles & Spa à Laval",
     "contactHeading": "Nous contacter",
     "contactIntro": "Des questions ou prêt(e) à réserver? Écrivez-nous et nous vous répondrons sous peu.",
@@ -93,7 +110,7 @@
   },
   "appointments": {
     "heading": "Prenez rendez-vous",
-    "intro": "Réservez en ligne en quelques secondes — choisissez votre service et votre heure, on s'occupe du reste.",
+    "intro": "Réservez en ligne en quelques secondes. Choisissez votre service et votre heure, on s'occupe du reste.",
     "helpBefore": "Si vous avez de la difficulté à réserver en ligne, appelez-nous directement au ",
     "helpAfter": "."
   },
@@ -119,7 +136,8 @@
   },
   "labels": {
     "location": "Emplacement",
-    "contact": "Coordonnées"
+    "contact": "Coordonnées",
+    "hours": "Heures"
   },
   "serviceDetails": {
     "manicure": {
@@ -349,12 +367,12 @@
   "reviewsPage": {
     "title": "Avis",
     "intro": "Ce que disent les personnes qui prennent place dans nos fauteuils.",
-    "empty": "Venez découvrir pourquoi nos clientes reviennent — réservez votre visite dès aujourd'hui.",
+    "empty": "Venez découvrir pourquoi nos clientes reviennent. Réservez votre visite dès aujourd'hui.",
     "cta": "Réservez en ligne"
   },
   "gallery": {
     "title": "Galerie",
-    "intro": "Un aperçu de notre travail — ongles, cils et plus.",
+    "intro": "Un aperçu de notre travail : ongles, cils et plus.",
     "photos": {
       "manicure": { "alt": "Manucure fraîchement vernie chez Sans Souci Ongles & Spa à Laval", "caption": "Manucure" },
       "pedicure": { "alt": "Soin de pédicure relaxant à notre salon de Laval", "caption": "Pédicure" },

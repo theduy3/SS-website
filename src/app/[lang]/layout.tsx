@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { notFound } from "next/navigation";
-import { Archivo_Black, Space_Grotesk } from "next/font/google";
+import { Space_Grotesk } from "next/font/google";
 import "../globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -14,14 +14,6 @@ import { Analytics } from "@/components/Analytics";
 import { ConsentBar } from "@/components/ConsentBar";
 import { WebVitalsReporter } from "@/components/WebVitalsReporter";
 import { readConsent } from "@/lib/consent.server";
-
-// Archivo Black is a single-weight font — weight "400" is required.
-const archivoBlack = Archivo_Black({
-  weight: "400",
-  subsets: ["latin"],
-  variable: "--font-archivo-black",
-  display: "swap",
-});
 
 // Space Grotesk is variable — no explicit weight needed.
 const spaceGrotesk = Space_Grotesk({
@@ -92,7 +84,7 @@ export default async function RootLayout({
     <html
       lang={lang}
       dir={dirFor(lang)}
-      className={`${archivoBlack.variable} ${spaceGrotesk.variable} antialiased`}
+      className={`${spaceGrotesk.variable} antialiased`}
     >
       <body className="flex min-h-screen flex-col">
         {/* Sitewide LocalBusiness + WebSite structured data. */}

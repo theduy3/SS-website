@@ -9,7 +9,7 @@ export function ReviewCard({ review }: { review: Review }) {
       <blockquote className="flex-1 leading-relaxed text-mocha">
         {review.text}
       </blockquote>
-      <figcaption className="text-sm uppercase tracking-wide text-tan">
+      <figcaption className="text-sm font-semibold tracking-wide text-tan">
         {review.author}
       </figcaption>
     </figure>

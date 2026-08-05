@@ -14,7 +14,9 @@ import { reviewsFetchedAt } from "@/lib/reviews";
 import type { GalleryImage } from "@/lib/gallery";
 
 // Default social-share image (absolute path; resolved against metadataBase).
-const OG_IMAGE = "/images/storefront.jpg";
+// Use a real nail photograph for social previews and the business image. The
+// marble texture is a background asset, not a useful representation of the salon.
+const OG_IMAGE = "/images/hero.jpg";
 
 // OpenGraph locale codes. Quebec salon → French/English Canadian variants.
 const OG_LOCALE: Record<Locale, string> = {

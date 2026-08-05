@@ -45,10 +45,27 @@
   },
   "hero": {
     "tagline": "La experiencia definitiva en cuidado de uñas",
-    "alt": "Interior del salón Sans Souci Ongles & Spa"
+    "alt": "Manicura oscura en primer plano en Sans Souci Ongles & Spa"
   },
   "home": {
     "lead": "Sans Souci Ongles & Spa es un salón de uñas y spa ubicado en CF Carrefour Laval (3035 Boulevard le Carrefour, Entrada 6). Ofrecemos manicuras, pedicuras, extensiones de pestañas y depilación. Con más de 20 años de experiencia y 1 000+ colores de gel, atendemos a Laval y el Gran Montreal. Se aceptan visitas sin cita.",
+    "heroSupport": "Manicuras, pedicuras spa, extensiones de pestañas y depilación en CF Carrefour Laval.",
+    "proof": {
+      "experience": "años de experiencia",
+      "colours": "colores de gel para elegir",
+      "openDays": "abierto los siete días"
+    },
+    "trustPoints": [
+      { "title": "Higiene rigurosa", "detail": "Herramientas y estaciones se esterilizan entre servicios." },
+      { "title": "Manos expertas", "detail": "Más de 20 años de experiencia en cuidado de uñas." },
+      { "title": "Fácil de visitar", "detail": "Dentro de CF Carrefour Laval, Entrada 6." }
+    ],
+    "serviceSummaries": [
+      "Productos premium, más de 1 000 colores de gel y cuidado preciso.",
+      "Forma de uñas, cutículas, exfoliación, masaje e hidratación profunda.",
+      "Sets 2D, 3D e híbridos adaptados a tu mirada natural.",
+      "Depilación cómoda, desde cejas hasta servicio completo de bikini."
+    ],
     "servicesHeading": "Nuestros servicios",
     "storyHeading": "Por qué elegirnos",
     "story": "Con más de 20 años de experiencia en el arte de las uñas, nuestro equipo amable y profesional ofrece el mejor cuidado en Laval. Tu satisfacción está garantizada, y cada cliente es parte de nuestra familia.",
@@ -93,7 +110,7 @@
   },
   "appointments": {
     "heading": "Reserva hoy",
-    "intro": "Reserva en línea en segundos: elige tu servicio y tu hora, y nosotros nos encargamos del resto.",
+    "intro": "Reserva en línea en segundos. Elige tu servicio y tu hora, y nosotros nos encargamos del resto.",
     "helpBefore": "Si tienes dificultades para reservar en línea, llámanos directamente al ",
     "helpAfter": "."
   },
@@ -119,7 +136,8 @@
   },
   "labels": {
     "location": "Ubicación",
-    "contact": "Contacto"
+    "contact": "Contacto",
+    "hours": "Horario"
   },
   "serviceDetails": {
     "manicure": {
@@ -349,12 +367,12 @@
   "reviewsPage": {
     "title": "Opiniones",
     "intro": "Lo que dicen las personas que se sientan en nuestras sillas.",
-    "empty": "Descubre por qué nuestras clientas siguen volviendo — reserva tu visita hoy.",
+    "empty": "Descubre por qué nuestras clientas siguen volviendo. Reserva tu visita hoy.",
     "cta": "Reservar en línea"
   },
   "gallery": {
     "title": "Galería",
-    "intro": "Un vistazo a nuestro trabajo — uñas, pestañas y más.",
+    "intro": "Un vistazo a nuestro trabajo: uñas, pestañas y más.",
     "photos": {
       "manicure": { "alt": "Manicura recién pintada en Sans Souci Ongles & Spa en Laval", "caption": "Manicura" },
       "pedicure": { "alt": "Tratamiento de pedicura relajante en nuestro salón de Laval", "caption": "Pedicura" },
