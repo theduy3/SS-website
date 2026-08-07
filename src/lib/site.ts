@@ -5,6 +5,8 @@
 
 import googleReviews from "@/data/google-reviews.json";
 
+const directionsHref = "https://maps.app.goo.gl/wNJvwCYG4fShGckBA";
+
 export const site = {
   name: "Sans Souci Ongles & Spa",
   // Canonical production origin — feeds metadataBase, sitemap, robots and JSON-LD @id.
@@ -23,7 +25,7 @@ export const site = {
   socialProfiles: [
     "https://www.instagram.com/sans.souci.cflaval",
     "https://www.facebook.com/sans.souci.cflaval/",
-    "https://maps.app.goo.gl/wNJvwCYG4fShGckBA",
+    directionsHref,
     "https://www.tiktok.com/@sans.souci.ongles.spa",
     "https://www.yelp.ca/biz/sans-souci-ongles-and-spa-laval",
   ],
@@ -56,6 +58,7 @@ export const site = {
     email: "info@onglessanssouci.com",
     phone: "(450) 505-6450",
     phoneHref: "tel:+14505056450",
+    directionsHref,
     landmark: "CF Carrefour Laval",
     address: {
       // line1/line2 are the human-readable display lines (used in Footer + contact page).

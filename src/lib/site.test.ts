@@ -17,6 +17,7 @@
 import { describe, it, expect } from "vitest";
 import { readdirSync, readFileSync, statSync } from "node:fs";
 import { join, relative } from "node:path";
+import { site } from "./site";
 
 const PROJECT_ROOT = join(import.meta.dirname, "..", "..");
 const SRC_DIR = join(PROJECT_ROOT, "src");
@@ -83,4 +84,8 @@ describe("NAP single-source-of-truth guard (FOUND-02 / D-06)", () => {
       ).toHaveLength(0);
     });
   }
+});
+
+it("exposes the existing Google Maps URL as a dedicated directions destination", () => {
+  expect(site.contact.directionsHref).toBe(site.socialProfiles[2]);
 });

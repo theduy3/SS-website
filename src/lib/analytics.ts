@@ -22,6 +22,7 @@ export type GaEvent =
   | "phone_click"
   | "book_cta_click"
   | "generate_lead"
+  | "directions_click"
   | "web_vitals";
 
 // Returns true only when the user has explicitly granted analytics consent.

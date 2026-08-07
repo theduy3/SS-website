@@ -93,6 +93,15 @@ describe("track()", () => {
     track("phone_click");
     expect(gtag).toHaveBeenCalledWith("event", "phone_click", undefined);
   });
+
+  it("tracks directions clicks when consent is granted", async () => {
+    const gtag = vi.fn();
+    vi.stubGlobal("gtag", gtag);
+    setConsentCookie("granted");
+    const { track } = await import("./analytics");
+    track("directions_click");
+    expect(gtag).toHaveBeenCalledWith("event", "directions_click", undefined);
+  });
 });
 
 // ---------------------------------------------------------------------------
