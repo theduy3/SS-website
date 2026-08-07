@@ -15,7 +15,7 @@ import { ServicePhoto } from "@/components/ServicePhoto";
 // divergence is preserved here, not unified.
 //
 // dict is a Pick — the component reads only serviceDetails, so the type states
-// exactly its dependency (KeyPageChrome's ChromeDict idiom).
+// exactly the dictionary dependency this related-service block needs.
 type BlockDict = Pick<Dictionary, "serviceDetails">;
 
 export function RelatedServiceLink({
