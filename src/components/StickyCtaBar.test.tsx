@@ -141,6 +141,8 @@ describe("StickyCtaBar", () => {
     expect(icons).toHaveLength(3);
     icons.forEach((icon) => {
       expect(icon).toHaveAttribute("aria-hidden", "true");
+      expect(icon).toHaveAttribute("stroke", "currentColor");
+      expect(icon).toHaveAttribute("stroke-width");
     });
   });
 
