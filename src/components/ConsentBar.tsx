@@ -17,7 +17,7 @@
 import { useState, useSyncExternalStore } from "react";
 import { dirFor, type Locale } from "@/lib/i18n";
 import { grantConsent } from "@/lib/analytics";
-import { writeConsent } from "@/lib/consent";
+import { notifyConsentChanged, writeConsent } from "@/lib/consent";
 import type { Dictionary } from "@/lib/dictionary";
 
 // useSyncExternalStore hydration gate — identical to Reveal.tsx:9-15.
@@ -60,12 +60,14 @@ export function ConsentBar({ dict, locale, consentKnown }: Props) {
   const handleAccept = () => {
     writeConsent("granted");
     grantConsent();
+    notifyConsentChanged();
     setDecided(true);
   };
 
   const handleDecline = () => {
     writeConsent("denied");
     // grantConsent is deliberately NOT called on Decline (analytics_storage stays denied).
+    notifyConsentChanged();
     setDecided(true);
   };
 

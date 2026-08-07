@@ -3,7 +3,7 @@
 //
 // Mocks:
 //   - @/lib/analytics (grantConsent)
-//   - @/lib/consent  (writeConsent)
+//   - @/lib/consent  (writeConsent, notifyConsentChanged)
 //   - useSyncExternalStore is real — but we force the "hydrated" snapshot
 //     by mocking the module in the hydrated tests.
 
@@ -14,7 +14,9 @@ import { render, screen, fireEvent } from "@testing-library/react";
 vi.mock("@/lib/analytics", () => ({ grantConsent: vi.fn() }));
 vi.mock("@/lib/consent", () => ({
   writeConsent: vi.fn(),
+  notifyConsentChanged: vi.fn(),
   SS_CONSENT_COOKIE: "ss_consent",
+  SS_CONSENT_CHANGED_EVENT: "ss-consent-changed",
 }));
 
 // For hydration-gate tests we need to control useSyncExternalStore.
@@ -33,7 +35,7 @@ vi.mock("react", async (importOriginal) => {
 });
 
 import { grantConsent } from "@/lib/analytics";
-import { writeConsent } from "@/lib/consent";
+import { notifyConsentChanged, writeConsent } from "@/lib/consent";
 import { ConsentBar } from "./ConsentBar";
 
 // Minimal dict subset ConsentBar actually uses.
@@ -69,6 +71,7 @@ describe("ConsentBar", () => {
     fireEvent.click(screen.getByText("Accept"));
     expect(writeConsent).toHaveBeenCalledWith("granted");
     expect(grantConsent).toHaveBeenCalledTimes(1);
+    expect(notifyConsentChanged).toHaveBeenCalledTimes(1);
     // Bar should unmount — buttons gone
     expect(screen.queryByText("Accept")).toBeNull();
   });
@@ -78,6 +81,7 @@ describe("ConsentBar", () => {
     fireEvent.click(screen.getByText("Decline"));
     expect(writeConsent).toHaveBeenCalledWith("denied");
     expect(grantConsent).not.toHaveBeenCalled();
+    expect(notifyConsentChanged).toHaveBeenCalledTimes(1);
     // Bar should unmount — buttons gone
     expect(screen.queryByText("Decline")).toBeNull();
   });
