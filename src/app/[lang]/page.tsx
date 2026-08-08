@@ -4,7 +4,6 @@ import Link from "next/link";
 import { Button } from "@/components/Button";
 import { Gallery } from "@/components/Gallery";
 import { JsonLd } from "@/components/JsonLd";
-import { KeyPageChrome } from "@/components/KeyPageChrome";
 import { OpeningHours } from "@/components/OpeningHours";
 import { Reveal } from "@/components/Reveal";
 import { Testimonials } from "@/components/Testimonials";
@@ -55,7 +54,7 @@ export default async function Home({ params }: LangParams) {
   }));
 
   return (
-    <div className="pb-[64px] md:pb-0">
+    <div>
       <JsonLd data={servicesGraph(lang, serviceItems)} />
 
       {/* Hero: split statement with one real image and one clear action. */}
@@ -133,9 +132,6 @@ export default async function Home({ params }: LangParams) {
           {dict.home.lead}
         </p>
       </section>
-
-      {/* Sticky Call/Book bar on mobile. */}
-      <KeyPageChrome locale={lang} dict={dict} showTrustBand={false} />
 
       {/* Services: one featured image plus a concise, scannable service finder. */}
       <section className="mx-auto max-w-7xl px-6 py-20 md:py-28">

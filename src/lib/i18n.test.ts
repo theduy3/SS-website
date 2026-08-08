@@ -4,12 +4,18 @@
 // defaultLocale, key order stable, relative vs absolute via `base`.
 
 import { describe, it, expect } from "vitest";
+import en from "@/dictionaries/en.json";
+import fr from "@/dictionaries/fr.json";
+import es from "@/dictionaries/es.json";
+import ar from "@/dictionaries/ar.json";
 import {
   locales,
   defaultLocale,
   sameForAll,
   hreflangAlternates,
 } from "./i18n";
+
+const dictionaries = { en, fr, es, ar } as const;
 
 describe("sameForAll", () => {
   it("maps every locale to the one shared route", () => {
@@ -50,3 +56,9 @@ describe("hreflangAlternates", () => {
     expect(map["x-default"]).toBe("/fr/about");
   });
 });
+
+for (const locale of ["en", "fr", "es", "ar"] as const) {
+  it(`has a non-empty Directions label for ${locale}`, () => {
+    expect(dictionaries[locale].cta.directions.trim()).not.toBe("");
+  });
+}

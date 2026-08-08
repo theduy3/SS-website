@@ -11,6 +11,12 @@
 // Imported by ConsentBar.tsx, ConsentBar.test.tsx, and consent.server.ts.
 export const SS_CONSENT_COOKIE = "ss_consent";
 
+export const SS_CONSENT_CHANGED_EVENT = "ss-consent-changed";
+
+export function notifyConsentChanged(): void {
+  window.dispatchEvent(new Event(SS_CONSENT_CHANGED_EVENT));
+}
+
 // Client-side write — called from ConsentBar after the user clicks Accept or
 // Decline. Uses document.cookie string assignment (same form as
 // LocaleSwitch.tsx:80). max-age=31536000 = 1 year; SameSite=Lax.

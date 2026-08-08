@@ -13,6 +13,7 @@ import { organizationGraph } from "@/lib/seo";
 import { Analytics } from "@/components/Analytics";
 import { ConsentBar } from "@/components/ConsentBar";
 import { WebVitalsReporter } from "@/components/WebVitalsReporter";
+import { StickyCtaBar } from "@/components/StickyCtaBar";
 import { readConsent } from "@/lib/consent.server";
 
 // Space Grotesk is variable — no explicit weight needed.
@@ -99,6 +100,7 @@ export default async function RootLayout({
         <Header dict={dict} locale={lang} />
         <main className="flex-1">{children}</main>
         <Footer dict={dict} locale={lang} />
+        <StickyCtaBar locale={lang} dict={dict} consentKnown={consentKnown} />
         <PopupHost locale={lang} />
         {/* JS-mounted consent bar — absent from SSR HTML (hydration gate). */}
         <ConsentBar dict={dict} locale={lang} consentKnown={consentKnown} />

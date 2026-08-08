@@ -6,7 +6,6 @@ import { BookCta } from "@/components/BookCta";
 import { ServicePhoto } from "@/components/ServicePhoto";
 import { FactRail } from "@/components/FactRail";
 import { SubpageIntro } from "@/components/SubpageIntro";
-import { KeyPageChrome } from "@/components/KeyPageChrome";
 import { Button } from "@/components/Button";
 import { JsonLd } from "@/components/JsonLd";
 import { site } from "@/lib/site";
@@ -68,7 +67,7 @@ export default async function ServiceDetailPage({ params }: Params) {
   ];
 
   return (
-    <div className="pb-[calc(76px+env(safe-area-inset-bottom))] md:pb-0">
+    <div>
       <JsonLd
         data={serviceGraph(lang, {
           name: d.title,
@@ -123,9 +122,6 @@ export default async function ServiceDetailPage({ params }: Params) {
       <div className="mx-auto max-w-7xl px-6">
         <FactRail label={labels.quickFacts} rows={factRows} className="-mt-px" />
       </div>
-
-      {/* Keep the high-intent mobile bar on service details only. */}
-      <KeyPageChrome locale={lang} dict={dict} showTrustBand={false} />
 
       <section className="mx-auto max-w-7xl px-6 py-16 md:py-24">
         <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr]">

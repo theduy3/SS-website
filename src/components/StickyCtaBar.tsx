@@ -1,31 +1,117 @@
 "use client";
 
-// StickyCtaBar — mobile-only (md:hidden) fixed-bottom Call + Book bar.
-//
-// Fires phone_click / book_cta_click GA4 events via <span onClick> wrappers
-// around the Button component. Button.tsx is NOT modified (onClick ban, D-06,
-// UI-SPEC line 174).
-//
-// WR-02: Each span also has onKeyDown so keyboard users activating the inner
-// Button via Enter or Space trigger track() too. Navigation (tel:/Link) lives
-// on the inner Button which is the real focusable element — it is unaffected
-// by the span handler, and track() throwing can never block navigation because
-// the span handler fires in addition to (not instead of) the Button's own event.
-//
-// The bar is suppressed while the consent cookie is absent (consentKnown=false)
-// to avoid stacking with the ConsentBar (UI-SPEC line 200, z-40).
-// Once consent is recorded (either accepted or declined) this bar renders.
-//
-// RTL: flex-row-reverse when dir="rtl" so order reads [Book][Call] for Arabic.
-// z-40: below Header (z-50) and popup layer (z-[100]). No animation.
-
-import { site } from "@/lib/site";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import type React from "react";
+import { useEffect, useState } from "react";
 import { track } from "@/lib/analytics";
-import { Button } from "@/components/Button";
-import { dirFor, type Locale } from "@/lib/i18n";
+import { SS_CONSENT_CHANGED_EVENT } from "@/lib/consent";
 import type { Dictionary } from "@/lib/dictionary";
+import { dirFor, type Locale } from "@/lib/i18n";
+import { site } from "@/lib/site";
 
 type CtaDict = Pick<Dictionary, "cta">;
+
+type ActionLinkProps = {
+  href: string;
+  label: string;
+  icon: React.ReactNode;
+  onClick: React.MouseEventHandler<HTMLAnchorElement>;
+  external?: boolean;
+  className?: string;
+};
+
+function PhoneIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      aria-hidden
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="h-5 w-5"
+    >
+      <path d="M7.5 4.5h3l1.5 4-2 1.5a14 14 0 0 0 4 4l1.5-2 4 1.5v3c0 1.1-.9 2-2 2C11.1 18.5 5.5 12.9 5.5 6.5c0-1.1.9-2 2-2Z" />
+    </svg>
+  );
+}
+
+function CalendarIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      aria-hidden
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="h-5 w-5"
+    >
+      <rect x="4" y="5.5" width="16" height="14" rx="2" />
+      <path d="M8 3.5v4M16 3.5v4M4 10h16M8 14h.01M12 14h.01M16 14h.01" />
+    </svg>
+  );
+}
+
+function MapPinIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      aria-hidden
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="h-5 w-5"
+    >
+      <path d="M12 20s6-5.1 6-10a6 6 0 1 0-12 0c0 4.9 6 10 6 10Z" />
+      <circle cx="12" cy="10" r="2" />
+    </svg>
+  );
+}
+
+function ActionLink({
+  href,
+  label,
+  icon,
+  onClick,
+  external = false,
+  className = "",
+}: ActionLinkProps) {
+  const classes = `group flex min-h-11 flex-1 flex-col items-center justify-center gap-1 px-2 py-2 text-[0.65rem] font-semibold uppercase tracking-[0.08em] transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tan ${className}`;
+  const isNativeLink = external || href.startsWith("tel:");
+  const content = (
+    <>
+      <span aria-hidden>{icon}</span>
+      <span>{label}</span>
+    </>
+  );
+
+  if (isNativeLink) {
+    return (
+      <a
+        href={href}
+        target={external ? "_blank" : undefined}
+        rel={external ? "noopener noreferrer" : undefined}
+        onClick={onClick}
+        aria-label={label}
+        className={classes}
+      >
+        {content}
+      </a>
+    );
+  }
+
+  return (
+    <Link href={href} onClick={onClick} aria-label={label} className={classes}>
+      {content}
+    </Link>
+  );
+}
 
 export function StickyCtaBar({
   locale,
@@ -36,63 +122,61 @@ export function StickyCtaBar({
   dict: CtaDict;
   consentKnown: boolean;
 }) {
-  // Suppress bar until a consent decision is recorded (avoids double-bar
-  // stacking with ConsentBar on first visit — UI-SPEC line 200).
-  if (!consentKnown) return null;
+  const pathname = usePathname();
+  const [consentReady, setConsentReady] = useState(consentKnown);
 
-  // Locale-aware href: "/" → "/{locale}", "/path" → "/{locale}/path".
-  // Copied verbatim from Header.tsx:32-33.
+  useEffect(() => {
+    const handleConsentChanged = () => setConsentReady(true);
+    window.addEventListener(SS_CONSENT_CHANGED_EVENT, handleConsentChanged);
+    return () =>
+      window.removeEventListener(SS_CONSENT_CHANGED_EVENT, handleConsentChanged);
+  }, []);
+
   const localizedHref = (href: string) =>
     href === "/" ? `/${locale}` : `/${locale}${href}`;
+
+  const bookingPath = `/${locale}${site.booking}`;
+  const normalizedPathname = pathname?.replace(/\/+$/, "") ?? "";
+
+  if (!consentReady || normalizedPathname === bookingPath) return null;
 
   const isRtl = dirFor(locale) === "rtl";
 
   return (
-    <div
-      className="fixed inset-x-0 bottom-0 z-40 bg-espresso px-4 pb-[calc(0.75rem+env(safe-area-inset-bottom))] pt-3 text-cream md:hidden"
-      aria-label="Quick contact"
-    >
-      <div
-        className={`flex gap-3 items-center justify-center max-w-7xl mx-auto ${isRtl ? "flex-row-reverse" : ""}`}
+    <>
+      <nav
+        aria-label="Quick contact"
+        className="fixed inset-x-0 bottom-0 z-40 bg-espresso px-4 pb-[calc(0.75rem+env(safe-area-inset-bottom))] pt-3 text-cream md:hidden"
       >
-        {/* Call: span wrapper fires phone_click on click and keyboard Enter/Space (WR-02).
-             The inner <a> (tel:) handles navigation independently — track() throwing
-             cannot block the call. */}
-        <span
-          onClick={() => track("phone_click")}
-          onKeyDown={(e) => {
-            if (e.key === "Enter" || e.key === " ") track("phone_click");
-          }}
-          className="flex-1"
+        <div
+          className={`mx-auto flex max-w-7xl items-end justify-center ${isRtl ? "flex-row-reverse" : ""}`}
         >
-          <Button
+          <ActionLink
             href={site.contact.phoneHref}
-            variant="light"
-            className="w-full min-h-[44px]"
-          >
-            {dict.cta.callNow}
-          </Button>
-        </span>
-
-        {/* Book: span wrapper fires book_cta_click on click and keyboard Enter/Space (WR-02).
-             The inner <Link> handles navigation independently — track() throwing
-             cannot block navigation. */}
-        <span
-          onClick={() => track("book_cta_click")}
-          onKeyDown={(e) => {
-            if (e.key === "Enter" || e.key === " ") track("book_cta_click");
-          }}
-          className="flex-1"
-        >
-          <Button
+            label={dict.cta.callNow}
+            icon={<PhoneIcon />}
+            onClick={() => track("phone_click")}
+          />
+          <ActionLink
             href={localizedHref(site.booking)}
-            variant="light"
-            className="w-full min-h-[44px]"
-          >
-            {dict.cta.book}
-          </Button>
-        </span>
-      </div>
-    </div>
+            label={dict.cta.book}
+            icon={<CalendarIcon />}
+            onClick={() => track("book_cta_click")}
+            className="-mt-8 min-h-[76px] rounded-full bg-tan px-3 pb-2 pt-3"
+          />
+          <ActionLink
+            href={site.contact.directionsHref}
+            label={dict.cta.directions}
+            icon={<MapPinIcon />}
+            onClick={() => track("directions_click")}
+            external
+          />
+        </div>
+      </nav>
+      <div
+        aria-hidden="true"
+        className="h-[calc(88px+env(safe-area-inset-bottom))] md:hidden"
+      />
+    </>
   );
 }
