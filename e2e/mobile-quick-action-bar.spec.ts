@@ -86,15 +86,20 @@ test.describe("mobile quick-action bar", () => {
     await page.goto("/en/about");
     await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
 
-    const relation = await page.evaluate(() => {
-      const footer = document.querySelector("footer")?.getBoundingClientRect();
-      const bar = document
-        .querySelector('nav[aria-label="Quick contact"]')
-        ?.getBoundingClientRect();
+    const footer = page.locator("footer");
+    const bar = page.getByRole("navigation", { name: "Quick contact" });
+    await expect(footer).toBeVisible();
+    await expect(bar).toBeVisible();
 
-      return { footerBottom: footer?.bottom ?? 0, barTop: bar?.top ?? 0 };
-    });
+    const [footerBox, barBox] = await Promise.all([
+      footer.boundingBox(),
+      bar.boundingBox(),
+    ]);
 
-    expect(relation.footerBottom).toBeLessThanOrEqual(relation.barTop);
+    if (!footerBox || !barBox) {
+      throw new Error("Expected footer and quick contact bar geometry");
+    }
+
+    expect(footerBox.y + footerBox.height).toBeLessThanOrEqual(barBox.y);
   });
 });
