@@ -5,6 +5,7 @@ import "../globals.css";
 // It is intentionally minimal and un-localized, and kept out of search engines.
 export const metadata: Metadata = {
   title: "Popup admin",
+  manifest: "/manifest.webmanifest",
   robots: { index: false, follow: false },
 };
 

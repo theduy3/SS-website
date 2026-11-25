@@ -1,9 +1,5 @@
 import { test, expect } from "@playwright/test";
 
-// Safari's Add to Home Screen reads the page's manifest link and launches the
-// installed app at that manifest's start_url. Each surface must emit exactly one
-// link, and the check-in kiosk must point at its own manifest.
-
 const manifestHrefs = (html: string) =>
   [...html.matchAll(/<link\b[^>]*>/g)]
     .map(([tag]) => tag)

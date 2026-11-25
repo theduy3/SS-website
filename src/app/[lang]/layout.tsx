@@ -23,8 +23,6 @@ const spaceGrotesk = Space_Grotesk({
   display: "swap",
 });
 
-// Browser-chrome theme colour for mobile. Matches manifest.ts theme_color and
-// the rendered header/footer (#141414) so the address bar blends with the page.
 export const viewport: Viewport = {
   themeColor: "#141414",
 };
@@ -46,6 +44,7 @@ export async function generateMetadata({
     metadataBase: new URL(site.url),
     title: dict.meta.homeTitle,
     description: dict.meta.homeDescription,
+    manifest: "/manifest.webmanifest",
     robots: { index: true, follow: true },
     // Local-SEO geo signals, mirroring the competitor (naillabnc.com) approach.
     other: {
