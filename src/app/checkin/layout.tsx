@@ -6,6 +6,7 @@ import "../globals.css";
 // out of search engines.
 export const metadata: Metadata = {
   title: "Check in",
+  manifest: "/checkin.webmanifest",
   robots: { index: false, follow: false },
 };
 

@@ -12,7 +12,7 @@ SS-website/
 │   └── codebase/              # Generated codebase maps (ARCHITECTURE.md, etc.)
 ├── .claude/                    # Claude agent config
 ├── e2e/                        # Playwright E2E tests (excludes from vitest)
-├── public/                     # Static assets (images, fonts)
+├── public/                     # Static assets (images, fonts, manifests)
 │   └── images/                # Service photos, hero, team images
 ├── src/
 │   ├── app/                   # Next.js App Router (server + API)
@@ -67,8 +67,7 @@ SS-website/
 │   │   │   └── page.tsx        # Embed SubscribeWidget iframe
 │   │   ├── globals.css         # Tailwind CSS globals, color vars
 │   │   ├── robots.ts           # SEO robots.txt generation
-│   │   ├── sitemap.ts          # SEO sitemap generation
-│   │   └── manifest.ts         # PWA manifest
+│   │   └── sitemap.ts          # SEO sitemap generation
 │   ├── components/             # React UI components (server + client)
 │   │   ├── Header.tsx          # Top navigation (server)
 │   │   ├── Footer.tsx          # Bottom footer (server)

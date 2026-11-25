@@ -6,6 +6,7 @@ import "../globals.css";
 // out of search engines (private customer account surface).
 export const metadata: Metadata = {
   title: "Account",
+  manifest: "/manifest.webmanifest",
   robots: { index: false, follow: false },
 };
 

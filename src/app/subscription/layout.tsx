@@ -6,6 +6,7 @@ import "../globals.css";
 // out of search engines (third-party embed, no indexable content).
 export const metadata: Metadata = {
   title: "Subscribe",
+  manifest: "/manifest.webmanifest",
   robots: { index: false, follow: false },
 };
 
