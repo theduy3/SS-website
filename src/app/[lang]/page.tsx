@@ -10,6 +10,7 @@ import { Testimonials } from "@/components/Testimonials";
 import { Stars } from "@/components/Stars";
 import { dirFor, type LangParams } from "@/lib/i18n";
 import { formatFromPrice } from "@/lib/format";
+import { giftCardUrls } from "@/lib/gift-cards";
 import { resolveLangPage, langPageMetadata } from "@/lib/page-resolver";
 import { services, servicePath } from "@/lib/services";
 import { site } from "@/lib/site";
@@ -326,6 +327,44 @@ export default async function Home({ params }: LangParams) {
           </Reveal>
         </div>
       </section>
+
+      {dict.giftCards && (
+        <section id="gift-cards" aria-labelledby="gift-cards-title" className="mx-auto max-w-7xl px-6 py-12 md:py-20">
+          <div className="grid overflow-hidden rounded-xl bg-cream md:min-h-[300px] md:grid-cols-[1.24fr_0.76fr]">
+            <div className="self-center p-6 md:p-12 lg:p-16">
+              <h2 id="gift-cards-title" className="text-4xl md:text-6xl">{dict.giftCards.heading}</h2>
+              <p className="mt-3 max-w-[40ch] text-mocha">{dict.giftCards.description}</p>
+              <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2">
+                <a
+                  href={giftCardUrls.buy}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex min-h-11 items-center rounded-pill bg-[#345c50] px-4 py-2 text-sm font-semibold text-cream hover:bg-espresso focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tan sm:px-5"
+                >
+                  {dict.giftCards.buy}
+                </a>
+                <a
+                  href={giftCardUrls.balance}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex min-h-11 items-center text-sm font-semibold text-[#294c40] underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tan"
+                >
+                  {dict.giftCards.balance}
+                </a>
+              </div>
+            </div>
+            <div className="relative min-h-[200px]">
+              <Image
+                src="/images/services/manicure.jpg"
+                alt=""
+                fill
+                sizes="(max-width: 767px) 100vw, 460px"
+                className="object-cover object-[center_55%]"
+              />
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Booking finish: location, hours, and the two conversion actions. */}
       <section className="bg-tan/10">

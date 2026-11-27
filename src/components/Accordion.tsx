@@ -3,7 +3,11 @@
 export function Accordion({
   items,
 }: {
-  items: readonly { q: string; a: string }[];
+  items: readonly {
+    q: string;
+    a: string;
+    trailingLinks?: readonly { href: string; label: string }[];
+  }[];
 }) {
   return (
     <div className="divide-y divide-tan/30 border-y border-tan/30">
@@ -15,7 +19,22 @@ export function Accordion({
               +
             </span>
           </summary>
-          <p className="max-w-3xl pb-3 pt-2 leading-relaxed text-mocha">{item.a}</p>
+          <p className="max-w-3xl pb-3 pt-2 leading-relaxed text-mocha">
+            {item.a}
+            {item.trailingLinks?.map((link, index) => (
+              <span key={link.href}>
+                {index === 0 ? " " : " / "}
+                <a
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-semibold text-espresso underline underline-offset-4"
+                >
+                  {link.label}
+                </a>
+              </span>
+            ))}
+          </p>
         </details>
       ))}
     </div>
