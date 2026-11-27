@@ -2,7 +2,8 @@ import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import { renderHook, act } from "@testing-library/react";
 import { usePopupForm } from "./use-popup-form";
 import { emptyDraft } from "@/lib/popup-draft";
-import type { Popup } from "@/lib/popup";
+import { PopupSchema, type Popup } from "@/lib/popup";
+import { parseRows } from "@/lib/popups-store";
 
 function jsonResponse(body: unknown): Response {
   return { ok: true, json: async () => body } as Response;
@@ -84,6 +85,48 @@ describe("usePopupForm", () => {
       "/api/admin/popups/welcome",
       expect.objectContaining({ method: "PUT" }),
     );
+  });
+
+  it("creates and re-saves the gift-card presentation with the exact UTC schedule", async () => {
+    const saved: Popup[] = [];
+    vi.mocked(fetch).mockImplementation(async (_url, options) => {
+      const popup = PopupSchema.parse(JSON.parse(String(options?.body)));
+      saved.push(popup);
+      return jsonResponse({ success: true, data: popup });
+    });
+    const { result } = renderHook(() => usePopupForm({ onSaved: vi.fn() }));
+    const startsAt = "2026-11-23T05:00:00.000Z";
+    const endsAt = "2026-12-07T04:59:59.999Z";
+    const local = (value: string) => {
+      const date = new Date(value);
+      return new Date(date.getTime() - date.getTimezoneOffset() * 60_000)
+        .toISOString().slice(0, -1);
+    };
+
+    act(() => result.current.create());
+    act(() => result.current.setDraft({
+      ...result.current.draft!,
+      id: "black-friday-gift-cards-2026",
+      presentation: "gift-card",
+      startsAt: local(startsAt),
+      endsAt: local(endsAt),
+      title: { en: "Black Friday", fr: "Vendredi fou", es: "", ar: "" },
+      body: { en: "Offer", fr: "Offre", es: "", ar: "" },
+    }));
+    await act(() => result.current.save());
+    expect(fetch).toHaveBeenLastCalledWith("/api/admin/popups", expect.objectContaining({ method: "POST" }));
+    expect(saved[0]).toMatchObject({ presentation: "gift-card", startsAt, endsAt });
+
+    const [reopened] = parseRows([{ id: saved[0].id, doc: saved[0] }]);
+    act(() => result.current.edit(reopened));
+    expect(result.current.draft?.presentation).toBe("gift-card");
+    expect(result.current.draft?.endsAt).toBe(local(endsAt));
+    await act(() => result.current.save());
+    expect(fetch).toHaveBeenLastCalledWith(
+      "/api/admin/popups/black-friday-gift-cards-2026",
+      expect.objectContaining({ method: "PUT" }),
+    );
+    expect(saved[1]).toEqual(saved[0]);
   });
 
   it("save() surfaces a server error and keeps the draft open", async () => {

@@ -20,6 +20,7 @@ const Base = z.object({
 
 const RichPopup = Base.extend({
   type: z.literal("rich"),
+  presentation: z.literal("gift-card").optional(),
   image: z
     .object({ url: z.url(), alt: z.string().default("") })
     .nullable()
@@ -44,13 +45,35 @@ export const PopupSchema = z.discriminatedUnion("type", [
 export const PopupsSchema = z.array(PopupSchema);
 export type Popup = z.infer<typeof PopupSchema>;
 
-// Active pop-ups (those whose [startsAt, endsAt] window contains `now`), ordered
-// highest-priority first. Ties break by id so the order is deterministic across
-// reads. The per-visitor frequency/seen check is applied client-side, so the
-// feed returns the whole eligible list rather than pre-selecting one popup.
+export const giftCardWindow = {
+  startsAt: "2026-11-23T05:00:00.000Z",
+  endsAt: "2026-12-07T04:59:59.999Z",
+};
+
+export function giftCardValidationError(popup: Popup): string | undefined {
+  if (popup.type !== "rich" || popup.presentation !== "gift-card") return;
+
+  if (Date.parse(popup.startsAt ?? "") !== Date.parse(giftCardWindow.startsAt) ||
+      Date.parse(popup.endsAt ?? "") !== Date.parse(giftCardWindow.endsAt)) {
+    return "Use the exact gift-card campaign schedule shown in the form.";
+  }
+  if (![popup.title.fr, popup.title.en, popup.body.fr, popup.body.en].every((text) => text.trim())) {
+    return "Enter a French and English title and body for the gift-card campaign.";
+  }
+}
+
+export const AdminPopupSchema = PopupSchema.superRefine((popup, ctx) => {
+  const error = giftCardValidationError(popup);
+  if (error) ctx.addIssue({ code: "custom", message: error });
+});
+
+// Return the active records in priority order for the visitor's frequency check.
+
 export function pickActiveSorted(popups: Popup[], now: Date): Popup[] {
   const t = now.getTime();
   const active = popups.filter((p) => {
+    if (giftCardValidationError(p)) return false;
+
     const startOk = !p.startsAt || Date.parse(p.startsAt) <= t;
     const endOk = !p.endsAt || Date.parse(p.endsAt) >= t;
     return startOk && endOk;

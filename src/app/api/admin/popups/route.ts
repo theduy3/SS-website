@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { PopupSchema } from "@/lib/popup";
+import { AdminPopupSchema } from "@/lib/popup";
 import { guard, storeError, parseBody } from "@/lib/admin-http";
 import { listPopups, upsertPopup } from "@/lib/popups-store";
 
@@ -19,7 +19,7 @@ export async function POST(request: Request) {
   const denied = await guard();
   if (denied) return denied;
 
-  const parsed = await parseBody(request, PopupSchema);
+  const parsed = await parseBody(request, AdminPopupSchema);
   if (!parsed.ok) return parsed.res;
 
   const result = await upsertPopup(parsed.data);

@@ -2,14 +2,19 @@
 
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import type { Popup } from "@/lib/popup";
+import { giftCardValidationError, type Popup } from "@/lib/popup";
 import type { Locale } from "@/lib/i18n";
 import { PopupRich } from "./PopupRich";
 import { PopupEmbed } from "./PopupEmbed";
-import { shouldShow, markSeen } from "@/lib/popup-frequency";
+import { PopupGiftCard } from "./PopupGiftCard";
+import { isGiftCardLocale } from "@/lib/gift-cards";
+import { shouldShow, markSeen, seenKey } from "@/lib/popup-frequency";
 
-export function PopupHost({ locale }: { locale: Locale }) {
-  const [popup, setPopup] = useState<Popup | null>(null);
+export function PopupHost({ locale, giftCardBuyLabel }: { locale: Locale; giftCardBuyLabel?: string }) {
+  const [selected, setPopup] = useState<Popup | null>(null);
+  const giftCard = selected?.type === "rich" && selected.presentation === "gift-card" ? selected : null;
+  const popup = giftCard ? null : selected;
+  const selectedRef = useRef<Popup | null>(null);
   const reduce = useReducedMotion();
   const cardRef = useRef<HTMLDivElement>(null);
   const previousFocusRef = useRef<Element | null>(null);
@@ -26,16 +31,29 @@ export function PopupHost({ locale }: { locale: Locale }) {
         // lower-priority "always" popup still shows when the top one was already
         // dismissed. Falls back to the legacy single-popup field.
         const candidates = d.popups ?? (d.popup ? [d.popup] : []);
-        const next = candidates.find(shouldShow);
-        if (!next) return;
-        setPopup(next);
-        markSeen(next);
+        const current = selectedRef.current;
+        const currentKey = current ? seenKey(current) : null;
+        const next = candidates.find((candidate) => {
+          if (candidate.type === "rich" && candidate.presentation === "gift-card" && (!isGiftCardLocale(locale) || !giftCardBuyLabel || giftCardValidationError(candidate))) {
+            return false;
+          }
+          return seenKey(candidate) === currentKey || shouldShow(candidate);
+        });
+        if (next && seenKey(next) === currentKey) return;
+        selectedRef.current = next ?? null;
+        setPopup(next ?? null);
+        if (next) markSeen(next);
       })
       .catch(() => {});
     return () => {
       alive = false;
     };
-  }, []);
+  }, [locale, giftCardBuyLabel]);
+
+  function close() {
+    selectedRef.current = null;
+    setPopup(null);
+  }
 
   useEffect(() => {
     if (!popup) return;
@@ -58,7 +76,7 @@ export function PopupHost({ locale }: { locale: Locale }) {
 
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
-        setPopup(null);
+        close();
         return;
       }
       if (e.key === "Tab") {
@@ -93,7 +111,9 @@ export function PopupHost({ locale }: { locale: Locale }) {
     };
   }, [popup]);
 
-  const close = () => setPopup(null);
+  if (giftCard && isGiftCardLocale(locale) && giftCardBuyLabel) {
+    return <PopupGiftCard popup={giftCard} locale={locale} buyLabel={giftCardBuyLabel} onClose={close} />;
+  }
 
   return (
     <AnimatePresence>
