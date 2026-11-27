@@ -6,6 +6,7 @@ import { faqPageGraph } from "@/lib/seo";
 import { PageBreadcrumb } from "@/components/PageBreadcrumb";
 import { JsonLd } from "@/components/JsonLd";
 import { Accordion } from "@/components/Accordion";
+import { faqAnswers } from "@/lib/faq-answers";
 import { SubpageIntro } from "@/components/SubpageIntro";
 
 export function generateMetadata({ params }: LangParams): Promise<Metadata> {
@@ -20,9 +21,10 @@ export function generateMetadata({ params }: LangParams): Promise<Metadata> {
 
 export default async function FaqPage({ params }: LangParams) {
   const { lang, dict } = await resolveLangPage(params);
+  const { items, plainItems } = faqAnswers(dict);
   return (
     <div>
-      <JsonLd data={faqPageGraph(dict.faq.items)} />
+      <JsonLd data={faqPageGraph(plainItems)} />
       <PageBreadcrumb
         lang={lang}
         dict={dict}
@@ -45,7 +47,7 @@ export default async function FaqPage({ params }: LangParams) {
             {dict.faq.intro}
           </h2>
         </div>
-        <Accordion items={dict.faq.items} />
+        <Accordion items={items} />
       </section>
     </div>
   );

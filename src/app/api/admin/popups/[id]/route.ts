@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { PopupSchema } from "@/lib/popup";
+import { AdminPopupSchema } from "@/lib/popup";
 import { guard, storeError, badRequest, parseBody } from "@/lib/admin-http";
 import { deletePopup, upsertPopup } from "@/lib/popups-store";
 
@@ -14,7 +14,7 @@ export async function PUT(request: Request, ctx: Ctx) {
 
   const { id } = await ctx.params;
 
-  const parsed = await parseBody(request, PopupSchema);
+  const parsed = await parseBody(request, AdminPopupSchema);
   if (!parsed.ok) return parsed.res;
 
   if (parsed.data.id !== id) {

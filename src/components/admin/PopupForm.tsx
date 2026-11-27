@@ -1,7 +1,8 @@
 "use client";
 
 import { type Locale } from "@/lib/i18n";
-import type { Draft } from "@/lib/popup-draft";
+import { isoToDatetimeLocal, type Draft } from "@/lib/popup-draft";
+import { giftCardWindow } from "@/lib/popup";
 import { LocalizedGroup } from "./LocalizedGroup";
 import { inputClass } from "./field-style";
 import { usePopupImageUpload } from "@/app/admin/use-popup-image-upload";
@@ -27,6 +28,8 @@ export function PopupForm({
 
   const set = <K extends keyof Draft>(key: K, value: Draft[K]) =>
     setDraft({ ...draft, [key]: value });
+
+  const giftCard = draft.type === "rich" && draft.presentation === "gift-card";
 
   const setLocalized = (
     key: "title" | "body" | "ctaLabel",
@@ -93,6 +96,7 @@ export function PopupForm({
           <span className="text-tan">Starts at</span>
           <input
             type="datetime-local"
+            step={giftCard ? "0.001" : undefined}
             className={inputClass}
             value={draft.startsAt}
             onChange={(e) => set("startsAt", e.target.value)}
@@ -102,6 +106,7 @@ export function PopupForm({
           <span className="text-tan">Ends at</span>
           <input
             type="datetime-local"
+            step={giftCard ? "0.001" : undefined}
             className={inputClass}
             value={draft.endsAt}
             onChange={(e) => set("endsAt", e.target.value)}
@@ -126,6 +131,29 @@ export function PopupForm({
 
       {draft.type === "rich" ? (
         <>
+          <label className="flex flex-col gap-1 text-xs">
+            <span className="text-tan">Presentation</span>
+            <select
+              className={inputClass}
+              value={draft.presentation ?? ""}
+              onChange={(e) => {
+                const presentation = e.target.value === "gift-card" ? "gift-card" : undefined;
+                if (presentation && !draft.startsAt && !draft.endsAt) {
+                  setDraft({
+                    ...draft,
+                    presentation,
+                    startsAt: isoToDatetimeLocal(giftCardWindow.startsAt, true),
+                    endsAt: isoToDatetimeLocal(giftCardWindow.endsAt, true),
+                  });
+                } else {
+                  set("presentation", presentation);
+                }
+              }}
+            >
+              <option value="">Standard</option>
+              <option value="gift-card">Black Friday gift card</option>
+            </select>
+          </label>
           <LocalizedGroup
             label="Title"
             values={draft.title}
@@ -138,63 +166,73 @@ export function PopupForm({
             required
             onChange={(loc, v) => setLocalized("body", loc, v)}
           />
-          <LocalizedGroup
-            label="Button label (optional — set a link below to enable)"
-            values={draft.ctaLabel}
-            onChange={(loc, v) => setLocalized("ctaLabel", loc, v)}
-          />
-          <label className="flex flex-col gap-1 text-xs">
-            <span className="text-tan">Button link (href)</span>
-            <input
-              className={inputClass}
-              value={draft.ctaHref}
-              placeholder="/appointments"
-              onChange={(e) => set("ctaHref", e.target.value)}
-            />
-          </label>
-
-          <fieldset className="rounded-xl border border-fog bg-beige/60 p-3">
-            <legend className="px-1 text-xs font-semibold uppercase tracking-wide text-mocha">
-              Image (optional)
-            </legend>
-            <div className="flex flex-col gap-2">
-              <input
-                type="file"
-                accept="image/*"
-                onChange={onPickImage}
-                className="text-xs"
+          {giftCard ? (
+            <p className="text-sm text-mocha">
+              This presentation supplies the artwork, discount, dates and purchase button.
+              It appears only with the approved schedule from November 23 at 00:00:00.000
+              to December 6 at 23:59:59.999 Toronto time. Schedule inputs use this browser’s local time.
+            </p>
+          ) : (
+            <>
+              <LocalizedGroup
+                label="Button label (optional — set a link below to enable)"
+                values={draft.ctaLabel}
+                onChange={(loc, v) => setLocalized("ctaLabel", loc, v)}
               />
-              {uploading && <p className="text-xs text-tan">Uploading…</p>}
-              {uploadError && (
-                <p className="text-xs text-red-600">{uploadError}</p>
-              )}
-              {draft.imageUrl && (
-                <div className="flex items-center gap-3">
-                  {/* eslint-disable-next-line @next/next/no-img-element -- preview only */}
-                  <img
-                    src={draft.imageUrl}
-                    alt=""
-                    className="h-16 w-16 rounded object-cover"
-                  />
+              <label className="flex flex-col gap-1 text-xs">
+                <span className="text-tan">Button link (href)</span>
+                <input
+                  className={inputClass}
+                  value={draft.ctaHref}
+                  placeholder="/appointments"
+                  onChange={(e) => set("ctaHref", e.target.value)}
+                />
+              </label>
+
+              <fieldset className="rounded-xl border border-fog bg-beige/60 p-3">
+                <legend className="px-1 text-xs font-semibold uppercase tracking-wide text-mocha">
+                  Image (optional)
+                </legend>
+                <div className="flex flex-col gap-2">
                   <input
-                    className={inputClass}
-                    value={draft.imageAlt}
-                    placeholder="Alt text"
-                    onChange={(e) => set("imageAlt", e.target.value)}
+                    type="file"
+                    accept="image/*"
+                    onChange={onPickImage}
+                    className="text-xs"
                   />
-                  <button
-                    type="button"
-                    className="text-xs text-red-600 underline"
-                    onClick={() =>
-                      setDraft({ ...draft, imageUrl: "", imageAlt: "" })
-                    }
-                  >
-                    Remove
-                  </button>
+                  {uploading && <p className="text-xs text-tan">Uploading…</p>}
+                  {uploadError && (
+                    <p className="text-xs text-red-600">{uploadError}</p>
+                  )}
+                  {draft.imageUrl && (
+                    <div className="flex items-center gap-3">
+                      {/* eslint-disable-next-line @next/next/no-img-element -- preview only */}
+                      <img
+                        src={draft.imageUrl}
+                        alt=""
+                        className="h-16 w-16 rounded object-cover"
+                      />
+                      <input
+                        className={inputClass}
+                        value={draft.imageAlt}
+                        placeholder="Alt text"
+                        onChange={(e) => set("imageAlt", e.target.value)}
+                      />
+                      <button
+                        type="button"
+                        className="text-xs text-red-600 underline"
+                        onClick={() =>
+                          setDraft({ ...draft, imageUrl: "", imageAlt: "" })
+                        }
+                      >
+                        Remove
+                      </button>
+                    </div>
+                  )}
                 </div>
-              )}
-            </div>
-          </fieldset>
+              </fieldset>
+            </>
+          )}
         </>
       ) : (
         <label className="flex flex-col gap-1 text-xs">

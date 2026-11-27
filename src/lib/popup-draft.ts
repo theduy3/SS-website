@@ -6,15 +6,18 @@ import { locales, type Locale } from "@/lib/i18n";
 // reusable and easy to reason about; the server still re-validates via
 // PopupSchema, so this is convenience, not the security boundary.
 
-// <input type="datetime-local"> only accepts "YYYY-MM-DDTHH:mm" (no seconds, no
-// timezone). Popups store UTC ISO strings. These bridge the two, interpreting the
-// input as the admin's LOCAL wall-clock: ISO(UTC) -> local for display, local -> ISO(UTC) on save.
-export function isoToDatetimeLocal(iso: string | null | undefined): string {
+// Popups store UTC instants, and the admin edits them in local wall-clock time.
+// The gift-card campaign requires millisecond precision for its inclusive end.
+export function isoToDatetimeLocal(
+  iso: string | null | undefined,
+  precise = false,
+): string {
   if (!iso) return "";
   const d = new Date(iso);
   if (Number.isNaN(d.getTime())) return "";
   const pad = (n: number) => String(n).padStart(2, "0");
-  return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
+  const minute = `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
+  return precise ? `${minute}:${pad(d.getSeconds())}.${String(d.getMilliseconds()).padStart(3, "0")}` : minute;
 }
 
 export function datetimeLocalToISO(value: string): string | null {
@@ -33,6 +36,7 @@ export type Draft = {
   endsAt: string;
   frequency: Popup["frequency"];
   type: Popup["type"];
+  presentation: Extract<Popup, { type: "rich" }>["presentation"];
   // rich fields
   title: Record<Locale, string>;
   body: Record<Locale, string>;
@@ -68,6 +72,7 @@ export function emptyDraft(): Draft {
     endsAt: "",
     frequency: "session",
     type: "rich",
+    presentation: undefined,
     title: emptyLocalized(),
     body: emptyLocalized(),
     ctaLabel: emptyLocalized(),
@@ -79,19 +84,21 @@ export function emptyDraft(): Draft {
 }
 
 export function toDraft(p: Popup): Draft {
+  const precise = p.type === "rich" && p.presentation === "gift-card";
   const base: Draft = {
     ...emptyDraft(),
     id: p.id,
     version: p.version,
     priority: p.priority,
-    startsAt: isoToDatetimeLocal(p.startsAt),
-    endsAt: isoToDatetimeLocal(p.endsAt),
+    startsAt: isoToDatetimeLocal(p.startsAt, precise),
+    endsAt: isoToDatetimeLocal(p.endsAt, precise),
     frequency: p.frequency,
     type: p.type,
   };
   if (p.type === "rich") {
     return {
       ...base,
+      presentation: p.presentation,
       title: fill(p.title),
       body: fill(p.body),
       ctaLabel: fill(p.cta?.label),
@@ -133,6 +140,7 @@ export function toPopup(d: Draft): Popup {
   return {
     ...base,
     type: "rich",
+    ...(d.presentation && { presentation: d.presentation }),
     image: d.imageUrl.trim()
       ? { url: d.imageUrl.trim(), alt: d.imageAlt.trim() }
       : null,

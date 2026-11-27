@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import type { Popup } from "@/lib/popup";
+import { giftCardValidationError, type Popup } from "@/lib/popup";
 import { emptyDraft, toDraft, toPopup, type Draft } from "@/lib/popup-draft";
 import { adminRequest } from "./admin-request";
 
@@ -40,10 +40,15 @@ export function usePopupForm({
       setError("ID is required");
       return;
     }
+    const popup = toPopup(draft);
+    const validationError = giftCardValidationError(popup);
+    if (validationError) {
+      setError(validationError);
+      return;
+    }
     setSaving(true);
     setError(null);
     try {
-      const popup = toPopup(draft);
       const result = await adminRequest(
         isNew
           ? "/api/admin/popups"

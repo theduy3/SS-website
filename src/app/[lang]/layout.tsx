@@ -100,7 +100,7 @@ export default async function RootLayout({
         <main className="flex-1">{children}</main>
         <Footer dict={dict} locale={lang} />
         <StickyCtaBar locale={lang} dict={dict} consentKnown={consentKnown} />
-        <PopupHost locale={lang} />
+        <PopupHost locale={lang} giftCardBuyLabel={dict.giftCards?.buy} />
         {/* JS-mounted consent bar — absent from SSR HTML (hydration gate). */}
         <ConsentBar dict={dict} locale={lang} consentKnown={consentKnown} />
         {/* CWV reporter — registers onLCP/onINP/onCLS only after consent granted. */}

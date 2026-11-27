@@ -10,6 +10,7 @@
 // and stays deterministic (no new Date(), RESEARCH Pitfall 4).
 
 import type { Dictionary } from "@/lib/dictionary";
+import { faqAnswers } from "@/lib/faq-answers";
 import type { Locale } from "@/lib/i18n";
 import type { Service } from "@/lib/services";
 import type { Comparison } from "@/lib/comparisons";
@@ -421,7 +422,7 @@ export function renderFaqMd(
     updated: meta.updated,
   });
 
-  const faqPart = renderFaqPart(dict.faq.items);
+  const faqPart = renderFaqPart(faqAnswers(dict).plainItems);
 
   return [
     fm,
